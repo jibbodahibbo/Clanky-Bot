@@ -3,9 +3,9 @@ const Discord = require('discord.js');
 const Sequelize = require('sequelize');
 const mysql = require('mysql2');
 
-//const { prefix, token } = require('./config.json');
+const { prefix, token } = require('./config.json');
 const players = require('./players.js');
-const prefix='!';
+//const prefix='!';
 
 
 const client = new Discord.Client();
@@ -40,4 +40,4 @@ client.on('message', message => {
 	}
 });
 
-client.login(process.ENV.TOKEN);
+client.login(token);
