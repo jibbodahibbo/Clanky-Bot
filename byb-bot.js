@@ -8,11 +8,25 @@ const prefix='!';
 
 
 const client = new Discord.Client();
+
 const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.env.PASSWORD, {
 	host: process.env.HOST,
 	dialect: 'postgres',
 	port: '5432'
 
+});
+const Tags = sequelize.define('Clanky Coins', {
+	name: {
+		type: Sequelize.STRING,
+		unique: true,
+	},
+	description: Sequelize.TEXT,
+	username: Sequelize.STRING,
+	usage_count: {
+		type: Sequelize.INTEGER,
+		defaultValue: 0,
+		allowNull: false,
+	},
 });
 
 
@@ -28,6 +42,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log('Ready!');
+	Tags.sync();
 });
 
 client.on('message', message => {
