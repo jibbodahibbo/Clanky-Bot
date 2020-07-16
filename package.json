@@ -2,7 +2,7 @@
   "name": "BYB_BOT",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "byb-bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node byb-bot.js"
