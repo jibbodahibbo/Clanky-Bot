@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const Sequelize = require('sequelize');
-const ClankyCoins = require('./dbInit.js');
+const {ClankyCoins, sequelize} = require('./dbInit.js');
 
 //const { prefix, token } = require('./config.json');
 const players = require('./players.js');
