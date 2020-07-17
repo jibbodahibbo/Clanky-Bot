@@ -1,9 +1,9 @@
-
+const { ClankyCoins } = require('../byb-bot.js');
 module.exports = {
 	name: 'clankycoins',
 	description: 'Coins from clanky',
 
-	async	execute(message, args) {
+	execute(message, args) {
 
 
 			try {
