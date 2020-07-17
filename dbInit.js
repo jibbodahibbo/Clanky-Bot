@@ -10,7 +10,7 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.e
 
 const ClankyCoins = sequelize.define('clankycoins', {
   	user_id: {
-      Type: Sequelize.STRING,
+      type: Sequelize.String,
       unique: true,
     },
   	username: Sequelize.STRING,
