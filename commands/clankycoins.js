@@ -13,7 +13,7 @@ module.exports = {
 		try {
 			// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 			const cc = await ClankyCoins.create({
-				id: message.author.id,
+				user_id: message.author.id,
 				username: message.author.username,
 				tag:message.author.tag,
 				coins:0
