@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const Sequelize = require('sequelize');
+const ClankyCoins = require('dbInit.js');
 
 //const { prefix, token } = require('./config.json');
 const players = require('./players.js');
@@ -8,24 +9,6 @@ const prefix='!';
 
 
 const client = new Discord.Client();
-
-const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.env.PASSWORD, {
-	host: process.env.HOST,
-	dialect: 'postgres',
-	port: '5432'
-
-});
-
-const ClankyCoins = sequelize.define('clankycoins', {
-	user_id: Sequelize.TEXT,
-	username: Sequelize.STRING,
-	coins: {
-		type: Sequelize.INTEGER,
-		defaultValue: 0,
-		allowNull: false,
-	},
-	tag: Sequelize.STRING
-});
 
 
 client.commands = new Discord.Collection();
@@ -40,7 +23,7 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready!');
 	ClankyCoins.sync();
-	module.exports = {ClankyCoins};
+
 });
 
 client.on('message', async message => {
