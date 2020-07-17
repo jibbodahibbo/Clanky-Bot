@@ -15,18 +15,16 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.e
 	port: '5432'
 
 });
-const Tags = sequelize.define('Clanky Coins', {
-	name: {
-		type: Sequelize.STRING,
-		unique: true,
-	},
-	description: Sequelize.TEXT,
+
+const ClankyCoins = sequelize.define('Clanky Coins', {
+	id: Sequelize.TEXT,
 	username: Sequelize.STRING,
-	usage_count: {
+	coins: {
 		type: Sequelize.INTEGER,
 		defaultValue: 0,
 		allowNull: false,
 	},
+	tag: Sequelize.STRING
 });
 
 
@@ -42,7 +40,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log('Ready!');
-	Tags.sync();
+	ClankyCoins.sync();
 });
 
 client.on('message', message => {
