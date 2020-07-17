@@ -9,17 +9,17 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.e
 });
 
 const ClankyCoins = sequelize.define('clankycoins', {
-	user_id: {
-    Sequelize.STRING,
-    unique: true
-  },
-	username: Sequelize.STRING,
-	coins: {
-		type: Sequelize.INTEGER,
-		defaultValue: 0,
-		allowNull: false,
-	},
-	tag: Sequelize.STRING
-});
+  	user_id: {
+      Type: Sequelize.STRING,
+      unique: true,
+    },
+  	username: Sequelize.STRING,
+  	coins: {
+  		type: Sequelize.INTEGER,
+  		defaultValue: 0,
+  		allowNull: false,
+  	},
+  	tag: Sequelize.STRING
+  });
 
 module.exports={ClankyCoins, sequelize};
