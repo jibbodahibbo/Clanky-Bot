@@ -14,13 +14,14 @@ module.exports = {
 					tag:message.author.tag,
 					coins:0
 				});
-				return message.reply(`${cc.tag} added to the Clanky Coin Ledger`);
+				return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
 				}
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {
 					return message.reply('That person already exists.');
 					}
-				return message.reply('Something went wrong with adding a tag.');
+					console.log(e);
+				return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 			}
 		}
 ,};
