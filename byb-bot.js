@@ -30,7 +30,6 @@ const ClankyCoins = sequelize.define('clankycoins', {
 
 client.commands = new Discord.Collection();
 
-
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -41,6 +40,7 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready!');
 	ClankyCoins.sync();
+	module.exports = {ClankyCoins};
 });
 
 client.on('message', async message => {
