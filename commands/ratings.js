@@ -73,10 +73,11 @@ function findPlayer(a){
 				console.log("closest Match...")
 				for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 					let newstring = players.Players[intToPair(i)].Name;
-					console.log(closest)
+
 					if ( LD(a,closest) > LD(a,newstring) ){
 						closest=newstring;
 						playerpair=i;
+						console.log(closest)
 					}
 			}
 						return intToPair(playerpair);

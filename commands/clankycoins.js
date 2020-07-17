@@ -5,9 +5,7 @@ module.exports = {
 
 	async	execute(message, args) {
 
-			const splitArgs = commandArgs.split(' ');
-			const tagName = splitArgs.shift();
-			const tagDescription = splitArgs.join(' ');
+			const splitArgs = args.split(' ');
 
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
