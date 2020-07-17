@@ -1,4 +1,4 @@
-const { ClankyCoins } = require('../byb-bot.js');
+const ClankyCoins = require('../byb-bot.js');
 module.exports = {
 	name: 'clankycoins',
 	description: 'Coins from clanky',
