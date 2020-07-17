@@ -3,7 +3,7 @@ module.exports = {
 	name: 'clankycoins',
 	description: 'Coins from clanky',
 
-	execute(message, args) {
+	async execute(message, args) {
 
 
 			try {
