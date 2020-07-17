@@ -1,9 +1,8 @@
 
-
-
 module.exports = {
 	name: 'clankycoins',
 	description: 'Coins from clanky',
+	async function(){
 	execute(message, args) {
 
 		const splitArgs = commandArgs.split(' ');
@@ -27,4 +26,4 @@ module.exports = {
 			return message.reply('Something went wrong with adding a tag.');
 		}
 
-	},};
+	}},};
