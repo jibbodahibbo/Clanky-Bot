@@ -5,7 +5,7 @@ module.exports = {
 
 	async execute(message, args) {
 
-
+if (args.length<1){
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 				const cc = await ClankyCoins.create({
@@ -18,10 +18,15 @@ module.exports = {
 				}
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {
-					return message.reply('That person already exists.');
+					return message.reply('You have'+" "+cc.coins+" Clanky Coins");
 					}
 					console.log(e);
 				return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 			}
 		}
+
+
+}
+
+
 ,};
