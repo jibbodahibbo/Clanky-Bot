@@ -1,12 +1,11 @@
 const Sequelize = require('sequelize');
-const config = require('./config.json');
+//const config = require('./config.json');
 
 
-const sequelize = new Sequelize(config.database,config.user, config.password, {
-	host: config.host,
+const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.env.PASSWORD, {
+	host: process.env.HOST,
 	dialect: 'postgres',
-	port: '5433',
-	sslmode:'require'
+	port: '5432',
 
 });
 
