@@ -90,7 +90,7 @@ async function getScheduleData(args, test_response = false) {
     }
 }
 
-let results_channel_id = "732075071677399101"; // TODO: change to valid channel for this server
+let results_channel_id = "733773776357163079"; // TODO: change to valid channel for this server
 
 module.exports = {
     name: 'result',
