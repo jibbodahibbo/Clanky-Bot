@@ -90,7 +90,7 @@ async function getScheduleData(args, test_response = false) {
     }
 }
 
-let results_channel_id = "732075071677399101"; // TODO: change to valid channel for this server
+let results_channel_id = "733773776357163079"; // TODO: change to valid channel for this server
 
 module.exports = {
     name: 'result',
@@ -106,6 +106,17 @@ module.exports = {
         let player_score = "";
         let computer_score = "";
         let images = [];
+
+        // make sure this is a dm. If not, let the user know they need to send a dm
+        if (message.guild !== null) {
+			message.reply(
+				"`!result` commands can only be sent directly to this bot"
+            );
+            client.users.cache
+				.get(message.author.id)
+				.send("You can send `!result` commands to me here!");
+			return;
+		}
 
         // extract coach
         if (coach_regex.test(message.content)) {
