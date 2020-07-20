@@ -24,18 +24,24 @@ const ClankyCoins = sequelize.define('clankycoins', {
   });
 
 	const Schedule = sequelize.define('schedule', {
-	  	away_coach_id: {
+	  	league: {
 				type:Sequelize.STRING,
 	    },
+			game_num: {
+				type:Sequelize.STRING,
+			},
 			away_role_id: {
 				type:Sequelize.STRING,
 			},
-			home_coach_id: {
+			away_coach_id: {
 				type:Sequelize.STRING,
 			},
 			home_role_id: {
 				type:Sequelize.STRING,
 			},
+			home_coach_id: {
+				type:Sequelize.STRING,
+			}
 	  });
 			/**     "away_coach_id": String (2 character code),
 		  *     "away_role_id": String,

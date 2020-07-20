@@ -1,15 +1,15 @@
 // TODO: implement db functions
-
+const {Schedule, Results} = require('../dbInit');
 /**
- * 
- * @param {*} args 
+ *
+ * @param {*} args
  *  an object with structure:
  *   {
  *     "league": String ("lulu" or "paste"),
  *     "coach": String (2 character code),
  *     "game_num": Number,
  *   }
- * 
+ *
  * @description checks the database to see if the other game result is already
  *  posted
  * @returns the data from the other game result if it exists, or null if it doesn't
@@ -22,6 +22,29 @@
  *  }
  */
 async function getResultPair(args, test_response = false) {
+  const sched = await Schedule.findOne(
+    {where:{
+    league: args.league ,
+    game_num:args.game_num,
+    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    }
+    });
+
+    let opponent ="";
+    if (sched.away_role_id == args.coach){
+      opponent=sched.home_role_id;
+    }else{
+      opponent=sched.away_role_id;
+    }
+
+
+  const other_result = await Results.findOne(
+    {where:{
+    league: args.league ,
+    game_num:args.game_num,
+    coach: opponent }]
+    }
+    });
     if (test_response) {
         return {
             league: "lulu",
@@ -38,8 +61,8 @@ async function getResultPair(args, test_response = false) {
 }
 
 /**
- * 
- * @param {*} args 
+ *
+ * @param {*} args
  *  an object with structure:
  *   {
  *     "league": String ("lulu" or "paste"),
@@ -47,24 +70,29 @@ async function getResultPair(args, test_response = false) {
  *     "game_num": Number,
  *     "images": String[] (list of image urls)
  *   }
- * 
+ *
  * @description saves the current result to the database
  * @returns void (maybe true or false for success/failure to write to the db)
  */
-async function saveResult(args) {
-
+async function saveResult(result) {
+  	const r = await Results.create({
+  		league: result.league,
+  		coach: result.coach,
+  		game_num: result.game_num,
+      images:result.images
+  	});
 }
 
 /**
- * 
- * @param {*} args 
+ *
+ * @param {*} args
  *  an object with structure:
  *   {
  *     "league": String ("lulu" or "paste"),
  *     "coach": String (2 character code),
  *     "game_num": Number,
  *   }
- * 
+ *
  * @description retrieves schedule data about a given game such as the roles of
  *  coaches, coach IDs, and who is home and away
  * @returns the schedule if it exists, or null if it doesn't
@@ -77,17 +105,27 @@ async function saveResult(args) {
  *  }
  */
 async function getScheduleData(args, test_response = false) {
+  const sched = await Schedule.findOne(
+    {where:{
+    league: args.league ,
+    game_num:args.game_num,
+    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    }
+    });
     if (test_response) {
         return {
-            away_coach_id: "IN",
+        //    away_coach_id: "IN",  //Removing coach_id for now, want to make creation of schedules more streamlined for commisioner.
             away_role_id: "730220374884876390", // TODO: change to valid role id for this server
-            home_coach_id: "BB",
+        //    home_coach_id: "BB", //Removing coach_id for now, want to make creation of schedules more streamlined for commisioner.
             home_role_id: "733703308421627905", // TODO: change to valid role id for this server
         };
     }
     else {
-        return null;
-    }
+        return {
+          away_role_id: sched.away_role_id,
+          away_role_id: sched.home_role_id,
+          };
+        }
 }
 
 let results_channel_id = "732075071677399101"; // TODO: change to valid channel for this server
@@ -221,7 +259,7 @@ module.exports = {
                 let away_result_obj = null;
                 let home_result_obj = null;
 
-                if (result_obj.coach == game_schedule_data.away_coach_id) {
+                if (result_obj.coach == game_schedule_data.away_role_id) {
                     away_result_obj = result_obj;
                     home_result_obj = result_pair_obj;
                 } else {
@@ -232,7 +270,7 @@ module.exports = {
 
                 let summary_message =
                     `
-                **Game ${game_num} - ${game_schedule_data.away_coach_id} vs. ${game_schedule_data.home_coach_id}**\n` +
+                **Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n` +
                     `Away: <@&${game_schedule_data.away_role_id}>\n`;
 
                 for (image of away_result_obj.images) {
