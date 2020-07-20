@@ -42,8 +42,7 @@ async function getResultPair(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    coach: opponent }]
-    }
+    coach: opponent }
     });
     if (test_response) {
         return {

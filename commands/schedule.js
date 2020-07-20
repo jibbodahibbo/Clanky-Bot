@@ -24,8 +24,9 @@ if (args.length<1){
 							}
 
 				}else{
-				return message.reply('added '+ss.away_role_id ' @ ' + ss.home_role_id + ' to ' +ss.league+' game '+ ss.game_num);
+				return message.reply('added '+ss.away_role_id + ' @ ' + ss.home_role_id + ' to ' +ss.league+' game '+ ss.game_num);
 				}
+			}
 			catch (e) {
 					console.log(e);
 					return message.reply('Something went wrong with adding a game.');
