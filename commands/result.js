@@ -248,7 +248,7 @@ module.exports = {
             "coach": coach,
             "game_num": game_num,
         };
-        let result_pair_obj = await getResultPair(result_pair_query, true); // TODO: remove second parameter value when not testing
+        let result_pair_obj = await getResultPair(result_pair_query); 
 
         // if it's there, build and send a summary to the results channel
         if (result_pair_obj != null) {
@@ -260,7 +260,7 @@ module.exports = {
                 "coach": result_obj.coach,
                 "game_num": result_obj.game_num
             };
-            let game_schedule_data = await getScheduleData(schedule_data_query, true) // TODO: remove second parameter value when not testing
+            let game_schedule_data = await getScheduleData(schedule_data_query)
                 .catch((error) => {
                     throw error;
                 });
