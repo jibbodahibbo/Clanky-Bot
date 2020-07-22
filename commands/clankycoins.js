@@ -18,13 +18,17 @@ if (args.length<1){
 				}
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {
-					return message.reply('You have'+" "+cc.coins+" Clanky Coins");
+					return message.reply("You are already collecting coins");
 					}
 					console.log(e);
 				return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 			}
 		}
-
+		if (args.length>0){
+				if (args[0]=="add"){
+					return message.reply("added coins");
+				}
+		}
 
 }
 
