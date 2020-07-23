@@ -18,7 +18,7 @@ module.exports = {
 						});
 						console.log(args);
 						console.log(args.length);
-						if (args.length != 6){
+			//			if (args.length != 6){
 							console.log(args);
 							console.log(args.length);
 							if (args[0]=="view"){
@@ -29,8 +29,8 @@ module.exports = {
 							}else{
 								console.log("sending Not confirmation message");
 										return message.reply('Please try the format of !schedule [LEAGuE] [GAME#] [AWAYTEAM] [HOMETEAM]');
-									}
-						}else{
+								//	}
+		//				}else{
 							console.log("sending confirmation message");
 						return message.reply('added '+ss.away_role_id + ' @ ' + ss.home_role_id + ' to ' +ss.league+' game '+ ss.game_num);
 						}

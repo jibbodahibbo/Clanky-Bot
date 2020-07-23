@@ -28,7 +28,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
 				type:Sequelize.STRING,
 	    },
 			game_num: {
-				type:Sequelize.STRING,
+				type:Sequelize.INTEGER,
 			},
 			away_role_id: {
 				type:Sequelize.STRING,
