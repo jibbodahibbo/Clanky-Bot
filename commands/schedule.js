@@ -12,11 +12,13 @@ module.exports = {
 		        	league:args[0],
 							game_num:args[1],
 		    			away_role_id:args[2],
-		    			home_role_id:args[3]
+		    			away_coach_id:args[3],
+							home_role_id:args[4],
+							home_coach_id:args[5]
 						});
 						console.log(args);
 						console.log(args.length);
-						if (args.length != 4){
+						if (args.length != 6){
 							console.log(args);
 							console.log(args.length);
 							if (args[0]=="view"){
