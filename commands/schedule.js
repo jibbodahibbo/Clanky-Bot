@@ -21,9 +21,11 @@ module.exports = {
 							// TODO: Loop through and display games only from a certain league
 							//// TODO: Loop through and display games only from a certain league and game_num
 							}else{
+								console.log("sending confirmation message");
 										return message.reply('Please try the format of !schedule [LEAGuE] [GAME#] [AWAYTEAM] [HOMETEAM]');
 									}
 						}else{
+							console.log("sending confirmation message");
 						return message.reply('added '+ss.away_role_id + ' @ ' + ss.home_role_id + ' to ' +ss.league+' game '+ ss.game_num);
 						}
 					}
