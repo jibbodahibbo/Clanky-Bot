@@ -14,15 +14,18 @@ module.exports = {
 		    			away_role_id:args[2],
 		    			home_role_id:args[3]
 						});
+						console.log(args);
+						console.log(args.length);
 						if (args.length != 4){
 							console.log(args);
+							console.log(args.length);
 							if (args[0]=="view"){
 								console.log("show schedule")
 								//// TODO:  Loop through and display the whole schedule with Gamenum and league info.
 							// TODO: Loop through and display games only from a certain league
 							//// TODO: Loop through and display games only from a certain league and game_num
 							}else{
-								console.log("sending confirmation message");
+								console.log("sending Not confirmation message");
 										return message.reply('Please try the format of !schedule [LEAGuE] [GAME#] [AWAYTEAM] [HOMETEAM]');
 									}
 						}else{
