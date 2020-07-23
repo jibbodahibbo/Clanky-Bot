@@ -1,6 +1,9 @@
 {
   "name": "BYB_BOT",
   "version": "1.0.0",
+  "engines": {
+  "node": "12.18.2"
+}
   "description": "",
   "main": "byb-bot.js",
   "scripts": {
