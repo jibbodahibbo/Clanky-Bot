@@ -15,6 +15,7 @@ module.exports = {
 		    			home_role_id:args[3]
 						});
 						if (args.length != 4){
+							console.log(args);
 							if (args[0]=="view"){
 								console.log("show schedule")
 								//// TODO:  Loop through and display the whole schedule with Gamenum and league info.
