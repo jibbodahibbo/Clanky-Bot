@@ -14,6 +14,11 @@ if (args.length<1){
 					tag:message.author.tag,
 					coins:0
 				});
+
+				const tagList = await ClankyCoins.findAll({ attributes: ['user_id'] });
+				const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
+				console.log(`List of tags: ${tagString}`);
+
 				return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
 				}
 			catch (e) {

@@ -6,9 +6,6 @@ module.exports = {
 	async execute(message, args) {
 			console.log(args);
 
-			const tagList = await Schedule.findAll({ attributes: ['game_num'] });
-			const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
-			return message.channel.send(`List of tags: ${tagString}`);
 
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
@@ -21,8 +18,11 @@ module.exports = {
 							home_role_id:args[4],
 							home_coach_id:args[5]
 						});
-							console.log(args);
-							console.log(args.length);
+
+						const tagList = await Schedule.findAll({ attributes: ['away_role_id'] });
+						const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
+						return message.channel.send(`List of tags: ${tagString}`);
+
 						}else if (args[0]=="view"){
 								console.log("show schedule")
 								//// TODO:  Loop through and display the whole schedule with Gamenum and league info.
