@@ -26,7 +26,7 @@ async function getResultPair(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Schedule.or]: [{ sched.away_role_id: args.caoch }, { sched.home_role_id: args.coach }]
+    [Schedule.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
     }
     });
 
