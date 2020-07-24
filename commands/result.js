@@ -26,7 +26,7 @@ async function getResultPair(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Schedule.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Schedule.or]: [{ sched.away_role_id: args.caoch }, { sched.home_role_id: args.coach }]
     }
     });
 
@@ -108,7 +108,7 @@ async function getScheduleData(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Schedule.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
     }
     });
     if (test_response) {
@@ -157,18 +157,18 @@ module.exports = {
 		}
 
         // extract coach
-    //    if (coach_regex.test(message.content)) {
-  //          coach = message.content.match(coach_regex);
+        if (coach_regex.test(message.content)) {
+           coach = message.content.match(coach_regex);
             coach = args[1];
-  //      } else {
-/*            message.reply(
+       } else {
+/           message.reply(
                 "Your result is missing a coach! Your message should look like this:"
             );
             message.reply(
                 "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`"
             );
             return;
-        } */
+        }
         // extract league
         if (league_regex.test(message.content)) {
             league = message.content.match(league_regex);

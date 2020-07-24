@@ -30,7 +30,7 @@ module.exports = {
 		//				}else{
 								}
 							console.log("sending confirmation message");
-						return message.reply('added '+ss.away_role_id + ' @ ' + ss.home_role_id + ' to ' +ss.league+' game '+ ss.game_num);
+						return message.reply('added');
 
 					}
 					catch (e) {
