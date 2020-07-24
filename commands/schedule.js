@@ -5,9 +5,9 @@ module.exports = {
 
 	async execute(message, args) {
 			console.log(args);
-		if (args.length<1){
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
+						if (args.length == 6){
 						const ss = await Schedule.create({
 		        	league:args[0],
 							game_num:args[1],
@@ -16,10 +16,9 @@ module.exports = {
 							home_role_id:args[4],
 							home_coach_id:args[5]
 						});
-			//			if (args.length != 6){
 							console.log(args);
 							console.log(args.length);
-							if (args[0]=="view"){
+						}else if (args[0]=="view"){
 								console.log("show schedule")
 								//// TODO:  Loop through and display the whole schedule with Gamenum and league info.
 							// TODO: Loop through and display games only from a certain league
@@ -38,5 +37,5 @@ module.exports = {
 							console.log(e);
 							return message.reply('Something went wrong with adding a game.');
 					}
-		}
+
 }};
