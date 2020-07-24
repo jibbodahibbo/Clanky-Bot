@@ -6,7 +6,7 @@ module.exports = {
 	async execute(message, args) {
 			console.log(args);
 
-			const tagList = await Tags.findAll({ attributes: ['game_num'] });
+			const tagList = await Schedule.findAll({ attributes: ['game_num'] });
 			const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
 			return message.channel.send(`List of tags: ${tagString}`);
 
