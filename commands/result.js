@@ -135,7 +135,6 @@ module.exports = {
     async execute(message, args, client) {
         let coach_regex = RegExp("([A-Z][A-Z])");
         let coach = "";
-          let coach = "";
         let league_regex = RegExp("(lulu|paste)", "i");
         let league = "";
         let game_num_regex = RegExp("G([0-9]+)", "i");
