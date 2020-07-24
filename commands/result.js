@@ -133,8 +133,8 @@ module.exports = {
     name: 'result',
     description: 'Result',
     async execute(message, args, client) {
-  //      let coach_regex = RegExp("([A-Z][A-Z])");
-//        let coach = "";
+        let coach_regex = RegExp("([A-Z][A-Z])");
+        let coach = "";
           let coach = "";
         let league_regex = RegExp("(lulu|paste)", "i");
         let league = "";
