@@ -5,6 +5,11 @@ module.exports = {
 
 	async execute(message, args) {
 			console.log(args);
+
+			const tagList = await Tags.findAll({ attributes: ['game_num'] });
+			const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
+			return message.channel.send(`List of tags: ${tagString}`);
+
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 						if (args.length == 6){
