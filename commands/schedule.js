@@ -16,8 +16,6 @@ module.exports = {
 							home_role_id:args[4],
 							home_coach_id:args[5]
 						});
-						console.log(args);
-						console.log(args.length);
 			//			if (args.length != 6){
 							console.log(args);
 							console.log(args.length);
@@ -31,9 +29,10 @@ module.exports = {
 										return message.reply('Please try the format of !schedule [LEAGuE] [GAME#] [AWAYTEAM] [HOMETEAM]');
 								//	}
 		//				}else{
+								}
 							console.log("sending confirmation message");
 						return message.reply('added '+ss.away_role_id + ' @ ' + ss.home_role_id + ' to ' +ss.league+' game '+ ss.game_num);
-						}
+
 					}
 					catch (e) {
 							console.log(e);
