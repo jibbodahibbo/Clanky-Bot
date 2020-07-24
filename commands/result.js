@@ -161,7 +161,7 @@ module.exports = {
            coach = message.content.match(coach_regex);
             coach = args[1];
        } else {
-/           message.reply(
+           message.reply(
                 "Your result is missing a coach! Your message should look like this:"
             );
             message.reply(
