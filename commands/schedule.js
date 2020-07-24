@@ -4,7 +4,7 @@ module.exports = {
 	description: 'scheduling teams',
 
 	async execute(message, args) {
-
+			console.log(args);
 		if (args.length<1){
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
