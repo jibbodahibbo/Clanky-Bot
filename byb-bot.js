@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const Sequelize = require('sequelize');
-const {ClankyCoins, Schedule, Results, sequelize} = require('./dbInit.js');
+//const Sequelize = require('sequelize');
+const {ClankyCoins, Schedules, Results, sequelize} = require('./dbInit.js');
 
 //const { prefix, token } = require('./config.json');
 const players = require('./players.js');
@@ -23,7 +23,7 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready!');
 	ClankyCoins.sync();
-	Schedule.sync();
+	Schedules.sync();
 	Results.sync();
 });
 

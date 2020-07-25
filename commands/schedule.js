@@ -1,6 +1,6 @@
-const {Schedule} = require('../dbInit');
+const {Schedules} = require('../dbInit');
 module.exports = {
-	name: 'schedule',
+	name: 'schedules',
 	description: 'scheduling teams',
 
 	async execute(message, args) {
@@ -10,7 +10,7 @@ module.exports = {
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 						if (args.length == 6){
-						const ss = await Schedule.create({
+						const ss = await Schedules.create({
 		        	league:args[0],
 							game_num:args[1],
 		    			away_role_id:args[2],
@@ -19,11 +19,11 @@ module.exports = {
 							home_coach_id:args[5]
 						});
 
-						const tagList = await Schedule.findAll({ attributes: ['away_role_id'] });
+						const tagList = await Schedules.findAll({ attributes: ['away_role_id'] });
 						const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
-						return message.channel.send(`List of tags: ${tagString}`);
+						console.log(`List of tags: ${tagString}`);
 
-						}else if (args[0]=="view"){
+					}else if (args[0]=='view'){
 								console.log("show schedule")
 								//// TODO:  Loop through and display the whole schedule with Gamenum and league info.
 							// TODO: Loop through and display games only from a certain league

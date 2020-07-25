@@ -1,5 +1,5 @@
 // TODO: implement db functions
-const {Schedule, Results} = require('../dbInit');
+const {Schedules, Results} = require('../dbInit');
 /**
  *
  * @param {*} args
@@ -22,11 +22,11 @@ const {Schedule, Results} = require('../dbInit');
  *  }
  */
 async function getResultPair(args, test_response = false) {
-  const sched = await Schedule.findOne(
+  const sched = await Schedules.findOne(
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Schedule.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Schedules.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
     }
     });
 
@@ -104,11 +104,11 @@ async function saveResult(result) {
  *  }
  */
 async function getScheduleData(args, test_response = false) {
-  const sched = await Schedule.findOne(
+  const sched = await Schedules.findOne(
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Schedule.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Schedules.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
     }
     });
     if (test_response) {

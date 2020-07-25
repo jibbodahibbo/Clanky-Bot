@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.e
 const ClankyCoins = sequelize.define('clankycoins', {
   	user_id: {
       type: Sequelize.STRING,
-      unique: true,
+    //  unique: true,
     },
   	username: Sequelize.STRING,
   	coins: {
@@ -23,7 +23,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
   	tag: Sequelize.STRING
   });
 
-	const Schedule = sequelize.define('schedule', {
+	const Schedules = sequelize.define('schedules', {
 	  	league: {
 				type:Sequelize.STRING,
 	    },
@@ -69,4 +69,4 @@ const ClankyCoins = sequelize.define('clankycoins', {
 				*     "game_num": Number,
 				*     "images": String[] (list of image urls)
 			**/
-module.exports={ClankyCoins, Schedule, Results, sequelize};
+module.exports={ClankyCoins, Schedules, Results, sequelize};
