@@ -20,7 +20,7 @@ module.exports = {
 							home_coach_id:args[5]
 						});
 
-						Sequelize.getQueryInterface().showAllSchemas().then((tableObj) => {
+						Schedules.getQueryInterface().showAllSchemas().then((tableObj) => {
 						    console.log('// Tables in database','==========================');
 						    console.log(tableObj);
 						})

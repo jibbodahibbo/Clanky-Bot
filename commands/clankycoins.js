@@ -16,7 +16,7 @@ if (args.length<1){
 					coins:0
 				});
 
-				Sequelize.getQueryInterface().showAllSchemas().then((tableObj) => {
+				ClankyCoins.getQueryInterface().showAllSchemas().then((tableObj) => {
 						console.log('// Tables in database','==========================');
 						console.log(tableObj);
 				})
