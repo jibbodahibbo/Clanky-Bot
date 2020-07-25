@@ -9,7 +9,7 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.e
 
 });
 
-const ClankyCoins = sequelize.define('clankycoins', {
+const ClankyCoins = sequelize.define('Clankycoins', {
   	user_id: {
       type: Sequelize.STRING,
     //  unique: true,
@@ -23,7 +23,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
   	tag: Sequelize.STRING
   });
 
-	const Schedules = sequelize.define('schedules', {
+	const Schedules = sequelize.define('Schedules', {
 	  	league: {
 				type:Sequelize.STRING,
 	    },
@@ -49,7 +49,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
 		  *     "home_role_id": String,
 			*/
 
-		const Results = sequelize.define('results', {
+		const Results = sequelize.define('Results', {
 		  	league:{
 					type:Sequelize.STRING,
 				},
