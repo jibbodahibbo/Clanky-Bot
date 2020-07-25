@@ -20,9 +20,6 @@ module.exports = {
 							home_coach_id:args[5]
 						});
 
-						Schedules.query('show tables').then(function(rows) {
-				    console.log(JSON.stringify(rows));
-						});
 
 
 					}else if (args[0]=='view'){

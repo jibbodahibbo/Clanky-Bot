@@ -16,9 +16,6 @@ if (args.length<1){
 					coins:0
 				});
 
-				ClankyCoins.query('show tables').then(function(rows) {
-				    console.log(JSON.stringify(rows));
-				});
 
 				return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
 				}
