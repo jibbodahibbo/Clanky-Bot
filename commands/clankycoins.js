@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const {ClankyCoins} = require('../dbInit');
 module.exports = {
 	name: 'clankycoins',
@@ -15,9 +16,13 @@ if (args.length<1){
 					coins:0
 				});
 
-				const tagList = await ClankyCoins.findAll({ attributes: ['user_id'] });
-				const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
-				console.log(`List of tags: ${tagString}`);
+				Sequelize.getQueryInterface().showAllSchemas().then((tableObj) => {
+						console.log('// Tables in database','==========================');
+						console.log(tableObj);
+				})
+				.catch((err) => {
+						console.log('showAllSchemas ERROR',err);
+				})
 
 				return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
 				}

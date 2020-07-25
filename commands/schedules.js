@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const {Schedules} = require('../dbInit');
 module.exports = {
 	name: 'schedules',
@@ -19,9 +20,14 @@ module.exports = {
 							home_coach_id:args[5]
 						});
 
-						const tagList = await Schedules.findAll({ attributes: ['away_role_id'] });
-						const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
-						console.log(`List of tags: ${tagString}`);
+						Sequelize.getQueryInterface().showAllSchemas().then((tableObj) => {
+						    console.log('// Tables in database','==========================');
+						    console.log(tableObj);
+						})
+						.catch((err) => {
+						    console.log('showAllSchemas ERROR',err);
+						})
+
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
