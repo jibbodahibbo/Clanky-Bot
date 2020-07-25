@@ -1,15 +1,23 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const Sequelize = require('sequelize');
+const { google } = require('googleapis');
+const sheets = google.sheets('v4');
+
 const {ClankyCoins, sequelize} = require('./dbInit.js');
 
-//const { prefix, token } = require('./config.json');
+const { prefix, token } = require('./config.json');
 const players = require('./players.js');
 const prefix='!';
 
 
 const client = new Discord.Client();
 
+module.exports = {
+	client: client,
+	sheets: sheets,
+	discord: Discord
+}
 
 client.commands = new Discord.Collection();
 
