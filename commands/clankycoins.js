@@ -16,13 +16,9 @@ if (args.length<1){
 					coins:0
 				});
 
-				ClankyCoins.getQueryInterface().showAllSchemas().then((tableObj) => {
-						console.log('// Tables in database','==========================');
-						console.log(tableObj);
-				})
-				.catch((err) => {
-						console.log('showAllSchemas ERROR',err);
-				})
+				ClankyCoins.query('show tables').then(function(rows) {
+				    console.log(JSON.stringify(rows));
+				});
 
 				return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
 				}

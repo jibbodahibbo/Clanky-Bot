@@ -20,13 +20,9 @@ module.exports = {
 							home_coach_id:args[5]
 						});
 
-						Schedules.getQueryInterface().showAllSchemas().then((tableObj) => {
-						    console.log('// Tables in database','==========================');
-						    console.log(tableObj);
-						})
-						.catch((err) => {
-						    console.log('showAllSchemas ERROR',err);
-						})
+						Schedules.query('show tables').then(function(rows) {
+				    console.log(JSON.stringify(rows));
+						});
 
 
 					}else if (args[0]=='view'){
