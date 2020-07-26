@@ -1,4 +1,3 @@
-const Sequelize = require('sequelize');
 const {ClankyCoins} = require('../dbInit');
 module.exports = {
 	name: 'clankycoins',

@@ -1,4 +1,3 @@
-const Sequelize = require('sequelize');
 const {Schedules} = require('../dbInit');
 module.exports = {
 	name: 'schedules',
@@ -34,7 +33,7 @@ module.exports = {
 		//				}else{
 								}
 							console.log("sending confirmation message");
-						return message.reply('added');
+						return message.reply('added'+ss.league+ '' + ss.away_role_id);
 
 					}
 					catch (e) {
