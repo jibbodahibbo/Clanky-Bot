@@ -5,7 +5,8 @@ module.exports = {
 
 	async execute(message, args) {
 	const users = await ClankyCoins.findAll();
-	console.log(users);
+	console.log(users.every(user => user instanceof ClankyCoins));
+	console.log("All users:", JSON.stringify(users, null, 2));
 if (args.length<1){
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);

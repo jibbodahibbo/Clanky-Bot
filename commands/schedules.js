@@ -6,12 +6,12 @@ module.exports = {
 	async execute(message, args) {
 			const users = await Schedules.findAll();
 			console.log(users);
-			console.log(args);
+			console.log(args.length);
 
 
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-						if (args.length > 1){
+						if (args.length > 5){
 						const ss = await Schedules.create({
 		        	league:args[0],
 							game_num:args[1],
