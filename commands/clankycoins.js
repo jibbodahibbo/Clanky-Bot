@@ -4,7 +4,8 @@ module.exports = {
 	description: 'Coins from clanky',
 
 	async execute(message, args) {
-
+	const users = await ClankyCoins.findAll();
+	console.log(users);
 if (args.length<1){
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);

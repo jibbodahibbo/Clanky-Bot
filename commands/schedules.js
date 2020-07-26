@@ -4,6 +4,8 @@ module.exports = {
 	description: 'scheduling teams',
 
 	async execute(message, args) {
+			const users = await Schedules.findAll();
+			console.log(users);
 			console.log(args);
 
 
