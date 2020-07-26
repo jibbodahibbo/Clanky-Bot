@@ -17,40 +17,40 @@ sequelize.authenticate().then(() => {
 
 const ClankyCoins = sequelize.define('clankycoins', {
   	user_id: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     //  unique: true,
     },
   	username: {
-			type: Sequelize.STRING,
+			type: DataTypes.STRING,
 		},
   	coins: {
-  		type: Sequelize.INTEGER,
+  		type: DataTypes.INTEGER,
   		defaultValue: 0,
   		allowNull: false,
   	},
   	tag: {
-		type:Sequelize.STRING
+		type:DataTypes.STRING
 	}
   });
 
 	const Schedules = sequelize.define('schedules', {
 	  	league: {
-				type:Sequelize.STRING,
+				type:DataTypes.STRING,
 	    },
 			game_num: {
-				type:Sequelize.INTEGER,
+				type:DataTypes.INTEGER,
 			},
 			away_role_id: {
-				type:Sequelize.STRING,
+				type:DataTypes.STRING,
 			},
 			away_coach_id: {
-				type:Sequelize.STRING,
+				type:DataTypes.STRING,
 			},
 			home_role_id: {
-				type:Sequelize.STRING,
+				type:DataTypes.STRING,
 			},
 			home_coach_id: {
-				type:Sequelize.STRING,
+				type:DataTypes.STRING,
 			}
 	  });
 			/**     "away_coach_id": String (2 character code),
@@ -61,16 +61,16 @@ const ClankyCoins = sequelize.define('clankycoins', {
 
 		const Results = sequelize.define('results', {
 		  	league:{
-					type:Sequelize.STRING,
+					type:DataTypes.STRING,
 				},
 				coach:{
-					type: Sequelize.STRING,
+					type: DataTypes.STRING,
 				},
 				game_num:{
-						type: Sequelize.INTEGER,
+						type: DataTypes.INTEGER,
 				},
 				images:{
-					type: Sequelize.ARRAY(Sequelize.STRING),
+					type: DataTypes.ARRAY(Sequelize.STRING),
 				}
 		  });
 
