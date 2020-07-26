@@ -4,14 +4,12 @@ module.exports = {
 	description: 'scheduling teams',
 
 	async execute(message, args) {
-			const users = await Schedules.findAll();
-			console.log(users);
-			console.log(args.length);
+
 
 
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-						if (args.length > 5){
+						if (args.length == 6){
 						const ss = await Schedules.create({
 		        	league:args[0],
 							game_num:args[1],
@@ -23,6 +21,9 @@ module.exports = {
 
 					console.log("sending confirmation message");
 					return message.reply('added'+ss.league+ '' + ss.away_role_id);
+					const users = await Schedules.findAll();
+					console.log(users.every(user => user instanceof Schedules));
+					console.log("All users:", JSON.stringify(users, null, 2));
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
