@@ -1,4 +1,5 @@
 // TODO: implement db functions
+const { Op } = require('sequelize')
 const {Schedules, Results} = require('../dbInit');
 /**
  *
@@ -26,7 +27,7 @@ async function getResultPair(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Schedules.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
     }
     });
 
@@ -108,7 +109,7 @@ async function getScheduleData(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Schedules.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
     }
     });
     if (test_response) {

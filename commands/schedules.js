@@ -1,4 +1,5 @@
 const {Schedules} = require('../dbInit');
+const { Op } = require('sequelize')
 module.exports = {
 	name: 'schedules',
 	description: 'scheduling teams',
@@ -25,7 +26,7 @@ module.exports = {
 				    {where:{
 				    league: args.league ,
 				    game_num:args.game_num,
-				    [Schedules.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+				    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
 				    }
 				    });
 
