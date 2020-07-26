@@ -9,7 +9,7 @@ module.exports = {
 
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-						if (args.length == 6){
+						if (args.length > 1){
 						const ss = await Schedules.create({
 		        	league:args[0],
 							game_num:args[1],
@@ -19,7 +19,8 @@ module.exports = {
 							home_coach_id:args[5]
 						});
 
-
+					console.log("sending confirmation message");
+					return message.reply('added'+ss.league+ '' + ss.away_role_id);
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
@@ -32,8 +33,6 @@ module.exports = {
 								//	}
 		//				}else{
 								}
-							console.log("sending confirmation message");
-						return message.reply('added'+ss.league+ '' + ss.away_role_id);
 
 					}
 					catch (e) {
