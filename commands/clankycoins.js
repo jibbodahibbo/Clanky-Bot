@@ -16,9 +16,7 @@ if (args.length<1){
 
 
 				return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
-				const users = await ClankyCoins.findAll();
-				console.log(users.every(user => user instanceof ClankyCoins));
-				console.log("All users:", JSON.stringify(users, null, 2));
+
 				}
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {

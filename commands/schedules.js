@@ -20,10 +20,25 @@ module.exports = {
 						});
 
 					console.log("sending confirmation message");
+					///
+					const sched = await Schedules.findOne(
+				    {where:{
+				    league: args.league ,
+				    game_num:args.game_num,
+				    [Schedules.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+				    }
+				    });
+
+						if (sched === null) {
+						  console.log('Not found!');
+						} else {
+						  console.log(sched instanceof Schedules); // true
+						  console.log(sched.away_role_id); // 'My Title'
+							 console.log(sched.away_role_id); // 'My Title'
+						}
+
+					///
 					return message.reply('added'+ss.league+ '' + ss.away_role_id);
-					const users = await Schedules.findAll();
-					console.log(users.every(user => user instanceof Schedules));
-					console.log("All users:", JSON.stringify(users, null, 2));
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
