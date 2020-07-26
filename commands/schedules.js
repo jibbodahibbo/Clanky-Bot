@@ -22,7 +22,7 @@ module.exports = {
 
 					console.log("sending confirmation message");
 					///
-					const sched = await Schedules.findOne(
+/*					const sched = await Schedules.findOne(
 				    {where:{
 				    league: "lulu" ,
 				    game_num:1,
@@ -37,7 +37,7 @@ module.exports = {
 						  console.log(sched.away_role_id); // 'My Title'
 							 console.log(sched.away_role_id); // 'My Title'
 						}
-
+*/
 					///
 					return message.reply('added'+ss.league+ '' + ss.away_role_id);
 
