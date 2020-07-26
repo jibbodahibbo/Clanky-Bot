@@ -26,7 +26,7 @@ module.exports = {
 				    {where:{
 				    league: args.league ,
 				    game_num:args.game_num,
-				    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+				    [Op.or]: [{ away_role_id: "BB" }, { home_role_id: "BB" }]
 				    }
 				    });
 
