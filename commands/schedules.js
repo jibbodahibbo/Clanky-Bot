@@ -24,8 +24,8 @@ module.exports = {
 					///
 					const sched = await Schedules.findOne(
 				    {where:{
-				    league: args.league ,
-				    game_num:args.game_num,
+				    league: "lulu" ,
+				    game_num:1,
 				    [Op.or]: [{ away_role_id: "BB" }, { home_role_id: "BB" }]
 				    }
 				    });
