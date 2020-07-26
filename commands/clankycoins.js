@@ -29,6 +29,7 @@ if (args.length<1){
 		}
 		if (args.length>0){
 				if (args[0]=="add"){
+
 					return message.reply("added coins");
 				}
 		}

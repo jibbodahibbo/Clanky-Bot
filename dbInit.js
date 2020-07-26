@@ -9,6 +9,12 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.e
 
 });
 
+sequelize.authenticate().then(() => {
+  console.log("Success!");
+}).catch((err) => {
+  console.log(err);
+});
+
 const ClankyCoins = sequelize.define('clankycoins', {
   	user_id: {
       type: Sequelize.STRING,
