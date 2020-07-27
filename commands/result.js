@@ -109,7 +109,7 @@ async function getScheduleData(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Op.or]: [{ away_role_id: args.caoch }, { home_role_id: args.coach }]
+    [Op.or]: [{ away_role_id: args.coach }, { home_role_id: args.coach }]
     }
     });
     if (test_response) {
