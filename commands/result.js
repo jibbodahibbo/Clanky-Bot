@@ -27,15 +27,15 @@ async function getResultPair(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Op.or]: [{ away_role_id: args.coach }, { home_role_id: args.coach }]
+    [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
     }
     });
 
     let opponent ="";
-    if (sched.away_role_id == args.coach){
-      opponent=sched.home_role_id;
+    if (sched.away_coach_id == args.coach){
+      opponent=sched.home_coach_id;
     }else{
-      opponent=sched.away_role_id;
+      opponent=sched.away_coach_id;
     }
 
 
@@ -109,7 +109,7 @@ async function getScheduleData(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    [Op.or]: [{ away_role_id: args.coach }, { home_role_id: args.coach }]
+    [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
     }
     });
     if (test_response) {
@@ -122,8 +122,8 @@ async function getScheduleData(args, test_response = false) {
     }
     else {
         return {
-          away_role_id: sched.away_role_id,
-          away_role_id: sched.home_role_id,
+          away_coach_id: sched.away_coach_id,
+          home_coach_id: sched.home_coach_id,
           };
         }
 }

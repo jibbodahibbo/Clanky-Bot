@@ -21,24 +21,7 @@ module.exports = {
 						});
 
 					console.log("sending confirmation message");
-					///
-/*					const sched = await Schedules.findOne(
-				    {where:{
-				    league: "lulu" ,
-				    game_num:1,
-				    [Op.or]: [{ away_role_id: "BB" }, { home_role_id: "BB" }]
-				    }
-				    });
 
-						if (sched === null) {
-						  console.log('Not found!');
-						} else {
-						  console.log(sched instanceof Schedules); // true
-						  console.log(sched.away_role_id); // 'My Title'
-							 console.log(sched.away_role_id); // 'My Title'
-						}
-*/
-					///
 					return message.reply('added'+ss.league+ '' + ss.away_role_id);
 
 					}else if (args[0]=='view'){
@@ -48,7 +31,8 @@ module.exports = {
 							//// TODO: Loop through and display games only from a certain league and game_num
 							}else{
 								console.log("sending Not confirmation message");
-										return message.reply('Please try the format of !schedule [LEAGuE] [GAME#] [AWAYTEAM] [HOMETEAM]');
+								return message.reply('Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]');
+								return message.reply('Example ->  lulu 3 @Monsters BA @Twins MB');
 								//	}
 		//				}else{
 								}
