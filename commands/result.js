@@ -265,12 +265,12 @@ module.exports = {
                 .catch((error) => {
                     throw error;
                 });
-
+                console.log(game_schedule_data);
             if (game_schedule_data != null) {
-                let away_result_obj = null;
-                let home_result_obj = null;
+                let away_result_obj = game_schedule_data.away_role_id;
+                let home_result_obj = game_schedule_data.home_role_id;
 
-                if (result_obj.coach == game_schedule_data.away_role_id) {
+                if (result_obj.coach == game_schedule_data.away_coach_id) {
                     away_result_obj = result_obj;
                     home_result_obj = result_pair_obj;
                 } else {
