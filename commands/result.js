@@ -284,13 +284,13 @@ module.exports = {
                 let summary_message =
                     `
                 **Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n` +
-                    `Away: <@&${game_schedule_data.away_role_id}>\n`;
+                    `Away: ${game_schedule_data.away_role_id}\n`;
 
                 for (image of away_result_obj.images) {
                     summary_message += `${image}\n`;
                 }
                 channel.send(summary_message).then(() => {
-                    summary_message = `Home: <@&${game_schedule_data.home_role_id}>\n`;
+                    summary_message = `Home: ${game_schedule_data.home_role_id}\n`;
 
                     for (image of home_result_obj.images) {
                         summary_message += `${image}\n`;
