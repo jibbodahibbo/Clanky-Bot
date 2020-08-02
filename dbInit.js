@@ -18,7 +18,7 @@ sequelize.authenticate().then(() => {
 const ClankyCoins = sequelize.define('clankycoins', {
   	user_id: {
       type: DataTypes.STRING,
-    //  unique: true,
+      unique: true,
     },
   	username: {
 			type: DataTypes.STRING,

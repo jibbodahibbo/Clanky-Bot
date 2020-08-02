@@ -30,12 +30,16 @@ module.exports = {
 
 
 		if (message.member.roles.name == "Commisioner") {
+			console.log(message.member.roles.name);
 			if (args.length>2){
+					console.log(args.length);
 					if (args[0]=="add"){
+						console.log("add");
 						const user = await ClankyCoins.update({ coins: user.coins+args[1] }, { where: { user_id: args[2] } });
 						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
 					}
 					if (args[0]=="remove"){
+						console.log("remove");
 						const user = await ClankyCoins.update({ coins: user.coins-args[1] }, { where: { user_id: args[2] } });
 						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
 					}
