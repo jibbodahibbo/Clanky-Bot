@@ -124,6 +124,8 @@ async function getScheduleData(args, test_response = false) {
         return {
           away_coach_id: sched.away_coach_id,
           home_coach_id: sched.home_coach_id,
+          away_role_id: sched.away_role_id,
+          home_role_id: sched.home_role_id,
           };
         }
 }
