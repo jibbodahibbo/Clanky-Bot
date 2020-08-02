@@ -6,7 +6,9 @@ module.exports = {
 
 	async execute(message, args) {
 
-
+		if (message.member.roles.name != "Commisioner") {
+		 return null;
+  	}
 
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
