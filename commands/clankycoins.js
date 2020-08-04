@@ -29,7 +29,7 @@ module.exports = {
 		}
 
 	console.log(message.member.roles.cache);
-		if (message.member.roles.cache.has("Commisioner")) {
+		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
 			console.log("Is COmmish");
 			if (args.length>2){
 					console.log(args.length);
