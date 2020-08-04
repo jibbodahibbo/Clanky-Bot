@@ -28,19 +28,19 @@ module.exports = {
 			}
 		}
 
-	console.log(message.member.roles.cache);
+
 		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
-			console.log("Is COmmish");
+			console.log("Is Commish");
 			if (args.length>2){
-					console.log(args.length);
+					const user = await ClankyCoins.findOne({ where: { name: args[1] } });
 					if (args[0]=="add"){
 						console.log("add");
-						const user = await ClankyCoins.update({ coins: user.coins+args[1] }, { where: { user_id: args[2] } });
+						const incrementResult = await user.increment('coins', { by: parseInt(arg[2]) });
 						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
 					}
 					if (args[0]=="remove"){
 						console.log("remove");
-						const user = await ClankyCoins.update({ coins: user.coins-args[1] }, { where: { user_id: args[2] } });
+						const incrementResult = await user.decrement('coins', { by: parseInt(arg[2])});
 						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
 					}
 				}
