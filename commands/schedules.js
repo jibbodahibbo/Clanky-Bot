@@ -7,6 +7,7 @@ module.exports = {
 	async execute(message, args) {
 
 	if (message.member.roles.some(role => role.name === 'Commisioner') {
+		console.log("Not Commisioner")
 		 return null;
   	}
 
