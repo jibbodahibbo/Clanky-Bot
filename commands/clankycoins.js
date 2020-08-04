@@ -28,8 +28,8 @@ module.exports = {
 			}
 		}
 
-	console.log("Check COmmish");
-		if (message.member.roles.cache.has("Commisioner")) {   //Change to commisioner
+	console.log(message.member.roles.cache);
+		if (message.member.roles.cache.has("Commisioner")) {
 			console.log("Is COmmish");
 			if (args.length>2){
 					console.log(args.length);
