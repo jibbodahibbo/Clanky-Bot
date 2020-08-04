@@ -32,7 +32,7 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
 			console.log("Is Commish");
 			if (args.length>2){
-					const user = await ClankyCoins.findOne({ where: { name: args[1] } });
+					const user = await ClankyCoins.findOne({ where: { user_id: args[1] } });
 					if (args[0]=="add"){
 						console.log("add");
 						const incrementResult = await user.increment('coins', { by: parseInt(arg[2]) });
