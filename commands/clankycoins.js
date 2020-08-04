@@ -28,8 +28,8 @@ module.exports = {
 			}
 		}
 
-
-		if (message.member.roles.name == "Commisioner") {
+		console.log(message.member.roles.name );
+		if (message.member.roles.some(role => role.name === 'Commisioner') {
 			console.log(message.member.roles.name);
 			if (args.length>2){
 					console.log(args.length);
