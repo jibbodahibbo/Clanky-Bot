@@ -28,9 +28,9 @@ module.exports = {
 			}
 		}
 
-		console.log(message.member.roles.name );
-		if (message.member.roles.some(role => role.name === 'Commisioner')) {
-			console.log(message.member.roles.name);
+	console.log("Check COmmish");
+		if (message.member.roles.cache.has("Commisioner")) {   //Change to commisioner
+			console.log("Is COmmish");
 			if (args.length>2){
 					console.log(args.length);
 					if (args[0]=="add"){

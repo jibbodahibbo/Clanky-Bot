@@ -6,7 +6,7 @@ module.exports = {
 
 	async execute(message, args) {
 
-	if (message.member.roles.some(role => role.name === 'Commisioner')) {
+	if (message.member.roles.cache.has("Commisioner")) {
 		console.log("Not Commisioner")
 		 return null;
   	}
