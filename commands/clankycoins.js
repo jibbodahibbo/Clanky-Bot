@@ -34,17 +34,19 @@ module.exports = {
 			console.log(message)
 			if (args.length>2){
 					const user = await ClankyCoins.findOne({ where: { username: args[1] } });
-					console.log(user);
+
+					if(user){
 					if (args[0]=="add"){
 						console.log("add");
-						const incrementResult = await user.increment('coins', { by: parseInt(args[2]) });
-						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
+						await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: args[1] } });
+						return message.reply(user.username + ' now has a coin total of ' + user.coins);
 					}
 					if (args[0]=="remove"){
 						console.log("remove");
-						const incrementResult = await user.decrement('coins', { by: parseInt(args[2])});
-						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
+						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: args[1] } });
+						return message.reply(user.username + ' now has a coin total of ' + user.coins);
 					}
+				}
 				}
 					}
 }
