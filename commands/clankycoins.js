@@ -39,13 +39,13 @@ module.exports = {
 					if(user){
 					if (args[0]=="add"){
 						console.log("add");
-						await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: args[1] } }).reload();
-						return message.reply(user.username + ' now has a coin total of ' + user.coins);
+						await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: args[1] } });
+						return message.reply(user.username + ' now has a coin total of ' + (user.coins + parseInt(args[2])) );
 					}
 					if (args[0]=="remove"){
 						console.log("remove");
-						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: args[1] } }).reload();
-					  return message.reply(user.username + ' now has a coin total of ' + user.coins);
+						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: args[1] } });
+					  return message.reply(user.username + ' now has a coin total of ' +  (user.coins - parseInt(args[2])));
 					}
 				}
 				}
