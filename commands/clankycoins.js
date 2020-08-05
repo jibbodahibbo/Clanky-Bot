@@ -33,7 +33,7 @@ module.exports = {
 			console.log("Is Commish");
 			console.log(message)
 			if (args.length>2){
-					const user = await ClankyCoins.findOne({ where: { user_id: args[1] } });
+					const user = await ClankyCoins.findOne({ where: { username: args[1] } });
 					console.log(user);
 					if (args[0]=="add"){
 						console.log("add");
