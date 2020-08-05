@@ -54,7 +54,13 @@ module.exports = {
 									console.log(e);
 									return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 							}
-					return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger');
+							const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().username } });
+							if (!user){
+								return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger');
+							}else{
+								return message.reply( message.mentions.users.first().tag + ' has ' + user.coins + ' ClankyCoins');
+								//I refuse to distinct between plural and singular here. don't @ me.
+							}
 				}
 			}
 
@@ -71,6 +77,29 @@ module.exports = {
 						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: message.mentions.users.first().username } });
 					  return message.reply(user.username + ' now has a coin total of ' +  (user.coins - parseInt(args[2])));
 					}
+				}
+				else{
+					if (message.mentions.users.first()){
+							try {
+								// Create clankycoin usser in ledger.
+								const cc = await ClankyCoins.create({
+									user_id: message.mentions.users.first().id,
+									username: message.mentions.users.first().username,
+									tag:message.mentions.users.first().tag,
+									coins:0
+								});
+							}
+							catch (e) {
+								if (e.name === 'SequelizeUniqueConstraintError') {
+									const user = await ClankyCoins.findOne({ where: { username: args[1] } });
+									return message.reply("You have "+ user.coins + " clanky coins.");
+								}
+									console.log(e);
+									return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
+							}
+					return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger with 0 coins');
+				}
+
 				}
 				}
 			}
