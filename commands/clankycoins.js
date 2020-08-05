@@ -37,12 +37,12 @@ module.exports = {
 					console.log(user);
 					if (args[0]=="add"){
 						console.log("add");
-						const incrementResult = await user.increment('coins', { by: parseInt(arg[2]) });
+						const incrementResult = await user.increment('coins', { by: parseInt(args[2]) });
 						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
 					}
 					if (args[0]=="remove"){
 						console.log("remove");
-						const incrementResult = await user.decrement('coins', { by: parseInt(arg[2])});
+						const incrementResult = await user.decrement('coins', { by: parseInt(args[2])});
 						return message.reply(user.user_id + ' now has a coin total of ' + user.coins);
 					}
 				}
