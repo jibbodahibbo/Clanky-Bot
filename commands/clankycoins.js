@@ -31,10 +31,6 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
 			console.log("Is Commish");
 			console.log(message)
-
-
-
-
 			// Add person to ledger by name.
 			if (args.length==1){
 							try {
@@ -56,7 +52,6 @@ module.exports = {
 					}
 					return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
 				}
-			}
 			if (args.length>2){
 					const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().username } });
 					if(user){
@@ -72,8 +67,8 @@ module.exports = {
 					}
 				}
 				}
-					}
-}
+			}
+		}
 
 
 ,};
