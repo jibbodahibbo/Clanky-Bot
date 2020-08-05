@@ -22,7 +22,7 @@ module.exports = {
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {
 					const user = await ClankyCoins.findOne({ where: { username: args[1] } });
-					return message.reply("You have "+ user.coins + " coins.");
+					return message.reply("You have "+ user.coins + " clanky coins.");
 					}
 					console.log(e);
 				return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
@@ -39,13 +39,15 @@ module.exports = {
 					if(user){
 					if (args[0]=="add"){
 						console.log("add");
-						const result = await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: args[1] } });
-						return message.reply(result.username + ' now has a coin total of ' + result.coins);
+						await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: args[1] } });
+						ClankyCoins.reload();
+						return message.reply(user.username + ' now has a coin total of ' + user.coins);
 					}
 					if (args[0]=="remove"){
 						console.log("remove");
-						const result = await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: args[1] } });
-						return message.reply(result.username + ' now has a coin total of ' + result.coins);
+						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: args[1] } });
+						ClankyCoins.reload();
+					  return message.reply(user.username + ' now has a coin total of ' + user.coins);
 					}
 				}
 				}
