@@ -42,16 +42,16 @@ module.exports = {
 									coins:0
 								});
 						}
-					catch (e) {
-						if (e.name === 'SequelizeUniqueConstraintError') {
-							const user = await ClankyCoins.findOne({ where: { username: args[1] } });
-							return message.reply("You have "+ user.coins + " clanky coins.");
+							catch (e) {
+								if (e.name === 'SequelizeUniqueConstraintError') {
+									const user = await ClankyCoins.findOne({ where: { username: args[1] } });
+									return message.reply("You have "+ user.coins + " clanky coins.");
+									}
+									console.log(e);
+								return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 							}
-							console.log(e);
-						return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
-					}
-					return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
-				}
+							return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger');
+						}
 			if (args.length>2){
 					const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().username } });
 					if(user){
