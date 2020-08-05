@@ -22,6 +22,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
     },
   	username: {
 			type: DataTypes.STRING,
+			unique: true,
 		},
   	coins: {
   		type: DataTypes.INTEGER,
