@@ -31,6 +31,7 @@ module.exports = {
 
 		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
 			console.log("Is Commish");
+			console.log(message)
 			if (args.length>2){
 					const user = await ClankyCoins.findOne({ where: { user_id: args[1] } });
 					console.log(user);
