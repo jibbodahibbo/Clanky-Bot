@@ -6,10 +6,9 @@ module.exports = {
 
 	async execute(message, args) {
 
-	if (message.member.roles.cache.find(role => role.name != 'Commissioner')) {
-		console.log("Not Commisioner")
-		 return null;
-  	}
+	if (message.member.roles.cache.find(role => role.name == 'Commissioner')) {
+		console.log("Is Commisioner")
+
 
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
@@ -50,4 +49,9 @@ module.exports = {
 							return message.reply('Something went wrong with adding a game.');
 					}
 
-}};
+}else{
+	console.log("Not Commisioner")
+	return null;
+}
+
+};
