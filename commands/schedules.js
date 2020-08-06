@@ -38,7 +38,7 @@ module.exports = {
 									let response="";
 									for(let i=0; i<view_games.length;i++){
 										if (view_games[i].game_complete){
-										response==':white_check_mark:'
+										response+=':white_check_mark:'
 										}
 										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +'\n';
 									}
