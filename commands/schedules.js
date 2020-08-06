@@ -50,8 +50,8 @@ module.exports = {
 					}
 
 }else{
-	console.log("Not Commisioner")
+	console.log("Not Commisioner");
 	return null;
 }
-
+}
 };
