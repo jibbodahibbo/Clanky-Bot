@@ -34,7 +34,11 @@ module.exports = {
 											game_num: args[2]
 									  }
 									});
-									return message.reply(view_games);
+									let response="";
+									for(let i=0; i<view_games.length;i++){
+										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +'\n'+
+									}
+									return message.reply(response);
 							}else{
 								console.log("sending Not confirmation message");
 								return message.reply('Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]');
