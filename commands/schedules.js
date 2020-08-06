@@ -20,7 +20,7 @@ module.exports = {
 		    			away_coach_id:args[3],
 							home_role_id:args[4],
 							home_coach_id:args[5],
-							game_complete: False
+							game_complete: false
 						});
 
 					console.log("sending confirmation message");

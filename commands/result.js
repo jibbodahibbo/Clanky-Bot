@@ -27,7 +27,7 @@ async function getResultPair(args, test_response = false) {
     {where:{
       league: args.league ,
       game_num:args.game_num,
-      game_complete:False,
+      game_complete:false,
       [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
       }
     });
@@ -45,7 +45,7 @@ async function getResultPair(args, test_response = false) {
     league: args.league ,
     game_num:args.game_num,
     coach: opponent,
-    game_complete:False, }
+    game_complete:false, }
     });
     if (test_response) {
         return {
@@ -59,11 +59,11 @@ async function getResultPair(args, test_response = false) {
     }
     else {
 
-      const complete_game = await Schedules.update({ game_complete: True },
+      const complete_game = await Schedules.update({ game_complete: true },
         { where:{
           league: args.league ,
           game_num:args.game_num,
-          game_complete:False,
+          game_complete:false,
           [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
           }
         });
