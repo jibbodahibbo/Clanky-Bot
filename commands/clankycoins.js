@@ -18,7 +18,7 @@ module.exports = {
 				}
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {
-					const user = await ClankyCoins.findOne({ where: { username: args[1] } });
+					const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username} });
 					return message.reply("You have "+ user.coins + " clanky coins.");
 					}
 					console.log(e);
@@ -48,7 +48,7 @@ module.exports = {
 							}
 							catch (e) {
 								if (e.name === 'SequelizeUniqueConstraintError') {
-									const user = await ClankyCoins.findOne({ where: { username: args[1] } });
+									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
 									return message.reply("You have "+ user.coins + " clanky coins.");
 								}
 									console.log(e);
@@ -91,7 +91,7 @@ module.exports = {
 							}
 							catch (e) {
 								if (e.name === 'SequelizeUniqueConstraintError') {
-									const user = await ClankyCoins.findOne({ where: { username: args[1] } });
+									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
 									return message.reply("You have "+ user.coins + " clanky coins.");
 								}
 									console.log(e);

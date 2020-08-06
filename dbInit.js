@@ -57,11 +57,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
 				type:DataTypes.BOOLEAN,
 			}
 	  });
-			/**     "away_coach_id": String (2 character code),
-		  *     "away_role_id": String,
-		  *     "home_coach_id": String (2 character code),
-		  *     "home_role_id": String,
-			*/
+
 
 		const Results = sequelize.define('results', {
 		  	league:{
@@ -78,9 +74,4 @@ const ClankyCoins = sequelize.define('clankycoins', {
 				}
 		  });
 
-			/**     "league": String ("lulu" or "paste"),
-				*     "coach": String (2 character code),
-				*     "game_num": Number,
-				*     "images": String[] (list of image urls)
-			**/
 module.exports={ClankyCoins, Schedules, Results, sequelize};

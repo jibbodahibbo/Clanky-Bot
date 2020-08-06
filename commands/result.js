@@ -26,8 +26,7 @@ async function getResultPair(args, test_response = false) {
   const sched = await Schedules.findOne(
     {where:{
       league: args.league ,
-      game_num:args.game_num,
-      game_complete:false,
+      game_num:args.game_num
       [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
       }
     });
@@ -47,29 +46,15 @@ async function getResultPair(args, test_response = false) {
     coach: opponent,
       }
     });
-    if (test_response) {
-        return {
-            league: "lulu",
-            coach: "BB",
-            game_num: 7,
-            images: [
-                "https://cdn.discordapp.com/attachments/730180658747670579/733442478102937690/Screen_Shot_2020-07-02_at_5.31.12_PM.png",
-            ],
-        };
-    }
-    else {
 
-      const complete_game = await Schedules.update({ game_complete: true },
-        { where:{
-          league: args.league ,
-          game_num:args.game_num,
-          game_complete:false,
-          [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
-          }
-        });
-
-        return other_result;
-    }
+  const complete_game = await Schedules.update({ game_complete: true },
+    { where:{
+      league: args.league ,
+      game_num:args.game_num,
+      [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
+      }
+    });
+  return other_result;
 }
 
 /**
