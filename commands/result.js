@@ -45,7 +45,7 @@ async function getResultPair(args, test_response = false) {
     league: args.league ,
     game_num:args.game_num,
     coach: opponent,
-    game_complete:false, }
+      }
     });
     if (test_response) {
         return {
