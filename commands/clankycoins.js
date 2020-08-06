@@ -18,7 +18,7 @@ module.exports = {
 				}
 			catch (e) {
 				if (e.name === 'SequelizeUniqueConstraintError') {
-					const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username} });
+					const user = await ClankyCoins.findOne({ where: { username: message.author.username} });
 					return message.reply("You have "+ user.coins + " clanky coins.");
 					}
 					console.log(e);
