@@ -25,13 +25,17 @@ module.exports = {
 
 					console.log("sending confirmation message");
 
-					return message.reply('added'+ss.league+ '' + ss.away_role_id);
+					return message.reply('Added '+ss.league+ 'Game'+ ss.game_num + ss.away_role_id + ' at ' + ss.home_role_id);
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
-								//// TODO:  Loop through and display the whole schedule with Gamenum and league info.
-							// TODO: Loop through and display games only from a certain league
-							//// TODO: Loop through and display games only from a certain league and game_num
+								const view_games = await Schedules.findAll({
+									  where: {
+									    league: args[1],
+											game_num: args[2]
+									  }
+									});
+									return message.reply(view_games);
 							}else{
 								console.log("sending Not confirmation message");
 								return message.reply('Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]');
