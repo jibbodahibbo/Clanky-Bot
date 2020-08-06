@@ -26,7 +26,7 @@ async function getResultPair(args, test_response = false) {
   const sched = await Schedules.findOne(
     {where:{
       league: args.league ,
-      game_num:args.game_num
+      game_num:args.game_num,
       [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
       }
     });
