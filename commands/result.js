@@ -25,10 +25,11 @@ const {Schedules, Results} = require('../dbInit');
 async function getResultPair(args, test_response = false) {
   const sched = await Schedules.findOne(
     {where:{
-    league: args.league ,
-    game_num:args.game_num,
-    [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
-    }
+      league: args.league ,
+      game_num:args.game_num,
+      game_complete:False,
+      [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
+      }
     });
 
     let opponent ="";
@@ -43,7 +44,8 @@ async function getResultPair(args, test_response = false) {
     {where:{
     league: args.league ,
     game_num:args.game_num,
-    coach: opponent }
+    coach: opponent,
+    game_complete:False, }
     });
     if (test_response) {
         return {
@@ -56,6 +58,16 @@ async function getResultPair(args, test_response = false) {
         };
     }
     else {
+
+      const complete_game = await Schedules.update({ game_complete: True },
+        { where:{
+          league: args.league ,
+          game_num:args.game_num,
+          game_complete:False,
+          [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
+          }
+        });
+
         return other_result;
     }
 }

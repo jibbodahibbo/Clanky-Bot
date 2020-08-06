@@ -52,6 +52,9 @@ const ClankyCoins = sequelize.define('clankycoins', {
 			},
 			home_coach_id: {
 				type:DataTypes.STRING,
+			},
+			game_complete:{
+				type:DataTypes.BOOLEAN,
 			}
 	  });
 			/**     "away_coach_id": String (2 character code),

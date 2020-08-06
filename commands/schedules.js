@@ -19,7 +19,8 @@ module.exports = {
 		    			away_role_id:args[2],
 		    			away_coach_id:args[3],
 							home_role_id:args[4],
-							home_coach_id:args[5]
+							home_coach_id:args[5],
+							game_complete: False
 						});
 
 					console.log("sending confirmation message");
@@ -36,9 +37,13 @@ module.exports = {
 									});
 									let response="";
 									for(let i=0; i<view_games.length;i++){
+										if (view_games[i].game_complete){
+										response==':white_check_mark:'
+										}
 										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +'\n';
 									}
-									return message.reply(response);
+
+									return message.channel.send(response);
 							}else{
 								console.log("sending Not confirmation message");
 								return message.reply('Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]');
