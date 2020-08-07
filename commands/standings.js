@@ -1,3 +1,5 @@
+const allowed_channels = ['733773776357163079'];
+
 const american_west = "ALW";
 const american_east = "ALE";
 const national_west = "NLW";
@@ -36,7 +38,7 @@ async function queryStandings(league, range) {
 			spreadsheetId: s5_id,
 			range: sheetName + range,
 		},
-		
+
 	);
 }
 
@@ -81,7 +83,7 @@ async function getStandings(league, region) {
     let result = await queryStandings(league, range).then((res) => res.data.values).catch((error) => {
         throw error;
         });
-    
+
     let url = getURL(league);
     let title = "";
     if (league == lulu) {
@@ -132,7 +134,7 @@ function isValidRegion(region) {
             returnValue = false;
             break;
     }
-    
+
     return returnValue;
 }
 
@@ -172,7 +174,7 @@ function buildStandingsEmbed(standingsData) {
         // .setColor('#0099ff')
         .setTitle(`${standingsData.title}`)
         .setURL(standingsData.url)
-    
+
         // .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
         .setDescription(descriptionText)
         // .setThumbnail('https://i.imgur.com/wSTFkRM.png')
@@ -187,14 +189,14 @@ function buildStandingsEmbed(standingsData) {
         // .setTimestamp()
         // .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png')
         ;
-    
+
     return standingsEmbed;
 }
 
 async function buildStandingsMessage(league, region) {
     let resultObj = await getStandings(league, region);
     return buildStandingsEmbed(resultObj);
-    
+
 }
 
 // testSheetsAPI();
@@ -203,6 +205,12 @@ module.exports = {
     name: "standings",
     description: "Standings",
     execute(message, args) {
+
+      //Check for valid channel, or DM
+      if (!allowed_channels.includes(message.channel.id) && message.guild != null){
+  			return null;
+  		}
+
         if (args.length > 0) {
             // check if lulu or paste
             let league = args[0][0].toUpperCase() + args[0].slice(1);
@@ -229,7 +237,7 @@ module.exports = {
                     buildStandingsMessage(league, region).then((responseMessage) => {
                         message.channel.send(responseMessage);
                     }).catch(error => { throw error });
-                    
+
                 }
                 else {
                     message.reply("`lulu` commands must have a region too. Try \`ALE\`, \`ALW\`, \`NLE\`, or \`NLW\`.");

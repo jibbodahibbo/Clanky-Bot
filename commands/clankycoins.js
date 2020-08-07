@@ -1,10 +1,15 @@
 const {ClankyCoins} = require('../dbInit');
+const allowed_channels = ['733773776357163079'];
 module.exports = {
 	name: 'clankycoins',
 	description: 'Coins from clanky',
 
 	async execute(message, args) {
-
+		
+		//Check for valid channel, or DM
+		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
+			return null;
+		}
 
 		if (args.length<1){
 					try {
