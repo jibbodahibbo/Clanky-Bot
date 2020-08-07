@@ -128,7 +128,7 @@ module.exports = {
 	description: 'Ratings',
 	execute(message, args) {
 
-		if (!allowed_channels.includes(message.channel.id)){
+		if (!allowed_channels.includes(message.channel.id) || message.guild != null){
 			return null;
 		}
 
