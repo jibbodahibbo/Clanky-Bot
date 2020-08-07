@@ -1,6 +1,6 @@
-// TODO: implement db functions
 const { Op } = require('sequelize')
 const {Schedules, Results} = require('../dbInit');
+const discord = require("../byb-bot.js").discord;
 /**
  *
  * @param {*} args
@@ -23,7 +23,18 @@ const {Schedules, Results} = require('../dbInit');
  *  }
  */
 async function getResultPair(args, test_response = false) {
-  const sched = await Schedules.findOne(
+    if (test_response) {
+		return {
+			league: "lulu",
+			coach: "BB",
+			game_num: 7,
+			images: [
+				"https://cdn.discordapp.com/attachments/730180658747670579/733442478102937690/Screen_Shot_2020-07-02_at_5.31.12_PM.png",
+			],
+		};
+	}
+  
+    const sched = await Schedules.findOne(
     {where:{
       league: args.league ,
       game_num:args.game_num,
@@ -71,13 +82,19 @@ async function getResultPair(args, test_response = false) {
  * @description saves the current result to the database
  * @returns void (maybe true or false for success/failure to write to the db)
  */
-async function saveResult(result) {
-  	const r = await Results.create({
-  		league: result.league,
-  		coach: result.coach,
-  		game_num: result.game_num,
-      images:result.images
-  	});
+async function saveResult(result, testing=false) {
+    if (testing) {
+        return;
+    }  
+    else {
+        const r = await Results.create({
+			league: result.league,
+			coach: result.coach,
+			game_num: result.game_num,
+			images: result.images,
+		});
+    }
+    
 }
 
 /**
@@ -102,29 +119,31 @@ async function saveResult(result) {
  *  }
  */
 async function getScheduleData(args, test_response = false) {
-  const sched = await Schedules.findOne(
+  if (test_response) {
+		return {
+			away_coach_id: "IN",
+			away_role_id: "<@&735310865284333651>", // TODO: change to valid role id for this server
+			home_coach_id: "BB",
+			home_role_id: "<@&735310832090742865>", // TODO: change to valid role id for this server
+		};
+  }
+  
+    const sched = await Schedules.findOne(
     {where:{
     league: args.league ,
     game_num:args.game_num,
     [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
     }
     });
-    if (test_response) {
-        return {
-        //    away_coach_id: "IN",  //Removing coach_id for now, want to make creation of schedules more streamlined for commisioner.
-            away_role_id: "730220374884876390", // TODO: change to valid role id for this server
-        //    home_coach_id: "BB", //Removing coach_id for now, want to make creation of schedules more streamlined for commisioner.
-            home_role_id: "733703308421627905", // TODO: change to valid role id for this server
+    
+    
+    return {
+        away_coach_id: sched.away_coach_id,
+        home_coach_id: sched.home_coach_id,
+        away_role_id: sched.away_role_id,
+        home_role_id: sched.home_role_id,
         };
-    }
-    else {
-        return {
-          away_coach_id: sched.away_coach_id,
-          home_coach_id: sched.home_coach_id,
-          away_role_id: sched.away_role_id,
-          home_role_id: sched.home_role_id,
-          };
-        }
+        
 }
 
 let results_channel_id = "733773776357163079"; // TODO: change to valid channel for this server
@@ -135,7 +154,9 @@ module.exports = {
     async execute(message, args, client) {
         let coach_regex = RegExp("([A-Z][A-Z])");
         let coach = "";
-        let league_regex = RegExp("(lulu|paste)", "i");
+        let league_list = ["lulu", "paste"];
+        let league_list_string = league_list.join("|")
+        let league_regex = RegExp(`(${league_list_string})`, "i");
         let league = "";
         let game_num_regex = RegExp("G([0-9]+)", "i");
         let game_num = "";
@@ -143,6 +164,10 @@ module.exports = {
         let player_score = "";
         let computer_score = "";
         let images = [];
+        const enforcing_score = false;
+        const example_command = "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`";
+        const color_unrecorded = "13632027";
+        const color_recorded = "4289797";
 
         // make sure this is a dm. If not, let the user know they need to send a dm
         if (message.guild !== null) {
@@ -163,9 +188,7 @@ module.exports = {
            message.reply(
                 "Your result is missing a coach! Your message should look like this:"
             );
-            message.reply(
-                "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`"
-            );
+            message.reply(example_command);
             return;
         }
         // extract league
@@ -176,9 +199,7 @@ module.exports = {
             message.reply(
                 "Your result is missing a league! Your message should look like this:"
             );
-            message.reply(
-                "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`"
-            );
+            message.reply(example_command);
             return;
         }
         // extract game number
@@ -189,9 +210,7 @@ module.exports = {
             message.reply(
                 "Your result is missing a game number! Your message should look like this:"
             );
-            message.reply(
-                "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`"
-            );
+            message.reply(example_command);
             return;
         }
 
@@ -201,13 +220,13 @@ module.exports = {
             player_score = game_score_result[1];
             computer_score = game_score_result[2];
         } else {
-            message.reply(
-                "Your result is missing a game number! Your message should look like this:"
-            );
-            message.reply(
-                "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`"
-            );
-            return;
+            if (enforcing_score) {
+                message.reply(
+					"Your result is missing a score! Your message should look like this:"
+				);
+				message.reply(example_command);
+				return;
+            }
         }
 
         // extract images
@@ -232,15 +251,26 @@ module.exports = {
         await saveResult(result_obj).catch((error) => {
             throw error;
         });
-
+        
         // send result summary reply
-        message.reply(
-            `Saved your result:\n` +
-            `**League:** ${league}\n` +
-            `**Coach:** ${coach}\n` +
-            `**Game:** ${game_num}\n` +
-            `**Score:** ${player_score}-${computer_score}\n`
-        );
+        // message.reply(
+        //     `Saved your result:\n` +
+        //     `**League:** ${league}\n` +
+        //     `**Coach:** ${coach}\n` +
+        //     `**Game:** ${game_num}\n` +
+        //     `**Score:** ${player_score}-${computer_score}\n`
+        // );
+        let resultSummaryEmbed = new discord.MessageEmbed()
+            // .setColor(color_unrecorded)
+			.addFields(
+				{ name: "League", value: league, inline: true },
+				{ name: "Coach", value: coach, inline: true },
+				{ name: "Game", value: game_num, inline: true },
+				{ name: "Score", value: `${player_score}-${computer_score}` }
+			)
+			.setImage(result_obj.images[0])
+            .setTimestamp();
+        message.reply("Your result has been saved", { embed: resultSummaryEmbed });
 
         // check db for result pair
         let result_pair_query = {
@@ -264,7 +294,7 @@ module.exports = {
                 .catch((error) => {
                     throw error;
                 });
-                console.log(game_schedule_data);
+            
             if (game_schedule_data != null) {
                 let away_result_obj = game_schedule_data.away_role_id;
                 let home_result_obj = game_schedule_data.home_role_id;
@@ -277,25 +307,27 @@ module.exports = {
                     home_result_obj = result_obj;
                 }
 
-
-                let summary_message =
-                    `
-                **Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n` +
-                    `Away: ${game_schedule_data.away_role_id}\n`;
-
-                for (image of away_result_obj.images) {
-                    summary_message += `${image}\n`;
-                }
-                channel.send(summary_message).then(() => {
-                    summary_message = `Home: ${game_schedule_data.home_role_id}\n`;
-
-                    for (image of home_result_obj.images) {
-                        summary_message += `${image}\n`;
-                    }
-
-                    channel.send(summary_message);
+                let awayMessage = 
+					`**Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n` +
+					`Away: ${game_schedule_data.away_role_id}`;
+                
+                const awayObject = {
+                    "image": {
+                        "url": away_result_obj.images[0]
+                    },
+                    "timestamp": new Date().getTime()
+                };
+                let homeMessage = `Home: ${game_schedule_data.home_role_id}`;
+                const homeObject = {
+                    "image": {
+                        "url": home_result_obj.images[0]
+                    },
+                    "timestamp": new Date().getTime()
+                };
+                channel.send(awayMessage, {embed: awayObject}).then(() => {
+                    channel.send(homeMessage, {embed: homeObject});
                 });
-
+                
 
             }
             else {

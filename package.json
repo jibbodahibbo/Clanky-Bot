@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.4.0",
     "googleapis": "^56.0.0",
     "mysql": "^2.18.1",
