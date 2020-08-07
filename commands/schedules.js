@@ -8,8 +8,6 @@ module.exports = {
 
 	if (message.member.roles.cache.find(role => role.name == 'Commissioner')) {
 		console.log("Is Commisioner")
-
-
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 						if (args.length == 6){
@@ -27,6 +25,11 @@ module.exports = {
 
 					return message.reply('Added '+ss.league+ 'Game'+ ss.game_num + ss.away_role_id + ' at ' + ss.home_role_id);
 
+					if (args[0]=='delete' && args.length==2){
+						const deletion = await Schedules.destroy({ where: { id: parseInt(args[1]) } });
+						return message.reply('Scheduled Item Deleted')
+					}
+
 					}else if (args[0]=='view'){
 								console.log("show schedule")
 								const view_games = await Schedules.findAll({
@@ -40,7 +43,7 @@ module.exports = {
 										if (view_games[i].game_complete){
 										response+=':white_check_mark:'
 										}
-										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +'\n';
+										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +':id-> '+ view_games[i].id +'\n';
 									}
 
 									return message.channel.send(response);
