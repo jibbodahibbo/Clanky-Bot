@@ -85,34 +85,34 @@ function findPlayer(a){
 
 //Loops through players, returns string of a list (probably should just return an array object but this is how I did it.) all the players with a certain value of a certain stat.
 function findStat(stat, n){
-	let players = "";
+	let player_result = "";
 
 	if (stat == 'running'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Running == parseInt(n)){
-				players+= players.Players[intToPair(i)].Name +', ';
+				player_result+= players.Players[intToPair(i)].Name +', ';
 			}
 		}
 	}else if (stat == 'batting'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Batting == parseInt(n)){
-				players+= players.Players[intToPair(i)].Name +', ';
+				player_result+= players.Players[intToPair(i)].Name +', ';
 			}
 		}
 	}else if (stat == 'pitching'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Pitching == parseInt(n)){
-				players+= players.Players[intToPair(i)].Name +', ';
+				player_result+= players.Players[intToPair(i)].Name +', ';
 			}
 		}
 	}else if (stat == 'fielding'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Fielding == parseInt(n)){
-				players+= players.Players[intToPair(i)].Name +', ';
+				player_result+= players.Players[intToPair(i)].Name +', ';
 			}
 		}
 	}
-	return players;
+	return player_result;
 }
 
 module.exports = {
