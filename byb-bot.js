@@ -7,7 +7,7 @@ const sheets = google.sheets('v4');
 const {ClankyCoins, Schedules, Results, sequelize} = require('./dbInit.js');
 const { prefix, token } = require('./config.json');
 const players = require('./players.js');
-const prefix='!';
+// const prefix='!';
 
 
 const client = new Discord.Client();
