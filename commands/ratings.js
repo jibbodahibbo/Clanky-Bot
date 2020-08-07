@@ -96,7 +96,12 @@ function findStat(stat, n){
 	}else if (stat == 'batting'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Batting == parseInt(n)){
-				player_result+= players.Players[intToPair(i)].Name +', ';
+				player_result+= players.Players[intToPair(i)].Name;
+				if (['Jocinda Smith', 'Annie Frazier', 'Felix Grant', 'Heather Quinn'].includes(players.Players[intToPair(i)].Name)){
+					player_result+='*'
+				}
+				player_result+=', '
+
 			}
 		}
 	}else if (stat == 'pitching'){
