@@ -1,6 +1,9 @@
 {
   "name": "BYB_BOT",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.18.2"
+  },
   "description": "",
   "main": "byb-bot.js",
   "scripts": {
@@ -16,11 +19,12 @@
     "googleapis": "^56.0.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
-    "npm": "^6.14.6",
+    "npm": "^6.14.7",
     "pg": "^8.3.0",
     "pg-hstore": "^2.3.3",
     "request": "2.81.0",
     "sequelize": "^6.3.3",
+    "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.0"
   }
 }

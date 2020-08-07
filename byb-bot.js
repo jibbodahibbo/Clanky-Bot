@@ -1,11 +1,10 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const Sequelize = require('sequelize');
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 
-const {ClankyCoins, sequelize} = require('./dbInit.js');
-
+//const Sequelize = require('sequelize');
+const {ClankyCoins, Schedules, Results, sequelize} = require('./dbInit.js');
 const { prefix, token } = require('./config.json');
 const players = require('./players.js');
 const prefix='!';
@@ -31,7 +30,8 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready!');
 	ClankyCoins.sync();
-
+	Schedules.sync();
+	Results.sync();
 });
 
 client.on('message', async message => {
@@ -51,4 +51,4 @@ client.on('message', async message => {
 	}
 });
 
-client.login(process.env.token);
+client.login(process.env.TOKEN);

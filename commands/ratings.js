@@ -83,7 +83,37 @@ function findPlayer(a){
 						return intToPair(playerpair);
 	}
 
+//Loops through players, returns string of a list (probably should just return an array object but this is how I did it.) all the players with a certain value of a certain stat.
+function findStat(stat, n){
+	let players = "";
 
+	if (stat == 'running'){
+		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+			if (players.Players[intToPair(i)].Running == parseInt(n)){
+				players+= players.Players[intToPair(i)].Name +', ';
+			}
+		}
+	}else if (stat == 'batting'){
+		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+			if (players.Players[intToPair(i)].Batting == parseInt(n)){
+				players+= players.Players[intToPair(i)].Name +', ';
+			}
+		}
+	}else if (stat == 'pitching'){
+		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+			if (players.Players[intToPair(i)].Pitching == parseInt(n)){
+				players+= players.Players[intToPair(i)].Name +', ';
+			}
+		}
+	}else if (stat == 'fielding'){
+		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+			if (players.Players[intToPair(i)].Fielding == parseInt(n)){
+				players+= players.Players[intToPair(i)].Name +', ';
+			}
+		}
+	}
+	return players;
+}
 
 module.exports = {
 	name: 'ratings',
@@ -91,21 +121,27 @@ module.exports = {
 	execute(message, args) {
 
 		let result="hmmm..";
-		if (args.length==1 && args[0].length==2){
-				let pair = args[0].toUpperCase();
-				result =  pair+': '+players.Players[args[0]].Name +"\n";
-				result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-				result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-				result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-				result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
-			}else{
-			let pair =	findPlayer(args[0]+' '+args[1]);
-				result = pair+': '+players.Players[pair].Name +"\n";
-				result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-				result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-				result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-				result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
-			}
+
+		if ( ['running', 'batting', 'pitching', 'fielding'].includes( args[0].toLowerCase()) ){
+					result = findStat(args[0].toLowerCase(),args[1]);
+		}else{
+
+				if (args.length==1 && args[0].length==2){
+						let pair = args[0].toUpperCase();
+						result =  pair+': '+players.Players[args[0]].Name +"\n";
+						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
+						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
+						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
+						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+					}else{
+					let pair =	findPlayer(args[0]+' '+args[1]);
+						result = pair+': '+players.Players[pair].Name +"\n";
+						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
+						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
+						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
+						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+					}
+				}
 
 
 		message.channel.send(result);
