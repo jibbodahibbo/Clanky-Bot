@@ -1,5 +1,5 @@
 let players = require('../players.js');
-const allowed_channels = ['733773776357163079'];
+const allowed_channels = ['733773776357163079','741308777357377617'];
 
 function baseballs(num){
 	let bb=""
@@ -127,7 +127,7 @@ module.exports = {
 	name: 'ratings',
 	description: 'Ratings',
 	execute(message, args) {
-		//Check for valid channel, or DM	
+		//Check for valid channel, or DM
 		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
 		}
