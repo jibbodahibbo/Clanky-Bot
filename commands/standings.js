@@ -1,3 +1,5 @@
+const allowed_channels = ['733773776357163079'];
+
 const american_west = "ALW";
 const american_east = "ALE";
 const national_west = "NLW";
@@ -203,6 +205,12 @@ module.exports = {
     name: "standings",
     description: "Standings",
     execute(message, args) {
+
+      //Check for valid channel, or DM
+      if (!allowed_channels.includes(message.channel.id) && message.guild != null){
+  			return null;
+  		}
+
         if (args.length > 0) {
             // check if lulu or paste
             let league = args[0][0].toUpperCase() + args[0].slice(1);

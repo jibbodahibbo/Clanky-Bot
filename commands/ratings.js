@@ -127,8 +127,8 @@ module.exports = {
 	name: 'ratings',
 	description: 'Ratings',
 	execute(message, args) {
-
-		if (!allowed_channels.includes(message.channel.id) || message.guild != null){
+		//Check for valid channel, or DM	
+		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
 		}
 
