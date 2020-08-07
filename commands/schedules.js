@@ -4,7 +4,7 @@ module.exports = {
 	name: 'schedules',
 	description: 'scheduling teams',
 
-	async execute(message, args) {
+	async execute(message, args, client) {
 
 	if (message.member.roles.cache.find(role => role.name == 'Commissioner')) {
 		console.log("Is Commisioner")
@@ -41,7 +41,9 @@ module.exports = {
 									for(let i=0; i<view_games.length;i++){
 										if (view_games[i].game_complete){
 										response+=':white_check_mark:'
-										}
+									}else{
+										response+='       '
+									}
 										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +' :id-> '+ view_games[i].id +'\n';
 									}
 

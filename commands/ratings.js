@@ -1,4 +1,5 @@
 let players = require('../players.js');
+const allowed_channels = ['733773776357163079'];
 
 function baseballs(num){
 	let bb=""
@@ -120,10 +121,17 @@ function findStat(stat, n){
 	return player_result;
 }
 
+
+
 module.exports = {
 	name: 'ratings',
 	description: 'Ratings',
 	execute(message, args) {
+
+		if (!allowed_channels.includes(message.channel.id)){
+			return null;
+		}
+
 
 		let result="hmmm..";
 

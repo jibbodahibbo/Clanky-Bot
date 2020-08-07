@@ -36,7 +36,7 @@ async function queryStandings(league, range) {
 			spreadsheetId: s5_id,
 			range: sheetName + range,
 		},
-		
+
 	);
 }
 
@@ -81,7 +81,7 @@ async function getStandings(league, region) {
     let result = await queryStandings(league, range).then((res) => res.data.values).catch((error) => {
         throw error;
         });
-    
+
     let url = getURL(league);
     let title = "";
     if (league == lulu) {
@@ -132,7 +132,7 @@ function isValidRegion(region) {
             returnValue = false;
             break;
     }
-    
+
     return returnValue;
 }
 
@@ -172,7 +172,7 @@ function buildStandingsEmbed(standingsData) {
         // .setColor('#0099ff')
         .setTitle(`${standingsData.title}`)
         .setURL(standingsData.url)
-    
+
         // .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
         .setDescription(descriptionText)
         // .setThumbnail('https://i.imgur.com/wSTFkRM.png')
@@ -187,14 +187,14 @@ function buildStandingsEmbed(standingsData) {
         // .setTimestamp()
         // .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png')
         ;
-    
+
     return standingsEmbed;
 }
 
 async function buildStandingsMessage(league, region) {
     let resultObj = await getStandings(league, region);
     return buildStandingsEmbed(resultObj);
-    
+
 }
 
 // testSheetsAPI();
@@ -229,7 +229,7 @@ module.exports = {
                     buildStandingsMessage(league, region).then((responseMessage) => {
                         message.channel.send(responseMessage);
                     }).catch(error => { throw error });
-                    
+
                 }
                 else {
                     message.reply("`lulu` commands must have a region too. Try \`ALE\`, \`ALW\`, \`NLE\`, or \`NLW\`.");
