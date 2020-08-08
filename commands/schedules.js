@@ -27,7 +27,7 @@ module.exports = {
 
 					}else if (args[0]=='delete' && args.length==2){
 						const deletion = await Schedules.destroy({ where: { id: parseInt(args[1]) } });
-						return message.reply('Scheduled Item Deleted')
+						return message.reply('Scheduled Item Deleted');
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
@@ -64,7 +64,7 @@ module.exports = {
 
 }else{
 	console.log("Not Commisioner");
-	return null;
+	return message.reply('This is a commissioner only command');
 }
 }
 };

@@ -137,6 +137,7 @@ module.exports = {
 
 		if ( ['running', 'batting', 'pitching', 'fielding'].includes( args[0].toLowerCase()) ){
 					result = findStat(args[0].toLowerCase(),args[1]);
+
 		}else{
 
 				if (args.length==1 && args[0].length==2){
