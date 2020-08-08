@@ -5,7 +5,7 @@ const sheets = google.sheets('v4');
 
 //const Sequelize = require('sequelize');
 const {ClankyCoins, Schedules, Results, sequelize} = require('./dbInit.js');
-// const { prefix, token } = require('./config.json');
+//const { prefix, token } = require('./config.json');
 const players = require('./players.js');
 const prefix = process.env.PREFIX;
 
