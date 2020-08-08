@@ -166,8 +166,9 @@ module.exports = {
         let images = [];
         const enforcing_score = false;
         const example_command = "`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`";
-        const color_unrecorded = "13632027";
-        const color_recorded = "4289797";
+        const color_unrecorded = 13632027;
+        const color_recorded = 4289797;
+        const color_pending = 16312092;
 
         // make sure this is a dm. If not, let the user know they need to send a dm
         if (message.guild !== null) {
@@ -246,11 +247,6 @@ module.exports = {
             "game_num": game_num,
             "images": images
         };
-
-        // save to db
-        await saveResult(result_obj).catch((error) => {
-            throw error;
-        });
         
         // send result summary reply
         // message.reply(
@@ -261,7 +257,7 @@ module.exports = {
         //     `**Score:** ${player_score}-${computer_score}\n`
         // );
         let resultSummaryEmbed = new discord.MessageEmbed()
-            // .setColor(color_unrecorded)
+            .setColor(color_pending)
 			.addFields(
 				{ name: "League", value: league, inline: true },
 				{ name: "Coach", value: coach, inline: true },
@@ -270,14 +266,58 @@ module.exports = {
 			)
 			.setImage(result_obj.images[0])
             .setTimestamp();
-        message.reply("Your result has been saved", { embed: resultSummaryEmbed });
+        
+        let resultSummaryMessage = await message.author.send(
+            "This is your result. React with ✅ if it looks right, or ❌ to cancel. Submitting in 15 seconds...",
+            { embed: resultSummaryEmbed });
+        
+        await resultSummaryMessage.react("✅");
+        await resultSummaryMessage.react("❌");
 
+        const filter = (reaction, user) => {
+        
+            return (reaction.emoji.name === '✅' || reaction.emoji.name === '❌') && user.id === message.author.id;
+        };
+
+        let collected;
+        try {
+            collected = await resultSummaryMessage.awaitReactions(filter, { max: 1, time: 15000, errors: ['time'] });
+        } catch (errorCollected) {
+            collected = errorCollected;
+            collected.set('✅', {});
+            // resultSummaryMessage.reactions.removeAll();
+        }
+        
+        if (collected.has("✅")) {
+            // save to db
+            await resultSummaryMessage.edit("Sending...");
+            await saveResult(result_obj).catch((error) => {
+                throw error;
+            });
+            
+            await resultSummaryMessage.edit("Your result was recorded",
+                {
+                    embed: resultSummaryEmbed.setColor(color_recorded),
+                    reactions: {}
+                }
+            );
+            
+        }
+        else if (collected.has("❌")) {
+            await resultSummaryMessage.edit("This result was canceled", {
+				embed: resultSummaryEmbed.setColor(color_unrecorded),
+				reactions: {},
+            });
+            return;
+        }
+            
         // check db for result pair
         let result_pair_query = {
             "league": league,
             "coach": coach,
             "game_num": game_num,
         };
+      
         let result_pair_obj = await getResultPair(result_pair_query);
 
         // if it's there, build and send a summary to the results channel
