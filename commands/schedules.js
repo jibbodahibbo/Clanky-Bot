@@ -6,7 +6,7 @@ module.exports = {
 
 	async execute(message, args, client) {
 
-	if (message.member.roles.cache.find(role => role.name == 'Commissioner')) {
+	if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 		console.log("Is Commisioner")
 					try {
 						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);

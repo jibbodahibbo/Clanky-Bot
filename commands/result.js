@@ -33,7 +33,7 @@ async function getResultPair(args, test_response = false) {
 			],
 		};
 	}
-  
+
     const sched = await Schedules.findOne(
     {where:{
       league: args.league ,
@@ -85,7 +85,7 @@ async function getResultPair(args, test_response = false) {
 async function saveResult(result, testing=false) {
     if (testing) {
         return;
-    }  
+    }
     else {
         const r = await Results.create({
 			league: result.league,
@@ -94,7 +94,7 @@ async function saveResult(result, testing=false) {
 			images: result.images,
 		});
     }
-    
+
 }
 
 /**
@@ -127,7 +127,7 @@ async function getScheduleData(args, test_response = false) {
 			home_role_id: "<@&735310832090742865>", // TODO: change to valid role id for this server
 		};
   }
-  
+
     const sched = await Schedules.findOne(
     {where:{
     league: args.league ,
@@ -135,18 +135,18 @@ async function getScheduleData(args, test_response = false) {
     [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
     }
     });
-    
-    
+
+
     return {
         away_coach_id: sched.away_coach_id,
         home_coach_id: sched.home_coach_id,
         away_role_id: sched.away_role_id,
         home_role_id: sched.home_role_id,
         };
-        
+
 }
 
-let results_channel_id = "733773776357163079"; // TODO: change to valid channel for this server
+let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
 
 module.exports = {
     name: 'result',
@@ -247,7 +247,7 @@ module.exports = {
             "game_num": game_num,
             "images": images
         };
-        
+
         // send result summary reply
         // message.reply(
         //     `Saved your result:\n` +
@@ -266,16 +266,16 @@ module.exports = {
 			)
 			.setImage(result_obj.images[0])
             .setTimestamp();
-        
+
         let resultSummaryMessage = await message.author.send(
             "This is your result. React with ✅ if it looks right, or ❌ to cancel. Submitting in 15 seconds...",
             { embed: resultSummaryEmbed });
-        
+
         await resultSummaryMessage.react("✅");
         await resultSummaryMessage.react("❌");
 
         const filter = (reaction, user) => {
-        
+
             return (reaction.emoji.name === '✅' || reaction.emoji.name === '❌') && user.id === message.author.id;
         };
 
@@ -287,21 +287,21 @@ module.exports = {
             collected.set('✅', {});
             // resultSummaryMessage.reactions.removeAll();
         }
-        
+
         if (collected.has("✅")) {
             // save to db
             await resultSummaryMessage.edit("Sending...");
             await saveResult(result_obj).catch((error) => {
                 throw error;
             });
-            
+
             await resultSummaryMessage.edit("Your result was recorded",
                 {
                     embed: resultSummaryEmbed.setColor(color_recorded),
                     reactions: {}
                 }
             );
-            
+
         }
         else if (collected.has("❌")) {
             await resultSummaryMessage.edit("This result was canceled", {
@@ -310,14 +310,14 @@ module.exports = {
             });
             return;
         }
-            
+
         // check db for result pair
         let result_pair_query = {
             "league": league,
             "coach": coach,
             "game_num": game_num,
         };
-      
+
         let result_pair_obj = await getResultPair(result_pair_query);
 
         // if it's there, build and send a summary to the results channel
@@ -334,7 +334,7 @@ module.exports = {
                 .catch((error) => {
                     throw error;
                 });
-            
+
             if (game_schedule_data != null) {
                 let away_result_obj = game_schedule_data.away_role_id;
                 let home_result_obj = game_schedule_data.home_role_id;
@@ -347,10 +347,10 @@ module.exports = {
                     home_result_obj = result_obj;
                 }
 
-                let awayMessage = 
+                let awayMessage =
 					`**Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n` +
 					`Away: ${game_schedule_data.away_role_id}`;
-                
+
                 const awayObject = {
                     "image": {
                         "url": away_result_obj.images[0]
@@ -367,7 +367,7 @@ module.exports = {
                 channel.send(awayMessage, {embed: awayObject}).then(() => {
                     channel.send(homeMessage, {embed: homeObject});
                 });
-                
+
 
             }
             else {
