@@ -154,7 +154,7 @@ module.exports = {
     async execute(message, args, client) {
         let coach_regex = RegExp("([A-Z][A-Z])");
         let coach = "";
-        let league_list = ["lulu", "paste"];
+        let league_list = ["lulu", "paste","rp"];
         let league_list_string = league_list.join("|")
         let league_regex = RegExp(`(${league_list_string})`, "i");
         let league = "";
