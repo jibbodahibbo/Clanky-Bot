@@ -236,8 +236,20 @@ module.exports = {
                 images.push(attachment.attachment);
             }
         } else {
-            message.reply("Your result is missing a screenshot!");
-            return;
+            await message.reply("Your result still needs a screenshot! Reply with one to add it.");
+            const authorFilter = response => {
+                return response.author.id === message.author.id && response.attachments.size > 0;
+            };
+            let screenshotResponses;
+            try {
+                screenshotResponses = await message.channel.awaitMessages(authorFilter, { max: 1, time: 300000, errors: ['time'] });
+                images.push(screenshotResponses.first().attachments.first().attachment);
+
+            } catch (errorScreenshotResponses) {
+                message.reply("I didn't get a message with a screenshot. Try submitting your result again.");
+                return;
+            }
+            
         }
 
         // build result object
