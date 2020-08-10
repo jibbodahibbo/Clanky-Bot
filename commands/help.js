@@ -10,7 +10,7 @@ module.exports = {
 			return null;
 		}
 
-		message.channel.send('visit https://backyardsportsleagues.fandom.com/wiki/BYB-BOT for more information about this bot');
+		message.channel.send('visit <https://backyardsportsleagues.fandom.com/wiki/BYB-BOT> for more information about this bot');
 
 	},
 };
