@@ -391,6 +391,7 @@ module.exports = {
             }
 
         }else{
+          const channel = client.channels.cache.get(results_channel_id);
           channel.send('**'+ result_obj.league + ' Game ' + resultobj.game_num +'** has been submitted by **'+message.author.id +'**');
         }
 
