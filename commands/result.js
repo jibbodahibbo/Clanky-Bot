@@ -62,6 +62,7 @@ async function getResultPair(args, test_response = false) {
     { where:{
       league: args.league ,
       game_num:args.game_num,
+      [Op.or]: [{ away_coach_id: other_result.coach }, { home_coach_id: other_result.coach }],
       [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
       }
     });
@@ -249,7 +250,7 @@ module.exports = {
                 message.reply("I didn't get a message with a screenshot. Try submitting your result again.");
                 return;
             }
-            
+
         }
 
         // build result object
