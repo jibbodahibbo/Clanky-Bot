@@ -1,20 +1,6 @@
 const {Schedules} = require('../dbInit');
 const { Op } = require('sequelize');
 
-async function createScheduleItem(args){
-	const ss = await Schedules.create({
-		league:args[0],
-		game_num:args[1],
-		away_role_id:args[2],
-		away_coach_id:args[3],
-		home_role_id:args[4],
-		home_coach_id:args[5],
-		game_complete: false
-	});
-	console.log("sending confirmation message");
-
-	return(ss);
-}
 
 
 module.exports = {
@@ -27,8 +13,17 @@ module.exports = {
 		console.log("Is Commisioner")
 					try {
 						if (args.length == 6){
-							scheduled_item = createScheduleItem(args);
-							return message.reply('Added '+scheduled_item.league+ ' Game '+ scheduled_item.game_num + scheduled_item.away_role_id + ' at ' + scheduled_item.home_role_id);
+						const ss = await Schedules.create({
+		        	league:args[0],
+							game_num:args[1],
+		    			away_role_id:args[2],
+		    			away_coach_id:args[3],
+							home_role_id:args[4],
+							home_coach_id:args[5],
+							game_complete: false
+						});
+					console.log("sending confirmation message");
+					return message.reply('Added '+ss.league+ ' Game '+ ss.game_num + ss.away_role_id + ' at ' + ss.home_role_id);
 
 					}else if (args[0]=='delete' && args.length==2){
 						const deletion = await Schedules.destroy({ where: { id: parseInt(args[1]) } });
