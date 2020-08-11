@@ -393,10 +393,7 @@ module.exports = {
         }else{
           channel.send('**'+ result_obj.league + ' Game ' + resultobj.game_num +'** has been submitted by **'+message.author.id +'**');
         }
-        // if it's not, do nothing
-        else {
 
-        }
 
 
     }
