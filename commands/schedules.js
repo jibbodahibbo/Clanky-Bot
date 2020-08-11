@@ -23,7 +23,7 @@ module.exports = {
 							game_complete: false
 						});
 					console.log("sending confirmation message");
-					return message.reply('Added '+ss.league+ ' Game '+ ss.game_num + ss.away_role_id + ' at ' + ss.home_role_id);
+					return message.reply('Added '+ss.league+ ' Game '+ ss.game_num +' '+ ss.away_role_id + ' at ' + ss.home_role_id);
 
 					}else if (args[0]=='delete' && args.length==2){
 						const deletion = await Schedules.destroy({ where: { id: parseInt(args[1]) } });
