@@ -1,7 +1,7 @@
 const {Schedules} = require('../dbInit');
 const { Op } = require('sequelize');
 
-function createScheduleItem(args){
+async function createScheduleItem(args){
 	const ss = await Schedules.create({
 		league:args[0],
 		game_num:args[1],
