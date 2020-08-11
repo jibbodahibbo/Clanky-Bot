@@ -82,8 +82,8 @@ const ClankyCoins = sequelize.define('clankycoins', {
 			const tableName = 'schedules';
 
 			sequelize.queryInterface.describeTable(tableName)
-			  .then(sequelize.tableDefinition => {
-			    if (!sequelize.tableDefinition.game_complete_away) return Promise.resolve();
+			  .then(tableDefinition => {
+			    if (!tableDefinition.game_complete_away) return Promise.resolve();
 
 			    return sequelize.queryInterface.addColumn(
 			      tableName,
