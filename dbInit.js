@@ -81,11 +81,11 @@ const ClankyCoins = sequelize.define('clankycoins', {
 
 			const tableName = 'schedules';
 
-			queryInterface.describeTable(tableName)
-			  .then(tableDefinition => {
-			    if (!tableDefinition.game_complete_away) return Promise.resolve();
+			sequelize.queryInterface.describeTable(tableName)
+			  .then(sequelize.tableDefinition => {
+			    if (!sequelize.tableDefinition.game_complete_away) return Promise.resolve();
 
-			    return queryInterface.addColumn(
+			    return sequelize.queryInterface.addColumn(
 			      tableName,
 			      'game_complete_away',
 			      { 		type:DataTypes.BOOLEAN,
