@@ -392,7 +392,7 @@ module.exports = {
 
         }else{
           const channel = client.channels.cache.get(results_channel_id);
-          channel.send('**'+ result_obj.league + ' Game ' + result_obj.game_num +'** has been submitted by **'+message.author.id +'**');
+          channel.send('**'+ result_obj.league + ' Game ' + result_obj.game_num +'** has been submitted by **' + result_obj.coach +' '+message.author.username +'**');
         }
 
 
