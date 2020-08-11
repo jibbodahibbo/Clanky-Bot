@@ -58,18 +58,19 @@ async function getResultPair(args, test_response = false) {
       }
     });
 
-
-  const complete_game = await Schedules.update({ game_complete: true },
-    { where:{
-      league: args.league ,
-      game_num:args.game_num,
-      [Op.or]: [{ away_coach_id: other_result.coach }, { home_coach_id: other_result.coach }],
-      [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
-      }
-    });
-
-
-  return other_result;
+  if (other_result){
+    const complete_game = await Schedules.update({ game_complete: true },
+      { where:{
+        league: args.league ,
+        game_num:args.game_num,
+        [Op.or]: [{ away_coach_id: other_result.coach }, { home_coach_id: other_result.coach }],
+        [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
+        }
+      });
+      return other_result;
+  }else{
+    return null;
+  }
 }
 
 /**
@@ -385,8 +386,7 @@ module.exports = {
                 });
 
 
-            }
-            else {
+            }else{
                 throw Error(`Schedule data was null for this query: ${schedule_data_query}`);
             }
 
