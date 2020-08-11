@@ -47,6 +47,7 @@ module.exports = {
 											response+=view_games[i].game_num + ' ';
 											response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +' :id-> '+ view_games[i].id +'\n';
 										}
+										return message.channel.send(response);
 								}else{
 									 // Shows the schedule for Schedule for one game_number in a league.
 								const view_games = await Schedules.findAll({
