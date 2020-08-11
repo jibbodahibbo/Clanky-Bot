@@ -58,6 +58,7 @@ async function getResultPair(args, test_response = false) {
       }
     });
 
+
   const complete_game = await Schedules.update({ game_complete: true },
     { where:{
       league: args.league ,
@@ -66,6 +67,8 @@ async function getResultPair(args, test_response = false) {
       [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
       }
     });
+
+
   return other_result;
 }
 
@@ -387,6 +390,8 @@ module.exports = {
                 throw Error(`Schedule data was null for this query: ${schedule_data_query}`);
             }
 
+        }else{
+          channel.send('**'+ result_obj.league + ' Game ' + resultobj.game_num +'** has been submitted by **'+message.author.id +'**');
         }
         // if it's not, do nothing
         else {
