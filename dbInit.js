@@ -55,6 +55,11 @@ const ClankyCoins = sequelize.define('clankycoins', {
 			},
 			game_complete:{
 				type:DataTypes.BOOLEAN,
+				defaultValue: false
+			},
+			game_complete_away:{
+				type:DataTypes.BOOLEAN,
+				defaultValue: false
 			}
 	  });
 
@@ -73,5 +78,21 @@ const ClankyCoins = sequelize.define('clankycoins', {
 					type: DataTypes.ARRAY(Sequelize.STRING),
 				}
 		  });
+
+			const tableName = 'schedules';
+
+			queryInterface.describeTable(tableName)
+			  .then(tableDefinition => {
+			    if (!tableDefinition.game_complete_away) return Promise.resolve();
+
+			    return queryInterface.addColumn(
+			      tableName,
+			      'game_complete_away',
+			      { 		type:DataTypes.BOOLEAN,
+									defaultValue: false }
+			    );
+			  });
+
+
 
 module.exports={ClankyCoins, Schedules, Results, sequelize};

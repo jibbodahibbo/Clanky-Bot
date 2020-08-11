@@ -31,6 +31,24 @@ module.exports = {
 
 					}else if (args[0]=='view'){
 								console.log("show schedule")
+								if (args.length==2){
+									 ///Shows the schedule for Schedule for entire league.
+									const view_games = await Schedules.findAll({
+										  where: {
+										    league: args[1],
+											 }});
+										let response="";
+										for(let i=0; i<view_games.length;i++){
+											if (view_games[i].game_complete){
+												response+=':white_check_mark:'
+											}else{
+												response+=':o:'
+											}
+											response+=view_games[i].game_num + ' ';
+											response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +' :id-> '+ view_games[i].id +'\n';
+										}
+								}else{
+									 // Shows the schedule for Schedule for one game_number in a league.
 								const view_games = await Schedules.findAll({
 									  where: {
 									    league: args[1],
@@ -42,18 +60,16 @@ module.exports = {
 										if (view_games[i].game_complete){
 										response+=':white_check_mark:'
 									}else{
-										response+='       '
+										response+=':o:'
 									}
 										response+=view_games[i].away_role_id +' '+view_games[i].away_coach_id +' At '+view_games[i].home_role_id +' '+view_games[i].home_coach_id +' :id-> '+ view_games[i].id +'\n';
 									}
-
+								}
 									return message.channel.send(response);
 							}else{
 								console.log("sending Not confirmation message");
 								return message.reply('Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]');
 								return message.reply('Example ->  lulu 3 @Monsters BA @Twins MB');
-								//	}
-		//				}else{
 								}
 
 					}
