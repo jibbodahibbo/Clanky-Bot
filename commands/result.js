@@ -152,6 +152,7 @@ async function getScheduleData(args, test_response = false) {
 }
 
 let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
+let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
 
 module.exports = {
     name: 'result',
@@ -339,7 +340,11 @@ module.exports = {
 
         // if it's there, build and send a summary to the results channel
         if (result_pair_obj != null) {
-            const channel = client.channels.cache.get(results_channel_id);
+            if result_obj.league == "rp"{
+              const channel = client.channels.cache.get(tournament_channel_id);
+            }else{
+              const channel = client.channels.cache.get(results_channel_id);
+            }
 
             // get additional game data from schedule
             let schedule_data_query = {
@@ -391,7 +396,11 @@ module.exports = {
             }
 
         }else{
-          const channel = client.channels.cache.get(results_channel_id);
+          if result_obj.league == "rp"{
+            const channel = client.channels.cache.get(tournament_channel_id);
+          }else{
+            const channel = client.channels.cache.get(results_channel_id);
+          }
           channel.send('**'+ result_obj.league + ' Game ' + result_obj.game_num +'** has been submitted by **' + result_obj.coach +' '+message.author.username +'**');
         }
 
