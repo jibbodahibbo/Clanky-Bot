@@ -340,7 +340,7 @@ module.exports = {
 
         // if it's there, build and send a summary to the results channel
         if (result_pair_obj != null) {
-            if result_obj.league == "rp"{
+            if (result_obj.league == "rp"){
               const channel = client.channels.cache.get(tournament_channel_id);
             }else{
               const channel = client.channels.cache.get(results_channel_id);
@@ -396,7 +396,7 @@ module.exports = {
             }
 
         }else{
-          if result_obj.league == "rp"{
+          if (result_obj.league == "rp"){
             const channel = client.channels.cache.get(tournament_channel_id);
           }else{
             const channel = client.channels.cache.get(results_channel_id);
