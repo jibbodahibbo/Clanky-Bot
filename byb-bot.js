@@ -3,6 +3,10 @@ const Discord = require('discord.js');
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 
+// for jlund's local config
+// const dotenv = require('dotenv');
+// dotenv.config();
+
 //const Sequelize = require('sequelize');
 const {ClankyCoins, Schedules, Results, sequelize} = require('./dbInit.js');
 //const { prefix, token } = require('./config.json');
