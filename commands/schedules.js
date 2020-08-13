@@ -54,7 +54,7 @@ module.exports = {
                 game_num: args[2],
 						},
 					});
-
+				}
 
 					let response = "";
 						let scheduleViewEmbed = new discord.MessageEmbed()
@@ -64,10 +64,6 @@ module.exports = {
 						}
 
 
-
-
-
-        }
 					if (args[2]) {
 						scheduleViewEmbed.setTitle(
 							`${args[1].toUpperCase()} Schedule - Game ${args[2]}`
