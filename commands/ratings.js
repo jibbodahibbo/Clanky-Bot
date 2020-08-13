@@ -88,13 +88,13 @@ function findPlayer(a){
 function findStat(stat, n){
 	let player_result = "";
 
-	if (stat == 'running'){
+	if (stat == 'running' || stat=='speed'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Running == parseInt(n)){
 				player_result+= players.Players[intToPair(i)].Name +', ';
 			}
 		}
-	}else if (stat == 'batting'){
+	}else if (stat == 'batting' || stat == 'hitting'){
 		for (let i = 0; i<Object.keys(players.Players).length-1; i++){
 			if (players.Players[intToPair(i)].Batting == parseInt(n)){
 				player_result+= players.Players[intToPair(i)].Name;
@@ -135,7 +135,7 @@ module.exports = {
 
 		let result="hmmm..";
 
-		if ( ['running', 'batting', 'pitching', 'fielding'].includes( args[0].toLowerCase()) ){
+		if ( ['running', 'batting', 'pitching', 'fielding', 'speed','hitting'].includes( args[0].toLowerCase()) ){
 					result = findStat(args[0].toLowerCase(),args[1]);
 
 		}else{
