@@ -48,7 +48,6 @@ module.exports = {
 								league: args[1],
 							}
 						});
-
 						scheduleViewEmbed.setTitle(
 							`${args[1].toUpperCase()} Schedule`
 						);
