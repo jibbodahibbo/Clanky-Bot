@@ -70,6 +70,11 @@ module.exports = {
 					}
 
 
+				let response = "";
+					if (view_games.length == 0) {
+						response = "There are no scheduled games for that league/week";
+						return message.reply(response);
+					}
 
 					let scheduleData = [];
 					for (let i = 0; i < view_games.length; i++) {
