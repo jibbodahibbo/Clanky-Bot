@@ -337,13 +337,13 @@ module.exports = {
         };
 
         let result_pair_obj = await getResultPair(result_pair_query);
-
+        let channel;
         // if it's there, build and send a summary to the results channel
         if (result_pair_obj != null) {
             if (result_obj.league == "rp"){
-              const channel = client.channels.cache.get(tournament_channel_id);
+              channel = client.channels.cache.get(tournament_channel_id);
             }else{
-              const channel = client.channels.cache.get(results_channel_id);
+              channel = client.channels.cache.get(results_channel_id);
             }
 
             // get additional game data from schedule
@@ -396,10 +396,11 @@ module.exports = {
             }
 
         }else{
+          let channel;
           if (result_obj.league == "rp"){
-            const channel = client.channels.cache.get(tournament_channel_id);
+             channel = client.channels.cache.get(tournament_channel_id);
           }else{
-            const channel = client.channels.cache.get(results_channel_id);
+             channel = client.channels.cache.get(results_channel_id);
           }
           channel.send('**'+ result_obj.league + ' Game ' + result_obj.game_num +'** has been submitted by **' + result_obj.coach +' '+message.author.username +'**');
         }
