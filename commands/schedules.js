@@ -54,7 +54,7 @@ module.exports = {
 						view_games = view_games.sort((a, b) =>
 							parseInt(a.game_num) < parseInt(b.game_num) ? -1 : 1
 						);
-						
+
 					} else {
 						//gets the schedule for the league/week
 						console.log("show schedule");
@@ -68,6 +68,14 @@ module.exports = {
 							`${args[1].toUpperCase()} Schedule - Game ${args[2]}`
 						);
 					}
+
+
+					let response = "";
+						let scheduleViewEmbed = new discord.MessageEmbed()
+						if (view_games.length == 0) {
+							response = "There are no scheduled games for that league/week";
+							return message.reply(response);
+						}
 
 					let scheduleData = [];
 					for (let i = 0; i < view_games.length; i++) {
@@ -84,7 +92,7 @@ module.exports = {
 					scheduleViewEmbed.setDescription(scheduleData.join("\n"));
 					scheduleViewEmbed.setFooter(`Requested by @${message.author.username}`);
 					return message.channel.send({ embed: scheduleViewEmbed });
-					
+
 				} else { /// No valid command arguments
 					return message.reply(
 						"Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]"
