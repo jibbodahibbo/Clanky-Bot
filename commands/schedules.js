@@ -54,6 +54,19 @@ module.exports = {
                 game_num: args[2],
 						},
 					});
+
+
+					let response = "";
+						let scheduleViewEmbed = new discord.MessageEmbed()
+						if (view_games.length == 0) {
+							response = "There are no scheduled games for that league/week";
+							return message.reply(response);
+						}
+
+
+
+
+
         }
 					if (args[2]) {
 						scheduleViewEmbed.setTitle(
