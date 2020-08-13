@@ -92,7 +92,6 @@ module.exports = {
 					"Something went wrong with adding a game."
 				);
 			}
-		}
   } else {
 			console.log("Not Commissioner");
 			return null;
