@@ -8,7 +8,7 @@ module.exports = {
 	description: "scheduling teams",
 
 	async execute(message, args, client) {
-	  if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
+		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			console.log("Is Commissioner");
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
@@ -38,32 +38,36 @@ module.exports = {
 					});
 					return message.reply("Scheduled Item Deleted");
 				} else if (args[0] == "view") {
+					let view_games;
+					let scheduleViewEmbed = new discord.MessageEmbed();
 
-          if (args.length==2){
-									 ///gets the schedule for Schedule for entire league.
-            let view_games = await Schedules.findAll({
-                where: {
-                  league: args[1],
-                 }});
-          }else{
-              //gets the schedule for the league/week
-            console.log("show schedule");
-            let view_games = await Schedules.findAll({
-              where: {
-                league: args[1],
-                game_num: args[2],
-						},
-					});
-        }
-					if (args[2]) {
-						scheduleViewEmbed.setTitle(
-							`${args[1].toUpperCase()} Schedule - Game ${args[2]}`
-						);
-					}else{
+					if (args.length == 2) {
+						// gets the schedule for Schedule for entire league.
+						view_games = await Schedules.findAll({
+							where: {
+								league: args[1],
+							}
+						});
+
 						scheduleViewEmbed.setTitle(
 							`${args[1].toUpperCase()} Schedule`
 						);
-						view_games = view_games.sort((a, b) => parseInt(a.game_num) < parseInt(b.game_num) ? -1 : 1);
+						view_games = view_games.sort((a, b) =>
+							parseInt(a.game_num) < parseInt(b.game_num) ? -1 : 1
+						);
+						
+					} else {
+						//gets the schedule for the league/week
+						console.log("show schedule");
+						view_games = await Schedules.findAll({
+							where: {
+								league: args[1],
+								game_num: args[2],
+							},
+						});
+						scheduleViewEmbed.setTitle(
+							`${args[1].toUpperCase()} Schedule - Game ${args[2]}`
+						);
 					}
 
 					let scheduleData = [];
@@ -80,7 +84,8 @@ module.exports = {
 
 					scheduleViewEmbed.setDescription(scheduleData.join("\n"));
 					scheduleViewEmbed.setFooter(`Requested by @${message.author.username}`);
-					return message.channel.send({embed: scheduleViewEmbed});
+					return message.channel.send({ embed: scheduleViewEmbed });
+					
 				} else { /// No valid command arguments
 					return message.reply(
 						"Please try the format of !schedules [LEAGUE] [GAME#] [AWAY TEAM ROLE] [AWAY TEAM INITAL] [HOME TEAM ROLE] [HOME TEAM INITIAL]"
@@ -93,9 +98,10 @@ module.exports = {
 				);
 			}
 		}
-  } else {
+		else {
 			console.log("Not Commissioner");
 			return null;
 		}     //Not commissioner
-	},
+
+	}
 };
