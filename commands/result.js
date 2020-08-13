@@ -60,20 +60,21 @@ async function getResultPair(args, test_response = false) {
 		},
 	});
 
-	const complete_game = await Schedules.update(
-		{ game_complete: true },
-		{
-			where: {
-				league: args.league,
-				game_num: args.game_num,
-				[Op.or]: [
-					{ away_coach_id: args.coach },
-					{ home_coach_id: args.coach },
-				],
-			},
-		}
-	);
-	return other_result;
+
+  if (other_result){
+    const complete_game = await Schedules.update({ game_complete: true },
+      { where:{
+        league: args.league ,
+        game_num:args.game_num,
+        [Op.or]: [{ away_coach_id: other_result.coach }, { home_coach_id: other_result.coach }],
+        [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
+        }
+      });
+      return other_result;
+  }else{
+    return null;
+  }
+
 }
 
 /**
@@ -90,16 +91,20 @@ async function getResultPair(args, test_response = false) {
  * @description saves the current result to the database
  * @returns void (maybe true or false for success/failure to write to the db)
  */
-async function saveResult(result, testing = false) {
-	if (testing) {
-		return;
-	} else {
-		const r = await Results.create({
+
+async function saveResult(result, testing=false) {
+    if (testing) {
+        return;
+    }
+    else {
+        const r = await Results.create({
+
 			league: result.league,
 			coach: result.coach,
 			game_num: result.game_num,
 			images: result.images,
 		});
+
 	}
 }
 
@@ -153,15 +158,17 @@ async function getScheduleData(args, test_response = false) {
 	};
 }
 
-let results_channel_id = "733773776357163079"; // TODO: change to valid channel for this server
+let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
+let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
 
 module.exports = {
+
 	name: "result",
 	description: "Result",
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z][A-Z])");
 		let coach = "";
-		let league_list = ["lulu", "paste"];
+		let league_list = ["lulu", "paste","rp"];
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
@@ -177,6 +184,7 @@ module.exports = {
 		const color_unrecorded = 13632027;
 		const color_recorded = 4289797;
 		const color_pending = 16312092;
+
 
 		// make sure this is a dm. If not, let the user know they need to send a dm
 		if (message.guild !== null) {
@@ -295,6 +303,7 @@ module.exports = {
 				{ name: "Score", value: `${player_score}-${computer_score}` }
 			)
 			.setImage(result_obj.images[0])
+
 			.setTimestamp();
 
 		let resultSummaryMessage = await message.author.send(
@@ -356,7 +365,14 @@ module.exports = {
 
 		// if it's there, build and send a summary to the results channel
 		if (result_pair_obj != null) {
-			const channel = client.channels.cache.get(results_channel_id);
+
+      // TODO: Replace with league registration obj.
+      let channel;
+      if (result_obj.league == "rp"){
+        channel = client.channels.cache.get(tournament_channel_id);
+      }else{
+        channel = client.channels.cache.get(results_channel_id);
+      }
 
 			// get additional game data from schedule
 			let schedule_data_query = {

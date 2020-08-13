@@ -1,19 +1,19 @@
 const {ClankyCoins} = require('../dbInit');
-const allowed_channels = ['733773776357163079'];
+const allowed_channels = ['733773776357163079','741308777357377617'];
 module.exports = {
 	name: 'clankycoins',
 	description: 'Coins from clanky',
 
 	async execute(message, args) {
-		
+
 		//Check for valid channel, or DM
 		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
+			console.log("incorrect channel");
 			return null;
 		}
 
 		if (args.length<1){
 					try {
-						// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 						const cc = await ClankyCoins.create({
 							user_id: message.author.id,
 							username: message.author.username,
@@ -21,22 +21,19 @@ module.exports = {
 							coins:0
 						});
 				}
-			catch (e) {
-				if (e.name === 'SequelizeUniqueConstraintError') {
-					const user = await ClankyCoins.findOne({ where: { username: message.author.username} });
-					return message.reply("You have "+ user.coins + " clanky coins.");
-					}
-					console.log(e);
-				return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
-			}
-			return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
-		}
+					catch (e) {
+						if (e.name === 'SequelizeUniqueConstraintError') {
+							const user = await ClankyCoins.findOne({ where: { username: message.author.username} });
+							return message.reply(user.username + " has "+ user.coins + " clanky coins.");
+							}
+							console.log(e);
+							return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
+							}
+					return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
+				}
 
 
 		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
-			console.log("Is Commish");
-			console.log(message)
-			// Add person to ledger by name.
 			if (args.length==1){
 					if (args[0] == 'help'){
 						return message.reply('!clankycoins @user : !clankycoins add @user 100 : !clankycoins remove @user 100');
@@ -54,7 +51,7 @@ module.exports = {
 							catch (e) {
 								if (e.name === 'SequelizeUniqueConstraintError') {
 									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
-									return message.reply("You have "+ user.coins + " clanky coins.");
+									return message.reply(user.username + " has "+ user.coins + " clanky coins.");
 								}
 									console.log(e);
 									return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
@@ -64,7 +61,7 @@ module.exports = {
 								return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger');
 							}else{
 								return message.reply( message.mentions.users.first().tag + ' has ' + user.coins + ' ClankyCoins');
-								//I refuse to distinct between plural and singular here. don't @ me.
+								//I refuse to distinguish between plural and singular here. don't @ me.
 							}
 				}
 			}
@@ -97,7 +94,7 @@ module.exports = {
 							catch (e) {
 								if (e.name === 'SequelizeUniqueConstraintError') {
 									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
-									return message.reply("You have "+ user.coins + " clanky coins.");
+									return message.reply(user.username + " has "+ user.coins + " clanky coins.");
 								}
 									console.log(e);
 									return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
@@ -107,7 +104,10 @@ module.exports = {
 
 				}
 				}
+			}else{
+				return message.reply('This is a commissioner only command.');
 			}
+
 		}
 
 

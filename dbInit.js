@@ -56,7 +56,7 @@ const ClankyCoins = sequelize.define('clankycoins', {
 			game_complete:{
 				type:DataTypes.BOOLEAN,
 			}
-	  });
+			  });
 
 
 		const Results = sequelize.define('results', {
@@ -73,5 +73,9 @@ const ClankyCoins = sequelize.define('clankycoins', {
 					type: DataTypes.ARRAY(Sequelize.STRING),
 				}
 		  });
+
+
+
+
 
 module.exports={ClankyCoins, Schedules, Results, sequelize};
