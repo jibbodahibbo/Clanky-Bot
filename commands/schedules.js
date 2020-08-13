@@ -38,18 +38,18 @@ module.exports = {
 					});
 					return message.reply("Scheduled Item Deleted");
 				} else if (args[0] == "view") {
+					let view_games;
 
-					const view_games;
           if (args.length==2){
 									 ///gets the schedule for Schedule for entire league.
-            view_games = await Schedules.findAll({
+          let  view_games = await Schedules.findAll({
                 where: {
                   league: args[1],
                  }});
           }else{
               //gets the schedule for the league/week
             console.log("show schedule");
-            view_games = await Schedules.findAll({
+          let  view_games = await Schedules.findAll({
               where: {
                 league: args[1],
                 game_num: args[2],
