@@ -41,14 +41,14 @@ module.exports = {
 
           if (args.length==2){
 									 ///gets the schedule for Schedule for entire league.
-            let view_games = await Schedules.findAll({
+            const view_games = await Schedules.findAll({
                 where: {
                   league: args[1],
                  }});
           }else{
               //gets the schedule for the league/week
             console.log("show schedule");
-            let view_games = await Schedules.findAll({
+            const view_games = await Schedules.findAll({
               where: {
                 league: args[1],
                 game_num: args[2],
