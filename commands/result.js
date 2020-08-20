@@ -33,7 +33,7 @@ async function getResultPair(args, test_response = false) {
 			],
 		};
 	}
-
+try{
 	const sched = await Schedules.findOne({
 		where: {
 			league: args.league,
@@ -72,6 +72,9 @@ async function getResultPair(args, test_response = false) {
       });
       return other_result;
   }else{
+    return null;
+  }
+}catch (e){
     return null;
   }
 
@@ -138,7 +141,7 @@ async function getScheduleData(args, test_response = false) {
 			home_role_id: "<@&735310832090742865>", // TODO: change to valid role id for this server
 		};
 	}
-
+try{
 	const sched = await Schedules.findOne({
 		where: {
 			league: args.league,
@@ -156,6 +159,10 @@ async function getScheduleData(args, test_response = false) {
 		away_role_id: sched.away_role_id,
 		home_role_id: sched.home_role_id,
 	};
+}catch (e){
+    return null;
+  }
+
 }
 
 let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
