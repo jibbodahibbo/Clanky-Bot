@@ -166,7 +166,7 @@ module.exports = {
 	name: "result",
 	description: "Result",
 	async execute(message, args, client) {
-		let coach_regex = RegExp("([A-Z][A-Z])");
+		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
 		let league_list = ["lulu", "paste","rp"];
 		let league_list_string = league_list.join("|");
@@ -211,7 +211,7 @@ module.exports = {
 		// extract league
 		if (league_regex.test(message.content)) {
 			league = message.content.match(league_regex);
-			league = league[1];
+			league = league[1].toLowerCase();   //Converts all leagues to lowercase.
 		} else {
 			message.reply(
 				"Your result is missing a league! Your message should look like this:"
@@ -426,6 +426,15 @@ module.exports = {
 		}
 		// if it's not, do nothing
 		else {
+
+      let channel;
+      if (result_obj.league == "rp"){
+        channel = client.channels.cache.get(tournament_channel_id);
+      }else{
+        channel = client.channels.cache.get(results_channel_id);
+      }
+      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game:' +result_pair_query.game_num + " has been submitted by." + message.author.username);
+
 		}
 	},
 };

@@ -7,11 +7,11 @@ module.exports = {
 	async execute(message, args) {
 
 		//Check for valid channel, or DM
-		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
+	/*	if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			console.log("incorrect channel");
 			return null;
 		}
-
+*/
 		if (args.length<1){
 					try {
 						const cc = await ClankyCoins.create({
@@ -33,7 +33,7 @@ module.exports = {
 				}
 
 
-		if (message.member.roles.cache.find(role => role.name === 'Commissioner')) {
+		if (message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')) {
 			if (args.length==1){
 					if (args[0] == 'help'){
 						return message.reply('!clankycoins @user : !clankycoins add @user 100 : !clankycoins remove @user 100');
