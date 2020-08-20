@@ -160,6 +160,7 @@ async function getScheduleData(args, test_response = false) {
 
 let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
 let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
+let test_channel_id = "733773776357163079"; // id in test server
 
 module.exports = {
 
@@ -399,24 +400,26 @@ module.exports = {
 				}
 
 				let awayMessage =
-					`**Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n` +
-					`Away: ${game_schedule_data.away_role_id}`;
+					`**${league.toUpperCase()} Game ${game_num} - ${game_schedule_data.away_role_id} vs. ${game_schedule_data.home_role_id}**\n`;
+					// `Away: ${game_schedule_data.away_role_id}`;
 
 				const awayObject = {
+					description: `**${game_schedule_data.away_role_id}** *(${game_schedule_data.away_coach_id})*`,
 					image: {
 						url: away_result_obj.images[0],
 					},
 					timestamp: new Date().getTime(),
 				};
-				let homeMessage = `Home: ${game_schedule_data.home_role_id}`;
+				// let homeMessage = `Home: ${game_schedule_data.home_role_id}`;
 				const homeObject = {
+					description: `**${game_schedule_data.home_role_id}** *(${game_schedule_data.home_coach_id})*`,
 					image: {
 						url: home_result_obj.images[0],
 					},
 					timestamp: new Date().getTime(),
 				};
 				channel.send(awayMessage, { embed: awayObject }).then(() => {
-					channel.send(homeMessage, { embed: homeObject });
+					channel.send("", { embed: homeObject });
 				});
 			} else {
 				throw Error(
