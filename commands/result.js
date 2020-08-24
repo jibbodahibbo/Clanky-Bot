@@ -176,7 +176,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp"];
+		let league_list = ["lulu", "paste","rp","5050"];
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
@@ -376,7 +376,7 @@ module.exports = {
 
       // TODO: Replace with league registration obj.
       let channel;
-      if (result_obj.league == "rp"){
+      if (result_obj.league == "rp" ||result_obj.league == "5050" ){
         channel = client.channels.cache.get(tournament_channel_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
@@ -438,7 +438,7 @@ module.exports = {
 		else {
 
       let channel;
-      if (result_obj.league == "rp"){
+      if (result_obj.league == "rp" || result_obj.league == "5050"){
         channel = client.channels.cache.get(tournament_channel_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
