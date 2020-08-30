@@ -3,6 +3,19 @@ const { Schedules } = require("../dbInit");
 const { Op } = require("sequelize");
 const { discord } = require("../byb-bot");
 
+//Creates a schdule item using 6 parameters
+async function create_schedule_item(args){
+	const ss = await Schedules.create({
+		league: args[0],
+		game_num: args[1],
+		away_role_id: args[2],
+		away_coach_id: args[3],
+		home_role_id: args[4],
+		home_coach_id: args[5],
+		game_complete: false,
+	});
+}
+
 module.exports = {
 	name: "schedules",
 	description: "scheduling teams",
@@ -13,17 +26,7 @@ module.exports = {
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 				if (args.length == 6) {
-					const ss = await Schedules.create({
-						league: args[0],
-						game_num: args[1],
-						away_role_id: args[2],
-						away_coach_id: args[3],
-						home_role_id: args[4],
-						home_coach_id: args[5],
-						game_complete: false,
-					});
-
-
+					create_schedule_item(args);
 					console.log("sending confirmation message");
 					let scheduleAddMessageEmbed = new discord.MessageEmbed()
 						.setDescription(`**${ss.league.toUpperCase()} Game ${ss.game_num}**
