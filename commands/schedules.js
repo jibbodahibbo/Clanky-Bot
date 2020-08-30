@@ -27,7 +27,7 @@ module.exports = {
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 				if (args.length == 6) {
-					await ss = create_schedule_item(args);
+					ss = await create_schedule_item(args);
 					console.log("sending confirmation message");
 					let scheduleAddMessageEmbed = new discord.MessageEmbed()
 						.setDescription(`**${ss.league.toUpperCase()} Game ${ss.game_num}**
