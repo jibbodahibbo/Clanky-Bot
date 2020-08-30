@@ -14,19 +14,20 @@ async function create_schedule_item(args){
 		home_coach_id: args[5],
 		game_complete: false,
 	});
+	return ss;
 }
 
 module.exports = {
 	name: "schedules",
 	description: "scheduling teams",
-
 	async execute(message, args, client) {
+
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			console.log("Is Commissioner");
 			try {
 				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 				if (args.length == 6) {
-					create_schedule_item(args);
+					await ss = create_schedule_item(args);
 					console.log("sending confirmation message");
 					let scheduleAddMessageEmbed = new discord.MessageEmbed()
 						.setDescription(`**${ss.league.toUpperCase()} Game ${ss.game_num}**
