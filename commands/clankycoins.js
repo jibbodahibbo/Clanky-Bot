@@ -22,7 +22,7 @@ async function addUser(message){
 	return cc;
 }
 
-async function addUserByMention(mention){
+async function addUserByMention(message){
 	try {
 		// Create clankycoin usser in ledger.
 		const cc = await ClankyCoins.create({
@@ -75,8 +75,7 @@ module.exports = {
 
 			///Adding user by mention.
 					}else if (message.mentions.users.first()){
-						let mention = message.mentions.users.first();
-						await addUserByMention(mention);
+						await addUserByMention(message);
 				}
 			}
 
