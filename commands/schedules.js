@@ -3,8 +3,8 @@ const { Schedules } = require("../dbInit");
 const { Op } = require("sequelize");
 const { discord } = require("../byb-bot");
 
-//Creates a schdule item using 6 parameters
-async function create_schedule_item(args){
+//Creates a schdule item using 6 parameters, returns the item from the db.
+async function createScheduleItem(args){
 	const ss = await Schedules.create({
 		league: args[0],
 		game_num: args[1],
@@ -17,36 +17,37 @@ async function create_schedule_item(args){
 	return ss;
 }
 
+
 module.exports = {
 	name: "schedules",
 	description: "scheduling teams",
 	async execute(message, args, client) {
 
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
-			console.log("Is Commissioner");
 			try {
-				// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
+
+				///For adding a scheduled Item.
 				if (args.length == 6) {
-					ss = await create_schedule_item(args);
-					console.log("sending confirmation message");
+					let ss = await createScheduleItem(args);
 					let scheduleAddMessageEmbed = new discord.MessageEmbed()
 						.setDescription(`**${ss.league.toUpperCase()} Game ${ss.game_num}**
 						${ss.away_role_id} (${ss.away_coach_id}) at ${ss.home_role_id} (${ss.home_coach_id})`)
 						;
-
 					return message.reply(`your schedule item was added *id# ${ss.id}*`, { embed: scheduleAddMessageEmbed });
-
-				} else if (args[0] == "delete" && args.length == 2) {
+				}
+				///For Deleting a scheduled Item
+				else if (args[0] == "delete" && args.length == 2) {
 					const deletion = await Schedules.destroy({
 						where: { id: parseInt(args[1]) },
 					});
 					return message.reply("Scheduled Item Deleted");
-				} else if (args[0] == "view") {
+				}
+				///For viewing a schedule
+				else if (args[0] == "view") {
 					let view_games;
 					let scheduleViewEmbed = new discord.MessageEmbed();
-
+					///Grabs the schedule for the entire league.
 					if (args.length == 2) {
-						// gets the schedule for Schedule for entire league.
 						view_games = await Schedules.findAll({
 							where: {
 								league: args[1],
@@ -60,8 +61,6 @@ module.exports = {
 						);
 
 					} else {
-						//gets the schedule for the league/week
-						console.log("show schedule");
 						view_games = await Schedules.findAll({
 							where: {
 								league: args[1],
