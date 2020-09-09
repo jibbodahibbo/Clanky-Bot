@@ -168,8 +168,8 @@ try{
 async function clearResults(args){
   const deletion = await Results.destroy({
     where: {league: args[1],
-            coach: args[2],
-            game_num: args[3],
+            coach: args[3],
+            game_num: args[2],
             },
   });
 }
