@@ -167,13 +167,11 @@ try{
 
 async function clearResults(args){
   const deletion = await Results.destroy({
-    where: {league: parseInt(args[1]),
-            coach: parseInt(args[2]),
-            game_num: parseInt(args[3]),
+    where: {league: args[1]),
+            coach: args[2]),
+            game_num: (args[3]),
             },
   });
-  return message.reply("cleared");
-
 }
 
 
@@ -209,7 +207,8 @@ module.exports = {
     if (args[0] == "clear"){
 	     if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
       await clearResults(args);
-    }
+        return message.reply("cleared");
+      }
     }
 
 		// make sure this is a dm. If not, let the user know they need to send a dm
