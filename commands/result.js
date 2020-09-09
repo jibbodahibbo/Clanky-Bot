@@ -206,7 +206,7 @@ module.exports = {
 		const color_pending = 16312092;
 
 ///Clearing a result
-    if (ars[0] == "clear"){
+    if (args[0] == "clear"){
 	     if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
       await clearResults(args);
     }
