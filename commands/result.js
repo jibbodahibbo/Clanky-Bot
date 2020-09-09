@@ -165,6 +165,18 @@ try{
 
 }
 
+async function clearResults(args){
+  const deletion = await Results.destroy({
+    where: {league: parseInt(args[1]),
+            coach: parseInt(args[2]),
+            game_num: parseInt(args[3]),
+            },
+  });
+  return message.reply("cleared");
+
+}
+
+
 let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
 let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
 let test_channel_id = "733773776357163079"; // id in test server
@@ -193,6 +205,12 @@ module.exports = {
 		const color_recorded = 4289797;
 		const color_pending = 16312092;
 
+///Clearing a result
+    if (ars[0] == "clear"){
+	     if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
+      await clearResults(args);
+    }
+    }
 
 		// make sure this is a dm. If not, let the user know they need to send a dm
 		if (message.guild !== null) {
