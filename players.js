@@ -984,7 +984,7 @@ module.exports = {
 	 'FJ': {
 			'Name': 'Liz Kinghorn',
 			'Batting': 4,
-			'Running': 8,
+			'Running': 9,
 			'Pitching': 5,
 			'Fielding': 7,
 			'Handedness': 'R',
@@ -1765,7 +1765,7 @@ module.exports = {
 	 'KA': {
 			'Name': 'Wing Kwan',
 			'Batting': 5,
-			'Running': 8,
+			'Running': 9,
 			'Pitching': 6,
 			'Fielding': 4,
 			'Handedness': '',
