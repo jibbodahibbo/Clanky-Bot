@@ -137,9 +137,9 @@ module.exports = {
         let pair =	findPlayer(args[0]+' '+args[1]);
     }
           try{
-          	const sched = await Draft_j.findOne({
+          	const player = await Draft_j.findOne({
           		where: {
-          		     name: pair,
+          		     player: pair,
           		},
           	});
 
