@@ -8,7 +8,7 @@ const sheets = google.sheets('v4');
 // dotenv.config();
 
 //const Sequelize = require('sequelize');
-const {ClankyCoins, Schedules, Results, sequelize} = require('./dbInit.js');
+const {ClankyCoins, Schedules, Results, Draft_j sequelize} = require('./dbInit.js');
 //const { prefix, token } = require('./config.json');
 const players = require('./players.js');
 const prefix = process.env.PREFIX;
@@ -36,6 +36,7 @@ client.once('ready', () => {
 	ClankyCoins.sync();
 	Schedules.sync();
 	Results.sync();
+	Draft_j.sync();
 });
 
 client.on('message', async message => {

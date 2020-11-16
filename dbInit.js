@@ -74,8 +74,20 @@ const ClankyCoins = sequelize.define('clankycoins', {
 				}
 		  });
 
+			const Draft_j = sequelize.define('draft_j', {
+			  	player:{
+						type:DataTypes.STRING,
+					},
+					team:{
+						type:DataTypes.STRING,
+						defaultValue:'undrafted',
+					},
+					pick_num:{
+						type:DataTypes.INTEGER,
+					}
+			  });
 
 
 
 
-module.exports={ClankyCoins, Schedules, Results, sequelize};
+module.exports={ClankyCoins, Schedules, Results, Draft_j, sequelize};
