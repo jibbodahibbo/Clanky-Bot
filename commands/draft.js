@@ -114,7 +114,7 @@ module.exports = {
 		}
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
       if(args[0]=='reset'){
-        const reset = await Draft_j.destroy();
+        const reset = await Draft_j.destroy({where: {}, truncate: true} );
         	for (let j = 0; j<Object.keys(players.Players).length-1; j++){
             const cc = await Draft_j.create({
         			player: players.Players[intToPair(j)],
