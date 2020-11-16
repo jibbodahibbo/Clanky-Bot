@@ -142,6 +142,9 @@ module.exports = {
           		     player: pair,
           		},
           	});
+            if player.team!='undrafted'{
+              return message.reply("That player has already been drafted, try again");
+            }
 
         const draft_player = await Draft_j.update({ team: current_drafter, pick_num:draft_num },
           { where:{
