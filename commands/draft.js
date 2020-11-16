@@ -117,7 +117,7 @@ module.exports = {
         const reset = await Draft_j.destroy();
         	for (let j = 0; j<Object.keys(players.Players).length-1; j++){
             const cc = await Draft_j.create({
-        			player: players.Players[intToPair(j)];
+        			player: players.Players[intToPair(j)],
       		  });
           }
           draft_num=1;
