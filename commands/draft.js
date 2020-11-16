@@ -6,10 +6,10 @@ const coaches={
         "JL":['377672560780902402:','JLund24'],
       }
 
-const draft_cell_start;
+const draft_cell_start = '';
 
-let draft_num;
-let draft_cell;
+let draft_num=0;
+let draft_cell='';
 let current_drafter = "BB"; //Should be a 2 char pair.
 
 
