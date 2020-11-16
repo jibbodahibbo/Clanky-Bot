@@ -107,7 +107,7 @@ function findPlayer(a){
 module.exports = {
 	name: 'draft',
 	description: 'Draft',
-	execute(message, args) {
+	async execute(message, args) {
 		//Check for valid channel, or DM
 		if (!allowed_channels.includes(message.channel.id)){
 			return null;
