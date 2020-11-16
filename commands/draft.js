@@ -1,5 +1,5 @@
 let players = require('../players.js');
-const {ClankyCoins} = require('../dbInit');
+const {Draft_j} = require('../dbInit');
 const allowed_channels = ['741308777357377617'];
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
