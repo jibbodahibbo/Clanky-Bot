@@ -1,7 +1,7 @@
 let players = require('../players.js');
 const {ClankyCoins} = require('../dbInit');
 const allowed_channels = ['741308777357377617'];
-const coaches{
+const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402:','JLund24'],
       }
