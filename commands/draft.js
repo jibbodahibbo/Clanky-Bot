@@ -1,16 +1,29 @@
 let players = require('../players.js');
 const {Draft_j} = require('../dbInit');
+
+const sheets = require("../byb-bot.js").sheets;
+const discord = require("../byb-bot.js").discord;
+
 const allowed_channels = ['741308777357377617'];
+
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402:','JLund24'],
       }
 
 const draft_cell_start = '';
-
 let draft_num=0;
-let draft_cell='';
+let draft_cell='A1';
 let current_drafter = "BB"; //Should be a 2 char pair.
+/*     // TODO: Sheet Setup
+const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM'
+const draft_url = `https://docs.google.com/spreadsheets/d/${draft_sheet_id}/edit#gid=953599581`;
+*/
+const draft_cell_start = '';
+let draft_num=0;
+let draft_cell='A1';
+let current_drafter = "BB"; //Should be a 2 char pair.
+
 
 
 
@@ -112,6 +125,9 @@ module.exports = {
 		if (!allowed_channels.includes(message.channel.id)){
 			return null;
 		}
+
+
+    ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
       if(args[0]=='reset'){
         const reset = await Draft_j.destroy({where: {}, truncate: true} );
@@ -121,7 +137,7 @@ module.exports = {
       		  });
           }
           draft_num=1;
-          current_drafter="BB"; //Switch this to the start cell.
+          current_drafter="BB"; //// TODO: Switch this to the start cell for Sheets.
         return message.reply("Draft Has Been Reset.");
       }
     }
@@ -129,8 +145,9 @@ module.exports = {
 
 
 
-
 		let result="Unsuccessful Request, try again."; //Default response
+
+    //Draft Procedure, first check to see if they are drafting by Char Pair, or by full Name.
     if (args.length==1 && args[0].length==2){
         let pair = args[0].toUpperCase();
     }else{
@@ -152,7 +169,6 @@ module.exports = {
             team:'undrafted',
             }
           });
-          draft_num+=1;
 
         }catch(e){
           return message.reply("That player has already been drafted, try again");
@@ -160,14 +176,14 @@ module.exports = {
 
 				if (args.length==1 && args[0].length==2){
 						let pair = args[0].toUpperCase();
-						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by' +"\n";
+						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by'+ coach[current_drafter][1] +"\n";
 						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 					}else{
 					let pair =	findPlayer(args[0]+' '+args[1]);
-						result = pair+': '+players.Players[pair].Name + ' has been drafted by' +"\n";
+						result = pair+': '+players.Players[pair].Name + ' has been drafted by'+ coach[current_drafter][1] +"\n";
 						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
@@ -175,7 +191,11 @@ module.exports = {
 					}
 
 
-//TODO add a PING to the end of the "result" message based on the google sheet for Draft S6 draft_num+draft_cell_start
+          //Ping next coach
+          draft_num+=1;
+          current_drafter='BB'   //Replace with sheet cell magic
+          result+= "\n "+current_drafter+" <@&" + coach[current_drafter][0] +"> is now on the clock";
+
 
 
 		message.channel.send(result);
