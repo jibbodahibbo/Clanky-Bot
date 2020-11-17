@@ -145,10 +145,11 @@ module.exports = {
 		let result="Unsuccessful Request, try again."; //Default response
 
     //Draft Procedure, first check to see if they are drafting by Char Pair, or by full Name.
+    let pair='XX'
     if (args.length==1 && args[0].length==2){
-        let pair = args[0].toUpperCase();
+        pair = args[0].toUpperCase();
     }else{
-        let pair =	findPlayer(args[0]+' '+args[1]);
+        pair =	findPlayer(args[0]+' '+args[1]);
     }
           try{
           	const player_to_draft = await Draft_j.findOne({
@@ -173,14 +174,14 @@ module.exports = {
 
 				if (args.length==1 && args[0].length==2){
 						let pair = args[0].toUpperCase();
-						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by'+ coaches[current_drafter][1] +"\n";
+						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by '+ coaches[current_drafter][1] +"\n";
 						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 					}else{
 					let pair =	findPlayer(args[0]+' '+args[1]);
-						result = pair+': '+players.Players[pair].Name + ' has been drafted by'+ coaches[current_drafter][1] +"\n";
+						result = pair+': '+players.Players[pair].Name + ' has been drafted by '+ coaches[current_drafter][1] +"\n";
 						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
@@ -191,7 +192,7 @@ module.exports = {
           //Ping next coach
           draft_num+=1;
           current_drafter='BB'   //Replace with sheet cell magic
-          result+= "\n "+current_drafter+" <@&" + coaches[current_drafter][0] +"> is now on the clock";
+          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock";
 
 
 
