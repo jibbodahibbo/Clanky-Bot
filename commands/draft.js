@@ -11,10 +11,7 @@ const coaches={
         "JL":['377672560780902402:','JLund24'],
       }
 
-const draft_cell_start = '';
-let draft_num=0;
-let draft_cell='A1';
-let current_drafter = "BB"; //Should be a 2 char pair.
+
 /*     // TODO: Sheet Setup
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM'
 const draft_url = `https://docs.google.com/spreadsheets/d/${draft_sheet_id}/edit#gid=953599581`;
