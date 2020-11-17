@@ -137,12 +137,12 @@ module.exports = {
         let pair =	findPlayer(args[0]+' '+args[1]);
     }
           try{
-          	const player = await Draft_j.findOne({
+          	const player_to_draft = await Draft_j.findOne({
           		where: {
           		     player: pair,
           		},
           	});
-            if player.team!='undrafted'{
+            if (player_to_draft.team!='undrafted'){
               return message.reply("That player has already been drafted, try again");
             }
 
@@ -160,14 +160,14 @@ module.exports = {
 
 				if (args.length==1 && args[0].length==2){
 						let pair = args[0].toUpperCase();
-						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted.' +"\n";
+						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by' +"\n";
 						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 					}else{
 					let pair =	findPlayer(args[0]+' '+args[1]);
-						result = pair+': '+players.Players[pair].Name + ' has been drafted.' +"\n";
+						result = pair+': '+players.Players[pair].Name + ' has been drafted by' +"\n";
 						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
