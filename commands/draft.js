@@ -8,7 +8,7 @@ const allowed_channels = ['741308777357377617'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 
-const bot_channel = client.channels.cache.get('778266821006458950');
+
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402','JLund24'],
@@ -264,7 +264,7 @@ module.exports = {
           //Ping next coach
           draft_num += 1;
           current_drafter = await getNextCoach();   //Replace with sheet cell magic
-          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock";
+          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
 
 
 
