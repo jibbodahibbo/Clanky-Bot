@@ -169,7 +169,7 @@ function findPlayer(a){
 	}
 
 async function showTeamPlayers(message, args, client){
-  players = await Schedules.findAll({
+  const players = await Draft_j.findAll({
     where: {
       team: args[2],
     },
