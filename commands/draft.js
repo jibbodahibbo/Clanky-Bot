@@ -169,15 +169,15 @@ function findPlayer(a){
 	}
 
 async function showTeamPlayers(message, args, client){
-  const players = await Draft_j.findAll({
+    const team_players = await Draft_j.findAll({
     where: {
       team: args[2],
     },
   });
 
   let team_list="";
-  for (let i=0; i<players.length; i++ ){
-    team_list +=findPlayer(players[i].player);
+  for (let i=0; i<team_players.length; i++ ){
+    team_list += findPlayer(team_players[i].player);
   }
 
   client.users.cache.get(message.author.id)
