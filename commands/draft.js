@@ -193,12 +193,12 @@ async function showDraft(message, args, client){
     });
 
     drafted_players = drafted_players.sort((a, b) =>
-      parseInt(a.draft_num) < parseInt(b.draft_num) ? -1 : 1
+      parseInt(a.pick_num) < parseInt(b.pick_num) ? -1 : 1
     )
 
     let drafted_player_list="";
     for (let i=0; i<drafted_players.length; i++ ){
-      drafted_player_list += "["+ drafted_players[i].draft_num +"]" + players.Players[drafted_players[i].player].Name +", ";
+      drafted_player_list += "["+ drafted_players[i].pick_num +"]" + players.Players[drafted_players[i].player].Name +", ";
     }
 
     client.users.cache.get(message.author.id)
