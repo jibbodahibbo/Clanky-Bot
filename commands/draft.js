@@ -254,8 +254,7 @@ module.exports = {
 
           //Ping next coach
           draft_num += 1;
-
-          current_drafter = getNextCoach();   //Replace with sheet cell magic
+          current_drafter = await getNextCoach();   //Replace with sheet cell magic
           result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock";
 
 
