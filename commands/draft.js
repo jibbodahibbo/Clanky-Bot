@@ -186,7 +186,7 @@ async function showTeamPlayers(message, args, client){
   }
 
 async function showDraft(message, args, client){
-      const drafted_players = await Draft_j.findAll({
+      let drafted_players = await Draft_j.findAll({
       where: {
       team: {[Op.not]:'undrafted'},
       },
