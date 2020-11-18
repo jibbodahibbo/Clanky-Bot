@@ -177,7 +177,7 @@ async function showTeamPlayers(message, args, client){
 
   let team_list="";
   for (let i=0; i<team_players.length; i++ ){
-    team_list += players.Players[team_players.player] +", ";
+    team_list += players.Players[team_players[i].player] +", ";
   }
 
   client.users.cache.get(message.author.id)
