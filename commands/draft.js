@@ -168,7 +168,17 @@ function findPlayer(a){
 						return intToPair(playerpair);
 	}
 
+async function showTeamPlayers(message, args, client){
+  players = await Schedules.findAll({
+    where: {
+      team: args[2],
+    },
+  });
 
+  let team_list=player.join(", ");
+  client.users.cache.get(message.author.id)
+    .send(team_list);
+  }
 
 
 
@@ -183,7 +193,15 @@ module.exports = {
 		if (!allowed_channels.includes(message.channel.id)){
 			return null;
 		}
+    //Show teams/playersdrafted
+    if (args[0]=="show"){
+      if (args[1]=="team"){
+          showTeamPlayers(message, args, client);
+  			return;
+      }
+    }
 
+    //Change Players team
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
