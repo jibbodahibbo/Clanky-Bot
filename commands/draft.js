@@ -177,7 +177,7 @@ async function showTeamPlayers(message, args, client){
 
   let team_list="";
   for (let i=0; i<team_players.length; i++ ){
-    team_list += players.Players[team_players.player].Name +", ";
+    team_list += players.Players[team_players.player] +", ";
   }
 
   client.users.cache.get(message.author.id)
@@ -197,12 +197,14 @@ module.exports = {
 		if (!allowed_channels.includes(message.channel.id)){
 			return null;
 		}
+
     //Show teams/playersdrafted
     if (args[0]=="show"){
       if (args[1]=="team"){
           await showTeamPlayers(message, args, client);
   			return;
       }
+      return null;
     }
 
     //Change Players team
