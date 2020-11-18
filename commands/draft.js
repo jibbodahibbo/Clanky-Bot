@@ -58,7 +58,7 @@ async function getNextCoach() {
   } catch (err) {
 		console.log(err);
   }
-  console.log(result);
+  console.log(result.data.values);
   return result.data.values[0][0];
 }
 
