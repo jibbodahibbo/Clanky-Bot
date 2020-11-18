@@ -5,20 +5,16 @@ const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
 const allowed_channels = ['741308777357377617'];
-const sheetsAPIKey = "AIzaSyD994ldXe7Q1gK82qE8L5872MipTmaNGZE";
-// TODO: should be moved into .env
-const draft_url =
-	"https://docs.google.com/spreadsheets/d/1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM/edit?ts=5fb4057c#gid=1551776406";
+const sheetsAPIKey =process.env.Sheets_APIKey
+const draft_url = process.env.s6_sheet_id;
+
 
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402','JLund24'],
       }
 
-
-     // TODO: Sheet Setup
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
-// const draft_url = `https://docs.google.com/spreadsheets/d/${draft_sheet_id}/edit#gid=953599581`;
 
 const draft_cell_start = '';
 let draft_num = 1;
@@ -39,7 +35,7 @@ async function getFullDraft() {
   } catch (err) {
     console.log(err);
   }
-  
+
   let draftObj = [];
   console.log(result);
   for (row of result.data.values) {
@@ -62,7 +58,7 @@ async function getNextCoach() {
   } catch (err) {
 		console.log(err);
   }
-  
+
   return result.data.values[0][0];
 }
 
@@ -200,7 +196,7 @@ module.exports = {
         return message.reply("Draft Has Been Reset.");
       }
 
-      
+
     }
 
     if (args[0] == "test") {
@@ -258,7 +254,7 @@ module.exports = {
 
           //Ping next coach
           draft_num += 1;
-          
+
           current_drafter = getNextCoach();   //Replace with sheet cell magic
           result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock";
 
