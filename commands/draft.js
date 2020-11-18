@@ -8,7 +8,7 @@ const allowed_channels = ['741308777357377617'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 
-
+const bot_channel = client.channels.cache.get('778266821006458950');
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402','JLund24'],
@@ -17,6 +17,9 @@ const coaches={
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
 
 const draft_cell_start = '';
+
+
+
 let draft_num = 1;
 let draft_cell = 'A1';
 let current_drafter = "BB"; //Should be a 2 char pair.
@@ -175,7 +178,7 @@ function findPlayer(a){
 module.exports = {
 	name: 'draft',
 	description: 'Draft',
-	async execute(message, args) {
+	async execute(message, args, client) {
 		//Check for valid channel, or DM
 		if (!allowed_channels.includes(message.channel.id)){
 			return null;
@@ -237,19 +240,25 @@ module.exports = {
 
 				if (args.length==1 && args[0].length==2){
 						let pair = args[0].toUpperCase();
-						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by '+ coaches[current_drafter][1] +"\n";
-						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+						result =  pair+': *'+players.Players[args[0]].Name +  '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+            stat_report = players.Players[args[0]].Name +"\n";
+						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
+						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
+						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
+						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+
+
 					}else{
 					let pair =	findPlayer(args[0]+' '+args[1]);
-						result = pair+': '+players.Players[pair].Name + ' has been drafted by '+ coaches[current_drafter][1] +"\n";
-						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+            stat_report = players.Players[pair].Name +"\n";
+						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
+						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
+						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
+						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+
 					}
+          bot_channel.send(stat_report);
 
 
           //Ping next coach
