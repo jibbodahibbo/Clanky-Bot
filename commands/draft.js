@@ -258,6 +258,7 @@ module.exports = {
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
 					}
+          let bot_channel = client.channels.cache.get('778266821006458950');
           bot_channel.send(stat_report);
 
 
