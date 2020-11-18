@@ -198,7 +198,7 @@ async function showDraft(message, args, client){
 
     let drafted_player_list="";
     for (let i=0; i<drafted_players.length; i++ ){
-      drafted_player_list += "["+drafted_players[i].draft_num +"]" + .Players[drafted_players[i].player].Name +", ";
+      drafted_player_list += "["+ drafted_players[i].draft_num +"]" + players.Players[drafted_players[i].player].Name +", ";
     }
 
     client.users.cache.get(message.author.id)
