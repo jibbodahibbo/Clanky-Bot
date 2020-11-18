@@ -1,5 +1,6 @@
 let players = require('../players.js');
 const {Draft_j} = require('../dbInit');
+const { Op } = require("sequelize");
 
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
