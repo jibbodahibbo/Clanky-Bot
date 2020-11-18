@@ -185,7 +185,20 @@ async function showTeamPlayers(message, args, client){
     .send(team_list);
   }
 
+  async function showDraft(message, args, client){
+      const drafted_players = await Draft_j.findAll({
+      where: {
+      team: {[Op.not]:'undrafted'},
+      },
+    });
 
+    drafted_players = drafted_players.sort((a, b) =>
+      parseInt(a.draft_num) < parseInt(b.draft_num) ? -1 : 1
+    )
+
+    client.users.cache.get(message.author.id)
+      .send(drafted_players);
+    }
 
 
 
@@ -200,11 +213,13 @@ module.exports = {
 		}
 
     //Show teams/playersdrafted
-    if (args[0]=="show"){
+    if (args[0]=="view"){
       if (args[1]=="team"){
           await showTeamPlayers(message, args, client);
   			return;
       }
+
+
       return null;
     }
 
