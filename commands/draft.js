@@ -175,7 +175,7 @@ async function showTeamPlayers(message, args, client){
     },
   });
 
-  let team_list += coaches[args[2]][1] + " has drafted.."+"\n";
+  let team_list = coaches[args[2]][1] + " has drafted.."+"\n";
   for (let i=0; i<team_players.length; i++ ){
     team_list += players.Players[team_players[i].player].Name +", ";
   }
@@ -184,7 +184,7 @@ async function showTeamPlayers(message, args, client){
     .send(team_list);
   }
 
-  async function showDraft(message, args, client){
+async function showDraft(message, args, client){
       const drafted_players = await Draft_j.findAll({
       where: {
       team: {[Op.not]:'undrafted'},
@@ -223,8 +223,7 @@ module.exports = {
   			return;
       }
           await showDraft(message,args,client);
-
-      return null;
+        return null;
     }
 
     //Change Players team
