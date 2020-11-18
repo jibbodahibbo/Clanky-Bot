@@ -175,9 +175,8 @@ async function showTeamPlayers(message, args, client){
     },
   });
 
-  let team_list="";
+  let team_list += coaches[args[2]][1] + " has drafted.."+"\n";
   for (let i=0; i<team_players.length; i++ ){
-    team_list += coaches[args[2]][1] + " has drafted.."+"\n";
     team_list += players.Players[team_players[i].player].Name +", ";
   }
 
@@ -195,6 +194,11 @@ async function showTeamPlayers(message, args, client){
     drafted_players = drafted_players.sort((a, b) =>
       parseInt(a.draft_num) < parseInt(b.draft_num) ? -1 : 1
     )
+
+    let drafted_player_list="";
+    for (let i=0; i<drafted_players.length; i++ ){
+      drafted_player_list += players.Players[drafted_players[i].player].Name +", ";
+    }
 
     client.users.cache.get(message.author.id)
       .send(drafted_players);
@@ -218,7 +222,7 @@ module.exports = {
           await showTeamPlayers(message, args, client);
   			return;
       }
-
+          await showDraft(message,args,client);
 
       return null;
     }
