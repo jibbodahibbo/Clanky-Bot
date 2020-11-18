@@ -196,7 +196,7 @@ module.exports = {
     //Show teams/playersdrafted
     if (args[0]=="show"){
       if (args[1]=="team"){
-          showTeamPlayers(message, args, client);
+          await showTeamPlayers(message, args, client);
   			return;
       }
     }
