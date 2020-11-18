@@ -5,24 +5,86 @@ const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
 const allowed_channels = ['741308777357377617'];
+const sheetsAPIKey = "AIzaSyD994ldXe7Q1gK82qE8L5872MipTmaNGZE";
+// TODO: should be moved into .env
+const draft_url =
+	"https://docs.google.com/spreadsheets/d/1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM/edit?ts=5fb4057c#gid=1551776406";
 
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
-        "JL":['377672560780902402:','JLund24'],
+        "JL":['377672560780902402','JLund24'],
       }
 
 
-/*     // TODO: Sheet Setup
-const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM'
-const draft_url = `https://docs.google.com/spreadsheets/d/${draft_sheet_id}/edit#gid=953599581`;
-*/
+     // TODO: Sheet Setup
+const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
+// const draft_url = `https://docs.google.com/spreadsheets/d/${draft_sheet_id}/edit#gid=953599581`;
+
 const draft_cell_start = '';
-let draft_num=0;
-let draft_cell='A1';
+let draft_num = 1;
+let draft_cell = 'A1';
 let current_drafter = "BB"; //Should be a 2 char pair.
 
 
+async function getFullDraft() {
+  let sheetName = "DRAFT!";
+  let range = "A1:A216"
+  let result;
+  try {
+      result = await sheets.spreadsheets.values.get({
+      auth: sheetsAPIKey,
+      spreadsheetId: draft_sheet_id,
+      range: sheetName + range,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+  
+  let draftObj = [];
+  console.log(result);
+  for (row of result.data.values) {
+    draftObj.push(row[0]);
+  }
+  console.log(draftObj);
+}
 
+async function getNextCoach() {
+  let sheetName = "DRAFT!";
+  let range = "A" + draft_num;
+  let result;
+
+  try {
+		result = await sheets.spreadsheets.values.get({
+			auth: sheetsAPIKey,
+			spreadsheetId: draft_sheet_id,
+			range: sheetName + range,
+		});
+  } catch (err) {
+		console.log(err);
+  }
+  
+  return result.data.values[0][0];
+}
+
+async function writePlayerToDraft(playerName) {
+  let sheetName = "DRAFT!";
+  let range = "A" + draft_num;
+  let result;
+
+  let new_values = [[payerName]];
+
+  try {
+		result = await sheets.spreadsheets.values.update({
+			auth: sheetsAPIKey,
+			spreadsheetId: draft_sheet_id,
+			range: sheetName + range,
+		});
+  } catch (err) {
+		console.log(err);
+  }
+
+  return result.data.values[0][0];
+}
 
 function baseballs(num){
 	let bb=""
@@ -137,9 +199,14 @@ module.exports = {
           current_drafter="BB"; //// TODO: Switch this to the start cell for Sheets.
         return message.reply("Draft Has Been Reset.");
       }
+
+      
     }
 
-
+    if (args[0] == "test") {
+      current_drafter = await getNextCoach();
+      return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
+    }
 
 
 		let result="Unsuccessful Request, try again."; //Default response
@@ -190,8 +257,9 @@ module.exports = {
 
 
           //Ping next coach
-          draft_num+=1;
-          current_drafter='BB'   //Replace with sheet cell magic
+          draft_num += 1;
+          
+          current_drafter = getNextCoach();   //Replace with sheet cell magic
           result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock";
 
 
