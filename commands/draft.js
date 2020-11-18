@@ -213,7 +213,7 @@ module.exports = {
 	description: 'Draft',
 	async execute(message, args, client) {
 		//Check for valid channel, or DM
-		if (!allowed_channels.includes(message.channel.id)){
+		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
 		}
 
@@ -303,7 +303,7 @@ module.exports = {
 
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
-          bot_channel.send(stat_report);
+        //  bot_channel.send(stat_report);
 
 
           //Ping next coach
