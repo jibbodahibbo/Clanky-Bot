@@ -202,7 +202,7 @@ async function showDraft(message, args, client){
     }
 
     client.users.cache.get(message.author.id)
-      .send(drafted_players);
+      .send(drafted_players_list);
     }
 
 
