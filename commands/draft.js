@@ -45,7 +45,7 @@ async function getFullDraft() {
 }
 
 async function getNextCoach() {
-  let sheetName = "DRAFT!";
+  let sheetName = "DRAFT";
   let range = "A" + draft_num;
   let result;
 
