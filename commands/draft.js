@@ -175,7 +175,11 @@ async function showTeamPlayers(message, args, client){
     },
   });
 
-  let team_list=players.join(", ");
+  let team_list="";
+  for (let i=0; i<players.length; i++ ){
+    team_list +=findPlayer(players[i].player);
+  }
+
   client.users.cache.get(message.author.id)
     .send(team_list);
   }
