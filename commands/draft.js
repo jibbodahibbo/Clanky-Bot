@@ -226,7 +226,7 @@ module.exports = {
 			return null;
 		}
 
-    //Show teams/playersdrafted
+    //View teams/playersdrafted
     if (args[0]=="view"){
       if (args[1]=="team"){
           await showTeamPlayers(message, args, client);
@@ -236,7 +236,6 @@ module.exports = {
         return null;
     }
 
-    //Change Players team
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
@@ -248,19 +247,38 @@ module.exports = {
       		  });
           }
           draft_num=1;
-          current_drafter="BB"; //// TODO: Switch this to the start cell for Sheets.
+          await current_drafter=getNextCoach();
         return message.reply("Draft Has Been Reset.");
       }
-
-
     }
 
+    ///Command for Undoing. (decrements, removes cell information, updates db)
+    if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
+      if(args[0]=='undo'){
+        draft_num-=1;
+
+        const undraft_player = await Draft_j.update({ team: 'undrafted', pick_num:null },
+          { where:{
+            pick_num:draft_num
+            }
+          });
+          await writePlayerToDraft('');
+          await current_drafter=getNextCoach();
+          result= 'Draft Pick '+ draft_num + ' has been undone' + "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+          return  message.channel.send(result);
+
+      }
+    }
+
+    //// TODO: Change Players team
+
+    /*
     if (args[0] == "test") {
       current_drafter = await getNextCoach();
       await writePlayerToDraft("I wrote this from the bot");
       return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
-
+    */
 
 		let result="Unsuccessful Request, try again."; //Default response
 
