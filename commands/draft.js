@@ -303,7 +303,7 @@ module.exports = {
 
 
 					}else{
-					let pair =	findPlayer(args[0]+' '+args[1]);
+					let pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
 						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] +"\n";
             stat_report = players.Players[pair].Name +"\n";
 						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
@@ -314,7 +314,7 @@ module.exports = {
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
         //  bot_channel.send(stat_report);
-    
+
           // write to spreadsheet
           await writePlayerToDraft(players.Players[args[0]].Name);
           //Ping next coach
