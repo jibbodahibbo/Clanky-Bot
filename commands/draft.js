@@ -255,6 +255,9 @@ module.exports = {
     ///Command for Undoing. (decrements, removes cell information, updates db)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
       if(args[0]=='undo'){
+        if (draft_num==1){
+          return message.channel.send("You cannot undo picks that haven't happened yet.")
+        }
         draft_num-=1;
 
         const undraft_player = await Draft_j.update({ team: 'undrafted', pick_num:null },
