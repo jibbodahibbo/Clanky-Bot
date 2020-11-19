@@ -301,6 +301,7 @@ module.exports = {
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
+              await writePlayerToDraft(players.Players[args[0]].Name);
 
 					}else{
              let pair='';
@@ -319,12 +320,13 @@ module.exports = {
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
+              await writePlayerToDraft(players.Players[pair]].Name);
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
         //  bot_channel.send(stat_report);
 
           // write to spreadsheet
-          await writePlayerToDraft(players.Players[args[0]].Name);
+
           draft_num += 1;
           current_drafter = await getNextCoach();   //Replace with sheet cell magic
           result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
