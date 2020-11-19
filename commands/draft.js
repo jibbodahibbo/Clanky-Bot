@@ -156,7 +156,7 @@ function LD(a,b){
 //Compare player names to the argument, find best match.
 function findPlayer(a){
 	console.log("finding Player...")
-	for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+	for (let i = 0; i<Object.keys(players.Players).length; i++){
 
 			if (players.Players[intToPair(i)].Name == a){
 				console.log("Match")
@@ -166,7 +166,7 @@ function findPlayer(a){
 				let playerpair=""
 				let closest="";
 				console.log("closest Match...")
-				for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+				for (let i = 0; i<Object.keys(players.Players).length; i++){
 					let newstring = players.Players[intToPair(i)].Name;
 
 					if ( LD(a,closest) > LD(a,newstring) ){
@@ -226,7 +226,7 @@ module.exports = {
 			return null;
 		}
 
-    //Show teams/playersdrafted
+    //View teams/playersdrafted
     if (args[0]=="view"){
       if (args[1]=="team"){
           await showTeamPlayers(message, args, client);
@@ -236,7 +236,6 @@ module.exports = {
         return null;
     }
 
-    //Change Players team
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
@@ -248,19 +247,57 @@ module.exports = {
       		  });
           }
           draft_num=1;
-          current_drafter="BB"; //// TODO: Switch this to the start cell for Sheets.
+          current_drafter= await getNextCoach();
         return message.reply("Draft Has Been Reset.");
       }
-
-
     }
 
+    if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
+        if(args[0]=='set'){
+          if (Number.isInteger(parseInt(args[1]))) {
+            draft_num= args[1];
+            current_drafter = await getNextCoach();   //Replace with sheet cell magic
+                let result ='';
+              if (current_drafter!=""){
+                result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+              }else{
+                result+= "The draft has concluded."
+              }
+            return message.reply("Draft has been set to " + draft_num +result);
+        }
+      }
+    }
+
+    ///Command for Undoing. (decrements, removes cell information, updates db)
+    if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
+      if(args[0]=='undo'){
+        if (draft_num==1){
+          return message.channel.send("You cannot undo picks that haven't happened yet.")
+        }
+        draft_num-=1;
+
+        const undraft_player = await Draft_j.update({ team: 'undrafted', pick_num:null },
+          { where:{
+            pick_num:draft_num
+            }
+          });
+          await writePlayerToDraft('');
+          current_drafter= await getNextCoach();
+          let result= 'Draft Pick '+ draft_num + ' has been undone' + "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+          return  message.channel.send(result);
+
+      }
+    }
+
+    //// TODO: Change Players team
+
+    /*
     if (args[0] == "test") {
       current_drafter = await getNextCoach();
       await writePlayerToDraft("I wrote this from the bot");
       return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
-
+    */
 
 		let result="Unsuccessful Request, try again."; //Default response
 
@@ -301,9 +338,18 @@ module.exports = {
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
+              await writePlayerToDraft(players.Players[args[0]].Name);
 
 					}else{
-					let pair =	findPlayer(args[0]+' '+args[1]);
+             let pair='';
+            if (args.length == 3){
+					       pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
+            }else if (args.length== 2){
+                  pair =	findPlayer(args[0]+' '+args[1]);
+            }else{
+                  pair =	findPlayer(args[0]);
+            }
+
 						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] +"\n";
             stat_report = players.Players[pair].Name +"\n";
 						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
@@ -311,18 +357,20 @@ module.exports = {
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
+              await writePlayerToDraft(players.Players[pair].Name);
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
         //  bot_channel.send(stat_report);
-    
+
           // write to spreadsheet
-          await writePlayerToDraft(players.Players[args[0]].Name);
-          //Ping next coach
-          await writePlayerToDraft(players.Players[args[0]].Name);
+
           draft_num += 1;
           current_drafter = await getNextCoach();   //Replace with sheet cell magic
-          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
-
+          if (current_drafter!=""){
+            result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+          }else{
+            result+= "The draft has concluded."
+          }
 
 
 		message.channel.send(result);
