@@ -303,7 +303,15 @@ module.exports = {
 
 
 					}else{
-					let pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
+             let pair='';
+            if (args.length == 3){
+					       pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
+            }else if (args.length== 2){
+                  pair =	findPlayer(args[0]+' '+args[1]);
+            }else{
+                  pair =	findPlayer(args[0]);
+            }
+
 						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] +"\n";
             stat_report = players.Players[pair].Name +"\n";
 						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
