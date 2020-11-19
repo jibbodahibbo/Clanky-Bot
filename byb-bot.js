@@ -2,6 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
+const googleAuth = require("./auth");
 
 // for jlund's local config
 // const dotenv = require('dotenv');
@@ -19,7 +20,8 @@ const client = new Discord.Client();
 module.exports = {
 	client: client,
 	sheets: sheets,
-	discord: Discord
+	discord: Discord,
+	googleAuth: googleAuth
 }
 
 client.commands = new Discord.Collection();
