@@ -247,7 +247,7 @@ module.exports = {
       		  });
           }
           draft_num=1;
-          await current_drafter=getNextCoach();
+          current_drafter= await getNextCoach();
         return message.reply("Draft Has Been Reset.");
       }
     }
@@ -263,7 +263,7 @@ module.exports = {
             }
           });
           await writePlayerToDraft('');
-          await current_drafter=getNextCoach();
+          current_drafter= await getNextCoach();
           result= 'Draft Pick '+ draft_num + ' has been undone' + "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
           return  message.channel.send(result);
 
