@@ -252,6 +252,15 @@ module.exports = {
       }
     }
 
+    if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
+        if(args[0]=='reset'){
+          if (Number.isInteger(parseInt(args[1]))) {
+            draft_num= args[1];
+          return message.reply("Draft has been set to" + draft_num);
+        }
+      }
+    }
+
     ///Command for Undoing. (decrements, removes cell information, updates db)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
       if(args[0]=='undo'){
@@ -350,8 +359,11 @@ module.exports = {
 
           draft_num += 1;
           current_drafter = await getNextCoach();   //Replace with sheet cell magic
-          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
-
+          if (current_drafter!=""){
+            result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+          }else{
+            result+= "The draft has concluded."
+          }
 
 
 		message.channel.send(result);
