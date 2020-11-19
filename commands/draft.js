@@ -156,7 +156,7 @@ function LD(a,b){
 //Compare player names to the argument, find best match.
 function findPlayer(a){
 	console.log("finding Player...")
-	for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+	for (let i = 0; i<Object.keys(players.Players).length; i++){
 
 			if (players.Players[intToPair(i)].Name == a){
 				console.log("Match")
@@ -166,7 +166,7 @@ function findPlayer(a){
 				let playerpair=""
 				let closest="";
 				console.log("closest Match...")
-				for (let i = 0; i<Object.keys(players.Players).length-1; i++){
+				for (let i = 0; i<Object.keys(players.Players).length; i++){
 					let newstring = players.Players[intToPair(i)].Name;
 
 					if ( LD(a,closest) > LD(a,newstring) ){
