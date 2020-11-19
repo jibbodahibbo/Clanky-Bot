@@ -320,7 +320,7 @@ module.exports = {
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
-              await writePlayerToDraft(players.Players[pair]].Name);
+              await writePlayerToDraft(players.Players[pair].Name);
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
         //  bot_channel.send(stat_report);
