@@ -253,7 +253,7 @@ module.exports = {
     }
 
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
-        if(args[0]=='reset'){
+        if(args[0]=='set'){
           if (Number.isInteger(parseInt(args[1]))) {
             draft_num= args[1];
           return message.reply("Draft has been set to" + draft_num);
