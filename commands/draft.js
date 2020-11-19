@@ -1,6 +1,9 @@
 let players = require('../players.js');
 const {Draft_j} = require('../dbInit');
 const { Op } = require("sequelize");
+const { googleAuth } = require('../byb-bot.js');
+const auth = require('../auth.js');
+const { google } = require('googleapis');
 
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
@@ -54,36 +57,42 @@ async function getNextCoach() {
   let result;
 
   try {
-		result = await sheets.spreadsheets.values.get({
-			auth: sheetsAPIKey,
+    let auth = await googleAuth.authorize();
+    result = await sheets.spreadsheets.values.get({
+      // auth: sheetsAPIKey,
+      auth: auth,
 			spreadsheetId: draft_sheet_id,
 			range: sheetName + range,
 		});
   } catch (err) {
 		console.log(err);
   }
-  console.log(result.data.values);
+  // console.log(result);
+  // console.log(result.data.values);
   return result.data.values[0][0];
 }
 
 async function writePlayerToDraft(playerName) {
   let sheetName = "DRAFT!";
-  let range = "A" + draft_num;
+  let range = "B" + draft_num;
   let result;
 
-  let new_values = [[payerName]];
-
+  let new_values = [[playerName]];
+  let resource = { values: new_values };
   try {
+    let auth = await googleAuth.authorize();
 		result = await sheets.spreadsheets.values.update({
-			auth: sheetsAPIKey,
+			auth: auth,
 			spreadsheetId: draft_sheet_id,
-			range: sheetName + range,
+      range: sheetName + range,
+      valueInputOption: "USER_ENTERED",
+      resource: resource,
 		});
   } catch (err) {
 		console.log(err);
   }
 
-  return result.data.values[0][0];
+  // return result.data.values[0][0];
 }
 
 function baseballs(num){
@@ -248,6 +257,7 @@ module.exports = {
 
     if (args[0] == "test") {
       current_drafter = await getNextCoach();
+      await writePlayerToDraft("I wrote this from the bot");
       return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
 
@@ -304,9 +314,11 @@ module.exports = {
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
         //  bot_channel.send(stat_report);
-
-
+    
+          // write to spreadsheet
+          await writePlayerToDraft(players.Players[args[0]].Name);
           //Ping next coach
+          await writePlayerToDraft(players.Players[args[0]].Name);
           draft_num += 1;
           current_drafter = await getNextCoach();   //Replace with sheet cell magic
           result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
