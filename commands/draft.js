@@ -1,26 +1,26 @@
 let players = require('../players.js');
 const {Draft_j} = require('../dbInit');
+const { Op } = require("sequelize");
 
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
 const allowed_channels = ['741308777357377617'];
-const sheetsAPIKey = "AIzaSyD994ldXe7Q1gK82qE8L5872MipTmaNGZE";
-// TODO: should be moved into .env
-const draft_url =
-	"https://docs.google.com/spreadsheets/d/1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM/edit?ts=5fb4057c#gid=1551776406";
+const sheetsAPIKey =process.env.Sheets_APIKey
+const draft_url = process.env.s6_sheet_id;
+
 
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402','JLund24'],
       }
 
-
-     // TODO: Sheet Setup
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
-// const draft_url = `https://docs.google.com/spreadsheets/d/${draft_sheet_id}/edit#gid=953599581`;
 
 const draft_cell_start = '';
+
+
+
 let draft_num = 1;
 let draft_cell = 'A1';
 let current_drafter = "BB"; //Should be a 2 char pair.
@@ -39,7 +39,7 @@ async function getFullDraft() {
   } catch (err) {
     console.log(err);
   }
-  
+
   let draftObj = [];
   console.log(result);
   for (row of result.data.values) {
@@ -62,7 +62,7 @@ async function getNextCoach() {
   } catch (err) {
 		console.log(err);
   }
-  
+  console.log(result.data.values);
   return result.data.values[0][0];
 }
 
@@ -169,9 +169,41 @@ function findPlayer(a){
 						return intToPair(playerpair);
 	}
 
+async function showTeamPlayers(message, args, client){
+    const team_players = await Draft_j.findAll({
+    where: {
+      team: args[2],
+    },
+  });
 
+  let team_list = coaches[args[2]][1] + " has drafted.."+"\n";
+  for (let i=0; i<team_players.length; i++ ){
+    team_list += players.Players[team_players[i].player].Name +", ";
+  }
 
+  client.users.cache.get(message.author.id)
+    .send(team_list);
+  }
 
+async function showDraft(message, args, client){
+      let drafted_players = await Draft_j.findAll({
+      where: {
+      team: {[Op.not]:'undrafted'},
+      },
+    });
+
+    drafted_players = drafted_players.sort((a, b) =>
+      parseInt(a.pick_num) < parseInt(b.pick_num) ? -1 : 1
+    )
+
+    let drafted_player_list="";
+    for (let i=0; i<drafted_players.length; i++ ){
+      drafted_player_list += "["+ drafted_players[i].pick_num +"]" + players.Players[drafted_players[i].player].Name +", ";
+    }
+
+    client.users.cache.get(message.author.id)
+      .send(drafted_player_list);
+    }
 
 
 
@@ -179,12 +211,23 @@ function findPlayer(a){
 module.exports = {
 	name: 'draft',
 	description: 'Draft',
-	async execute(message, args) {
+	async execute(message, args, client) {
 		//Check for valid channel, or DM
-		if (!allowed_channels.includes(message.channel.id)){
+		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
 		}
 
+    //Show teams/playersdrafted
+    if (args[0]=="view"){
+      if (args[1]=="team"){
+          await showTeamPlayers(message, args, client);
+  			return;
+      }
+          await showDraft(message,args,client);
+        return null;
+    }
+
+    //Change Players team
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
@@ -200,7 +243,7 @@ module.exports = {
         return message.reply("Draft Has Been Reset.");
       }
 
-      
+
     }
 
     if (args[0] == "test") {
@@ -241,26 +284,32 @@ module.exports = {
 
 				if (args.length==1 && args[0].length==2){
 						let pair = args[0].toUpperCase();
-						result =  pair+': '+players.Players[args[0]].Name +  ' has been drafted by '+ coaches[current_drafter][1] +"\n";
-						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+						result =  pair+': *'+players.Players[args[0]].Name +  '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+            stat_report = players.Players[args[0]].Name +"\n";
+						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
+						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
+						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
+						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+
+
 					}else{
 					let pair =	findPlayer(args[0]+' '+args[1]);
-						result = pair+': '+players.Players[pair].Name + ' has been drafted by '+ coaches[current_drafter][1] +"\n";
-						result += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-						result += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-						result += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-						result += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+            stat_report = players.Players[pair].Name +"\n";
+						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
+						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
+						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
+						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+
 					}
+          let bot_channel = client.channels.cache.get('778266821006458950');
+        //  bot_channel.send(stat_report);
 
 
           //Ping next coach
           draft_num += 1;
-          
-          current_drafter = getNextCoach();   //Replace with sheet cell magic
-          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock";
+          current_drafter = await getNextCoach();   //Replace with sheet cell magic
+          result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
 
 
 
