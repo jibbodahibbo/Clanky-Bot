@@ -256,7 +256,14 @@ module.exports = {
         if(args[0]=='set'){
           if (Number.isInteger(parseInt(args[1]))) {
             draft_num= args[1];
-          return message.reply("Draft has been set to" + draft_num);
+            current_drafter = await getNextCoach();   //Replace with sheet cell magic
+                let result ='';
+              if (current_drafter!=""){
+                result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+              }else{
+                result+= "The draft has concluded."
+              }
+            return message.reply("Draft has been set to " + draft_num +result);
         }
       }
     }
