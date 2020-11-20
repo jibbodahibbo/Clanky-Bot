@@ -26,7 +26,9 @@ const draft_cell_start = '';
 
 let draft_num = 1;
 let draft_cell = 'A1';
-let current_drafter = "BB"; //Should be a 2 char pair.
+let current_drafter = ""; //Should be a 2 char pair.
+let draft_lock = true;
+
 
 
 async function getFullDraft() {
@@ -51,7 +53,7 @@ async function getFullDraft() {
   console.log(draftObj);
 }
 
-async function getNextCoach() {
+async function getCurrentCoach() {
   let sheetName = "DRAFT!";
   let range = "A" + draft_num;
   let result;
@@ -67,9 +69,15 @@ async function getNextCoach() {
   } catch (err) {
 		console.log(err);
   }
-  // console.log(result);
+  if ('values' in result.data) {
+    return result.data.values[0][0];
+  }
+  else {
+    return "";
+  }
+  // console.log(result.data);
   // console.log(result.data.values);
-  return result.data.values[0][0];
+  // return result.data.values[0][0];
 }
 
 async function writePlayerToDraft(playerName) {
@@ -214,9 +222,6 @@ async function showDraft(message, args, client){
       .send(drafted_player_list);
     }
 
-
-
-
 module.exports = {
 	name: 'draft',
 	description: 'Draft',
@@ -224,53 +229,77 @@ module.exports = {
 		//Check for valid channel, or DM
 		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
-		}
-
-    //View teams/playersdrafted
-    if (args[0]=="view"){
-      if (args[1]=="team"){
-          await showTeamPlayers(message, args, client);
-  			return;
-      }
-          await showDraft(message,args,client);
-        return null;
     }
 
+    //View teams/playersdrafted
+		if (args[0] == "view") {
+			if (args[1] == "team") {
+				await showTeamPlayers(message, args, client);
+				return;
+			}
+			await showDraft(message, args, client);
+			return null;
+    }
+
+    if (args[0] == "status") {
+      current_drafter = await getCurrentCoach();
+      return message.channel.send(`**Season 6 Draft**\n__Status__: ${draft_lock ? "Locked" : "Unlocked"}\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter}`);
+    }
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
-      if(args[0]=='reset'){
-        const reset = await Draft_j.destroy({where: {}, truncate: true} );
-        	for (let j = 0; j<Object.keys(players.Players).length-1; j++){
-            const cc = await Draft_j.create({
-        			player: intToPair(j),
-      		  });
-          }
-          draft_num=1;
-          current_drafter= await getNextCoach();
-        return message.reply("Draft Has Been Reset.");
-      }
-    }
+		if (args[0] == "lock") {
+			draft_lock = true;
+			return message.reply(
+				"The draft is now locked. Use `!draft unlock` to unlock it. View commands will still work."
+			);
+		}
 
-    if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
-        if(args[0]=='set'){
-          if (Number.isInteger(parseInt(args[1]))) {
-            draft_num= args[1];
-            current_drafter = await getNextCoach();   //Replace with sheet cell magic
-                let result ='';
-              if (current_drafter!=""){
-                result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
-              }else{
-                result+= "The draft has concluded."
-              }
-            return message.reply("Draft has been set to " + draft_num +result);
-        }
+		if (args[0] == "unlock") {
+			draft_lock = false;
+			return message.reply("The draft is now unlocked.");
+		}
+      
+    
+	}
+
+  // ANY COMMANDS BELOW HERE WILL BE BLOCKED IF THE DRAFT IS LOCKED
+  if (draft_lock) {
+      return message.reply("The draft is locked. Use `!draft unlock` to unlock it and try again. View commands will still work.");
+  }  
+
+
+  if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
+    if (args[0] == "reset") {
+      const reset = await Draft_j.destroy({ where: {}, truncate: true });
+      for (let j = 0; j < Object.keys(players.Players).length - 1; j++) {
+        const cc = await Draft_j.create({
+          player: intToPair(j),
+        });
+      }
+      draft_num = 1;
+      current_drafter = await getCurrentCoach();
+      return message.reply("Draft Has Been Reset.");
+  }
+    
+    if (args[0] == 'set') {
+        if (Number.isInteger(parseInt(args[1]))) {
+          draft_num = args[1];
+          current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
+          let result ='';
+          if (current_drafter == "") {
+            return message.reply("There is no coach specified at pick #" + draft_num + ".\nTry setting the draft to a different pick or use `!draft lock` to lock the draft.");
+          } else {
+              return message.reply(`Draft set to pick #${draft_num}.\n${current_drafter} <@${coaches[current_drafter][0]}> is now on the clock.`)
+            }
+          
       }
     }
+  }
 
     ///Command for Undoing. (decrements, removes cell information, updates db)
     if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
-      if(args[0]=='undo'){
+      if (args[0] == 'undo') {
         if (draft_num==1){
           return message.channel.send("You cannot undo picks that haven't happened yet.")
         }
@@ -282,7 +311,7 @@ module.exports = {
             }
           });
           await writePlayerToDraft('');
-          current_drafter= await getNextCoach();
+          current_drafter= await getCurrentCoach();
           let result= 'Draft Pick '+ draft_num + ' has been undone' + "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
           return  message.channel.send(result);
 
@@ -291,15 +320,23 @@ module.exports = {
 
     //// TODO: Change Players team
 
-    /*
-    if (args[0] == "test") {
-      current_drafter = await getNextCoach();
-      await writePlayerToDraft("I wrote this from the bot");
-      return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
+    
+    if (args[0] == "test") { 
+      console.log(draft_num);
+      console.log(current_drafter);
+      // current_drafter = await getCurrentCoach();
+      // await writePlayerToDraft("I wrote this from the bot");
+      return message.channel.send("Did test command");
+      // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
-    */
-
-		let result="Unsuccessful Request, try again."; //Default response
+    
+		let result="Unsuccessful Request, try again."; //Default response 
+    
+    current_drafter = await getCurrentCoach();
+    if (current_drafter == "") {
+      draft_lock = true;
+      return message.reply("The draft is complete and now locked. Use `!draft unlock` to unlock it.");
+    }
 
     //Draft Procedure, first check to see if they are drafting by Char Pair, or by full Name.
     let pair='XX'
@@ -365,11 +402,12 @@ module.exports = {
           // write to spreadsheet
 
           draft_num += 1;
-          current_drafter = await getNextCoach();   //Replace with sheet cell magic
+          current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
           if (current_drafter!=""){
             result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
-          }else{
-            result+= "The draft has concluded."
+          } else {
+            draft_lock = true
+            result += "🎊 The draft has concluded and is now locked. 🎊";
           }
 
 
