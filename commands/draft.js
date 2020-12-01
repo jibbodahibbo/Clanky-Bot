@@ -16,6 +16,28 @@ const draft_url = process.env.s6_sheet_id;
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402','JLund24'],
+        "69":['344305095577567233','MarcoMcGwire'],
+        "C8":['355931440061612035','CrazyEi8ghts'],
+        "NF":['342901488412000256','NickFolesIsMyDad'],
+        "AE":['105512327293448192','Aesnop'],
+        "13":['201134409863266305','Kiiiiiiiiiiiiis'],
+        "XD":['207696852953333760','Gcool'],
+        "EX":['252968570382843904','Eauxps I. Fourgott'],
+        "WZ":['273653649522294784','Wizard'],
+        "JY":['307010267001257996','Jyknight'],
+        "GS":['355934424061181972','GSchlim'],
+        "YY":['74323981670285312','Yurya'],
+        "MB":['359717979732312064','Mbless'],
+        "MV":['296815103985319936','Mavfatha'],
+        "YT":['213203256606851072','Marco'],
+        "26":['470389312291209246','TheyHateMe (T-Boz)'],
+        "CW":['430920494351515650','Elchrisblanco'],
+        "NO":['338726157233160194','Nodakkian'],
+        "CK":['218371611588296706','Takenotes011'],
+        "FE":['226895221064073216','frogeggs'],
+        "JJ":['142464556151734272','Jarod Johnson'],
+        "MM":['698632902778552380','shrewsbury91'],
+        "JM":['779111772133130260','jmacdrums'],
       }
 
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
