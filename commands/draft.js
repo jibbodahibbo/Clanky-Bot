@@ -8,7 +8,7 @@ const { google } = require('googleapis');
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
-const allowed_channels = ['741308777357377617'];
+const allowed_channels = ['741308777357377617','782331491656138783'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 
@@ -19,7 +19,6 @@ const coaches={
       }
 
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
-
 const draft_cell_start = '';
 
 
@@ -397,7 +396,7 @@ module.exports = {
               await writePlayerToDraft(players.Players[pair].Name);
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
-        //  bot_channel.send(stat_report);
+          bot_channel.send(stat_report);
 
           // write to spreadsheet
 
