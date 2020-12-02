@@ -4,6 +4,9 @@ const { Op } = require("sequelize");
 const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
+var fs = require("fs");
+let rawdata = fs.readFileSync("players.json");
+const playerData = JSON.parse(rawdata); 
 
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
@@ -11,6 +14,10 @@ const discord = require("../byb-bot.js").discord;
 const allowed_channels = ['741308777357377617','782331491656138783'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
+const bb_resources_id = "1waTChkjtCecz_3_dtEMTqnf_r8276NjB_zrzK-n7O6g";
+const score_icon = ":green_square:";
+const filler_icon = ":white_large_square:";
+let bot_channel; 
 
 
 const coaches={
@@ -122,6 +129,68 @@ async function writePlayerToDraft(playerName) {
   }
 
   // return result.data.values[0][0];
+}
+
+async function getPlayersFromSheetsHelper(data, context) {
+  let auth = await googleAuth.authorize();
+	let response = await sheets.spreadsheets.values
+		.get({
+			auth: auth,
+			spreadsheetId: bb_resources_id,
+			range: "rosters2003!A2:S265",
+		})
+    .then((res) => res.data.values);
+  
+  let playerData = {};
+  for (value of response) {
+    playerData[value[1]] = {
+      rank: value[0],
+      id: value[1],
+      id_num: value[2],
+      name: value[3],
+      batting: value[4],
+      running: value[5],
+      pitching: value[6],
+      fielding: value[7],
+      arm: value[8],
+      hand: value[9],
+      face: value[10],
+      total: value[11],
+      overall: value[12],
+      price: value[13],
+      lock: value[14],
+      rank_pitcher: value[15],
+      rank_1b: value[16],
+      rank_ss: value[17],
+      rank_catcher: value[18],
+    };
+  }
+	return playerData;
+}
+
+function getScoreString(score) {
+  score_string = score_icon.repeat(score) + filler_icon.repeat(10 - score);
+  return score_string;
+}
+
+function buildPlayerInfoMessage(player) {
+  let scoreString = ":green_square:";
+  let fillerString = ":white_large_square:";
+
+  let message = "";
+  message += `**${player.name}** (${player.id})\n`;
+  message += `\`BAT: (${player.batting}) \` ${getScoreString(player.batting)}\n`;
+  message += `\`RUN: (${player.running}) \` ${getScoreString(player.running)}\n`;
+  message += `\`PIT: (${player.pitching}) \` ${getScoreString(player.pitching)}\n`;
+  message += `\`FLD: (${player.fielding}) \` ${getScoreString(player.fielding)}\n`;
+  message += `\`ARM: (${player.arm}) \` ${getScoreString(player.arm)}\n\n`;
+
+  message += `**Hand:** ${player.hand}⠀**Lock:** ${player.lock != "" ? player.lock : "n/a"}⠀**P Rank:** ${player.rank_pitcher != "" ? player.rank_pitcher : "n/a"}\n`;
+  message += `**1B Rank:** ${player.rank_1b != "" ? player.rank_1b : "n/a"}⠀`;
+  message += `**SS Rank:** ${player.rank_ss != "" ? player.rank_ss : "n/a"}⠀`;
+  message += `**C Rank:** ${player.rank_catcher != "" ? player.rank_catcher : "n/a"}`;
+
+  return message;
 }
 
 function baseballs(num){
@@ -252,6 +321,8 @@ module.exports = {
 			return null;
     }
 
+    bot_channel = client.channels.cache.get("778266821006458950");
+
     //View teams/playersdrafted
 		if (args[0] == "view") {
 			if (args[1] == "team") {
@@ -305,7 +376,7 @@ module.exports = {
 
     if (args[0] == 'set') {
         if (Number.isInteger(parseInt(args[1]))) {
-          draft_num = args[1];
+          draft_num = parseInt(args[1]);
           current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
           let result ='';
           if (current_drafter == "") {
@@ -347,7 +418,16 @@ module.exports = {
       console.log(current_drafter);
       // current_drafter = await getCurrentCoach();
       // await writePlayerToDraft("I wrote this from the bot");
-      return message.channel.send("Did test command");
+      // let playerData = await getPlayersFromSheetsHelper();
+      // console.log(playerData);
+      // getPlayersFromSheetsHelper().then((response) => {
+      //     console.log(response);
+      //     var json = JSON.stringify(response);
+      //     fs.writeFile("players.json", json, "utf8", () => { });
+      // });
+      return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["AB"]));
+      // return message.channel.send(buildPlayerEmbed(playerData["AB"]));
+      
       // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
 
@@ -383,7 +463,7 @@ module.exports = {
             }
           });
 
-        }catch(e){
+          } catch (e) {
           return message.reply("Couldn't find that player.");
         }
 
@@ -396,7 +476,7 @@ module.exports = {
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
-              await writePlayerToDraft(players.Players[args[0]].Name);
+            await writePlayerToDraft(players.Players[args[0]].Name);
 
 					}else{
             let pair='';
@@ -417,8 +497,9 @@ module.exports = {
 
               await writePlayerToDraft(players.Players[pair].Name);
 					}
-          let bot_channel = client.channels.cache.get('778266821006458950');
-          bot_channel.send(stat_report);
+          
+    // bot_channel.send(stat_report);
+    bot_channel.send(buildPlayerInfoMessage(pair));
 
           // write to spreadsheet
 
