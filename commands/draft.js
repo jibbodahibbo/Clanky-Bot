@@ -8,7 +8,7 @@ const { google } = require('googleapis');
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
-const allowed_channels = ['741308777357377617'];
+const allowed_channels = ['741308777357377617','782331491656138783'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 
@@ -16,10 +16,31 @@ const draft_url = process.env.s6_sheet_id;
 const coaches={
         "BB":['187776456519057409','JibboDaHibbo'],
         "JL":['377672560780902402','JLund24'],
+        "69":['344305095577567233','MarcoMcGwire'],
+        "C8":['355931440061612035','CrazyEi8ghts'],
+        "NF":['342901488412000256','NickFolesIsMyDad'],
+        "AE":['105512327293448192','Aesnop'],
+        "13":['201134409863266305','Kiiiiiiiiiiiiis'],
+        "XD":['207696852953333760','Gcool'],
+        "EX":['252968570382843904','Eauxps I. Fourgott'],
+        "WZ":['273653649522294784','Wizard'],
+        "JY":['307010267001257996','Jyknight'],
+        "GS":['355934424061181972','GSchlim'],
+        "YY":['74323981670285312','Yurya'],
+        "MB":['359717979732312064','Mbless'],
+        "MV":['296815103985319936','Mavfatha'],
+        "YT":['213203256606851072','Marco'],
+        "26":['470389312291209246','TheyHateMe (T-Boz)'],
+        "CW":['430920494351515650','Elchrisblanco'],
+        "NO":['338726157233160194','Nodakkian'],
+        "CK":['218371611588296706','Takenotes011'],
+        "FE":['226895221064073216','frogeggs'],
+        "JJ":['142464556151734272','Jarod Johnson'],
+        "MM":['698632902778552380','shrewsbury91'],
+        "JM":['779111772133130260','jmacdrums'],
       }
 
 const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
-
 const draft_cell_start = '';
 
 
@@ -259,14 +280,14 @@ module.exports = {
 			draft_lock = false;
 			return message.reply("The draft is now unlocked.");
 		}
-      
-    
+
+
 	}
 
   // ANY COMMANDS BELOW HERE WILL BE BLOCKED IF THE DRAFT IS LOCKED
   if (draft_lock) {
       return message.reply("The draft is locked. Use `!draft unlock` to unlock it and try again. View commands will still work.");
-  }  
+  }
 
 
   if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
@@ -281,7 +302,7 @@ module.exports = {
       current_drafter = await getCurrentCoach();
       return message.reply("Draft Has Been Reset.");
   }
-    
+
     if (args[0] == 'set') {
         if (Number.isInteger(parseInt(args[1]))) {
           draft_num = args[1];
@@ -292,7 +313,7 @@ module.exports = {
           } else {
               return message.reply(`Draft set to pick #${draft_num}.\n${current_drafter} <@${coaches[current_drafter][0]}> is now on the clock.`)
             }
-          
+
       }
     }
   }
@@ -320,8 +341,8 @@ module.exports = {
 
     //// TODO: Change Players team
 
-    
-    if (args[0] == "test") { 
+
+    if (args[0] == "test") {
       console.log(draft_num);
       console.log(current_drafter);
       // current_drafter = await getCurrentCoach();
@@ -329,9 +350,9 @@ module.exports = {
       return message.channel.send("Did test command");
       // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
-    
-		let result="Unsuccessful Request, try again."; //Default response 
-    
+
+		let result="Unsuccessful Request, try again."; //Default response
+
     current_drafter = await getCurrentCoach();
     if (current_drafter == "") {
       draft_lock = true;
@@ -378,7 +399,7 @@ module.exports = {
               await writePlayerToDraft(players.Players[args[0]].Name);
 
 					}else{
-             let pair='';
+            let pair='';
             if (args.length == 3){
 					       pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
             }else if (args.length== 2){
@@ -397,7 +418,7 @@ module.exports = {
               await writePlayerToDraft(players.Players[pair].Name);
 					}
           let bot_channel = client.channels.cache.get('778266821006458950');
-        //  bot_channel.send(stat_report);
+          bot_channel.send(stat_report);
 
           // write to spreadsheet
 

@@ -1,7 +1,13 @@
 
 const { Schedules } = require("../dbInit");
 const { Op } = require("sequelize");
+const { googleAuth } = require('../byb-bot.js');
+const auth = require('../auth.js');
+const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
+const sheets = require("../byb-bot.js").sheets;
+
+const sheetsAPIKey =process.env.Sheets_APIKey;
 
 //Creates a schdule item using 6 parameters, returns the item from the db.
 async function createScheduleItem(args){
@@ -17,6 +23,14 @@ async function createScheduleItem(args){
 	return ss;
 }
 
+	//// TODO: Google Sheets Magic
+/*
+	async function getSheetSchedule(sheet, range){
+
+	return(listofscheduledmatchups);
+	}
+
+*/
 
 module.exports = {
 	name: "schedules",
@@ -25,6 +39,20 @@ module.exports = {
 
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
+				//Inject a schedule from google sheets.
+				if (args[0] == "inject" && args[1]=="S6"){
+
+
+
+				}
+
+				/*
+				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
+				if (args[0] == "clear") {
+					const clear = await Schedules.destroy({ where: {league:args[1]}, truncate: true });
+					return message.reply("Schedule for &{args[1]} Has Been Cleared.");
+				}
+				*/
 
 				///For adding a scheduled Item.
 				if (args.length == 6) {
