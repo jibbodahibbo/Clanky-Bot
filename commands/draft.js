@@ -499,7 +499,7 @@ module.exports = {
 					}
           
     // bot_channel.send(stat_report);
-    bot_channel.send(buildPlayerInfoMessage(pair));
+    bot_channel.send(buildPlayerInfoMessage(playerData[pair]));
 
           // write to spreadsheet
 
