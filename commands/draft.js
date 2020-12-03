@@ -325,7 +325,7 @@ module.exports = {
 
     if (args[0] == "fix"){
       try{
-    const change_player = await Draft_j.update({ team: ars[2], pick_num:parseInt(args[3]) },
+    const change_player = await Draft_j.update({ team: args[2], pick_num:parseInt(args[3]) },
       { where:{
         player:args[1],
         }
