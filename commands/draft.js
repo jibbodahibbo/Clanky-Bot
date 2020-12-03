@@ -6,7 +6,7 @@ const auth = require('../auth.js');
 const { google } = require('googleapis');
 var fs = require("fs");
 let rawdata = fs.readFileSync("players.json");
-const playerData = JSON.parse(rawdata); 
+const playerData = JSON.parse(rawdata);
 
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
@@ -17,7 +17,7 @@ const draft_url = process.env.s6_sheet_id;
 const bb_resources_id = "1waTChkjtCecz_3_dtEMTqnf_r8276NjB_zrzK-n7O6g";
 const score_icon = ":green_square:";
 const filler_icon = ":white_large_square:";
-let bot_channel; 
+let bot_channel;
 
 
 const coaches={
@@ -140,7 +140,7 @@ async function getPlayersFromSheetsHelper(data, context) {
 			range: "rosters2003!A2:S265",
 		})
     .then((res) => res.data.values);
-  
+
   let playerData = {};
   for (value of response) {
     playerData[value[1]] = {
@@ -323,6 +323,19 @@ module.exports = {
 
     bot_channel = client.channels.cache.get("778266821006458950");
 
+    if (args[0] == "fix"){
+      try{
+    const change_player = await Draft_j.update({ team: args[2], pick_num:parseInt(args[3]) },
+      { where:{
+        player:args[1],
+        }
+      });
+      return message.reply(change_player.player + change_player.team + change_player.pick_num);
+      } catch (e) {
+      return message.reply("Couldn't find that player.");
+    }
+    }
+
     //View teams/playersdrafted
 		if (args[0] == "view") {
 			if (args[1] == "team") {
@@ -427,7 +440,7 @@ module.exports = {
       // });
       return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["AB"]));
       // return message.channel.send(buildPlayerEmbed(playerData["AB"]));
-      
+
       // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
 
@@ -444,7 +457,13 @@ module.exports = {
     if (args.length==1 && args[0].length==2){
         pair = args[0].toUpperCase();
     }else{
-        pair =	findPlayer(args[0]+' '+args[1]);
+      if (args.length == 3){
+           pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
+      }else if (args.length== 2){
+            pair =	findPlayer(args[0]+' '+args[1]);
+      }else{
+            pair =	findPlayer(args[0]);
+      }
     }
           try{
           	const player_to_draft = await Draft_j.findOne({
@@ -497,7 +516,7 @@ module.exports = {
 
               await writePlayerToDraft(players.Players[pair].Name);
 					}
-          
+
     // bot_channel.send(stat_report);
     bot_channel.send(buildPlayerInfoMessage(playerData[pair]));
 
