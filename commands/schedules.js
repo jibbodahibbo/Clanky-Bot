@@ -44,7 +44,7 @@ module.exports = {
 				const sched= s6schedule;
 				const t= s6teams;
 				if (args[0] == "inject" && args[1]=="S6"){
-					for (var i = 0; i < s.length; i++) {
+					for (var i = 0; i < sched.length; i++) {
 						let s=sched[i];
 						let ss = await createScheduleItem(['jorge',s.Game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);					}
 				}
