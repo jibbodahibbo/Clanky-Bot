@@ -5543,5 +5543,26 @@
 		"rank_1b": "1g",
 		"rank_ss": "",
 		"rank_catcher": "1"
+	},
+	"QI": {
+		"rank": "00",
+		"id": "QI",
+		"id_num": "264",
+		"name": "Custom Player",
+		"batting": "0",
+		"running": "0",
+		"pitching": "0",
+		"fielding": "0",
+		"arm": "0",
+		"hand": "R/L",
+		"face": "unique",
+		"total": "00",
+		"overall": "00",
+		"price": "00",
+		"lock": "",
+		"rank_pitcher": "",
+		"rank_1b": "",
+		"rank_ss": "",
+		"rank_catcher": ""
 	}
 }

@@ -5,6 +5,7 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
+const {s6schedule, s6teams} = require("../jorge_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -40,19 +41,24 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
 				//Inject a schedule from google sheets.
+				const sched= s6schedule;
+				const t= s6teams;
 				if (args[0] == "inject" && args[1]=="S6"){
-
-
-
+					for (var i = 0; i < sched.length; i++) {
+						let s=sched[i];
+						let ss = await createScheduleItem(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+					}
+					return message.reply("Injected")
 				}
 
-				/*
+
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
 				if (args[0] == "clear") {
 					const clear = await Schedules.destroy({ where: {league:args[1]}, truncate: true });
-					return message.reply("Schedule for &{args[1]} Has Been Cleared.");
+					return message.reply("Schedule for ${args[1]} Has Been Cleared.");
 				}
-				*/
+
 
 				///For adding a scheduled Item.
 				if (args.length == 6) {

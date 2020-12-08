@@ -175,7 +175,7 @@ async function clearResults(args){
 }
 
 
-let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
+let results_channel_id = "785691064274649138"; // TODO: change to valid channel for this server
 let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
 let test_channel_id = "733773776357163079"; // id in test server
 
@@ -186,7 +186,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050"];
+		let league_list = ["lulu", "paste","rp","5050","jorge"];
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
