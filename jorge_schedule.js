@@ -1,6 +1,4 @@
-module.exports = {
-
-  teams={
+const teams={
       "Red Sox":"<&@448576291332161537>",
       "As":"<&@703992227160129667>",
       "Monsters":"<&@703670650694533162>",
@@ -25,10 +23,10 @@ module.exports = {
       "Cubs":"<&@496817127668580362>",
       "Giants":"<&@702678421423128637>",
       "Devil Rays":"<&@496788937705259009>"
-  }
+  };
 
 
-schedule =[{
+const schedule =[{
    "game": 1,
    "away_team": "As",
    "away_code": "NF",
@@ -1205,3 +1203,5 @@ schedule =[{
    "home_code": "26"
  }
 ]
+
+module.exports = { teams, schedule};
