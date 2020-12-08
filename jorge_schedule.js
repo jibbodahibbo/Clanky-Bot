@@ -1,4 +1,4 @@
-const teams={
+const s6teams={
       "Red Sox":"<&@448576291332161537>",
       "As":"<&@703992227160129667>",
       "Monsters":"<&@703670650694533162>",
@@ -26,7 +26,7 @@ const teams={
   };
 
 
-const schedule =[{
+const s6schedule =[{
    "game": 1,
    "away_team": "As",
    "away_code": "NF",

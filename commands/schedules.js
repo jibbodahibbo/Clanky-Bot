@@ -5,7 +5,7 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
-const {schedule, teams} = require("../jorge_schedule");
+const {s6schedule, s6teams} = require("../jorge_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -41,8 +41,8 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
 				//Inject a schedule from google sheets.
-				const sched= jorge_schedule.schedule;
-				const t= jorge_schedule.teams;
+				const sched= s6schedule;
+				const t= s6teams;
 				if (args[0] == "inject" && args[1]=="S6"){
 					for (var i = 0; i < s.length; i++) {
 						let s=sched[i];
