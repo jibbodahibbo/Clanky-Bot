@@ -5,6 +5,7 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 var fs = require("fs");
+const { MessageEmbed } = require('discord.js');
 let rawdata = fs.readFileSync("players.json");
 const playerData = JSON.parse(rawdata);
 
@@ -176,21 +177,23 @@ function getScoreString(score) {
 function buildPlayerInfoMessage(player) {
   let scoreString = ":green_square:";
   let fillerString = ":white_large_square:";
+  
 
   let message = "";
-  message += `**${player.name}** (${player.id})\n`;
-  message += `\`BAT: (${player.batting}) \` ${getScoreString(player.batting)}\n`;
-  message += `\`RUN: (${player.running}) \` ${getScoreString(player.running)}\n`;
-  message += `\`PIT: (${player.pitching}) \` ${getScoreString(player.pitching)}\n`;
-  message += `\`FLD: (${player.fielding}) \` ${getScoreString(player.fielding)}\n`;
-  message += `\`ARM: (${player.arm}) \` ${getScoreString(player.arm)}\n\n`;
+  message += `**${player.name}** (${player.id})\n\n`;
+  message += `\`BAT:\`⠀${getScoreString(player.batting)}⠀(${player.batting})\n`;
+  message += `\`RUN:\`⠀${getScoreString(player.running)}⠀(${player.running})\n`;
+  message += `\`PIT:\`⠀${getScoreString(player.pitching)}⠀(${player.pitching})\n`;
+  message += `\`FLD:\`⠀${getScoreString(player.fielding)}⠀(${player.fielding})\n`;
+  message += `\`ARM:\`⠀${getScoreString(player.arm * 2)}⠀(${player.arm * 2})\n\n`;
 
   message += `**Hand:** ${player.hand}⠀**Lock:** ${player.lock != "" ? player.lock : "n/a"}⠀**P Rank:** ${player.rank_pitcher != "" ? player.rank_pitcher : "n/a"}\n`;
   message += `**1B Rank:** ${player.rank_1b != "" ? player.rank_1b : "n/a"}⠀`;
   message += `**SS Rank:** ${player.rank_ss != "" ? player.rank_ss : "n/a"}⠀`;
   message += `**C Rank:** ${player.rank_catcher != "" ? player.rank_catcher : "n/a"}`;
 
-  return message;
+  let playerEmbed = new MessageEmbed().setDescription(message).setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`);
+  return playerEmbed;
 }
 
 function baseballs(num){
@@ -438,7 +441,7 @@ module.exports = {
       //     var json = JSON.stringify(response);
       //     fs.writeFile("players.json", json, "utf8", () => { });
       // });
-      return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["AB"]));
+      return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["LD"]));
       // return message.channel.send(buildPlayerEmbed(playerData["AB"]));
 
       // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
