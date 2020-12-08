@@ -5,6 +5,7 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
+const {jorge_schedule, teams} = require("../jorge_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -40,10 +41,15 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
 				//Inject a schedule from google sheets.
-				/*
+				const sched= jorge_schedule.schedule;
+				const t= jorge_schedule.teams;
 				if (args[0] == "inject" && args[1]=="S6"){
+					for (var i = 0; i < s.length; i++) {
+						let s=sched[i];
+						let ss = await createScheduleItem({'jorge',s.Game,t[s.away_team],s.away_code,t[s.home_team],s.home_code});
+					}
 				}
-				*/
+
 				/*
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
 				if (args[0] == "clear") {
