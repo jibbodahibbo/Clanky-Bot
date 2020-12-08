@@ -5,7 +5,7 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
-const {jorge_schedule, teams} = require("../jorge_schedule");
+const {schedule, teams} = require("../jorge_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
