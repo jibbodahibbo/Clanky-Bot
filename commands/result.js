@@ -175,7 +175,7 @@ async function clearResults(args){
 }
 
 
-let results_channel_id = "709149765455052859"; // TODO: change to valid channel for this server
+let results_channel_id = "785691064274649138"; // TODO: change to valid channel for this server
 let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
 let test_channel_id = "733773776357163079"; // id in test server
 
