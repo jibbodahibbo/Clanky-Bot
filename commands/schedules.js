@@ -49,15 +49,16 @@ module.exports = {
 						let ss = await createScheduleItem(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
  						console.log(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
+					return message.reply("Injected")
 				}
 
-				/*
+
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
 				if (args[0] == "clear") {
 					const clear = await Schedules.destroy({ where: {league:args[1]}, truncate: true });
 					return message.reply("Schedule for &{args[1]} Has Been Cleared.");
 				}
-				*/
+
 
 				///For adding a scheduled Item.
 				if (args.length == 6) {
