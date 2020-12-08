@@ -40,12 +40,10 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
 				//Inject a schedule from google sheets.
+				/*
 				if (args[0] == "inject" && args[1]=="S6"){
-
-
-
 				}
-
+				*/
 				/*
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
 				if (args[0] == "clear") {
