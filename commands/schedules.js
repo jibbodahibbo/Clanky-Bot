@@ -46,8 +46,8 @@ module.exports = {
 				if (args[0] == "inject" && args[1]=="S6"){
 					for (var i = 0; i < sched.length; i++) {
 						let s=sched[i];
-						let ss = await createScheduleItem(['jorge',s.Game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['jorge',s.Game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						let ss = await createScheduleItem(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 				}
 
