@@ -1204,4 +1204,4 @@ const s6schedule =[{
  }
 ]
 
-module.exports = { teams, schedule};
+module.exports = { s6teams, s6schedule};
