@@ -73,7 +73,7 @@ module.exports = {
 								away_coach_id:args[2],
 								}
 							});
-					return message.reply("Schedule for ${args[2]} has Been changes to ${args[3]}.");
+					return message.reply(`Schedule for ${args[2]} has Been changes to ${args[3]}.`);
 				}
 
 
