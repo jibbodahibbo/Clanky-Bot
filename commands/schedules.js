@@ -67,6 +67,12 @@ module.exports = {
 							home_coach_id:args[2],
 							}
 						});
+						const fixcoach2 = await Schedules.update({ away_coach_id: args[3]},
+							{ where:{
+								league: args[1],
+								away_coach_id:args[2],
+								}
+							});
 					return message.reply("Schedule for ${args[2]} has Been changes to ${args[3]}.");
 				}
 
