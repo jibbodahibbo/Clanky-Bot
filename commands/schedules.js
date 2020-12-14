@@ -60,9 +60,10 @@ module.exports = {
 				}
 */
 
-				if (args[0]+args[1] == "fixcoach") {
+				if (args[0] == "fixcoach") {
 					const fixcoach = await Schedules.update({ home_coach_id: args[3]},
 						{ where:{
+							league: args[1],
 							home_coach_id:args[2],
 							}
 						});
