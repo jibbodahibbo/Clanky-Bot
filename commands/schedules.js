@@ -54,9 +54,19 @@ module.exports = {
 
 
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
-				if (args[0] == "clear") {
+	/*			if (args[0] == "clear") {
 					const clear = await Schedules.destroy({ where: {league:args[1]}, truncate: true });
 					return message.reply("Schedule for ${args[1]} Has Been Cleared.");
+				}
+*/
+
+				if (args[0]+args[1] == "fixcoach") {
+					const fixcoach = await Schedules.update({ home_coach_id: args[3]},
+						{ where:{
+							home_coach_id:args[2],
+							}
+						});
+					return message.reply("Schedule for ${args[2]} has Been changes to ${args[3]}.");
 				}
 
 
