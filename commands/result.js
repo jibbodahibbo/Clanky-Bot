@@ -198,7 +198,7 @@ module.exports = {
 		let images = [];
 		const enforcing_score = false;
 		const example_command =
-			"`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`";
+			"`!result [league name] [coach initials] G[game number] [your score] - [their score]`";
 		const color_unrecorded = 13632027;
 		const color_recorded = 4289797;
 		const color_pending = 16312092;
