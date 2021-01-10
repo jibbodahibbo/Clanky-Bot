@@ -460,7 +460,7 @@ module.exports = {
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
-      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game:' +result_pair_query.game_num + " has been submitted by. " + message.author.username);
+      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game:' +result_pair_query.game_num + " has been submitted by " + message.author.username);
 
 		}
 	},

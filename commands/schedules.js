@@ -41,6 +41,7 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
 				//Inject a schedule from google sheets.
+				/*
 				const sched= s6schedule;
 				const t= s6teams;
 				if (args[0] == "inject" && args[1]=="S6"){
@@ -51,7 +52,7 @@ module.exports = {
 					}
 					return message.reply("Injected")
 				}
-
+*/
 
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
 	/*			if (args[0] == "clear") {
@@ -73,7 +74,7 @@ module.exports = {
 								away_coach_id:args[2],
 								}
 							});
-					return message.reply(`Schedule for ${args[2]} has Been changes to ${args[3]}.`);
+					return message.reply(`Coach ${args[2]} in the schedule has been replaced by ${args[3]}.`);
 				}
 
 
