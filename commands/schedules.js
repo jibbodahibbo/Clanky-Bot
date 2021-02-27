@@ -41,6 +41,7 @@ module.exports = {
 		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 			try {
 				//Inject a schedule from google sheets.
+				/*
 				const sched= s6schedule;
 				const t= s6teams;
 				if (args[0] == "inject" && args[1]=="S6"){
@@ -51,12 +52,29 @@ module.exports = {
 					}
 					return message.reply("Injected")
 				}
-
+*/
 
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
-				if (args[0] == "clear") {
+	/*			if (args[0] == "clear") {
 					const clear = await Schedules.destroy({ where: {league:args[1]}, truncate: true });
 					return message.reply("Schedule for ${args[1]} Has Been Cleared.");
+				}
+*/
+
+				if (args[0] == "fixcoach") {
+					const fixcoach = await Schedules.update({ home_coach_id: args[3]},
+						{ where:{
+							league: args[1],
+							home_coach_id:args[2],
+							}
+						});
+						const fixcoach2 = await Schedules.update({ away_coach_id: args[3]},
+							{ where:{
+								league: args[1],
+								away_coach_id:args[2],
+								}
+							});
+					return message.reply(`Coach ${args[2]} in the schedule has been replaced by ${args[3]}.`);
 				}
 
 

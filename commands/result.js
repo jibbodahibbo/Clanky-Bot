@@ -186,7 +186,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050","jorge"];
+		let league_list = ["lulu", "paste","rp","5050","jorge","hrd"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
@@ -198,7 +198,7 @@ module.exports = {
 		let images = [];
 		const enforcing_score = false;
 		const example_command =
-			"`!result [lulu or paste] [coach initials] G[game number] [your score] - [their score]`";
+			"`!result [league name] [coach initials] G[game number] [your score] - [their score]`";
 		const color_unrecorded = 13632027;
 		const color_recorded = 4289797;
 		const color_pending = 16312092;
@@ -460,7 +460,7 @@ module.exports = {
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
-      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game:' +result_pair_query.game_num + " has been submitted by. " + message.author.username);
+      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game:' +result_pair_query.game_num + " has been submitted by " + message.author.username);
 
 		}
 	},
