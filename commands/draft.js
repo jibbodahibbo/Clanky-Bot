@@ -180,7 +180,7 @@ function buildPlayerInfoMessage(player) {
   
 
   let message = "";
-  message += `**${player.name}** (${player.id})\n\n`;
+  message += `**${player.name}** (${player.id})\n`;
   message += `\`BAT:\`⠀${getScoreString(player.batting)}⠀(${player.batting})\n`;
   message += `\`RUN:\`⠀${getScoreString(player.running)}⠀(${player.running})\n`;
   message += `\`PIT:\`⠀${getScoreString(player.pitching)}⠀(${player.pitching})\n`;
@@ -313,7 +313,17 @@ async function showDraft(message, args, client){
 
     client.users.cache.get(message.author.id)
       .send(drafted_player_list);
-    }
+}
+    
+async function getDraftStatus() {
+  current_drafter = await getCurrentCoach();
+
+  draft_status = `**Season 6 Draft**\n__Status__: ${
+		draft_lock ? "Locked" : "Unlocked"
+    }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter}`;
+  
+  return draft_status;
+}
 
 module.exports = {
 	name: 'draft',
@@ -350,8 +360,7 @@ module.exports = {
     }
 
     if (args[0] == "status") {
-      current_drafter = await getCurrentCoach();
-      return message.channel.send(`**Season 6 Draft**\n__Status__: ${draft_lock ? "Locked" : "Unlocked"}\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter}`);
+      return message.channel.send(await getDraftStatus());
     }
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
@@ -364,8 +373,10 @@ module.exports = {
 		}
 
 		if (args[0] == "unlock") {
-			draft_lock = false;
-			return message.reply("The draft is now unlocked.");
+      draft_lock = false;
+      
+      message.reply("The draft is now unlocked.")
+      return message.channel.send(await getDraftStatus());
 		}
 
 
@@ -387,7 +398,8 @@ module.exports = {
       }
       draft_num = 1;
       current_drafter = await getCurrentCoach();
-      return message.reply("Draft Has Been Reset.");
+      message.reply("Draft Has Been Reset.")
+      return message.channel.send(await getDraftStatus());
   }
 
     if (args[0] == 'set') {
