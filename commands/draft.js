@@ -16,6 +16,7 @@ const allowed_channels = ['741308777357377617','782331491656138783'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 const bb_resources_id = "1waTChkjtCecz_3_dtEMTqnf_r8276NjB_zrzK-n7O6g";
+const player_profiles_id = "178tUs7GwTMLEZQS_CCYTdAsvCgVP4-rZ_q9336B5zso";
 const score_icon = ":green_square:";
 const filler_icon = ":white_large_square:";
 let bot_channel;
@@ -142,6 +143,30 @@ async function getPlayersFromSheetsHelper(data, context) {
 		})
     .then((res) => res.data.values);
 
+  let personal_info = await sheets.spreadsheets.values.get({
+    auth: auth,
+    spreadsheetId: player_profiles_id,
+    range: "03!A2:I63"
+  })
+  .then((res) => res.data.values);
+  
+  console.log(personal_info);
+
+  let bbCharToImageURL = {
+    "B": "https://i.ibb.co/SfKDrCf/AB-Generic-HS.png",
+    "C": "https://i.ibb.co/PMVVHw3/AC-Generic-HS.png",
+    "D": "https://i.ibb.co/Vt9n0F9/AD-Generic-HS.png",
+    "E": "https://i.ibb.co/jGmbTJt/AE-Generic-HS.png",
+    "F": "https://i.ibb.co/7WKNZNS/AF-Generic-HS.png",
+    "G": "https://i.ibb.co/5r0FTRK/AG-Generic-HS.png",
+    "H": "https://i.ibb.co/QF5njpC/AH-Generic-HS.png",
+    "I": "https://i.ibb.co/NVMXDbZ/AI-Generic-HS.png",
+    "J": "https://i.ibb.co/xMFHmnB/AJ-Generic-HS.png",
+    "K": "https://i.ibb.co/gTd1qmB/AK-Generic-HS.png",
+    "L": "https://i.ibb.co/f1bXXwf/AL-Generic-HS.png",
+    "M": "https://i.ibb.co/PGWVQzb/AM-Generic-HS.png"
+};
+
   let playerData = {};
   for (value of response) {
     playerData[value[1]] = {
@@ -165,6 +190,22 @@ async function getPlayersFromSheetsHelper(data, context) {
       rank_ss: value[17],
       rank_catcher: value[18],
     };
+
+    if (playerData[value[1]]["face"].length == 1) {
+      playerData[value[1]]["headshot_image"] = bbCharToImageURL[playerData[value[1]]["face"]];
+    }
+  }
+
+  for (value of personal_info) {
+    let birthday = value[2].split("/");
+    playerData[value[0]]["birthday_month"] = birthday[0];
+    playerData[value[0]]["birthday_day"] = birthday[1];
+    playerData[value[0]]["nickname"] = value[3];
+    playerData[value[0]]["bats"] = value[4];
+    playerData[value[0]]["throws"] = value[5];
+    playerData[value[0]]["bio"] = value[6];
+    playerData[value[0]]["headshot_image"] = value[7];
+    playerData[value[0]]["bio_image"] = value[8];
   }
 	return playerData;
 }
@@ -193,6 +234,10 @@ function buildPlayerInfoMessage(player) {
   message += `**C Rank:** ${player.rank_catcher != "" ? player.rank_catcher : "n/a"}`;
 
   let playerEmbed = new MessageEmbed().setDescription(message).setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`);
+  if ("headshot_image" in player) {
+    playerEmbed.setThumbnail(player.headshot_image);
+  }
+  
   return playerEmbed;
 }
 
@@ -442,18 +487,18 @@ module.exports = {
 
 
     if (args[0] == "test") {
-      console.log(draft_num);
-      console.log(current_drafter);
+      // console.log(draft_num);
+      // console.log(current_drafter);
       // current_drafter = await getCurrentCoach();
       // await writePlayerToDraft("I wrote this from the bot");
       // let playerData = await getPlayersFromSheetsHelper();
-      // console.log(playerData);
+      // console.log(playerData["AD"]);
       // getPlayersFromSheetsHelper().then((response) => {
       //     console.log(response);
       //     var json = JSON.stringify(response);
       //     fs.writeFile("players.json", json, "utf8", () => { });
       // });
-      return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["LD"]));
+      // return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["HO"]));
       // return message.channel.send(buildPlayerEmbed(playerData["AB"]));
 
       // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
