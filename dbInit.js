@@ -5,7 +5,7 @@ const {Sequelize, DataTypes} = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.env.PASSWORD, {
 	host: process.env.HOST,
 	dialect: 'postgres',
-	options: { dialect:'postgres', native:true, ssl:true, dialectOptions: {ssl: true}},
+	ssl: true,
 	port: '5432'
 
 });
