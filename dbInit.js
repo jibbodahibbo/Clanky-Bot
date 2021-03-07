@@ -5,7 +5,12 @@ const {Sequelize, DataTypes} = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.env.PASSWORD, {
 	host: process.env.HOST,
 	dialect: 'postgres',
-	ssl: true,
+	dialectOptions: {
+	ssl: {
+		require: true, // This will help you. But you will see nwe error
+		rejectUnauthorized: false // This line will fix new error
+	}
+},
 	port: '5432'
 
 });
