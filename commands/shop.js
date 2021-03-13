@@ -1,4 +1,5 @@
-		const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
+const { MessageEmbed } = require('discord.js');
+const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
 
 module.exports = {
 	name: 'shop',
@@ -10,8 +11,6 @@ module.exports = {
 			return null;
 		}
 		const shop_embed={
-
-
 			   "embed": {
 			    "title": "Clanky's Shop",
 			    "description": "Redeem Physical and Digital Prizes with your Clanky Coins",
