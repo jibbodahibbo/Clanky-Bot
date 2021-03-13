@@ -11,7 +11,7 @@ module.exports = {
 		}
 		const shop_embed={
 
-			{
+
 			   "embed": {
 			    "title": "Clanky's Shop",
 			    "description": "Redeem Physical and Digital Prizes with your Clanky Coins",
@@ -42,8 +42,7 @@ module.exports = {
 			      }
 			    ]
 			  }
-			}
-		}
+					}
 		message.channel.send({ embed: shop_embed });
 
 	},
