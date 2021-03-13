@@ -1,5 +1,5 @@
 const {ClankyCoins} = require('../dbInit');
-const allowed_channels = ['733773776357163079','741308777357377617'];
+const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
 
 
 async function addUser(message){
@@ -103,16 +103,17 @@ module.exports = {
 									tag:message.mentions.users.first().tag,
 									coins:0
 								});
+								return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger with 0 coins');
 							}
 							catch (e) {
 								if (e.name === 'SequelizeUniqueConstraintError') {
+									let usertag=message.mentions.users.first().tag;
 									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
 									return message.reply(user.username + " has "+ user.coins + " clanky coins.");
 								}
 									console.log(e);
 									return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 								}
-					return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger with 0 coins');
 					}
 
 				}
