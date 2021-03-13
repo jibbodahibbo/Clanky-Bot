@@ -1,5 +1,5 @@
 const {ClankyCoins} = require('../dbInit');
-const allowed_channels = ['733773776357163079','741308777357377617'];
+const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
 
 
 async function addUser(message){
