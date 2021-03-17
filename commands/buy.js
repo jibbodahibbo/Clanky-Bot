@@ -1,6 +1,6 @@
 const {ClankyCoins} = require('../dbInit');
 const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
-
+/*
 //General purchase agreement
 async function purchase(user, cost){
 	console.log("puchase attempted");
@@ -40,13 +40,15 @@ function congratsme(){
 
 	return gifs[Math.floor(Math.random() * gifs.length)];
 }
+*/
+
 
 module.exports = {
 	name: 'buy things',
 	description: 'buy some things from the bot with clankycoins',
 	async execute(message, args) {
 
-
+/*
 		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
 		}
@@ -70,6 +72,6 @@ module.exports = {
 			}
 
 	}
-
+*/
 	},
 };
