@@ -219,9 +219,15 @@ function buildPlayerInfoMessage(player) {
   let scoreString = ":green_square:";
   let fillerString = ":white_large_square:";
   
+  let birthday_string =
+		"birthday_month" in player
+			? `:birthday: ${player.birthday_month}/${player.birthday_day}\n`
+			: "";
+  let nickname_string = "nickname" in player ? `${player.nickname}` : "";
 
   let message = "";
-  message += `**${player.name}** (${player.id})\n`;
+  message += `__**${player.name}**__ (${player.id})\n`;
+  message += nickname_string + "⠀" + birthday_string + "\n";
   message += `\`BAT:\`⠀${getScoreString(player.batting)}⠀(${player.batting})\n`;
   message += `\`RUN:\`⠀${getScoreString(player.running)}⠀(${player.running})\n`;
   message += `\`PIT:\`⠀${getScoreString(player.pitching)}⠀(${player.pitching})\n`;
@@ -487,10 +493,7 @@ module.exports = {
 
 
     if (args[0] == "test") {
-      // console.log(draft_num);
-      // console.log(current_drafter);
-      // current_drafter = await getCurrentCoach();
-      // await writePlayerToDraft("I wrote this from the bot");
+      // TESTING PLAYERS.json WRITING
       // let playerData = await getPlayersFromSheetsHelper();
       // console.log(playerData["AD"]);
       // getPlayersFromSheetsHelper().then((response) => {
@@ -499,7 +502,11 @@ module.exports = {
       //     fs.writeFile("players.json", json, "utf8", () => { });
       // });
       // return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["HO"]));
-      // return message.channel.send(buildPlayerEmbed(playerData["AB"]));
+      return message.channel.send(buildPlayerInfoMessage(playerData["AD"]));
+      // END THAT TESTING
+
+      // take current date
+
 
       // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
     }
