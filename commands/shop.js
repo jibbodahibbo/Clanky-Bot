@@ -20,19 +20,19 @@ module.exports = {
 			    },
 			    "fields": [
 			      {
-			        "name": "!buy congratsme: 300 CC",
+			        "name": "!buy congratsme : 300 CC",
 			        "value":"The BYB-Bot will congratulate you with a gif.",
 			      },
 			            {
-			        "name": "!buy joke: 1,000 CC",
+			        "name": "!buy joke : 1,000 CC",
 			        "value": "The BYB-Bot will tell you a very rare backyard baseball themed joke.",
 			      },
 			       {
-			        "name": "!buy insult <@username>, 2,000 CC",
+			        "name": "!buy insult <@username> : 2,000 CC",
 			        "value": "The BYB-Bot will insult somebody for you publicly and in a DM",
 			      },
 			      {
-			        "name": "!buy penant: 10,000 CC",
+			        "name": "!buy penant : 10,000 CC",
 			        "value": "<@187776456519057409> will make you a Custom Penant and mail it to you (USA ONLY).",
 			      }
 			    ]
