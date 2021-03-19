@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 const googleAuth = require("./auth");
+const Canvas = require('canvas');
 
 // for jlund's local config
 // const dotenv = require('dotenv');
@@ -21,7 +22,9 @@ module.exports = {
 	client: client,
 	sheets: sheets,
 	discord: Discord,
-	googleAuth: googleAuth
+	googleAuth: googleAuth,
+	canvas: Canvas,
+	sequelize: sequelize
 }
 
 client.commands = new Discord.Collection();
