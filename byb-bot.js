@@ -49,14 +49,14 @@ client.once('ready', () => {
 	Draft_j.sync();
 
 	// fires every day at 10 am
-	let playerSpotlightJob = new cron.CronJob("* * 10 * * *", () => {
+	let playerSpotlightJob = new cron.CronJob("0 0 10 * * *", () => {
 		client.channels
 			.fetch(botchat_channel).then((channel) => {
 				channel.send(playerSpotlight.getPlayerSpotlight());
 			});
 	});
 	
-	playerSpotlightJob.start();
+	// playerSpotlightJob.start();
 });
 
 client.on('message', async message => {
