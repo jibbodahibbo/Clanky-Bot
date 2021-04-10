@@ -1,5 +1,5 @@
 const {ClankyCoins} = require('../dbInit');
-const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
+const allowed_channels = ['741308777357377617','778266821006458950'];
 
 //General purchase agreement
 async function purchase(user, cost){
