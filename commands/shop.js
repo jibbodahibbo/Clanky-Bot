@@ -32,7 +32,7 @@ module.exports = {
 			        "value": "The BYB-Bot will insult somebody for you publicly and in a DM",
 			      },
 			      {
-			        "name": "!buy penant : 10,000 CC",
+			        "name": "!buy pennant : 10,000 CC",
 			        "value": "<@187776456519057409> will make you a Custom Penant and mail it to you (USA ONLY).",
 			      }
 			    ]
