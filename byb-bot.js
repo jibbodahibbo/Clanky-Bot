@@ -4,6 +4,11 @@ const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 const googleAuth = require("./auth");
 const Canvas = require('canvas');
+const cron = require("cron");
+const playerSpotlight = require('./playerSpotlight.js');
+const botchat_channel = "778266821006458950";
+const testlab_channel = "741308777357377617";
+const jlundID = "377672560780902402";
 
 // for jlund's local config
 // const dotenv = require('dotenv');
@@ -24,7 +29,7 @@ module.exports = {
 	discord: Discord,
 	googleAuth: googleAuth,
 	canvas: Canvas,
-	sequelize: sequelize
+	sequelize: sequelize,
 }
 
 client.commands = new Discord.Collection();
@@ -42,6 +47,16 @@ client.once('ready', () => {
 	Schedules.sync();
 	Results.sync();
 	Draft_j.sync();
+
+	// fires every day at 10 am
+	let playerSpotlightJob = new cron.CronJob("0 0 10 * * *", () => {
+		client.channels
+			.fetch(botchat_channel).then((channel) => {
+				channel.send(playerSpotlight.getPlayerSpotlight());
+			});
+	});
+	
+	// playerSpotlightJob.start();
 });
 
 client.on('message', async message => {
