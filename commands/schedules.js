@@ -38,7 +38,9 @@ module.exports = {
 	description: "scheduling teams",
 	async execute(message, args, client) {
 
-		if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
+		if (message.member.roles.cache.find(role => role.name == 'Commissioner')
+			|| message.member.roles.cache.find(role => role.name == 'Codehead')
+			|| message.member.roles.cache.find(role => role.name == 'Admin')) {
 			try {
 				//Inject a schedule from google sheets.
 				/*
