@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const { Schedules, Results } = require("../dbInit");
 const discord = require("../byb-bot.js").discord;
+const twitterCommands = require("../twitterCommands.js");
 /**
  *
  * @param {*} args
@@ -445,6 +446,8 @@ module.exports = {
 				channel.send(awayMessage, { embed: awayObject }).then(() => {
 					channel.send("", { embed: homeObject });
 				});
+
+				twitterCommands.tweetResult(client, game_schedule_data, away_result_obj, home_result_obj);
 			} else {
 				throw Error(
 					`Schedule data was null for this query: ${schedule_data_query}`
@@ -460,7 +463,7 @@ module.exports = {
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
-      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game:' +result_pair_query.game_num + " has been submitted by " + message.author.username);
+      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game: ' +result_pair_query.game_num + " has been submitted by " + message.author.username);
 
 		}
 	},
