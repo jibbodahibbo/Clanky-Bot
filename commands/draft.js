@@ -22,44 +22,94 @@ const filler_icon = ":white_large_square:";
 let bot_channel;
 
 
-const coaches={
-        "BB":['187776456519057409','JibboDaHibbo'],
-        "JL":['377672560780902402','JLund24'],
-        "69":['344305095577567233','MarcoMcGwire'],
-        "C8":['355931440061612035','CrazyEi8ghts'],
-        "NF":['342901488412000256','NickFolesIsMyDad'],
-        "AE":['105512327293448192','Aesnop'],
-        "13":['201134409863266305','Kiiiiiiiiiiiiis'],
-        "XD":['207696852953333760','Gcool'],
-        "EX":['252968570382843904','Eauxps I. Fourgott'],
-        "WZ":['273653649522294784','Wizard'],
-        "JY":['307010267001257996','Jyknight'],
-        "GS":['355934424061181972','GSchlim'],
-        "YY":['74323981670285312','Yurya'],
-        "MB":['359717979732312064','Mbless'],
-        "MV":['296815103985319936','Mavfatha'],
-        "YT":['213203256606851072','Marco'],
-        "26":['470389312291209246','TheyHateMe (T-Boz)'],
-        "CW":['430920494351515650','Elchrisblanco'],
-        "NO":['338726157233160194','Nodakkian'],
-        "CK":['218371611588296706','Takenotes011'],
-        "BA":['753099045651742731','Jorges Bank Account'],
-        "JJ":['142464556151734272','Jarod Johnson'],
-        "MM":['698632902778552380','shrewsbury91'],
-        "JM":['779111772133130260','jmacdrums'],
-      }
+// const coaches={
+//         "BB":['187776456519057409','JibboDaHibbo'],
+//         "JL":['377672560780902402','JLund24'],
+//         "69":['344305095577567233','MarcoMcGwire'],
+//         "C8":['355931440061612035','CrazyEi8ghts'],
+//         "NF":['342901488412000256','NickFolesIsMyDad'],
+//         "AE":['105512327293448192','Aesnop'],
+//         "13":['201134409863266305','Kiiiiiiiiiiiiis'],
+//         "XD":['207696852953333760','Gcool'],
+//         "EX":['252968570382843904','Eauxps I. Fourgott'],
+//         "WZ":['273653649522294784','Wizard'],
+//         "JY":['307010267001257996','Jyknight'],
+//         "GS":['355934424061181972','GSchlim'],
+//         "YY":['74323981670285312','Yurya'],
+//         "MB":['359717979732312064','Mbless'],
+//         "MV":['296815103985319936','Mavfatha'],
+//         "YT":['213203256606851072','Marco'],
+//         "26":['470389312291209246','TheyHateMe (T-Boz)'],
+//         "CW":['430920494351515650','Elchrisblanco'],
+//         "NO":['338726157233160194','Nodakkian'],
+//         "CK":['218371611588296706','Takenotes011'],
+//         "BA":['753099045651742731','Jorges Bank Account'],
+//         "JJ":['142464556151734272','Jarod Johnson'],
+//         "MM":['698632902778552380','shrewsbury91'],
+//         "JM":['779111772133130260','jmacdrums'],
+//       }
 
-const draft_sheet_id = '1xtRDt9xoMIqbXeNAOP03lYKYdFe-oMhGZuTDCqxtRVM';
+const coaches = {
+	C8: ["355931440061612035", "crazyei8hts"],
+	BA: ["753099045651742731", "JorgesBankAccount"],
+	CW: ["430920494351515650", "Elchrisblanco"],
+	JL: ["377672560780902402", "jlund24"],
+	BB: ["187776456519057409", "JibboDaHibbo"],
+	MM: ["698632902778552380", "shrewsbury91"],
+	AE: ["105512327293448192", "Aesnop"],
+	YY: ["74323981670285312", "Yurya"],
+	13: ["201134409863266305", "kiiiiiiiiiiiiis"],
+	WZ: ["273653649522294784", "Wizard"],
+	JY: ["307010267001257996", "Jyknight"],
+	IN: ["437956094023696385", "NateinDisney"],
+	MV: ["296815103985319936", "Mavfatha"],
+	EX: ["252968570382843904", "Eauxps I. Fourgott"],
+	YT: ["213203256606851072", "Marco"],
+	JJ: ["142464556151734272", "Jarod Johnson"],
+	26: ["470389312291209246", "T-Boz"],
+	JV: ["78596893797523456", "TheRealSisu"],
+	28: ["87804201056337920", "Natetastic28"],
+	VS: ["135436127862652928", "Vissery"],
+	SB: ["711388106749902849", "SilverBullet102"],
+	TO: ["692170461047554048", "Toast"],
+	SK: ["318469807282585640", "skolgamingnetwork"],
+	MT: ["335400047070019585", "MelloMathTeacher"],
+};
+
+const teams = {
+	C8: ["Red Phillies", "red"],
+	BB: ["Junior Brewers", 16172079],
+	YY: ["Green Monsters", "lime"],
+	WZ: ["Super Duper Wombats", "yellow"],
+	13: ["Boston Cubs", 39129],
+	BA: ["Seattle Mariners", 6061450],
+	MV: ["Baltimore Orioles", 15695665],
+	AE: ["Blue Red Sox", 10509236],
+	EX: ["Super-Duper Melonheads", "green"],
+	28: ["Milwaukee Braves", 16711680],
+	CW: ["Seattle Fishes", "blue"],
+	JL: ["Baltimore Bombers", "black"],
+	JY: ["Knights", "gray"],
+	MM: ["Boston Reds", "red"],
+	IN: ["Los Angeles Angels", 16065893],
+	JV: ["Arizona Diamondbacks", "purple"],
+	SB: ["Little Giants", 12797184],
+	MT: ["Junior Athletics", "green"],
+	26: ["Tampa Bay Devil Rays", "black"],
+	JJ: ["Los Angeles Dodgers", "teal"],
+	VS: ["Humongous Hornets", "blue"],
+	SK: ["Florida Marlins", 48028],
+	YT: ["New York Yankees", 7589],
+	TO: ["Minnesota Twins", 255],
+};
+
+const draft_sheet_id = "1Vooto5ho04iGsRncfPSg-oaXH5vPl07khbKFHu9rCEQ";
 const draft_cell_start = '';
-
-
 
 let draft_num = 1;
 let draft_cell = 'A1';
 let current_drafter = ""; //Should be a 2 char pair.
 let draft_lock = true;
-
-
 
 async function getFullDraft() {
   let sheetName = "DRAFT!";
@@ -99,15 +149,13 @@ async function getCurrentCoach() {
   } catch (err) {
 		console.log(err);
   }
+
   if ('values' in result.data) {
     return result.data.values[0][0];
   }
   else {
     return "";
   }
-  // console.log(result.data);
-  // console.log(result.data.values);
-  // return result.data.values[0][0];
 }
 
 async function writePlayerToDraft(playerName) {
@@ -227,19 +275,26 @@ function buildPlayerInfoMessage(player) {
 
   let message = "";
   message += `__**${player.name}**__ (${player.id})\n`;
-  message += nickname_string + "⠀" + birthday_string + "\n";
-  message += `\`BAT:\`⠀${getScoreString(player.batting)}⠀(${player.batting})\n`;
-  message += `\`RUN:\`⠀${getScoreString(player.running)}⠀(${player.running})\n`;
-  message += `\`PIT:\`⠀${getScoreString(player.pitching)}⠀(${player.pitching})\n`;
-  message += `\`FLD:\`⠀${getScoreString(player.fielding)}⠀(${player.fielding})\n`;
-  message += `\`ARM:\`⠀${getScoreString(player.arm * 2)}⠀(${player.arm * 2})\n\n`;
+  message += nickname_string + " " + birthday_string + "\n";
+  message += `\`BAT:\` ${getScoreString(player.batting)} (${player.batting})\n`;
+  message += `\`RUN:\` ${getScoreString(player.running)} (${player.running})\n`;
+  message += `\`PIT:\` ${getScoreString(player.pitching)} (${player.pitching})\n`;
+  message += `\`FLD:\` ${getScoreString(player.fielding)} (${player.fielding})\n`;
+  message += `\`ARM:\` ${getScoreString(player.arm * 2)} (${player.arm * 2})\n\n`;
 
-  message += `**Hand:** ${player.hand}⠀**Lock:** ${player.lock != "" ? player.lock : "n/a"}⠀**P Rank:** ${player.rank_pitcher != "" ? player.rank_pitcher : "n/a"}\n`;
-  message += `**1B Rank:** ${player.rank_1b != "" ? player.rank_1b : "n/a"}⠀`;
-  message += `**SS Rank:** ${player.rank_ss != "" ? player.rank_ss : "n/a"}⠀`;
+  message += `**Hand:** ${player.hand} **Lock:** ${player.lock != "" ? player.lock : "n/a"} **P Rank:** ${player.rank_pitcher != "" ? player.rank_pitcher : "n/a"}\n`;
+  message += `**1B Rank:** ${player.rank_1b != "" ? player.rank_1b : "n/a"} `;
+  message += `**SS Rank:** ${player.rank_ss != "" ? player.rank_ss : "n/a"} `;
   message += `**C Rank:** ${player.rank_catcher != "" ? player.rank_catcher : "n/a"}`;
 
-  let playerEmbed = new MessageEmbed().setDescription(message).setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`);
+  let title = `[#${draft_num}] **_${teams[current_drafter][0]} (${current_drafter})_** pick`;
+  let playerEmbed = new MessageEmbed()
+    .setTitle(title)
+    .setColor(teams[current_drafter][1])
+    .setDescription(message)
+    .setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`)
+    .setTimestamp();
+  
   if ("headshot_image" in player) {
     playerEmbed.setThumbnail(player.headshot_image);
   }
@@ -369,9 +424,9 @@ async function showDraft(message, args, client){
 async function getDraftStatus() {
   current_drafter = await getCurrentCoach();
 
-  draft_status = `**Season 6 Draft**\n__Status__: ${
-		draft_lock ? "Locked" : "Unlocked"
-    }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter}`;
+  draft_status = `**Season 7 Draft**\n__Status__: ${
+		draft_lock ? ":lock: Locked" : ":unlock: Unlocked"
+    }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter} | ${coaches[current_drafter][1]} | ${teams[current_drafter][0]}`;
   
   return draft_status;
 }
@@ -574,7 +629,7 @@ module.exports = {
                   pair =	findPlayer(args[0]);
             }
 
-						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] + ` (see #bot-chat)` +"\n";
             stat_report = players.Players[pair].Name +"\n";
 						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
@@ -592,7 +647,7 @@ module.exports = {
           draft_num += 1;
           current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
           if (current_drafter!=""){
-            result+= "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+            result+= "\n"+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
           } else {
             draft_lock = true
             result += "🎊 The draft has concluded and is now locked. 🎊";
