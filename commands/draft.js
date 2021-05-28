@@ -12,7 +12,7 @@ const playerData = JSON.parse(rawdata);
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
-const allowed_channels = ['741308777357377617','782331491656138783'];
+const allowed_channels = ['741308777357377617','782331491656138783','847513377811070997'];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 const bb_resources_id = "1waTChkjtCecz_3_dtEMTqnf_r8276NjB_zrzK-n7O6g";
@@ -197,7 +197,7 @@ async function getPlayersFromSheetsHelper(data, context) {
     range: "03!A2:I63"
   })
   .then((res) => res.data.values);
-  
+
   console.log(personal_info);
 
   let bbCharToImageURL = {
@@ -266,7 +266,7 @@ function getScoreString(score) {
 function buildPlayerInfoMessage(player) {
   let scoreString = ":green_square:";
   let fillerString = ":white_large_square:";
-  
+
   let birthday_string =
 		"birthday_month" in player
 			? `:birthday: ${player.birthday_month}/${player.birthday_day}\n`
@@ -294,11 +294,11 @@ function buildPlayerInfoMessage(player) {
     .setDescription(message)
     .setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`)
     .setTimestamp();
-  
+
   if ("headshot_image" in player) {
     playerEmbed.setThumbnail(player.headshot_image);
   }
-  
+
   return playerEmbed;
 }
 
@@ -420,14 +420,14 @@ async function showDraft(message, args, client){
     client.users.cache.get(message.author.id)
       .send(drafted_player_list);
 }
-    
+
 async function getDraftStatus() {
   current_drafter = await getCurrentCoach();
 
   draft_status = `**Season 7 Draft**\n__Status__: ${
 		draft_lock ? ":lock: Locked" : ":unlock: Unlocked"
     }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter} | ${coaches[current_drafter][1]} | ${teams[current_drafter][0]}`;
-  
+
   return draft_status;
 }
 
@@ -480,7 +480,7 @@ module.exports = {
 
 		if (args[0] == "unlock") {
       draft_lock = false;
-      
+
       message.reply("The draft is now unlocked.")
       return message.channel.send(await getDraftStatus());
 		}
