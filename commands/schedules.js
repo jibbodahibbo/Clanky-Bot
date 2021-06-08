@@ -6,6 +6,7 @@ const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
 const {s6schedule, s6teams} = require("../jorge_schedule");
+const {s7schedule, s7teams} = require("../s7_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -42,19 +43,19 @@ module.exports = {
 			|| message.member.roles.cache.find(role => role.name == 'Codehead')
 			|| message.member.roles.cache.find(role => role.name == 'Admin')) {
 			try {
+
 				//Inject a schedule from google sheets.
-				/*
-				const sched= s6schedule;
-				const t= s6teams;
-				if (args[0] == "inject" && args[1]=="S6"){
+				const sched= s7schedule;
+				const t= s7teams;
+				if (args[0] == "inject" && args[1]=="s7"){
 					for (var i = 0; i < sched.length; i++) {
 						let s=sched[i];
-						let ss = await createScheduleItem(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['jorge',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						let ss = await createScheduleItem(['s7',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['s7',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 					return message.reply("Injected")
 				}
-*/
+
 
 				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
 	/*			if (args[0] == "clear") {
