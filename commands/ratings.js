@@ -7,6 +7,7 @@ const allowed_channels = ['733773776357163079','741308777357377617','77826682100
 const canvas = require("../byb-bot.js").canvas;
 const discord = require("../byb-bot.js").discord;
 const { MessageEmbed } = require("discord.js");
+const twitterCommands = require("../twitterCommands.js");
 
 const padding_value = 30;
 const score_icon = ":green_square:";
@@ -309,6 +310,11 @@ module.exports = {
 			const attachment = new discord.MessageAttachment(test_canvas.toBuffer(), "test-image.png");
 
 			return message.reply(attachment);
+		}
+
+		if (args[0] == "test1") {
+			twitterCommands.testTweet();
+			return message.reply("Tried to send the tweet");
 		}
 
 		if ( ['running', 'batting', 'pitching', 'fielding', 'speed','hitting'].includes( args[0].toLowerCase()) ){
