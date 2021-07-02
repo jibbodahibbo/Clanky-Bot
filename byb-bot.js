@@ -11,8 +11,8 @@ const testlab_channel = "741308777357377617";
 const jlundID = "377672560780902402";
 
 // for jlund's local config
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 //const Sequelize = require('sequelize');
 const {ClankyCoins, Schedules, Results, Draft_j, sequelize} = require('./dbInit.js');

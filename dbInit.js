@@ -2,14 +2,21 @@ const {Sequelize, DataTypes} = require('sequelize');
 //const config = require('./config.json');
 
 
-const sequelize = new Sequelize(process.env.DATABASE,process.env.USER, process.env.PASSWORD, {
-	host: process.env.HOST,
+const sequelize = new Sequelize(
+	// `${process.env.DATABASE}`,
+	// `${process.env.USER}`,
+	// `${process.env.PASSWORD}`,
+	process.env.URI,
+	// `postgres://zmbctaoargnkcp:30ab7d9994a5b28eaef57e3f7090ca8267c148ca7a4e16b3f6e116ed93e63b09@ec2-52-204-232-46.compute-1.amazonaws.com:5432/d23sj0uc8ph1rn`,
+	{
+	// host: `${process.env.HOST}`,
 	dialect: 'postgres',
 	dialectOptions: {
 	ssl: {
-		require: true, // This will help you. But you will see nwe error
+		require: false, // This will help you. But you will see nwe error
 		rejectUnauthorized: false // This line will fix new error
-	}
+		},
+	
 },
 	port: '5432'
 
