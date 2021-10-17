@@ -179,6 +179,7 @@ async function clearResults(args){
 let results_channel_id = "851842120604057611"; // TODO: change to valid channel for this server
 let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
 let test_channel_id = "733773776357163079"; // id in test server
+let VFBL_channel_id ="888278801094680647";//Visserys Football League
 
 module.exports = {
 
@@ -187,7 +188,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7"]; //must be lowercase
+		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
@@ -396,6 +397,8 @@ module.exports = {
       let channel;
       if (result_obj.league == "rp" ||result_obj.league == "5050" ){
         channel = client.channels.cache.get(tournament_channel_id);
+      }else if (result_obj.league == "vbfl"){
+        channel = client.channels.cache.get(VFBL_channel_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
@@ -460,6 +463,8 @@ module.exports = {
       let channel;
       if (result_obj.league == "rp" || result_obj.league == "5050"){
         channel = client.channels.cache.get(tournament_channel_id);
+      }else if (result_obj.league == "vbfl"){
+        channel = client.channels.cache.get(VFBL_channel_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
