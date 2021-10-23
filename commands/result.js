@@ -179,7 +179,7 @@ async function clearResults(args){
 let results_channel_id = "851842120604057611"; // S7 Results Channel
 let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
-let VFBL_channel_id ="888278801094680647";//Visserys Football League
+let VFBL_channel_id ="841418728394457098";//Visserys Football League
 
 module.exports = {
 
