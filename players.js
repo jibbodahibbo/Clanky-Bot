@@ -1996,7 +1996,7 @@ module.exports = {
 	 'LF': {
 			'Name': 'Lorelei Ikaye',
 			'Batting': 10,
-			'Running': 8,
+			'Running': 7,
 			'Pitching': 4,
 			'Fielding': 4,
 			'Handedness': 'R',

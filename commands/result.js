@@ -175,10 +175,11 @@ async function clearResults(args){
   });
 }
 
-
-let results_channel_id = "851842120604057611"; // TODO: change to valid channel for this server
-let tournament_channel_id = "562721686164733979"; // TODO: change to valid channel for this server
+//Add Channel ID's here.
+let results_channel_id = "851842120604057611"; // S7 Results Channel
+let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
+let VFBL_channel_id ="841418728394457098";//Visserys Football League
 
 module.exports = {
 
@@ -187,7 +188,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7"]; //must be lowercase
+		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
@@ -392,10 +393,14 @@ module.exports = {
 		// if it's there, build and send a summary to the results channel
 		if (result_pair_obj != null) {
 
+
       // TODO: Replace with league registration obj.
+      // add other league channels here.
       let channel;
       if (result_obj.league == "rp" ||result_obj.league == "5050" ){
         channel = client.channels.cache.get(tournament_channel_id);
+      }else if (result_obj.league == "vbfl"){
+        channel = client.channels.cache.get(VFBL_channel_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
@@ -455,11 +460,13 @@ module.exports = {
 			}
 		}
 		// if it's not, do nothing
+    // add other league channels here.
 		else {
-
       let channel;
       if (result_obj.league == "rp" || result_obj.league == "5050"){
         channel = client.channels.cache.get(tournament_channel_id);
+      }else if (result_obj.league == "vbfl"){
+        channel = client.channels.cache.get(VFBL_channel_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
