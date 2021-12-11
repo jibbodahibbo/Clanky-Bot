@@ -8,11 +8,20 @@ var fs = require("fs");
 const { MessageEmbed } = require('discord.js');
 let rawdata = fs.readFileSync("players.json");
 const playerData = JSON.parse(rawdata);
+rawdata = fs.readFileSync("players_full.json");
+const fullPlayerData = JSON.parse(rawdata);
+rawdata = fs.readFileSync("draft_stock.json")
+const draftStockData = JSON.parse(rawdata);
 
 const sheets = require("../byb-bot.js").sheets;
 const discord = require("../byb-bot.js").discord;
 
-const allowed_channels = ['741308777357377617','782331491656138783','847513377811070997'];
+const allowed_channels = [
+	"741308777357377617",
+	"782331491656138783",
+	"847513377811070997",
+	"918362812223459339",
+];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 const bb_resources_id = "1waTChkjtCecz_3_dtEMTqnf_r8276NjB_zrzK-n7O6g";
@@ -21,39 +30,12 @@ const score_icon = ":green_square:";
 const filler_icon = ":white_large_square:";
 let bot_channel;
 
-
-// const coaches={
-//         "BB":['187776456519057409','JibboDaHibbo'],
-//         "JL":['377672560780902402','JLund24'],
-//         "69":['344305095577567233','MarcoMcGwire'],
-//         "C8":['355931440061612035','CrazyEi8ghts'],
-//         "NF":['342901488412000256','NickFolesIsMyDad'],
-//         "AE":['105512327293448192','Aesnop'],
-//         "13":['201134409863266305','Kiiiiiiiiiiiiis'],
-//         "XD":['207696852953333760','Gcool'],
-//         "EX":['252968570382843904','Eauxps I. Fourgott'],
-//         "WZ":['273653649522294784','Wizard'],
-//         "JY":['307010267001257996','Jyknight'],
-//         "GS":['355934424061181972','GSchlim'],
-//         "YY":['74323981670285312','Yurya'],
-//         "MB":['359717979732312064','Mbless'],
-//         "MV":['296815103985319936','Mavfatha'],
-//         "YT":['213203256606851072','Marco'],
-//         "26":['470389312291209246','TheyHateMe (T-Boz)'],
-//         "CW":['430920494351515650','Elchrisblanco'],
-//         "NO":['338726157233160194','Nodakkian'],
-//         "CK":['218371611588296706','Takenotes011'],
-//         "BA":['753099045651742731','Jorges Bank Account'],
-//         "JJ":['142464556151734272','Jarod Johnson'],
-//         "MM":['698632902778552380','shrewsbury91'],
-//         "JM":['779111772133130260','jmacdrums'],
-//       }
-
 const coaches = {
 	C8: ["355931440061612035", "crazyei8hts"],
-	BA: ["753099045651742731", "JorgesBankAccount"],
+	MF: ["753099045651742731", "JorgesBankAccount"],
 	CW: ["430920494351515650", "Elchrisblanco"],
 	JL: ["377672560780902402", "jlund24"],
+	// BB: ["fake role id", "JibboDaHibbo"],
 	BB: ["187776456519057409", "JibboDaHibbo"],
 	MM: ["698632902778552380", "shrewsbury91"],
 	AE: ["105512327293448192", "Aesnop"],
@@ -74,18 +56,25 @@ const coaches = {
 	TO: ["692170461047554048", "Toast"],
 	SK: ["318469807282585640", "skolgamingnetwork"],
 	MT: ["335400047070019585", "MelloMathTeacher"],
+	H1: ["919077605515345931", "hitace"],
+	RP: ["919093084455858196", "Repub92"],
+	GS: ["918997994194501632", "GSchlim"],
+	NO: ["836720775829520426", "Nodakkian"],
+	TY: ["918543639997743146", "areyoutyler"],
+	DW: ["919094227781160970", "DevanWolf"],
+	MA: ["919072342179741696", "MartianMan"],
 };
 
 const teams = {
 	C8: ["Red Phillies", "red"],
 	BB: ["Junior Brewers", 16172079],
 	YY: ["Green Monsters", "lime"],
-	WZ: ["Super Duper Wombats", "yellow"],
+	WZ: ["Chicago Cubs", "blue"],
 	13: ["Boston Cubs", 39129],
-	BA: ["Seattle Mariners", 6061450],
+	MF: ["Utah Hammers", "red"],
 	MV: ["Baltimore Orioles", 15695665],
-	AE: ["Blue Red Sox", 10509236],
-	EX: ["Super-Duper Melonheads", "green"],
+	AE: ["Mariners", 10509236],
+	EX: ["Super-Duper Melonheads", "pink"],
 	28: ["Milwaukee Braves", 16711680],
 	CW: ["Seattle Fishes", "blue"],
 	JL: ["Baltimore Bombers", "black"],
@@ -99,11 +88,18 @@ const teams = {
 	JJ: ["Los Angeles Dodgers", "teal"],
 	VS: ["Humongous Hornets", "blue"],
 	SK: ["Florida Marlins", 48028],
-	YT: ["New York Yankees", 7589],
+	YT: ["Wombats", 7589],
 	TO: ["Minnesota Twins", 255],
+	H1: ["Hitace's team", "black"],
+	RP: ["Baltimore Bombers", "red"],
+	GS: ["GSchlim's team", "black"],
+	NO: ["Nodakkian's team", "black"],
+	TY: ["areyoutyler's team", "black"],
+	DW: ["Milwaukee Blue Jays", "blue"],
+	MA: ["Colorado Rockies", "purple"],
 };
 
-const draft_sheet_id = "1Vooto5ho04iGsRncfPSg-oaXH5vPl07khbKFHu9rCEQ";
+const draft_sheet_id = "1vaozO0ZZDEFSop2qEDZfFpTWKylMn8qbw2SrjbEh620";
 const draft_cell_start = '';
 
 let draft_num = 1;
@@ -149,6 +145,7 @@ async function getCurrentCoach() {
   } catch (err) {
 		console.log(err);
   }
+  console.log(result.data);
 
   if ('values' in result.data) {
     return result.data.values[0][0];
@@ -158,12 +155,13 @@ async function getCurrentCoach() {
   }
 }
 
-async function writePlayerToDraft(playerName) {
+async function writePlayerToDraft(playerName, playerID) {
   let sheetName = "DRAFT!";
-  let range = "B" + draft_num;
+  let range = `B${draft_num}:C${draft_num}`;
+  // let range = "B" + draft_num;
   let result;
 
-  let new_values = [[playerName]];
+  let new_values = [[playerName, playerID]];
   let resource = { values: new_values };
   try {
     let auth = await googleAuth.authorize();
@@ -263,6 +261,41 @@ function getScoreString(score) {
   return score_string;
 }
 
+function buildPlayerDraftMessage(player) {
+  let title = `[#${draft_num}] __**${player.name}**__ :arrow_right: *${teams[current_drafter][0]} (${current_drafter})*`;
+  let message = "";
+  // message += `__**${player.name}**__\n`;
+
+  let s7_pick_num = draftStockData[player.id]["Draft S7"];
+  let avg_pick_num = draftStockData[player.id]["Avg Draft pick"];
+
+  message += `**S7 pick:** ${s7_pick_num} | **AVG pick:** ${avg_pick_num}`;
+  // if (draft_num < s7_pick_num) {
+  //   message += `Picked `
+  // } else if (draft_num > s7_pick_num) {
+
+  // } else {
+
+  // }
+
+  let playerEmbed = new MessageEmbed()
+		.setTitle(title)
+		.setColor(teams[current_drafter][1])
+		.setDescription(message)
+		.setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`)
+		.setTimestamp();
+
+  if ("headshot_image" in player) {
+		playerEmbed.setThumbnail(player.headshot_image);
+		//   playerEmbed.setThumbnail("https://i.ibb.co/tLWPDDY/Bombers-Custom.png");
+		//   playerEmbed.setImage(
+		// 	"https://cdn.discordapp.com/attachments/733832887769628694/918688317539770408/Screen_Shot_2021-12-09_at_7.18.46_PM.png"
+		// );
+  }
+
+  return playerEmbed;
+}
+
 function buildPlayerInfoMessage(player) {
   let scoreString = ":green_square:";
   let fillerString = ":white_large_square:";
@@ -279,8 +312,8 @@ function buildPlayerInfoMessage(player) {
   message += `\`BAT:\` ${getScoreString(player.batting)} (${player.batting})\n`;
   message += `\`RUN:\` ${getScoreString(player.running)} (${player.running})\n`;
   message += `\`PIT:\` ${getScoreString(player.pitching)} (${player.pitching})\n`;
-  message += `\`FLD:\` ${getScoreString(player.fielding)} (${player.fielding})\n`;
-  message += `\`ARM:\` ${getScoreString(player.arm * 2)} (${player.arm * 2})\n\n`;
+  message += `\`FLD:\` ${getScoreString(player.fielding)} (${player.fielding})\n\n`;
+  // message += `\`ARM:\` ${getScoreString(player.arm * 2)} (${player.arm * 2})\n\n`;
 
   message += `**Hand:** ${player.hand} **Lock:** ${player.lock != "" ? player.lock : "n/a"} **P Rank:** ${player.rank_pitcher != "" ? player.rank_pitcher : "n/a"}\n`;
   message += `**1B Rank:** ${player.rank_1b != "" ? player.rank_1b : "n/a"} `;
@@ -291,12 +324,16 @@ function buildPlayerInfoMessage(player) {
   let playerEmbed = new MessageEmbed()
     .setTitle(title)
     .setColor(teams[current_drafter][1])
-    .setDescription(message)
+    // .setDescription(message)
     .setFooter(`Draft pick #${draft_num} by ${coaches[current_drafter][1]}`)
     .setTimestamp();
 
   if ("headshot_image" in player) {
     playerEmbed.setThumbnail(player.headshot_image);
+  //   playerEmbed.setThumbnail("https://i.ibb.co/tLWPDDY/Bombers-Custom.png");
+  //   playerEmbed.setImage(
+	// 	"https://cdn.discordapp.com/attachments/733832887769628694/918688317539770408/Screen_Shot_2021-12-09_at_7.18.46_PM.png"
+	// );
   }
 
   return playerEmbed;
@@ -423,8 +460,8 @@ async function showDraft(message, args, client){
 
 async function getDraftStatus() {
   current_drafter = await getCurrentCoach();
-
-  draft_status = `**Season 7 Draft**\n__Status__: ${
+  
+  draft_status = `**Season 8 Draft**\n__Status__: ${
 		draft_lock ? ":lock: Locked" : ":unlock: Unlocked"
     }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter} | ${coaches[current_drafter][1]} | ${teams[current_drafter][0]}`;
 
@@ -440,7 +477,7 @@ module.exports = {
 			return null;
     }
 
-    bot_channel = client.channels.cache.get("778266821006458950");
+    bot_channel = client.channels.cache.get("918362812223459339");
 
     if (args[0] == "fix"){
       try{
@@ -496,15 +533,22 @@ module.exports = {
 
   if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
     if (args[0] == "reset") {
+      let resetting_msg = await message.reply("The draft is resetting...");
       const reset = await Draft_j.destroy({ where: {}, truncate: true });
-      for (let j = 0; j < Object.keys(players.Players).length - 1; j++) {
+      let total = Object.keys(players.Players).length - 1;
+      for (let j = 0; j < Object.keys(players.Players).length; j++) {
         const cc = await Draft_j.create({
           player: intToPair(j),
         });
+        if (j % 25 == 0) {
+          resetting_msg.edit(`The draft is being reset... (${j}/${total})`);  
+        }
+        
       }
+      resetting_msg.edit("The draft has been reset.");
       draft_num = 1;
       current_drafter = await getCurrentCoach();
-      message.reply("Draft Has Been Reset.")
+      // message.reply("Draft Has Been Reset.")
       return message.channel.send(await getDraftStatus());
   }
 
@@ -536,7 +580,7 @@ module.exports = {
             pick_num:draft_num
             }
           });
-          await writePlayerToDraft('');
+          await writePlayerToDraft('', '');
           current_drafter= await getCurrentCoach();
           let result= 'Draft Pick '+ draft_num + ' has been undone' + "\n "+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
           return  message.channel.send(result);
@@ -557,6 +601,7 @@ module.exports = {
       //     fs.writeFile("players.json", json, "utf8", () => { });
       // });
       // return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["HO"]));
+      // return message.channel.send("I'm listening");
       return message.channel.send(buildPlayerInfoMessage(playerData["AD"]));
       // END THAT TESTING
 
@@ -609,15 +654,16 @@ module.exports = {
         }
 
 				if (args.length==1 && args[0].length==2){
-						let pair = args[0].toUpperCase();
-						result =  pair+': *'+players.Players[args[0]].Name +  '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+          let pair = args[0].toUpperCase();
+          result = "";
+						// result =  pair+': *'+players.Players[args[0]].Name +  '* has been drafted by '+ coaches[current_drafter][1] +"\n";
             stat_report = players.Players[args[0]].Name +"\n";
 						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
-            await writePlayerToDraft(players.Players[args[0]].Name);
+            await writePlayerToDraft(players.Players[args[0]].Name, args[0]);
 
 					}else{
             let pair='';
@@ -628,28 +674,28 @@ module.exports = {
             }else{
                   pair =	findPlayer(args[0]);
             }
-
-						result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] + ` (see #bot-chat)` +"\n";
+            result = "";
+						// result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] + ` (see #bot-chat)` +"\n";
             stat_report = players.Players[pair].Name +"\n";
 						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
 						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
 						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
 						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
 
-              await writePlayerToDraft(players.Players[pair].Name);
+              await writePlayerToDraft(players.Players[pair].Name, pair);
 					}
 
     // bot_channel.send(stat_report);
-    bot_channel.send(buildPlayerInfoMessage(playerData[pair]));
+    bot_channel.send(buildPlayerDraftMessage(playerData[pair]));
 
           // write to spreadsheet
 
           draft_num += 1;
           current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
           if (current_drafter!=""){
-            result+= "\n"+current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
+            result+= current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock with pick #" +draft_num +".";
           } else {
-            draft_lock = true
+            draft_lock = true;
             result += "🎊 The draft has concluded and is now locked. 🎊";
           }
 
