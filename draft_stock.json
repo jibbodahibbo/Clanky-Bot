@@ -1,0 +1,2122 @@
+{
+   "AA": {
+      "Player Name": "Cloney -.",
+      "Avg Draft pick": "n/a",
+      "Draft S5": "-",
+      "Draft S6": "-",
+      "Draft S7": "-",
+      "notes": ""
+   },
+   "QH": {
+      "Player Name": "Mr. Clanky",
+      "Avg Draft pick": "25.0",
+      "Draft S5": "23",
+      "Draft S6": "28",
+      "Draft S7": "24",
+      "notes": ""
+   },
+   "QI": {
+      "Player Name": "CUSTOM",
+      "Avg Draft pick": "36.3",
+      "Draft S5": "17",
+      "Draft S6": "55",
+      "Draft S7": "37",
+      "notes": "varies"
+   },
+   "AB": {
+      "Player Name": "Kimmy Eckman",
+      "Avg Draft pick": "182.7",
+      "Draft S5": "199",
+      "Draft S6": "178",
+      "Draft S7": "171",
+      "notes": ""
+   },
+   "DO": {
+      "Player Name": "Amy Bostwick",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": "ud"
+   },
+   "HA": {
+      "Player Name": "Andres Ibsen",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": "ud"
+   },
+   "AC": {
+      "Player Name": "Maria Luna",
+      "Avg Draft pick": "28.3",
+      "Draft S5": "24",
+      "Draft S6": "34",
+      "Draft S7": "27",
+      "notes": "pink"
+   },
+   "DP": {
+      "Player Name": "Arlene Perez",
+      "Avg Draft pick": "167.3",
+      "Draft S5": "172",
+      "Draft S6": "152",
+      "Draft S7": "178",
+      "notes": ""
+   },
+   "HB": {
+      "Player Name": "Artie Pimbleton",
+      "Avg Draft pick": "159.0",
+      "Draft S5": "158",
+      "Draft S6": "158",
+      "Draft S7": "161",
+      "notes": ""
+   },
+   "AD": {
+      "Player Name": "Angela Delvecchio",
+      "Avg Draft pick": "140.0",
+      "Draft S5": "171",
+      "Draft S6": "140.01",
+      "Draft S7": "109",
+      "notes": "always picked too early"
+   },
+   "EA": {
+      "Player Name": "Betty Houston",
+      "Avg Draft pick": "203.7",
+      "Draft S5": "191",
+      "Draft S6": "207",
+      "Draft S7": "213",
+      "notes": ""
+   },
+   "HC": {
+      "Player Name": "Bobby Bulgrien",
+      "Avg Draft pick": "194.3",
+      "Draft S5": "192",
+      "Draft S6": "177",
+      "Draft S7": "214",
+      "notes": ""
+   },
+   "AE": {
+      "Player Name": "Vicki Kawaguchi",
+      "Avg Draft pick": "96.3",
+      "Draft S5": "79",
+      "Draft S6": "108",
+      "Draft S7": "102",
+      "notes": ""
+   },
+   "EB": {
+      "Player Name": "Cindy Chang",
+      "Avg Draft pick": "95.3",
+      "Draft S5": "88",
+      "Draft S6": "92",
+      "Draft S7": "106",
+      "notes": ""
+   },
+   "HD": {
+      "Player Name": "Bret Olsen",
+      "Avg Draft pick": "103.3",
+      "Draft S5": "93",
+      "Draft S6": "113",
+      "Draft S7": "104",
+      "notes": ""
+   },
+   "AF": {
+      "Player Name": "Gretchen Hasselhoff",
+      "Avg Draft pick": "197.3",
+      "Draft S5": "200",
+      "Draft S6": "197.01",
+      "Draft S7": "195",
+      "notes": ""
+   },
+   "EC": {
+      "Player Name": "Clarice Reid",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "HE": {
+      "Player Name": "Carlos Ocampo",
+      "Avg Draft pick": "209.0",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "207",
+      "notes": ""
+   },
+   "AG": {
+      "Player Name": "Sally Dobbs",
+      "Avg Draft pick": "86.7",
+      "Draft S5": "89",
+      "Draft S6": "86",
+      "Draft S7": "85",
+      "notes": ""
+   },
+   "ED": {
+      "Player Name": "Colleen Klinker",
+      "Avg Draft pick": "172.3",
+      "Draft S5": "181",
+      "Draft S6": "170",
+      "Draft S7": "166",
+      "notes": ""
+   },
+   "HF": {
+      "Player Name": "Chad Koppel",
+      "Avg Draft pick": "154.0",
+      "Draft S5": "143",
+      "Draft S6": "157",
+      "Draft S7": "162",
+      "notes": ""
+   },
+   "AH": {
+      "Player Name": "Billy Jean Blackwood",
+      "Avg Draft pick": "156.5",
+      "Draft S5": "161",
+      "Draft S6": "156.5",
+      "Draft S7": "152",
+      "notes": ""
+   },
+   "EE": {
+      "Player Name": "Debby Nagasawa",
+      "Avg Draft pick": "56.3",
+      "Draft S5": "55",
+      "Draft S6": "49",
+      "Draft S7": "65",
+      "notes": ""
+   },
+   "HG": {
+      "Player Name": "Chico Pappas",
+      "Avg Draft pick": "18.7",
+      "Draft S5": "27",
+      "Draft S6": "10",
+      "Draft S7": "19",
+      "notes": ""
+   },
+   "AI": {
+      "Player Name": "Ashley Webber",
+      "Avg Draft pick": "47.7",
+      "Draft S5": "43",
+      "Draft S6": "50",
+      "Draft S7": "50",
+      "notes": ""
+   },
+   "EF": {
+      "Player Name": "Diana Hayes",
+      "Avg Draft pick": "191.0",
+      "Draft S5": "193",
+      "Draft S6": "198",
+      "Draft S7": "182",
+      "notes": ""
+   },
+   "HH": {
+      "Player Name": "Chris Milton",
+      "Avg Draft pick": "183.3",
+      "Draft S5": "166",
+      "Draft S6": "195",
+      "Draft S7": "189",
+      "notes": ""
+   },
+   "AJ": {
+      "Player Name": "Sidney Webber",
+      "Avg Draft pick": "48.3",
+      "Draft S5": "58",
+      "Draft S6": "41",
+      "Draft S7": "46",
+      "notes": ""
+   },
+   "EG": {
+      "Player Name": "Esther French",
+      "Avg Draft pick": "183.0",
+      "Draft S5": "189",
+      "Draft S6": "183.01",
+      "Draft S7": "177",
+      "notes": ""
+   },
+   "HI": {
+      "Player Name": "Chucky Flinder",
+      "Avg Draft pick": "167.7",
+      "Draft S5": "136",
+      "Draft S6": "186",
+      "Draft S7": "181",
+      "notes": ""
+   },
+   "AK": {
+      "Player Name": "Kiesha Phillips",
+      "Avg Draft pick": "32.3",
+      "Draft S5": "34",
+      "Draft S6": "33",
+      "Draft S7": "30",
+      "notes": ""
+   },
+   "EH": {
+      "Player Name": "Francis Blewer",
+      "Avg Draft pick": "19.7",
+      "Draft S5": "20",
+      "Draft S6": "17",
+      "Draft S7": "22",
+      "notes": ""
+   },
+   "HJ": {
+      "Player Name": "Davy Marian",
+      "Avg Draft pick": "24.0",
+      "Draft S5": "21",
+      "Draft S6": "25",
+      "Draft S7": "26",
+      "notes": ""
+   },
+   "AL": {
+      "Player Name": "Stephanie Morgan",
+      "Avg Draft pick": "125.0",
+      "Draft S5": "117",
+      "Draft S6": "151",
+      "Draft S7": "107",
+      "notes": ""
+   },
+   "EI": {
+      "Player Name": "Gail Weinmann",
+      "Avg Draft pick": "105.3",
+      "Draft S5": "126",
+      "Draft S6": "78",
+      "Draft S7": "112",
+      "notes": ""
+   },
+   "HK": {
+      "Player Name": "Dominique Lowe",
+      "Avg Draft pick": "112.3",
+      "Draft S5": "118",
+      "Draft S6": "82",
+      "Draft S7": "137",
+      "notes": ""
+   },
+   "AM": {
+      "Player Name": "Luanne Lui",
+      "Avg Draft pick": "60.7",
+      "Draft S5": "51",
+      "Draft S6": "60",
+      "Draft S7": "71",
+      "notes": ""
+   },
+   "EJ": {
+      "Player Name": "Grace Tipton",
+      "Avg Draft pick": "60.3",
+      "Draft S5": "67",
+      "Draft S6": "72",
+      "Draft S7": "42",
+      "notes": ""
+   },
+   "HL": {
+      "Player Name": "Earl Abbot",
+      "Avg Draft pick": "58.7",
+      "Draft S5": "48",
+      "Draft S6": "85",
+      "Draft S7": "43",
+      "notes": ""
+   },
+   "AN": {
+      "Player Name": "Annie Frazier",
+      "Avg Draft pick": "155.0",
+      "Draft S5": "135",
+      "Draft S6": "144",
+      "Draft S7": "186",
+      "notes": ""
+   },
+   "EK": {
+      "Player Name": "Hannah Peavy",
+      "Avg Draft pick": "201.3",
+      "Draft S5": "169",
+      "Draft S6": "220",
+      "Draft S7": "215",
+      "notes": ""
+   },
+   "HM": {
+      "Player Name": "Eric Lebeaux",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "AO": {
+      "Player Name": "Jocinda Smith",
+      "Avg Draft pick": "169.3",
+      "Draft S5": "153",
+      "Draft S6": "180",
+      "Draft S7": "175",
+      "notes": ""
+   },
+   "EL": {
+      "Player Name": "Heather Quinn",
+      "Avg Draft pick": "205.7",
+      "Draft S5": "200",
+      "Draft S6": "197",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "HN": {
+      "Player Name": "Felix Grant",
+      "Avg Draft pick": "206.0",
+      "Draft S5": "178",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "AP": {
+      "Player Name": "Lisa Crocket",
+      "Avg Draft pick": "109.0",
+      "Draft S5": "124",
+      "Draft S6": "107",
+      "Draft S7": "96",
+      "notes": ""
+   },
+   "EM": {
+      "Player Name": "Holly Franklin",
+      "Avg Draft pick": "102.7",
+      "Draft S5": "107",
+      "Draft S6": "103",
+      "Draft S7": "98",
+      "notes": ""
+   },
+   "HO": {
+      "Player Name": "Fernando Diaz",
+      "Avg Draft pick": "115.0",
+      "Draft S5": "128",
+      "Draft S6": "112",
+      "Draft S7": "105",
+      "notes": ""
+   },
+   "BA": {
+      "Player Name": "Ronny Dobbs",
+      "Avg Draft pick": "103.0",
+      "Draft S5": "77",
+      "Draft S6": "103.01",
+      "Draft S7": "129",
+      "notes": ""
+   },
+   "EN": {
+      "Player Name": "Isabelle Marelli",
+      "Avg Draft pick": "140.3",
+      "Draft S5": "156",
+      "Draft S6": "133",
+      "Draft S7": "132",
+      "notes": ""
+   },
+   "HP": {
+      "Player Name": "Franky Holly",
+      "Avg Draft pick": "145.0",
+      "Draft S5": "168",
+      "Draft S6": "131",
+      "Draft S7": "136",
+      "notes": ""
+   },
+   "BB": {
+      "Player Name": "Achmed Khan",
+      "Avg Draft pick": "42.7",
+      "Draft S5": "18",
+      "Draft S6": "57",
+      "Draft S7": "53",
+      "notes": ""
+   },
+   "EO": {
+      "Player Name": "Jane Davis",
+      "Avg Draft pick": "35.0",
+      "Draft S5": "41",
+      "Draft S6": "31",
+      "Draft S7": "33",
+      "notes": ""
+   },
+   "IA": {
+      "Player Name": "Fred Benson",
+      "Avg Draft pick": "40.3",
+      "Draft S5": "28",
+      "Draft S6": "51",
+      "Draft S7": "42",
+      "notes": ""
+   },
+   "BC": {
+      "Player Name": "Amir Khan",
+      "Avg Draft pick": "101.0",
+      "Draft S5": "90",
+      "Draft S6": "116",
+      "Draft S7": "97",
+      "notes": ""
+   },
+   "EP": {
+      "Player Name": "Joella Minotti",
+      "Avg Draft pick": "190.3",
+      "Draft S5": "185",
+      "Draft S6": "181",
+      "Draft S7": "205",
+      "notes": ""
+   },
+   "IB": {
+      "Player Name": "Gary Allen",
+      "Avg Draft pick": "176.7",
+      "Draft S5": "190",
+      "Draft S6": "173",
+      "Draft S7": "167",
+      "notes": ""
+   },
+   "BD": {
+      "Player Name": "Kenny Kawaguchi",
+      "Avg Draft pick": "147.3",
+      "Draft S5": "129",
+      "Draft S6": "169",
+      "Draft S7": "144",
+      "notes": ""
+   },
+   "FA": {
+      "Player Name": "Judy Abwunza",
+      "Avg Draft pick": "149.7",
+      "Draft S5": "137",
+      "Draft S6": "182",
+      "Draft S7": "130",
+      "notes": ""
+   },
+   "IC": {
+      "Player Name": "George Coleman",
+      "Avg Draft pick": "170.7",
+      "Draft S5": "170",
+      "Draft S6": "188",
+      "Draft S7": "154",
+      "notes": ""
+   },
+   "BE": {
+      "Player Name": "Pete Wheeler",
+      "Avg Draft pick": "12.3",
+      "Draft S5": "8",
+      "Draft S6": "23",
+      "Draft S7": "6",
+      "notes": ""
+   },
+   "FB": {
+      "Player Name": "Julie Dunkel",
+      "Avg Draft pick": "4.0",
+      "Draft S5": "3",
+      "Draft S6": "6",
+      "Draft S7": "3",
+      "notes": ""
+   },
+   "ID": {
+      "Player Name": "Henri Deschenes",
+      "Avg Draft pick": "3.7",
+      "Draft S5": "4",
+      "Draft S6": "3",
+      "Draft S7": "4",
+      "notes": ""
+   },
+   "BF": {
+      "Player Name": "Dmitri Petrovich",
+      "Avg Draft pick": "115.0",
+      "Draft S5": "95",
+      "Draft S6": "109",
+      "Draft S7": "141",
+      "notes": ""
+   },
+   "FC": {
+      "Player Name": "Karen Donato",
+      "Avg Draft pick": "136.0",
+      "Draft S5": "145",
+      "Draft S6": "121",
+      "Draft S7": "142",
+      "notes": ""
+   },
+   "IE": {
+      "Player Name": "Horace Young",
+      "Avg Draft pick": "142.3",
+      "Draft S5": "152",
+      "Draft S6": "141",
+      "Draft S7": "134",
+      "notes": ""
+   },
+   "BG": {
+      "Player Name": "Ricky Johnson",
+      "Avg Draft pick": "192.0",
+      "Draft S5": "200",
+      "Draft S6": "185",
+      "Draft S7": "191",
+      "notes": ""
+   },
+   "FD": {
+      "Player Name": "Katie Shankar",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "IF": {
+      "Player Name": "Ibrahim Muhammed",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "BH": {
+      "Player Name": "Marky Dubois",
+      "Avg Draft pick": "157.3",
+      "Draft S5": "147",
+      "Draft S6": "137",
+      "Draft S7": "188",
+      "notes": "trending down"
+   },
+   "FE": {
+      "Player Name": "Krissy Mulligan",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "IG": {
+      "Player Name": "Isaac Drummond",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "BI": {
+      "Player Name": "Reese Worthington",
+      "Avg Draft pick": "180.3",
+      "Draft S5": "160",
+      "Draft S6": "179",
+      "Draft S7": "202",
+      "notes": ""
+   },
+   "FF": {
+      "Player Name": "Lara Nunez",
+      "Avg Draft pick": "141.3",
+      "Draft S5": "121",
+      "Draft S6": "145",
+      "Draft S7": "158",
+      "notes": ""
+   },
+   "IH": {
+      "Player Name": "Jack Joseph",
+      "Avg Draft pick": "177.0",
+      "Draft S5": "155",
+      "Draft S6": "204",
+      "Draft S7": "172",
+      "notes": ""
+   },
+   "BJ": {
+      "Player Name": "Pablo Sanchez",
+      "Avg Draft pick": "9.7",
+      "Draft S5": "5",
+      "Draft S6": "15",
+      "Draft S7": "9",
+      "notes": ""
+   },
+   "FG": {
+      "Player Name": "Leah Wayne",
+      "Avg Draft pick": "2.3",
+      "Draft S5": "2",
+      "Draft S6": "4",
+      "Draft S7": "1",
+      "notes": ""
+   },
+   "II": {
+      "Player Name": "Jay Green",
+      "Avg Draft pick": "3.7",
+      "Draft S5": "7",
+      "Draft S6": "2",
+      "Draft S7": "2",
+      "notes": ""
+   },
+   "BK": {
+      "Player Name": "Tony Delvecchio",
+      "Avg Draft pick": "99.3",
+      "Draft S5": "98",
+      "Draft S6": "100",
+      "Draft S7": "100",
+      "notes": ""
+   },
+   "FH": {
+      "Player Name": "Lena Ng",
+      "Avg Draft pick": "100.7",
+      "Draft S5": "97",
+      "Draft S6": "88",
+      "Draft S7": "117",
+      "notes": ""
+   },
+   "IJ": {
+      "Player Name": "Jim Kiley",
+      "Avg Draft pick": "100.3",
+      "Draft S5": "96",
+      "Draft S6": "102",
+      "Draft S7": "103",
+      "notes": ""
+   },
+   "BL": {
+      "Player Name": "Jorge Garcia",
+      "Avg Draft pick": "140.7",
+      "Draft S5": "138",
+      "Draft S6": "135",
+      "Draft S7": "149",
+      "notes": ""
+   },
+   "FI": {
+      "Player Name": "Linda Potter",
+      "Avg Draft pick": "165.0",
+      "Draft S5": "151",
+      "Draft S6": "176",
+      "Draft S7": "168",
+      "notes": ""
+   },
+   "IK": {
+      "Player Name": "Johnny Omar",
+      "Avg Draft pick": "156.0",
+      "Draft S5": "150",
+      "Draft S6": "167",
+      "Draft S7": "151",
+      "notes": ""
+   },
+   "BM": {
+      "Player Name": "Dante Robinson",
+      "Avg Draft pick": "108.7",
+      "Draft S5": "114",
+      "Draft S6": "98",
+      "Draft S7": "114",
+      "notes": ""
+   },
+   "FJ": {
+      "Player Name": "Liz Kinghorn",
+      "Avg Draft pick": "109.0",
+      "Draft S5": "104",
+      "Draft S6": "105",
+      "Draft S7": "118",
+      "notes": ""
+   },
+   "IL": {
+      "Player Name": "Jordan Thorner",
+      "Avg Draft pick": "108.3",
+      "Draft S5": "109",
+      "Draft S6": "106",
+      "Draft S7": "110",
+      "notes": ""
+   },
+   "BN": {
+      "Player Name": "Ernie Steele",
+      "Avg Draft pick": "116.0",
+      "Draft S5": "99",
+      "Draft S6": "134",
+      "Draft S7": "115",
+      "notes": ""
+   },
+   "FK": {
+      "Player Name": "Marianna Rauf",
+      "Avg Draft pick": "211.0",
+      "Draft S5": "200",
+      "Draft S6": "213",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "IM": {
+      "Player Name": "Mickey O'Connor",
+      "Avg Draft pick": "201.0",
+      "Draft S5": "182",
+      "Draft S6": "215",
+      "Draft S7": "206",
+      "notes": ""
+   },
+   "BO": {
+      "Player Name": "Mikey Thomas",
+      "Avg Draft pick": "76.5",
+      "Draft S5": "80",
+      "Draft S6": "76.5",
+      "Draft S7": "73",
+      "notes": ""
+   },
+   "FL": {
+      "Player Name": "Mary Reilly",
+      "Avg Draft pick": "185.3",
+      "Draft S5": "200",
+      "Draft S6": "193",
+      "Draft S7": "163",
+      "notes": ""
+   },
+   "IN": {
+      "Player Name": "Murray Goldman",
+      "Avg Draft pick": "188.7",
+      "Draft S5": "200",
+      "Draft S6": "192",
+      "Draft S7": "174",
+      "notes": ""
+   },
+   "FM": {
+      "Player Name": "Michiko Adachi",
+      "Avg Draft pick": "195.0",
+      "Draft S5": "195",
+      "Draft S6": "191",
+      "Draft S7": "199",
+      "notes": ""
+   },
+   "IO": {
+      "Player Name": "Nate Kowalski",
+      "Avg Draft pick": "197.3",
+      "Draft S5": "198",
+      "Draft S6": "209",
+      "Draft S7": "185",
+      "notes": ""
+   },
+   "FN": {
+      "Player Name": "Molly May",
+      "Avg Draft pick": "187.7",
+      "Draft S5": "200",
+      "Draft S6": "165",
+      "Draft S7": "198",
+      "notes": ""
+   },
+   "IP": {
+      "Player Name": "Nicky Winston",
+      "Avg Draft pick": "146.3",
+      "Draft S5": "164",
+      "Draft S6": "153",
+      "Draft S7": "122",
+      "notes": ""
+   },
+   "FO": {
+      "Player Name": "Nancy Chin",
+      "Avg Draft pick": "147.3",
+      "Draft S5": "154",
+      "Draft S6": "148",
+      "Draft S7": "140",
+      "notes": ""
+   },
+   "OH": {
+      "Player Name": "Tom Glass",
+      "Avg Draft pick": "139.0",
+      "Draft S5": "140",
+      "Draft S6": "142",
+      "Draft S7": "135",
+      "notes": ""
+   },
+   "FP": {
+      "Player Name": "Olga Tollefson",
+      "Avg Draft pick": "151.3",
+      "Draft S5": "167",
+      "Draft S6": "161",
+      "Draft S7": "126",
+      "notes": ""
+   },
+   "JB": {
+      "Player Name": "Paco Kaufman",
+      "Avg Draft pick": "145.0",
+      "Draft S5": "149",
+      "Draft S6": "163",
+      "Draft S7": "123",
+      "notes": ""
+   },
+   "GA": {
+      "Player Name": "Olive Haldi",
+      "Avg Draft pick": "191.7",
+      "Draft S5": "180",
+      "Draft S6": "211",
+      "Draft S7": "184",
+      "notes": ""
+   },
+   "JC": {
+      "Player Name": "PJ Shareef",
+      "Avg Draft pick": "191.3",
+      "Draft S5": "179",
+      "Draft S6": "208",
+      "Draft S7": "187",
+      "notes": ""
+   },
+   "GB": {
+      "Player Name": "Petra Chekov",
+      "Avg Draft pick": "188.0",
+      "Draft S5": "200",
+      "Draft S6": "174",
+      "Draft S7": "190",
+      "notes": ""
+   },
+   "JD": {
+      "Player Name": "Rafael Hendrix",
+      "Avg Draft pick": "174.0",
+      "Draft S5": "175",
+      "Draft S6": "171",
+      "Draft S7": "176",
+      "notes": ""
+   },
+   "GC": {
+      "Player Name": "Ramona Bennett",
+      "Avg Draft pick": "112.3",
+      "Draft S5": "87",
+      "Draft S6": "117",
+      "Draft S7": "133",
+      "notes": ""
+   },
+   "JE": {
+      "Player Name": "Ray Tran",
+      "Avg Draft pick": "137.7",
+      "Draft S5": "150",
+      "Draft S6": "139",
+      "Draft S7": "124",
+      "notes": ""
+   },
+   "GD": {
+      "Player Name": "Randi Uno",
+      "Avg Draft pick": "168.7",
+      "Draft S5": "177",
+      "Draft S6": "159",
+      "Draft S7": "170",
+      "notes": ""
+   },
+   "JF": {
+      "Player Name": "Robby Bocko",
+      "Avg Draft pick": "170.7",
+      "Draft S5": "183",
+      "Draft S6": "160",
+      "Draft S7": "169",
+      "notes": ""
+   },
+   "GE": {
+      "Player Name": "Serena Damonte",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "JG": {
+      "Player Name": "Ryan Vanderhoek",
+      "Avg Draft pick": "210.7",
+      "Draft S5": "200",
+      "Draft S6": "212",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "GF": {
+      "Player Name": "Sheila Basanti",
+      "Avg Draft pick": "106.0",
+      "Draft S5": "108",
+      "Draft S6": "120",
+      "Draft S7": "90",
+      "notes": ""
+   },
+   "JH": {
+      "Player Name": "Shane Smith",
+      "Avg Draft pick": "86.3",
+      "Draft S5": "105",
+      "Draft S6": "73",
+      "Draft S7": "81",
+      "notes": ""
+   },
+   "GG": {
+      "Player Name": "Sonja Hagen",
+      "Avg Draft pick": "64.7",
+      "Draft S5": "57",
+      "Draft S6": "74",
+      "Draft S7": "63",
+      "notes": ""
+   },
+   "JI": {
+      "Player Name": "Stan Olafson",
+      "Avg Draft pick": "71.0",
+      "Draft S5": "82",
+      "Draft S6": "61",
+      "Draft S7": "70",
+      "notes": ""
+   },
+   "GH": {
+      "Player Name": "Stacy Gordon",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "JJ": {
+      "Player Name": "Stevie Lindt",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "GI": {
+      "Player Name": "Star Moonbeam",
+      "Avg Draft pick": "83.7",
+      "Draft S5": "91",
+      "Draft S6": "77",
+      "Draft S7": "83",
+      "notes": ""
+   },
+   "JK": {
+      "Player Name": "Stuart Sullivan",
+      "Avg Draft pick": "84.0",
+      "Draft S5": "71",
+      "Draft S6": "90",
+      "Draft S7": "91",
+      "notes": ""
+   },
+   "GJ": {
+      "Player Name": "Tanya Uchida",
+      "Avg Draft pick": "106.7",
+      "Draft S5": "101",
+      "Draft S6": "126",
+      "Draft S7": "93",
+      "notes": ""
+   },
+   "JL": {
+      "Player Name": "Timmy Unger",
+      "Avg Draft pick": "86.3",
+      "Draft S5": "76",
+      "Draft S6": "91",
+      "Draft S7": "92",
+      "notes": ""
+   },
+   "GK": {
+      "Player Name": "Tiffany Bosworth",
+      "Avg Draft pick": "167.0",
+      "Draft S5": "174",
+      "Draft S6": "202",
+      "Draft S7": "125",
+      "notes": ""
+   },
+   "JM": {
+      "Player Name": "Todd Xavier",
+      "Avg Draft pick": "162.0",
+      "Draft S5": "141",
+      "Draft S6": "162.01",
+      "Draft S7": "183",
+      "notes": ""
+   },
+   "GL": {
+      "Player Name": "Tina Herrara",
+      "Avg Draft pick": "88.3",
+      "Draft S5": "73",
+      "Draft S6": "97",
+      "Draft S7": "95",
+      "notes": ""
+   },
+   "JN": {
+      "Player Name": "Vic Soufle",
+      "Avg Draft pick": "69.0",
+      "Draft S5": "75",
+      "Draft S6": "70",
+      "Draft S7": "62",
+      "notes": ""
+   },
+   "GM": {
+      "Player Name": "Vanna Steinman",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "JO": {
+      "Player Name": "Vladimir Womack",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "GN": {
+      "Player Name": "Veronica Lee",
+      "Avg Draft pick": "55.0",
+      "Draft S5": "60",
+      "Draft S6": "46",
+      "Draft S7": "59",
+      "notes": ""
+   },
+   "JP": {
+      "Player Name": "Wally Evans",
+      "Avg Draft pick": "43.3",
+      "Draft S5": "36",
+      "Draft S6": "47",
+      "Draft S7": "47",
+      "notes": ""
+   },
+   "GO": {
+      "Player Name": "Whitney Singh",
+      "Avg Draft pick": "72.0",
+      "Draft S5": "65",
+      "Draft S6": "76",
+      "Draft S7": "75",
+      "notes": ""
+   },
+   "KA": {
+      "Player Name": "Wing Kwan",
+      "Avg Draft pick": "81.0",
+      "Draft S5": "63",
+      "Draft S6": "104",
+      "Draft S7": "76",
+      "notes": ""
+   },
+   "GP": {
+      "Player Name": "Zena Fromme",
+      "Avg Draft pick": "32.7",
+      "Draft S5": "42",
+      "Draft S6": "22",
+      "Draft S7": "34",
+      "notes": ""
+   },
+   "KB": {
+      "Player Name": "Zenon Estrada",
+      "Avg Draft pick": "24.7",
+      "Draft S5": "13",
+      "Draft S6": "21",
+      "Draft S7": "40",
+      "notes": ""
+   },
+   "KC": {
+      "Player Name": "Alexis Weis",
+      "Avg Draft pick": "130.0",
+      "Draft S5": "146",
+      "Draft S6": "136",
+      "Draft S7": "108",
+      "notes": ""
+   },
+   "KD": {
+      "Player Name": "Angelique Harding",
+      "Avg Draft pick": "206.3",
+      "Draft S5": "200",
+      "Draft S6": "216",
+      "Draft S7": "203",
+      "notes": ""
+   },
+   "KE": {
+      "Player Name": "Catherine Asher",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "KF": {
+      "Player Name": "Clair Nelson",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "KG": {
+      "Player Name": "Courtney Valentino",
+      "Avg Draft pick": "26.0",
+      "Draft S5": "31",
+      "Draft S6": "24",
+      "Draft S7": "23",
+      "notes": ""
+   },
+   "KH": {
+      "Player Name": "Dana Sekula",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "KI": {
+      "Player Name": "Ellen Martinez",
+      "Avg Draft pick": "188.0",
+      "Draft S5": "200",
+      "Draft S6": "184",
+      "Draft S7": "180",
+      "notes": ""
+   },
+   "KJ": {
+      "Player Name": "Erin Harris",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "KK": {
+      "Player Name": "Esmarelda Heimann",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "KL": {
+      "Player Name": "Ezra Travolta",
+      "Avg Draft pick": "104.0",
+      "Draft S5": "86",
+      "Draft S6": "127",
+      "Draft S7": "99",
+      "notes": ""
+   },
+   "KM": {
+      "Player Name": "Fabienne Callahan",
+      "Avg Draft pick": "185.7",
+      "Draft S5": "176",
+      "Draft S6": "187",
+      "Draft S7": "194",
+      "notes": ""
+   },
+   "KN": {
+      "Player Name": "Francesca Whitaker",
+      "Avg Draft pick": "69.7",
+      "Draft S5": "69",
+      "Draft S6": "66",
+      "Draft S7": "74",
+      "notes": ""
+   },
+   "KO": {
+      "Player Name": "Gloria Keitel",
+      "Avg Draft pick": "209.7",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "209",
+      "notes": ""
+   },
+   "KP": {
+      "Player Name": "Heidi Thurman",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "LA": {
+      "Player Name": "Jennifer Goodfellow",
+      "Avg Draft pick": "131.3",
+      "Draft S5": "100",
+      "Draft S6": "147",
+      "Draft S7": "147",
+      "notes": ""
+   },
+   "LB": {
+      "Player Name": "Jody Palmer",
+      "Avg Draft pick": "167.3",
+      "Draft S5": "162",
+      "Draft S6": "175",
+      "Draft S7": "165",
+      "notes": ""
+   },
+   "LC": {
+      "Player Name": "Katelyn Cain",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "LD": {
+      "Player Name": "Kathy Wolf",
+      "Avg Draft pick": "52.3",
+      "Draft S5": "49",
+      "Draft S6": "54",
+      "Draft S7": "54",
+      "notes": ""
+   },
+   "LE": {
+      "Player Name": "Lindsy Felgate",
+      "Avg Draft pick": "16.3",
+      "Draft S5": "19",
+      "Draft S6": "14",
+      "Draft S7": "16",
+      "notes": ""
+   },
+   "LF": {
+      "Player Name": "Lorelei Ikaye",
+      "Avg Draft pick": "64.7",
+      "Draft S5": "56",
+      "Draft S6": "59",
+      "Draft S7": "79",
+      "notes": ""
+   },
+   "LG": {
+      "Player Name": "Mamie Skiumsby",
+      "Avg Draft pick": "190.7",
+      "Draft S5": "200",
+      "Draft S6": "199",
+      "Draft S7": "173",
+      "notes": ""
+   },
+   "LH": {
+      "Player Name": "Matessa Sturges",
+      "Avg Draft pick": "65.0",
+      "Draft S5": "64",
+      "Draft S6": "83",
+      "Draft S7": "48",
+      "notes": ""
+   },
+   "LI": {
+      "Player Name": "Rosanna Phelps",
+      "Avg Draft pick": "144.0",
+      "Draft S5": "144",
+      "Draft S6": "150",
+      "Draft S7": "138",
+      "notes": ""
+   },
+   "LJ": {
+      "Player Name": "Ruth Proutt",
+      "Avg Draft pick": "90.0",
+      "Draft S5": "103",
+      "Draft S6": "87",
+      "Draft S7": "80",
+      "notes": ""
+   },
+   "LK": {
+      "Player Name": "Samantha Winslow",
+      "Avg Draft pick": "210.0",
+      "Draft S5": "200",
+      "Draft S6": "210",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "LL": {
+      "Player Name": "Tatiana Jackson",
+      "Avg Draft pick": "177.7",
+      "Draft S5": "173",
+      "Draft S6": "168",
+      "Draft S7": "192",
+      "notes": ""
+   },
+   "LM": {
+      "Player Name": "Tracy Hoban",
+      "Avg Draft pick": "183.3",
+      "Draft S5": "188",
+      "Draft S6": "205",
+      "Draft S7": "157",
+      "notes": ""
+   },
+   "LN": {
+      "Player Name": "Uma Morris",
+      "Avg Draft pick": "164.3",
+      "Draft S5": "194",
+      "Draft S6": "140",
+      "Draft S7": "159",
+      "notes": ""
+   },
+   "LO": {
+      "Player Name": "Vanessa Goodman",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "LP": {
+      "Player Name": "Victoria Shamberg",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MA": {
+      "Player Name": "Adam Van Doren",
+      "Avg Draft pick": "77.0",
+      "Draft S5": "74",
+      "Draft S6": "96",
+      "Draft S7": "61",
+      "notes": ""
+   },
+   "MB": {
+      "Player Name": "Adrian McGurk",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MC": {
+      "Player Name": "Billy Mendelson",
+      "Avg Draft pick": "210.7",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "212",
+      "notes": ""
+   },
+   "MD": {
+      "Player Name": "Ben Olds",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "ME": {
+      "Player Name": "Buddy Martin",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MF": {
+      "Player Name": "Butch Sherrod",
+      "Avg Draft pick": "185.0",
+      "Draft S5": "200",
+      "Draft S6": "154",
+      "Draft S7": "201",
+      "notes": ""
+   },
+   "MG": {
+      "Player Name": "Cameron Haines",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MH": {
+      "Player Name": "Chandler Huggins",
+      "Avg Draft pick": "208.7",
+      "Draft S5": "200",
+      "Draft S6": "206",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MI": {
+      "Player Name": "Daniel Willis",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MJ": {
+      "Player Name": "Derek McCattery",
+      "Avg Draft pick": "108.0",
+      "Draft S5": "115",
+      "Draft S6": "89",
+      "Draft S7": "120",
+      "notes": ""
+   },
+   "MK": {
+      "Player Name": "Donald Vogel",
+      "Avg Draft pick": "110.0",
+      "Draft S5": "113",
+      "Draft S6": "101",
+      "Draft S7": "116",
+      "notes": ""
+   },
+   "ML": {
+      "Player Name": "Guiseppe Prochaska",
+      "Avg Draft pick": "212.3",
+      "Draft S5": "197",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "MM": {
+      "Player Name": "Ivan King",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": "i know you want to, but don't"
+   },
+   "MN": {
+      "Player Name": "Jerry Winchell",
+      "Avg Draft pick": "191.7",
+      "Draft S5": "196",
+      "Draft S6": "183",
+      "Draft S7": "196",
+      "notes": ""
+   },
+   "MO": {
+      "Player Name": "Jose Meisenheimer",
+      "Avg Draft pick": "200.0",
+      "Draft S5": "200",
+      "Draft S6": "189",
+      "Draft S7": "211",
+      "notes": ""
+   },
+   "MP": {
+      "Player Name": "Lance Lambert",
+      "Avg Draft pick": "108.0",
+      "Draft S5": "110",
+      "Draft S6": "58",
+      "Draft S7": "156",
+      "notes": ""
+   },
+   "NA": {
+      "Player Name": "Marsellus Marx",
+      "Avg Draft pick": "17.0",
+      "Draft S5": "15",
+      "Draft S6": "18",
+      "Draft S7": "18",
+      "notes": "falling from stats find"
+   },
+   "NB": {
+      "Player Name": "Matthew La Cruz",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NC": {
+      "Player Name": "Maynard McElroy",
+      "Avg Draft pick": "41.3",
+      "Draft S5": "35",
+      "Draft S6": "44",
+      "Draft S7": "45",
+      "notes": ""
+   },
+   "ND": {
+      "Player Name": "Melvin Berger",
+      "Avg Draft pick": "211.3",
+      "Draft S5": "200",
+      "Draft S6": "214",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NE": {
+      "Player Name": "Parker Collum",
+      "Avg Draft pick": "134.7",
+      "Draft S5": "119",
+      "Draft S6": "125",
+      "Draft S7": "160",
+      "notes": ""
+   },
+   "NO": {
+      "Player Name": "Peggy Heffernan",
+      "Avg Draft pick": "110.7",
+      "Draft S5": "92",
+      "Draft S6": "119",
+      "Draft S7": "121",
+      "notes": ""
+   },
+   "NF": {
+      "Player Name": "Ron Bourne",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NP": {
+      "Player Name": "Kendra Yarbrough",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NG": {
+      "Player Name": "Quentin Driver",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "OA": {
+      "Player Name": "Berit Greenwalt",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NH": {
+      "Player Name": "Rafael Garbonzos",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "OB": {
+      "Player Name": "Rose Fluegel",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NI": {
+      "Player Name": "Robert Young",
+      "Avg Draft pick": "96.7",
+      "Draft S5": "85",
+      "Draft S6": "118",
+      "Draft S7": "87",
+      "notes": ""
+   },
+   "OC": {
+      "Player Name": "Maya Woodruff",
+      "Avg Draft pick": "76.7",
+      "Draft S5": "84",
+      "Draft S6": "68",
+      "Draft S7": "78",
+      "notes": ""
+   },
+   "NJ": {
+      "Player Name": "Scotty Roth",
+      "Avg Draft pick": "87.7",
+      "Draft S5": "70",
+      "Draft S6": "99",
+      "Draft S7": "94",
+      "notes": ""
+   },
+   "OD": {
+      "Player Name": "Trent Sizemore",
+      "Avg Draft pick": "51.0",
+      "Draft S5": "59",
+      "Draft S6": "53",
+      "Draft S7": "41",
+      "notes": ""
+   },
+   "NK": {
+      "Player Name": "Terry Vega",
+      "Avg Draft pick": "204.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "193",
+      "notes": ""
+   },
+   "OE": {
+      "Player Name": "Perry Marx",
+      "Avg Draft pick": "204.3",
+      "Draft S5": "200",
+      "Draft S6": "203",
+      "Draft S7": "210",
+      "notes": ""
+   },
+   "NL": {
+      "Player Name": "Vincent Sweet",
+      "Avg Draft pick": "185.3",
+      "Draft S5": "163",
+      "Draft S6": "196",
+      "Draft S7": "197",
+      "notes": ""
+   },
+   "OF": {
+      "Player Name": "Dominic Hoskins",
+      "Avg Draft pick": "198.0",
+      "Draft S5": "200",
+      "Draft S6": "190",
+      "Draft S7": "204",
+      "notes": ""
+   },
+   "NM": {
+      "Player Name": "Walter Hall",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "OG": {
+      "Player Name": "Umberto Anders",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "JA": {
+      "Player Name": "Thor Herring",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "NN": {
+      "Player Name": "Wayne Pitman",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "BP": {
+      "Player Name": "Troy Glaus",
+      "Avg Draft pick": "65.3",
+      "Draft S5": "72",
+      "Draft S6": "56",
+      "Draft S7": "68",
+      "notes": ""
+   },
+   "OI": {
+      "Player Name": "Alicia Blakely",
+      "Avg Draft pick": "66.0",
+      "Draft S5": "52",
+      "Draft S6": "69",
+      "Draft S7": "77",
+      "notes": ""
+   },
+   "CA": {
+      "Player Name": "Randy Johnson",
+      "Avg Draft pick": "104.7",
+      "Draft S5": "106",
+      "Draft S6": "122",
+      "Draft S7": "86",
+      "notes": "trending up"
+   },
+   "OJ": {
+      "Player Name": "Amanda Hellerman",
+      "Avg Draft pick": "106.0",
+      "Draft S5": "102",
+      "Draft S6": "128",
+      "Draft S7": "88",
+      "notes": ""
+   },
+   "CB": {
+      "Player Name": "Chipper Jones",
+      "Avg Draft pick": "49.7",
+      "Draft S5": "46",
+      "Draft S6": "52",
+      "Draft S7": "51",
+      "notes": ""
+   },
+   "OK": {
+      "Player Name": "Anna Goudreau",
+      "Avg Draft pick": "51.3",
+      "Draft S5": "57",
+      "Draft S6": "45",
+      "Draft S7": "52",
+      "notes": ""
+   },
+   "CC": {
+      "Player Name": "Jeff Conine",
+      "Avg Draft pick": "103.0",
+      "Draft S5": "111",
+      "Draft S6": "79",
+      "Draft S7": "119",
+      "notes": ""
+   },
+   "OL": {
+      "Player Name": "Barbara Jones",
+      "Avg Draft pick": "119.0",
+      "Draft S5": "120",
+      "Draft S6": "110",
+      "Draft S7": "127",
+      "notes": ""
+   },
+   "CD": {
+      "Player Name": "Nomar Garciaparra",
+      "Avg Draft pick": "24.7",
+      "Draft S5": "9",
+      "Draft S6": "30",
+      "Draft S7": "35",
+      "notes": ""
+   },
+   "OM": {
+      "Player Name": "Brenda Markart",
+      "Avg Draft pick": "36.0",
+      "Draft S5": "37",
+      "Draft S6": "35",
+      "Draft S7": "36",
+      "notes": ""
+   },
+   "CE": {
+      "Player Name": "Sammy Sosa",
+      "Avg Draft pick": "14.0",
+      "Draft S5": "14",
+      "Draft S6": "7",
+      "Draft S7": "21",
+      "notes": ""
+   },
+   "ON": {
+      "Player Name": "Cheryl Reynolds",
+      "Avg Draft pick": "12.7",
+      "Draft S5": "10",
+      "Draft S6": "8",
+      "Draft S7": "20",
+      "notes": ""
+   },
+   "CF": {
+      "Player Name": "Frank Thomas",
+      "Avg Draft pick": "128.0",
+      "Draft S5": "122",
+      "Draft S6": "123",
+      "Draft S7": "139",
+      "notes": ""
+   },
+   "OO": {
+      "Player Name": "Christina Beattie",
+      "Avg Draft pick": "133.3",
+      "Draft S5": "123",
+      "Draft S6": "149",
+      "Draft S7": "128",
+      "notes": ""
+   },
+   "CG": {
+      "Player Name": "Ken Griffey Jr.",
+      "Avg Draft pick": "18.7",
+      "Draft S5": "11",
+      "Draft S6": "20",
+      "Draft S7": "25",
+      "notes": ""
+   },
+   "OP": {
+      "Player Name": "Claudia Villarta",
+      "Avg Draft pick": "29.3",
+      "Draft S5": "33",
+      "Draft S6": "26",
+      "Draft S7": "29",
+      "notes": ""
+   },
+   "CH": {
+      "Player Name": "Jim Thome",
+      "Avg Draft pick": "138.7",
+      "Draft S5": "139",
+      "Draft S6": "129",
+      "Draft S7": "148",
+      "notes": ""
+   },
+   "PA": {
+      "Player Name": "Dawn Cozart",
+      "Avg Draft pick": "149.3",
+      "Draft S5": "157",
+      "Draft S6": "146",
+      "Draft S7": "145",
+      "notes": ""
+   },
+   "CI": {
+      "Player Name": "Todd Helton",
+      "Avg Draft pick": "66.3",
+      "Draft S5": "61",
+      "Draft S6": "80",
+      "Draft S7": "58",
+      "notes": ""
+   },
+   "PB": {
+      "Player Name": "Emily Lewbel",
+      "Avg Draft pick": "78.0",
+      "Draft S5": "83",
+      "Draft S6": "84",
+      "Draft S7": "67",
+      "notes": ""
+   },
+   "CJ": {
+      "Player Name": "Bobby Higginson",
+      "Avg Draft pick": "65.0",
+      "Draft S5": "62",
+      "Draft S6": "67",
+      "Draft S7": "66",
+      "notes": ""
+   },
+   "PC": {
+      "Player Name": "Fay Dawson",
+      "Avg Draft pick": "59.7",
+      "Draft S5": "66",
+      "Draft S6": "64",
+      "Draft S7": "49",
+      "notes": ""
+   },
+   "CK": {
+      "Player Name": "Cliff Floyd",
+      "Avg Draft pick": "37.0",
+      "Draft S5": "44",
+      "Draft S6": "36",
+      "Draft S7": "31",
+      "notes": ""
+   },
+   "PD": {
+      "Player Name": "Gwen Sears",
+      "Avg Draft pick": "38.3",
+      "Draft S5": "37",
+      "Draft S6": "40",
+      "Draft S7": "38",
+      "notes": ""
+   },
+   "CL": {
+      "Player Name": "Jeff Bagwell",
+      "Avg Draft pick": "57.0",
+      "Draft S5": "54",
+      "Draft S6": "62",
+      "Draft S7": "55",
+      "notes": ""
+   },
+   "PE": {
+      "Player Name": "Hillary Vargas",
+      "Avg Draft pick": "60.7",
+      "Draft S5": "53",
+      "Draft S6": "65",
+      "Draft S7": "64",
+      "notes": ""
+   },
+   "CM": {
+      "Player Name": "Carlos Beltran",
+      "Avg Draft pick": "108.0",
+      "Draft S5": "112",
+      "Draft S6": "111",
+      "Draft S7": "101",
+      "notes": ""
+   },
+   "PF": {
+      "Player Name": "Ingrid Dahlman",
+      "Avg Draft pick": "114.7",
+      "Draft S5": "116",
+      "Draft S6": "115",
+      "Draft S7": "113",
+      "notes": ""
+   },
+   "CN": {
+      "Player Name": "Shawn Green",
+      "Avg Draft pick": "51.7",
+      "Draft S5": "50",
+      "Draft S6": "48",
+      "Draft S7": "57",
+      "notes": ""
+   },
+   "PG": {
+      "Player Name": "Jessica Wassersas",
+      "Avg Draft pick": "69.7",
+      "Draft S5": "69",
+      "Draft S6": "71",
+      "Draft S7": "69",
+      "notes": ""
+   },
+   "CO": {
+      "Player Name": "Richie Sexson",
+      "Avg Draft pick": "164.7",
+      "Draft S5": "184",
+      "Draft S6": "155",
+      "Draft S7": "155",
+      "notes": ""
+   },
+   "PH": {
+      "Player Name": "Jillian Paine",
+      "Avg Draft pick": "157.0",
+      "Draft S5": "159",
+      "Draft S6": "162",
+      "Draft S7": "150",
+      "notes": ""
+   },
+   "CP": {
+      "Player Name": "Brad Radke",
+      "Avg Draft pick": "133.3",
+      "Draft S5": "133",
+      "Draft S6": "156",
+      "Draft S7": "111",
+      "notes": ""
+   },
+   "PI": {
+      "Player Name": "Kristen Sullivan",
+      "Avg Draft pick": "147.0",
+      "Draft S5": "134",
+      "Draft S6": "164",
+      "Draft S7": "143",
+      "notes": ""
+   },
+   "DA": {
+      "Player Name": "Vladimir Guerrero",
+      "Avg Draft pick": "33.7",
+      "Draft S5": "25",
+      "Draft S6": "37",
+      "Draft S7": "39",
+      "notes": ""
+   },
+   "PJ": {
+      "Player Name": "Kay O'Toole",
+      "Avg Draft pick": "37.7",
+      "Draft S5": "26",
+      "Draft S6": "43",
+      "Draft S7": "44",
+      "notes": ""
+   },
+   "DB": {
+      "Player Name": "Mike Piazza",
+      "Avg Draft pick": "107.0",
+      "Draft S5": "125",
+      "Draft S6": "107.01",
+      "Draft S7": "89",
+      "notes": ""
+   },
+   "PK": {
+      "Player Name": "Libby Futterman",
+      "Avg Draft pick": "107.7",
+      "Draft S5": "127",
+      "Draft S6": "114",
+      "Draft S7": "82",
+      "notes": ""
+   },
+   "DC": {
+      "Player Name": "Derek Jeter",
+      "Avg Draft pick": "12.3",
+      "Draft S5": "12",
+      "Draft S6": "13",
+      "Draft S7": "12",
+      "notes": ""
+   },
+   "PL": {
+      "Player Name": "Marilyn McDonnell",
+      "Avg Draft pick": "18.7",
+      "Draft S5": "29",
+      "Draft S6": "12",
+      "Draft S7": "15",
+      "notes": ""
+   },
+   "DD": {
+      "Player Name": "Tim Hudson",
+      "Avg Draft pick": "206.7",
+      "Draft S5": "200",
+      "Draft S6": "200",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "PM": {
+      "Player Name": "Melissa Waters",
+      "Avg Draft pick": "213.3",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "220",
+      "notes": ""
+   },
+   "DE": {
+      "Player Name": "Jimmy Rollins",
+      "Avg Draft pick": "75.0",
+      "Draft S5": "78",
+      "Draft S6": "63",
+      "Draft S7": "84",
+      "notes": ""
+   },
+   "PN": {
+      "Player Name": "Nan Porter",
+      "Avg Draft pick": "70.7",
+      "Draft S5": "81",
+      "Draft S6": "75",
+      "Draft S7": "56",
+      "notes": ""
+   },
+   "DF": {
+      "Player Name": "Jason Kendall",
+      "Avg Draft pick": "26.7",
+      "Draft S5": "47",
+      "Draft S6": "16",
+      "Draft S7": "17",
+      "notes": ""
+   },
+   "PO": {
+      "Player Name": "Pamela Kirkos",
+      "Avg Draft pick": "22.3",
+      "Draft S5": "32",
+      "Draft S6": "22",
+      "Draft S7": "13",
+      "notes": ""
+   },
+   "DG": {
+      "Player Name": "Phil Nevin",
+      "Avg Draft pick": "125.7",
+      "Draft S5": "94",
+      "Draft S6": "130",
+      "Draft S7": "153",
+      "notes": ""
+   },
+   "PP": {
+      "Player Name": "Raquel Cullen",
+      "Avg Draft pick": "136.0",
+      "Draft S5": "130",
+      "Draft S6": "132",
+      "Draft S7": "146",
+      "notes": ""
+   },
+   "DH": {
+      "Player Name": "Barry Bonds",
+      "Avg Draft pick": "12.7",
+      "Draft S5": "6",
+      "Draft S6": "21",
+      "Draft S7": "11",
+      "notes": ""
+   },
+   "QA": {
+      "Player Name": "Sarah Maxwell",
+      "Avg Draft pick": "21.0",
+      "Draft S5": "30",
+      "Draft S6": "19",
+      "Draft S7": "14",
+      "notes": ""
+   },
+   "DI": {
+      "Player Name": "Ichiro",
+      "Avg Draft pick": "10.0",
+      "Draft S5": "16",
+      "Draft S6": "9",
+      "Draft S7": "5",
+      "notes": "trending up"
+   },
+   "QB": {
+      "Player Name": "Susan Gore",
+      "Avg Draft pick": "14.3",
+      "Draft S5": "22",
+      "Draft S6": "11",
+      "Draft S7": "10",
+      "notes": ""
+   },
+   "DJ": {
+      "Player Name": "Albert Pujols",
+      "Avg Draft pick": "192.5",
+      "Draft S5": "165",
+      "Draft S6": "220",
+      "Draft S7": "192.5",
+      "notes": ""
+   },
+   "QC": {
+      "Player Name": "Sophie Meyer",
+      "Avg Draft pick": "212.0",
+      "Draft S5": "200",
+      "Draft S6": "220",
+      "Draft S7": "216",
+      "notes": ""
+   },
+   "DK": {
+      "Player Name": "Greg Vaughn",
+      "Avg Draft pick": "153.0",
+      "Draft S5": "142",
+      "Draft S6": "138",
+      "Draft S7": "179",
+      "notes": ""
+   },
+   "QD": {
+      "Player Name": "Tonya Lesco",
+      "Avg Draft pick": "140.7",
+      "Draft S5": "148",
+      "Draft S6": "143",
+      "Draft S7": "131",
+      "notes": ""
+   },
+   "DL": {
+      "Player Name": "Alex Rodriguez",
+      "Avg Draft pick": "34.3",
+      "Draft S5": "39",
+      "Draft S6": "32",
+      "Draft S7": "32",
+      "notes": ""
+   },
+   "QE": {
+      "Player Name": "Wendy Parsons",
+      "Avg Draft pick": "36.7",
+      "Draft S5": "40",
+      "Draft S6": "42",
+      "Draft S7": "28",
+      "notes": ""
+   },
+   "DM": {
+      "Player Name": "Carlos Delgado",
+      "Avg Draft pick": "105.0",
+      "Draft S5": "131",
+      "Draft S6": "124",
+      "Draft S7": "60",
+      "notes": ""
+   },
+   "QF": {
+      "Player Name": "Yvonne Carter",
+      "Avg Draft pick": "99.0",
+      "Draft S5": "132",
+      "Draft S6": "93",
+      "Draft S7": "72",
+      "notes": ""
+   },
+   "DN": {
+      "Player Name": "Jason Giambi",
+      "Avg Draft pick": "181.3",
+      "Draft S5": "186",
+      "Draft S6": "194",
+      "Draft S7": "164",
+      "notes": ""
+   },
+   "QG": {
+      "Player Name": "Zoe Mallory",
+      "Avg Draft pick": "200.3",
+      "Draft S5": "200",
+      "Draft S6": "201",
+      "Draft S7": "200",
+      "notes": ""
+   }
+}

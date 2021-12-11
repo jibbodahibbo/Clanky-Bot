@@ -2907,15 +2907,15 @@ module.exports = {
 			'Price': 16
 	 },
 	 'QI': {
-			'Name': 'CUSTOM PLAYER',
-			'Batting': null,
-			'Running': null,
-			'Pitching': null,
-			'Fielding': null,
+			'Name': 'Ruby Diamond',
+			'Batting': 6,
+			'Running': 6,
+			'Pitching': 4,
+			'Fielding': 7,
 			'Handedness': '-',
 			'Face Type': '-',
 			'TOTAL': 0,
-			'Price': null
+			'Price': 0
 	 }
 }
 }

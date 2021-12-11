@@ -6239,5 +6239,10 @@
         "bio": "",
         "headshot_image": "https://i.ibb.co/1vj5JsM/Mr-Clanky-HS.png",
         "bio_image": "https://i.ibb.co/cxdzynw/Mr-Clanky-Bio.png"
+    },
+    "QI": {
+        "id": "QI",
+        "name": "Ruby Diamond",
+        "headshot_image": "https://i.ibb.co/xMFHmnB/AJ-Generic-HS.png"
     }
 }
