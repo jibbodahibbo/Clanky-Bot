@@ -21,6 +21,7 @@ const allowed_channels = [
 	"782331491656138783",
 	"847513377811070997",
 	"918362812223459339",
+	"919379673178337290",
 ];
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
@@ -50,7 +51,7 @@ const coaches = {
 	JJ: ["142464556151734272", "Jarod Johnson"],
 	26: ["470389312291209246", "T-Boz"],
 	JV: ["78596893797523456", "TheRealSisu"],
-	28: ["87804201056337920", "Natetastic28"],
+	N8: ["87804201056337920", "Natetastic28"],
 	VS: ["135436127862652928", "Vissery"],
 	SB: ["711388106749902849", "SilverBullet102"],
 	TO: ["692170461047554048", "Toast"],
@@ -66,23 +67,23 @@ const coaches = {
 };
 
 const teams = {
-	C8: ["Red Phillies", "red"],
-	BB: ["Junior Brewers", 16172079],
+	C8: ["Crazy Athletics", "green"],
+	BB: ["Mighty Tigers", "yellow"],
 	YY: ["Green Monsters", "lime"],
 	WZ: ["Chicago Cubs", "blue"],
 	13: ["Boston Cubs", 39129],
-	MF: ["Utah Hammers", "red"],
+	MF: ["Boston Red Sox", "red"],
 	MV: ["Baltimore Orioles", 15695665],
-	AE: ["Mariners", 10509236],
+	AE: ["Minnesota Mariners", "teal"],
 	EX: ["Super-Duper Melonheads", "pink"],
-	28: ["Milwaukee Braves", 16711680],
+	N8: ["Atlanta Braves", 16711680],
 	CW: ["Seattle Fishes", "blue"],
 	JL: ["Baltimore Bombers", "black"],
 	JY: ["Knights", "gray"],
 	MM: ["Boston Reds", "red"],
 	IN: ["Los Angeles Angels", 16065893],
 	JV: ["Arizona Diamondbacks", "purple"],
-	SB: ["Little Giants", 12797184],
+	SB: ["Little Giants", "orange"],
 	MT: ["Junior Athletics", "green"],
 	26: ["Tampa Bay Devil Rays", "black"],
 	JJ: ["Los Angeles Dodgers", "teal"],
@@ -90,16 +91,17 @@ const teams = {
 	SK: ["Florida Marlins", 48028],
 	YT: ["Wombats", 7589],
 	TO: ["Minnesota Twins", 255],
-	H1: ["Hitace's team", "black"],
+	H1: ["New York Yankees", "blue"],
 	RP: ["Baltimore Bombers", "red"],
-	GS: ["GSchlim's team", "black"],
-	NO: ["Nodakkian's team", "black"],
-	TY: ["areyoutyler's team", "black"],
-	DW: ["Milwaukee Blue Jays", "blue"],
+	GS: ["Milwaukee Blue Jays", "blue"],
+	NO: ["Dakkians", "black"],
+	TY: ["Texas Rangers", "blue"],
+	DW: ["Milwaukee Cardinals", "red"],
 	MA: ["Colorado Rockies", "purple"],
 };
 
-const draft_sheet_id = "1vaozO0ZZDEFSop2qEDZfFpTWKylMn8qbw2SrjbEh620";
+// const draft_sheet_id = "1vaozO0ZZDEFSop2qEDZfFpTWKylMn8qbw2SrjbEh620";
+const draft_sheet_id = "10Hq1AT5zzkwdgC2-tJue2BUv06Mmbn1_5tk111tTpAQ";
 const draft_cell_start = '';
 
 let draft_num = 1;
@@ -477,7 +479,7 @@ module.exports = {
 			return null;
     }
 
-    bot_channel = client.channels.cache.get("918362812223459339");
+    bot_channel = client.channels.cache.get("919379673178337290");
 
     if (args[0] == "fix"){
       try{
