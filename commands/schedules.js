@@ -7,6 +7,7 @@ const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
 const {s6schedule, s6teams} = require("../jorge_schedule");
 const {s7schedule, s7teams} = require("../s7_schedule");
+const {s8schedule, s8teams} = require("../s8_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -44,14 +45,14 @@ module.exports = {
 			|| message.member.roles.cache.find(role => role.name == 'Admin')) {
 			try {
 
-				//Inject a schedule from google sheets.
-				const sched= s7schedule;
-				const t= s7teams;
-				if (args[0] == "inject" && args[1]=="s7"){
+				//Inject a schedule from json.
+				const sched= s8schedule;
+				const t= s8teams;
+				if (args[0] == "inject" && args[1]=="s8"){
 					for (var i = 0; i < sched.length; i++) {
 						let s=sched[i];
-						let ss = await createScheduleItem(['s7',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['s7',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						let ss = await createScheduleItem(['s8',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['s8',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 					return message.reply("Injected")
 				}
