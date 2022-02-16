@@ -215,7 +215,6 @@ module.exports = {
   //Commisioner spying on a result. notifies test-lab channel
     if (args[0]=="spy"){
        if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')){
-         	if (message.guild == null){
             console.log("spy attempt made");
             try{
             	const spy_item = await Results.findOne({
@@ -229,9 +228,11 @@ module.exports = {
                 return null;
               }
             client.channels.cache.get("741308777357377617").send(message.author.id +" has spied on" + args[1] + " " + args[2] +" "+ args[3]);
-            return message.reply(spy_item.images[0]);
-            }
-       }
+            client.users.cache
+              .get(message.author.id)
+              .send(spy_item.images[0]);
+              return;
+        }
     }
 
 		// make sure this is a dm. If not, let the user know they need to send a dm
