@@ -64,7 +64,7 @@ module.exports = {
 		if (args[0]=="ledger"){
 				let msg=""
 				const ledger = await ClankyCoins.findAll();
-				for (var i = 0; i < ledger.length; i++) {
+				for (var i = 0; i < 10; i++) {
 					msg+=ledger[i].username +" "+ ledger[i].coins+ "\n";
 				}
 				return message.reply(msg);
