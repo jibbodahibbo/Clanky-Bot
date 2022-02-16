@@ -216,7 +216,7 @@ module.exports = {
     if (args[0]=="spy"){
        if (message.member.roles.cache.find(role => role.name == 'Commissioner')){
          	if (message.guild == null){
-
+            console.log("spy attempt made")
             try{
             	const spy_item = await Results.findOne({
             		where: {
@@ -228,10 +228,9 @@ module.exports = {
             }catch (e){
                 return null;
               }
-
-            message.reply(spy_item.images[0]);
             client.channels.cache.get("741308777357377617").send(message.author.id +" has spied on" + args[1] + " " + args[2] +" "+ args[3]);
-          }
+            return message.reply(spy_item.images[0]);
+            }
        }
     }
 
