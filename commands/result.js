@@ -225,6 +225,7 @@ module.exports = {
             		}
             	});
             }catch (e){
+              console.log("none found");
                 return null;
               }
             client.channels.cache.get("741308777357377617").send(message.author.id +" has spied on" + args[1] + " " + args[2] +" "+ args[3]);
