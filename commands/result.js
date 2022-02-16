@@ -214,9 +214,9 @@ module.exports = {
     }
   //Commisioner spying on a result. notifies test-lab channel
     if (args[0]=="spy"){
-       if (message.member.roles.cache.find(role => role.name == 'Commissioner' || message.member.roles.cache.find(role => role.name == 'Codehead')){
+       if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')){
          	if (message.guild == null){
-            console.log("spy attempt made")
+            console.log("spy attempt made");
             try{
             	const spy_item = await Results.findOne({
             		where: {
