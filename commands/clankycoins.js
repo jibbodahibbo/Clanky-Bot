@@ -61,6 +61,11 @@ module.exports = {
 			return null;
 		}
 */
+		if (args[0]=="ledger"){
+				const ledger = await ClankyCoins.findAll();
+				return message.reply(ledger);
+		}
+
 		if (args.length<1){
 					let cc = await addUser(message);
 					return message.reply( cc.tag + ' added to the Clanky Coin Ledger');
