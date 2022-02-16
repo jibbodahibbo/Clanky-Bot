@@ -224,15 +224,17 @@ module.exports = {
             			coach: args[2],
             	    game_num: args[3]
             		}
-            	});
+            	})
+              client.users.cache
+                .get(message.author.id)
+                .send(spy_item.images[0]);
+              ;
+
             }catch (e){
               console.log("none found");
                 return null;
               }
             client.channels.cache.get("741308777357377617").send(message.author +" has spied on " + args[1] + " " + args[2] +" "+ args[3]);
-            client.users.cache
-              .get(message.author.id)
-              .send(spy_item.images[0]);
               return;
         }
     }
