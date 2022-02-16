@@ -214,7 +214,7 @@ module.exports = {
     }
   //Commisioner spying on a result. notifies test-lab channel
     if (args[0]=="spy"){
-       if (message.member.roles.cache.find(role => role.name == 'Commissioner'){
+       if (message.member.roles.cache.find(role => role.name == 'Commissioner')){
          	if (message.guild == null){
 
             try{
