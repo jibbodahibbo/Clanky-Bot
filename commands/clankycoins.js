@@ -63,7 +63,7 @@ module.exports = {
 */
 	if (message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')) {
 		if (args[0]=="unbank"){
-			const deletion = await Results.destroy({
+			const deletion = await ClankyCoins.destroy({
 		    where: {user_id: args[1] },
 		  });
 		}
