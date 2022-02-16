@@ -61,8 +61,17 @@ module.exports = {
 			return null;
 		}
 */
+	if (message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')) {
+		if (args[0]=="unbank"){
+			const deletion = await Results.destroy({
+		    where: {username: args[1] },
+		  });
+		}
+	}
+
+
 		if (args[0]=="ledger"){
-				let msg=""
+				let msg="\n";
 				const ledger = await ClankyCoins.findAll();
 				for (var i = 0; i < ledger.length; i++) {
 					msg+=ledger[i].username +":"+ ledger[i].coins+ "\n";
