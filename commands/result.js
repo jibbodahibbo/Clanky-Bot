@@ -216,8 +216,9 @@ module.exports = {
     if (args[0]=="spy"){
        if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')){
             console.log("spy attempt made");
+            const spy_item={};
             try{
-            	const spy_item = await Results.findOne({
+            	spy_item = await Results.findOne({
             		where: {
             			league: args[1],
             			coach: args[2],
@@ -228,7 +229,7 @@ module.exports = {
               console.log("none found");
                 return null;
               }
-            client.channels.cache.get("741308777357377617").send(message.author.id +" has spied on" + args[1] + " " + args[2] +" "+ args[3]);
+            client.channels.cache.get("741308777357377617").send(message.author +" has spied on " + args[1] + " " + args[2] +" "+ args[3]);
             client.users.cache
               .get(message.author.id)
               .send(spy_item.images[0]);
