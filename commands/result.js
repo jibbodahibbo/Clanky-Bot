@@ -216,7 +216,7 @@ module.exports = {
     if (args[0]=="spy"){
        if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')){
             console.log("spy attempt made");
-            const spy_item={};
+            let spy_item;
             try{
             	spy_item = await Results.findOne({
             		where: {
