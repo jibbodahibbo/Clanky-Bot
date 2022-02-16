@@ -212,6 +212,28 @@ module.exports = {
         return message.reply("cleared");
       }
     }
+  //Commisioner spying on a result. notifies test-lab channel
+    if (args[0]=="spy"){
+       if (message.member.roles.cache.find(role => role.name == 'Commissioner'){
+         	if (message.guild == null){
+
+            try{
+            	const spy_item = await Results.findOne({
+            		where: {
+            			league: args[1],
+            			coach: args[2],
+            	    game_num: args[3]
+            		}
+            	});
+            }catch (e){
+                return null;
+              }
+
+            message.reply(spy_item.images[0]);
+            client.channels.cache.get("741308777357377617").send(message.author.id +" has spied on" + args[1] + " " + args[2] +" "+ args[3]);
+          }
+       }
+    }
 
 		// make sure this is a dm. If not, let the user know they need to send a dm
 		if (message.guild !== null) {
