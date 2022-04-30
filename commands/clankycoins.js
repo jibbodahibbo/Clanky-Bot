@@ -1,7 +1,7 @@
 const {ClankyCoins} = require('../dbInit');
 const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
 
-//test
+//test123
 async function addUser(message){
 	try {
 		const cc = await ClankyCoins.create({
