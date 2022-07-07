@@ -8,7 +8,7 @@ const { discord } = require("../byb-bot");
 const {s6schedule, s6teams} = require("../jorge_schedule");
 const {s7schedule, s7teams} = require("../s7_schedule");
 const {s8schedule, s8teams} = require("../s8_schedule");
-const {s8schedule, s8teams} = require("../s9_schedule");
+const {s9schedule, s9teams} = require("../s9_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
