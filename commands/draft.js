@@ -542,7 +542,7 @@ module.exports = {
 
       for (let j = 0; j < Object.keys(playerPool.Players).length; j++) {
         const cc = await Draft_j.create({
-          player: Object.entries(playerPool)[j].NAME,
+          player: Object.entries(playerPool.Players)[j].NAME,
         });
 
         if (j % 25 == 0) {
