@@ -541,7 +541,7 @@ module.exports = {
       let total = Object.keys(playerPool.Players).length - 1;
       for (let j = 0; j < Object.keys(playerPool.Players).length; j++) {
         const cc = await Draft_j.create({
-          player: playerPool.Players[j]["NAME"],
+          player: playerPool.Players[j].NAME],
         });
         if (j % 25 == 0) {
           resetting_msg.edit(`The draft is being reset... (${j}/${total})`);
