@@ -2916,6 +2916,17 @@ module.exports = {
 			'Face Type': '-',
 			'TOTAL': 0,
 			'Price': 0
-	 }
+	 },
+   'QI': {
+      'Name': 'Garbage McGee',
+      'Batting': 6,
+      'Running': 6,
+      'Pitching': 4,
+      'Fielding': 7,
+      'Handedness': '-',
+      'Face Type': '-',
+      'TOTAL': 0,
+      'Price': 0
+   }
 }
 }

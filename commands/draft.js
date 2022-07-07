@@ -481,7 +481,7 @@ module.exports = {
     }
 		//TODO Update to S9 RBBL Draft Channel
     bot_channel = client.channels.cache.get("741308777357377617");
-
+		//TODO MAKE IT SO YOU FIX DRAFT PICKS WITH PLAYER FULL NAMES
     if (args[0] == "fix"){
       try{
     const change_player = await Draft_j.update({ team: args[2], pick_num:parseInt(args[3]) },
