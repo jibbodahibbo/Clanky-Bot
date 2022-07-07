@@ -640,7 +640,7 @@ module.exports = {
           try{
           	const player_to_draft = await Draft_j.findOne({
           		where: {
-          		     name: drafted_name,
+          		     player: drafted_name,
           		},
           	});
             if (player_to_draft.team!='undrafted'){
@@ -649,7 +649,7 @@ module.exports = {
 
         const draft_player = await Draft_j.update({ team: current_drafter, pick_num:draft_num },
           { where:{
-            player:pair,
+            player:drafted_name,
             team:'undrafted',
             }
           });
