@@ -640,8 +640,8 @@ module.exports = {
       }
   	/*  } */
           try{
+						console.log("drafted_name: "+ drafted_name);
           	const player_to_draft = await Draft_j.findOne({
-							console.log("drafted_name: "+ drafted_name);
           		where: {
 									player: drafted_name,
           		},
