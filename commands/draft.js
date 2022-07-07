@@ -693,8 +693,8 @@ module.exports = {
               await writePlayerToDraft(playerPool.Players[pair].Name, pair);
 					}
 
-    // bot_channel.send(stat_report);
-    bot_channel.send(buildPlayerDraftMessage(playerData[pair]));
+     bot_channel.send(stat_report);
+    //bot_channel.send(buildPlayerDraftMessage(playerData[pair]));
 
           // write to spreadsheet
 
