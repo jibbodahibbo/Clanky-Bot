@@ -546,7 +546,7 @@ module.exports = {
         });
 */
 				Object.entries(playerPool.Players).forEach(
-				    ([key, value]) =>  const cc = await Draft_j.create({player: playerPool.Players[value].NAME, })
+				    ([key, value]) =>  await Draft_j.create({player: playerPool.Players[value].NAME, })
 				);
 
         if (j % 25 == 0) {
