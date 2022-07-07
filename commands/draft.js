@@ -111,7 +111,7 @@ let current_drafter = ""; //Should be a 2 char pair.
 let draft_lock = true;
 
 async function getFullDraft() {
-  let sheetName = "DRAFT!";
+  let sheetName = "DRAFT_TEST!";
   let range = "A1:A216"
   let result;
   try {
@@ -133,7 +133,7 @@ async function getFullDraft() {
 }
 
 async function getCurrentCoach() {
-  let sheetName = "DRAFT!";
+  let sheetName = "DRAFT_TEST!";
   let range = "A" + draft_num;
   let result;
 
@@ -159,7 +159,7 @@ async function getCurrentCoach() {
 }
 
 async function writePlayerToDraft(playerName, playerID) {
-  let sheetName = "DRAFT!";
+  let sheetName = "DRAFT_TEST!";
   let range = `B${draft_num}:C${draft_num}`;
   // let range = "B" + draft_num;
   let result;
@@ -479,8 +479,8 @@ module.exports = {
 		if (!allowed_channels.includes(message.channel.id) && message.guild != null){
 			return null;
     }
-
-    bot_channel = client.channels.cache.get("919379673178337290");
+		//TODO Update to S9 RBBL Draft Channel
+    bot_channel = client.channels.cache.get("741308777357377617");
 
     if (args[0] == "fix"){
       try{
