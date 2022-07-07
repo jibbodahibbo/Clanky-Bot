@@ -15,7 +15,7 @@ module.exports = {
 	 },
 	 'AB': {
 			'Name': 'Kimmy Eckman',
-		'Batting': 6,
+		  'Batting': 6,
 			'Running': 4,
 			'Pitching': 3,
 			'Fielding': 3,
