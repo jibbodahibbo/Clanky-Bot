@@ -538,10 +538,10 @@ module.exports = {
     if (args[0] == "reset") {
       let resetting_msg = await message.reply("The draft is resetting...");
       const reset = await Draft_j.destroy({ where: {}, truncate: true });
-      let total = Object.keys(players.Players).length - 1;
+      let total = Object.keys(playerPool.Players).length - 1;
       for (let j = 0; j < Object.keys(playerPool.Players).length; j++) {
         const cc = await Draft_j.create({
-          player: playerPool.Players[j][0],
+          player: playerPool.Players[j]["NAME"],
         });
         if (j % 25 == 0) {
           resetting_msg.edit(`The draft is being reset... (${j}/${total})`);
