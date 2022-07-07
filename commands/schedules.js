@@ -8,6 +8,7 @@ const { discord } = require("../byb-bot");
 const {s6schedule, s6teams} = require("../jorge_schedule");
 const {s7schedule, s7teams} = require("../s7_schedule");
 const {s8schedule, s8teams} = require("../s8_schedule");
+const {s8schedule, s8teams} = require("../s9_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -46,13 +47,13 @@ module.exports = {
 			try {
 
 				//Inject a schedule from json.
-				const sched= s8schedule;
-				const t= s8teams;
-				if (args[0] == "inject" && args[1]=="s8"){
+				const sched= s9schedule;
+				const t= s9teams;
+				if (args[0] == "inject" && args[1]=="s9"){
 					for (var i = 0; i < sched.length; i++) {
 						let s=sched[i];
-						let ss = await createScheduleItem(['s8',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['s8',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						let ss = await createScheduleItem(['s9',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['s9',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 					return message.reply("Injected")
 				}

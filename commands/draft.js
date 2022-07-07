@@ -1,4 +1,5 @@
 let players = require('../players.js');
+let playerPool = require('../playerPool.js');
 const {Draft_j} = require('../dbInit');
 const { Op } = require("sequelize");
 const { googleAuth } = require('../byb-bot.js');
@@ -462,8 +463,8 @@ async function showDraft(message, args, client){
 
 async function getDraftStatus() {
   current_drafter = await getCurrentCoach();
-  
-  draft_status = `**Season 8 Draft**\n__Status__: ${
+
+  draft_status = `**Season 9 Draft**\n__Status__: ${
 		draft_lock ? ":lock: Locked" : ":unlock: Unlocked"
     }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter} | ${coaches[current_drafter][1]} | ${teams[current_drafter][0]}`;
 
@@ -540,12 +541,12 @@ module.exports = {
       let total = Object.keys(players.Players).length - 1;
       for (let j = 0; j < Object.keys(players.Players).length; j++) {
         const cc = await Draft_j.create({
-          player: intToPair(j),
+          player: playerPool.Players[j][3],
         });
         if (j % 25 == 0) {
-          resetting_msg.edit(`The draft is being reset... (${j}/${total})`);  
+          resetting_msg.edit(`The draft is being reset... (${j}/${total})`);
         }
-        
+
       }
       resetting_msg.edit("The draft has been reset.");
       draft_num = 1;
@@ -622,22 +623,24 @@ module.exports = {
     }
 
     //Draft Procedure, first check to see if they are drafting by Char Pair, or by full Name.
-    let pair='XX'
+
+		//Disabling ability to draft by pair.
+  /*  let pair='XX'
     if (args.length==1 && args[0].length==2){
         pair = args[0].toUpperCase();
-    }else{
+    }else{ */
       if (args.length == 3){
-           pair =	findPlayer(args[0]+' '+args[1]+ ' ' + args[2]);
+           drafted_name = (args[0]+' '+args[1]+ ' ' + args[2]);
       }else if (args.length== 2){
-            pair =	findPlayer(args[0]+' '+args[1]);
+            drafted_name =	(args[0]+' '+args[1]);
       }else{
-            pair =	findPlayer(args[0]);
+            drafted_name =	(args[0]);
       }
-    }
+  	/*  } */
           try{
           	const player_to_draft = await Draft_j.findOne({
           		where: {
-          		     player: pair,
+          		     name: drafted_name,
           		},
           	});
             if (player_to_draft.team!='undrafted'){
