@@ -403,9 +403,9 @@ function LD(a,b){
 //Compare player names to the argument, find best match.
 function findPlayer(a){
 	console.log("finding Player...")
-	for (let i = 0; i<Object.keys(players.Players).length; i++){
+	for (let i = 0; i<Object.keys(playerPool.Players).length; i++){
 
-			if (players.Players[intToPair(i)].Name == a){
+			if (playerPool.Players[intToPair(i)].Name == a){
 				console.log("Match")
 					return (intToPair(i));
 			}
@@ -413,8 +413,8 @@ function findPlayer(a){
 				let playerpair=""
 				let closest="";
 				console.log("closest Match...")
-				for (let i = 0; i<Object.keys(players.Players).length; i++){
-					let newstring = players.Players[intToPair(i)].Name;
+				for (let i = 0; i<Object.keys(playerPool.Players).length; i++){
+					let newstring = playerPool.Players[intToPair(i)].Name;
 
 					if ( LD(a,closest) > LD(a,newstring) ){
 						closest=newstring;
@@ -434,7 +434,7 @@ async function showTeamPlayers(message, args, client){
 
   let team_list = coaches[args[2]][1] + " has drafted.."+"\n";
   for (let i=0; i<team_players.length; i++ ){
-    team_list += players.Players[team_players[i].player].Name +", ";
+    team_list += playerPool.Players[team_players[i].player].Name +", ";
   }
 
   client.users.cache.get(message.author.id)
@@ -454,7 +454,7 @@ async function showDraft(message, args, client){
 
     let drafted_player_list="";
     for (let i=0; i<drafted_players.length; i++ ){
-      drafted_player_list += "["+ drafted_players[i].pick_num +"]" + players.Players[drafted_players[i].player].Name +", ";
+      drafted_player_list += "["+ drafted_players[i].pick_num +"]" + playerPool.Players[drafted_players[i].player].Name +", ";
     }
 
     client.users.cache.get(message.author.id)
@@ -664,14 +664,14 @@ module.exports = {
 				if (args.length==1 && args[0].length==2){
           let pair = args[0].toUpperCase();
           result = "";
-						// result =  pair+': *'+players.Players[args[0]].Name +  '* has been drafted by '+ coaches[current_drafter][1] +"\n";
-            stat_report = players.Players[args[0]].Name +"\n";
-						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+						// result =  pair+': *'+playerPool.Players[args[0]].Name +  '* has been drafted by '+ coaches[current_drafter][1] +"\n";
+            stat_report = playerPool.Players[args[0]].Name +"\n";
+						stat_report += "Batting  :" + baseballs(parseInt(playerPool.Players[pair].Batting)) +"\n";
+						stat_report += "Running:" + baseballs(parseInt(playerPool.Players[pair].Running)) +"\n";
+						stat_report += "Pitching:" + baseballs(parseInt(playerPool.Players[pair].Pitching)) +"\n";
+						stat_report += "Fielding:" + baseballs(parseInt(playerPool.Players[pair].Fielding));
 
-            await writePlayerToDraft(players.Players[args[0]].Name, args[0]);
+            await writePlayerToDraft(playerPool.Players[args[0]].Name, args[0]);
 
 					}else{
             let pair='';
@@ -683,14 +683,14 @@ module.exports = {
                   pair =	findPlayer(args[0]);
             }
             result = "";
-						// result = pair+': *'+players.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] + ` (see #bot-chat)` +"\n";
-            stat_report = players.Players[pair].Name +"\n";
-						stat_report += "Batting  :" + baseballs(parseInt(players.Players[pair].Batting)) +"\n";
-						stat_report += "Running:" + baseballs(parseInt(players.Players[pair].Running)) +"\n";
-						stat_report += "Pitching:" + baseballs(parseInt(players.Players[pair].Pitching)) +"\n";
-						stat_report += "Fielding:" + baseballs(parseInt(players.Players[pair].Fielding));
+						// result = pair+': *'+playerPool.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] + ` (see #bot-chat)` +"\n";
+            stat_report = playerPool.Players[pair].Name +"\n";
+						stat_report += "Batting  :" + baseballs(parseInt(playerPool.Players[pair].Batting)) +"\n";
+						stat_report += "Running:" + baseballs(parseInt(playerPool.Players[pair].Running)) +"\n";
+						stat_report += "Pitching:" + baseballs(parseInt(playerPool.Players[pair].Pitching)) +"\n";
+						stat_report += "Fielding:" + baseballs(parseInt(playerPool.Players[pair].Fielding));
 
-              await writePlayerToDraft(players.Players[pair].Name, pair);
+              await writePlayerToDraft(playerPool.Players[pair].Name, pair);
 					}
 
     // bot_channel.send(stat_report);

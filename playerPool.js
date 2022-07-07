@@ -2927,6 +2927,6 @@ module.exports = {
       'Face Type': '-',
       'TOTAL': 0,
       'Price': 0
-   }
+   },
 }
 }
