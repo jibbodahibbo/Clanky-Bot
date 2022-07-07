@@ -544,7 +544,7 @@ module.exports = {
         const cc = await Draft_j.create({
           player: Object.entries(playerPool.Players)[j].Name,
         });
-
+				console.log(Object.entries(playerPool.Players)[j].Name);
         if (j % 25 == 0) {
           resetting_msg.edit(`The draft is being reset... (${j}/${total})`);
         }
@@ -634,14 +634,16 @@ module.exports = {
            drafted_name = (args[0]+' '+args[1]+ ' ' + args[2]);
       }else if (args.length== 2){
             drafted_name =	(args[0]+' '+args[1]);
+						console.log("drafted_name: "+ drafted_name);
       }else{
-            drafted_name =	(args[0]);
+            drafted_name =(args[0]);
       }
   	/*  } */
           try{
           	const player_to_draft = await Draft_j.findOne({
+							console.log("drafted_name: "+ drafted_name);
           		where: {
-          		     player: drafted_name,
+									player: drafted_name,
           		},
           	});
             if (player_to_draft.team!='undrafted'){
