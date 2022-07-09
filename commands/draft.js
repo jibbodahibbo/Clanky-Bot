@@ -326,20 +326,20 @@ function buildStatString(stat_name, stat_value) {
     }
   } else {
     if (stat_value == 100) {
-		text += ":star:";
-	} else if (stat_value >= 90) {
-		text += ":blue_square:";
-	} else if (stat_value >= 70) {
-		text += ":green_square:";
-	} else if (stat_value >= 50) {
-		text += ":yellow_square:";
-	} else if (stat_value >= 30) {
-		text += ":orange_square:";
-	} else if (stat_value >= 15) {
-		text += ":red_square:";
-	} else {
-		text += ":brown_square:";
-	}
+		  text += ":star:";
+    } else if (stat_value >= 90) {
+      text += ":blue_square:";
+    } else if (stat_value >= 70) {
+      text += ":green_square:";
+    } else if (stat_value >= 50) {
+      text += ":yellow_square:";
+    } else if (stat_value >= 30) {
+      text += ":orange_square:";
+    } else if (stat_value >= 15) {
+      text += ":red_square:";
+    } else {
+      text += ":brown_square:";
+    }
   }
   
 
@@ -582,13 +582,18 @@ function findPlayerName(unverified_text) {
     let closest = "";
 
     for (a_player_name in playerPool.data) {
-      if (LD(unverified_text, closest) > LD(unverified_text, a_player_name)) {
+      if (
+        LD(unverified_text, closest) >
+        LD(unverified_text, a_player_name)
+      ) {
         closest = a_player_name;
-    } // end for loop
+      } // end for loop
 
+
+    }
     verified_name = closest;
-  }
 
+  }
   return verified_name;
 }
 
@@ -927,4 +932,5 @@ module.exports = {
 
 
 		message.channel.send(result);
-	},};
+  },
+};
