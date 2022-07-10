@@ -110,7 +110,8 @@ const teams = {
 };
 
 // const draft_sheet_id = "1vaozO0ZZDEFSop2qEDZfFpTWKylMn8qbw2SrjbEh620";
-const draft_sheet_id = "10Hq1AT5zzkwdgC2-tJue2BUv06Mmbn1_5tk111tTpAQ";
+const draft_sheet_id = "10Hq1AT5zzkwdgC2-tJue2BUv06Mmbn1_5tk111tTpAQ"; // <--- THIS IS THE S8 ONE
+// const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
 
 let draft_num = 1;
@@ -118,13 +119,45 @@ let draft_cell = 'A1';
 let current_drafter = ""; //Should be a 2 char pair.
 let draft_lock = true;
 
+async function getNextOpenPick() {
+  let sheetName = "DRAFT_TEST!";
+  let range = "A1:B216";
+  let result;
+  let auth = await googleAuth.authorize();
+
+  try {
+		result = await sheets.spreadsheets.values.get({
+			auth: auth,
+			spreadsheetId: draft_sheet_id,
+			range: sheetName + range,
+		});
+  } catch (err) {
+		console.log(err);
+  }
+
+  let next_pick = draft_num;
+  // console.log(result.data.values[0]);
+  if (result.data.hasOwnProperty("values")) {
+		for (let i = 0; i < result.data.values.length; i++) {
+			if (result.data.values[i].length == 1) {
+        next_pick = i + 1;
+        break;
+			}
+		}
+  }
+
+  return next_pick;
+}
+
 async function getFullDraft() {
   let sheetName = "DRAFT_TEST!";
-  let range = "A1:A216"
+  let range = "A1:B216"
   let result;
+  let auth = await googleAuth.authorize();
+    
   try {
       result = await sheets.spreadsheets.values.get({
-      auth: sheetsAPIKey,
+      auth: auth,
       spreadsheetId: draft_sheet_id,
       range: sheetName + range,
     });
@@ -132,12 +165,39 @@ async function getFullDraft() {
     console.log(err);
   }
 
-  let draftObj = [];
-  console.log(result);
-  for (row of result.data.values) {
-    draftObj.push(row[0]);
+  let draftObj = {};
+  // console.log(result.data.values[0]);
+  if (result.data.hasOwnProperty("values")) {
+    for (let i = 0; i < result.data.values.length; i++) {
+      if (result.data.values[i].length > 1) {
+        draftObj[i + 1] = { pick_num: i + 1, team: result.data.values[i][0], "player": result.data.values[i][1] };
+      }
+    }
   }
-  console.log(draftObj);
+  
+  
+  return draftObj;
+}
+
+async function getAllPicksFromDB() {
+  let drafted_players;
+  try {
+      drafted_players = await Draft_j.findAll({
+      where: {
+        team: { [Op.not]: "undrafted" },
+      },
+    });
+  } catch (e) {
+    console.log(e);
+    return {};
+  }
+  
+  let draftObj = {}
+  for (let i = 0; i < drafted_players.length; i++) {
+      draftObj[drafted_players[i].pick_num] = { "pick_num": drafted_players[i].pick_num, "team": drafted_players[i].team, "player": drafted_players[i].player };
+  }
+  // console.log(draftObj);
+  return draftObj;
 }
 
 async function getCurrentCoach() {
@@ -156,7 +216,9 @@ async function getCurrentCoach() {
   } catch (err) {
 		console.log(err);
   }
-  console.log(result.data);
+  if (!result.hasOwnProperty("data")) {
+    return "";
+  }
 
   if ('values' in result.data) {
     return result.data.values[0][0];
@@ -641,7 +703,8 @@ async function showDraft(message, args, client){
     drafted_player_list = "No players have been drafted yet."
   }
 
-    
+  // truncate player string if necessary
+  drafted_player_list = drafted_player_list.substring(0, Math.min(drafted_player_list.length, 1999));
   
     client.users.cache.get(message.author.id)
       .send(drafted_player_list);
@@ -655,6 +718,140 @@ async function getDraftStatus() {
     }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter} | ${coaches[current_drafter][1]} | ${teams[current_drafter][0]}`;
 
   return draft_status;
+}
+
+async function getDraftAudit(message) {
+  let audit_progress_message = await message.channel.send(
+    "Auditing draft..."
+  );
+  let sheetsDraftObj = await getFullDraft();
+  // await audit_progress_message.edit("Syncing draft: Getting database data...");
+  let dbDraftObj = await getAllPicksFromDB();
+  // await audit_progress_message.edit(
+  //   "Syncing draft: Checking and fixing any issues..."
+  // );
+  let errors = { mismatch: [], missing: [] };
+  for (let [key, sheets_pick] of Object.entries(sheetsDraftObj)) {
+    if (key === "next_open_pick") {
+      continue;
+    }
+
+    if (dbDraftObj.hasOwnProperty(sheets_pick["pick_num"])) {
+      let db_pick = dbDraftObj[sheets_pick["pick_num"]];
+      if (
+        db_pick["team"] != sheets_pick["team"] ||
+        db_pick["player"] != sheets_pick["player"]
+      ) {
+        let error_string = `DB Pick #${db_pick["pick_num"]} (${db_pick["team"]} | ${db_pick["player"]}) does not match Spreadsheet Pick #${sheets_pick["pick_num"]} (${sheets_pick["team"]} | ${sheets_pick["player"]})`;
+        errors["mismatch"].push({ db: db_pick, ss: sheets_pick });
+        console.log(error_string);
+      }
+    } else {
+      // update db with pick data from sheet
+      console.log(`DB missing pick #${sheets_pick["pick_num"]}: ${sheets_pick["team"]} ${sheets_pick["player"]}`);
+      errors["missing"].push({ ss: sheets_pick });
+      
+    }
+  }
+
+  let reply_message = "**Draft Audit**\n";
+  reply_message += `DB Picks: ${Object.keys(dbDraftObj).length} | SS Picks: ${Object.keys(sheetsDraftObj).length}`;
+  reply_message += `\n${errors["mismatch"].length > 0 ? ":red_square:" : ":green_square:"} ${errors["mismatch"].length} mismatched picks`;
+  reply_message += `\n${errors["missing"].length > 0 ? ":red_square:" : ":green_square:"} ${errors["missing"].length} missing picks (in db)`;
+  if (errors["mismatch"].length > 0 || errors["missing"].length > 0) {
+    reply_message += "\n*Use `!draft sync` to fix the above issues*";
+  }
+
+  await audit_progress_message.edit(reply_message);
+  return;
+}
+
+async function syncDraft(message) {
+  let sync_progress_message = await message.channel.send("Syncing draft | Getting spreadsheet data...");
+  let sheetsDraftObj = await getFullDraft();
+  await sync_progress_message.edit("Syncing draft | Getting database data...");
+  let dbDraftObj = await getAllPicksFromDB();
+  await sync_progress_message.edit(
+    "Syncing draft | Checking for/fixing any issues..."
+  );
+  let errors = { mismatch: [], missing: [] };
+  for (let [key, sheets_pick] of Object.entries(sheetsDraftObj)) {
+    if (key === "next_open_pick") {
+      continue;
+    }
+
+    if (dbDraftObj.hasOwnProperty(sheets_pick["pick_num"])) {
+      let db_pick = dbDraftObj[sheets_pick["pick_num"]];
+      if (
+        db_pick["team"] != sheets_pick["team"] ||
+        db_pick["player"] != sheets_pick["player"]
+      ) {
+        let error_string = `DB Pick #${db_pick["pick_num"]} (${db_pick["team"]} | ${db_pick["player"]}) does not match Spreadsheet Pick #${sheets_pick["pick_num"]} (${sheets_pick["team"]} | ${sheets_pick["player"]})`;
+        errors["mismatch"].push({ db: db_pick, ss: sheets_pick });
+        console.log(error_string);
+        try {
+          const old_player = await Draft_j.update(
+            { team: "undrafted", pick_num: null },
+            {
+              where: {
+                team: db_pick["team"],
+                pick_num: db_pick["pick_num"],
+              },
+            }
+          );
+          let player_name = findPlayerName(sheets_pick["player"]);
+          const change_player = await Draft_j.update(
+            {
+              team: sheets_pick["team"],
+              pick_num: sheets_pick["pick_num"],
+            },
+            {
+              where: {
+                player: player_name,
+              },
+            }
+          );
+
+          // return message.reply(`Pick #${args[2]} is now ${player_name} (${args[1]})`);
+        } catch (e) {
+          await sync_progress_message.edit("Syncing failed.");
+          return message.reply(
+            "There was an error trying to sync the draft and spreadsheet."
+          );
+        }
+      }
+    } else {
+      // update db with pick data from sheet
+      console.log(
+        `DB missing pick #${sheets_pick["pick_num"]}: ${sheets_pick["team"]} ${sheets_pick["player"]}`
+      );
+      errors["missing"].push({ ss: sheets_pick });
+      let player_name = findPlayerName(sheets_pick["player"]);
+      try {
+        const change_player = await Draft_j.update(
+          {
+            team: sheets_pick["team"],
+            pick_num: sheets_pick["pick_num"],
+          },
+          {
+            where: {
+              player: player_name,
+            },
+          }
+        );
+      } catch (e) {
+        await sync_progress_message.edit("Syncing failed.");
+        return message.reply(
+          "There was an error trying to sync the draft and spreadsheet."
+        );
+      }
+    }
+  }
+  let reply_message = "Draft is synced.";
+
+  await sync_progress_message.edit(reply_message);
+  await getDraftAudit(message);
+  return;
 }
 
 module.exports = {
@@ -700,6 +897,8 @@ module.exports = {
     }
     }
 
+    if (args[0])
+
     //View teams/playersdrafted
 		if (args[0] == "view") {
 			if (args[1] == "team") {
@@ -717,23 +916,33 @@ module.exports = {
     }
 
     ///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
-    if(message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')){
-		if (args[0] == "lock") {
-			draft_lock = true;
-			return message.reply(
-				"The draft is now locked. Use `!draft unlock` to unlock it. View commands will still work."
-			);
-		}
+    if (message.member.roles.cache.find(role => role.name === 'Commissioner') || message.member.roles.cache.find(role => role.name === 'Codehead')) {
+      if (args[0] == "lock") {
+        draft_lock = true;
+        return message.reply(
+          "The draft is now locked. Use `!draft unlock` to unlock it. View commands will still work."
+        );
+      }
 
-		if (args[0] == "unlock") {
-      draft_lock = false;
+      if (args[0] == "unlock") {
+        draft_lock = false;
 
-      message.reply("The draft is now unlocked.")
-      return message.channel.send(await getDraftStatus());
-		}
+        message.reply("The draft is now unlocked.")
+        return message.channel.send(await getDraftStatus());
+      }
+
+      if (args[0] == "audit") {
+        await getDraftAudit(message);
+        return;
+      }
+
+      if (args[0] == "sync") {
+        await syncDraft(message);
+        return;
+      }
 
 
-	}
+    }
 
   // ANY COMMANDS BELOW HERE WILL BE BLOCKED IF THE DRAFT IS LOCKED
   if (draft_lock) {
@@ -765,15 +974,24 @@ module.exports = {
   }
 
     if (args[0] == 'set') {
-        if (Number.isInteger(parseInt(args[1]))) {
-          draft_num = parseInt(args[1]);
-          current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
-          let result ='';
-          if (current_drafter == "") {
-            return message.reply("There is no coach specified at pick #" + draft_num + ".\nTry setting the draft to a different pick or use `!draft lock` to lock the draft.");
-          } else {
-              return message.reply(`Draft set to pick #${draft_num}.\n${current_drafter} <@${coaches[current_drafter][0]}> is now on the clock.`)
-            }
+      if (args.length > 1 && args[1] == "auto") {
+        draft_num = await getNextOpenPick();
+        current_drafter = await getCurrentCoach();
+        let result = '';
+        if (current_drafter == "") {
+          return message.reply("There is no coach specified at pick #" + draft_num + ".\nTry setting the draft to a different pick or use `!draft lock` to lock the draft.");
+        } else {
+          return message.reply(`Draft set to pick #${draft_num}.\n${current_drafter} <@${coaches[current_drafter][0]}> is now on the clock.`)
+        }
+      } else if (Number.isInteger(parseInt(args[1]))) {
+        draft_num = parseInt(args[1]);
+        current_drafter = await getCurrentCoach();   //Replace with sheet cell magic
+        let result = '';
+        if (current_drafter == "") {
+          return message.reply("There is no coach specified at pick #" + draft_num + ".\nTry setting the draft to a different pick or use `!draft lock` to lock the draft.");
+        } else {
+          return message.reply(`Draft set to pick #${draft_num}.\n${current_drafter} <@${coaches[current_drafter][0]}> is now on the clock.`)
+        }
 
       }
     }
@@ -804,23 +1022,89 @@ module.exports = {
 
 
     if (args[0] == "test") {
-      // TESTING PLAYERS.json WRITING
-      // let playerData = await getPlayersFromSheetsHelper();
-      // console.log(playerData["AD"]);
-      // getPlayersFromSheetsHelper().then((response) => {
-      //     console.log(response);
-      //     var json = JSON.stringify(response);
-      //     fs.writeFile("players.json", json, "utf8", () => { });
-      // });
-      // return client.users.cache.get(message.author.id).send(buildPlayerInfoMessage(playerData["HO"]));
-      // return message.channel.send("I'm listening");
-      return message.channel.send(buildPlayerInfoMessage(playerData["AD"]));
-      // END THAT TESTING
+      let audit_progress_message = await message.channel.send("Syncing draft: Getting spreadsheet data...");
+      let sheetsDraftObj = await getFullDraft();
+      await audit_progress_message.edit("Syncing draft: Getting database data...");
+      let dbDraftObj = await getAllPicksFromDB();
+      await audit_progress_message.edit("Syncing draft: Checking and fixing any issues...");
+      let errors = { "mismatch": [], "missing": [] };
+      for (let [key, sheets_pick] of Object.entries(sheetsDraftObj)) {
+        if (key === "next_open_pick") {
+          continue;
+        }
 
-      // take current date
+        if (dbDraftObj.hasOwnProperty(sheets_pick["pick_num"])) {
+          let db_pick = dbDraftObj[sheets_pick["pick_num"]];
+          if (db_pick["team"] != sheets_pick["team"] || db_pick["player"] != sheets_pick["player"]) {
+            let error_string = `DB Pick #${db_pick["pick_num"]} (${db_pick["player"]}) does not match Spreadsheet Pick #${sheets_pick["pick_num"]} (${db_pick["player"]})`;
+            errors["mismatch"].push({ "db": db_pick, "ss": sheets_pick });
+            
+            // update pick in db
 
+            try {
+              const old_player = await Draft_j.update({ team: "undrafted", pick_num: null },
+                {
+                  where: {
+                    team: db_pick["team"], pick_num: db_pick["pick_num"]
+                  }
+                });
+              let player_name = findPlayerName(sheets_pick["player"]);
+              const change_player = await Draft_j.update({ team: sheets_pick["team"], pick_num: sheets_pick["pick_num"] },
+                {
+                  where: {
+                    player: player_name,
+                  }
+                });
 
-      // return message.reply(current_drafter+" <@" + coaches[current_drafter][0] +"> is now on the clock");
+              // return message.reply(`Pick #${args[2]} is now ${player_name} (${args[1]})`);
+            } catch (e) {
+              await audit_progress_message.edit("Syncing failed.");
+              return message.reply("There was an error trying to sync the draft and spreadsheet.");
+            }
+          }
+        } else {
+          // update db with pick data from sheet
+          console.log(`DB missing pick #${sheets_pick["pick_num"]}`);
+          errors["missing"].push({ "ss": sheets_pick });
+          let player_name = findPlayerName(sheets_pick["player"]);
+          try {
+            const change_player = await Draft_j.update(
+              {
+                team: sheets_pick["team"],
+                pick_num: sheets_pick["pick_num"],
+              },
+              {
+                where: {
+                  player: player_name,
+                },
+              }
+            );
+          } catch (e) {
+            await audit_progress_message.edit("Syncing failed.");
+            return message.reply("There was an error trying to sync the draft and spreadsheet.");
+          }
+          
+        }
+      }
+
+      await audit_progress_message.edit("The draft spreadsheet and database are synced.");
+
+      // let reply_message = "**__Draft Audit__**\n";
+      // reply_message += `${errors["mismatch"].length > 0 ? ":red_square:" : ":green_square:"} ${errors["mismatch"].length} mismatched picks`;
+      // reply_message += `\n${errors["missing"].length > 0 ? ":red_square:" : ":green_square:"} ${errors["missing"].length} missing picks (in db)`;
+      // if (sheetsDraftObj.hasOwnProperty("next_open_pick")) {
+      //   if (draft_num != sheetsDraftObj["next_open_pick"]) {
+      //     reply_message += `\n:red_square: Current pick #${draft_num} does not match spreadsheet (${sheetsDraftObj["next_open_pick"]})`;
+      //   } else {
+      //     reply_message += `\n:green_square: Current pick #${sheetsDraftObj["next_open_pick"]} matches the spreadsheet`;
+      //   }
+
+      // } else {
+      //   reply_message += `\n:green_square: The draft is complete in the spreadsheet`;
+      // }
+
+      // message.channel.send(reply_message);
+      return;
     }
 
     let result = "Unsuccessful Request, try again."; //Default response
@@ -853,6 +1137,16 @@ module.exports = {
       drafted_name = findPlayerName(drafted_name);
       if (drafted_name === "") {
         return message.reply("Could not find that player. Try using their full name.");
+      }
+
+      const pick_to_draft = await Draft_j.findOne({
+        where: {
+          pick_num: draft_num
+        }
+      });
+
+      if (pick_to_draft != null) {
+        return message.reply(`This pick (#${draft_num}) has already been made! Make sure the bot is set to the right pick.`);
       }
 
       const player_to_draft = await Draft_j.findOne({
