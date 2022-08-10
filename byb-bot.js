@@ -55,7 +55,7 @@ client.once('ready', () => {
 				channel.send(playerSpotlight.getPlayerSpotlight());
 			});
 	});
-	
+
 	// playerSpotlightJob.start();
 });
 
@@ -64,7 +64,7 @@ client.on('message', async message => {
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
-
+	console.log(command, args);
 	if (!client.commands.has(command)) return;
 
 	try {
