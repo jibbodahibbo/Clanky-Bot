@@ -60,8 +60,12 @@ client.once('ready', () => {
 });
 
 client.on('message', async message => {
-	console.log(message.content);
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	try{
+		if (!message.content.startsWith(prefix) || message.author.bot) return;
+	}
+	catch (error){
+		console.error(error);
+	}
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
