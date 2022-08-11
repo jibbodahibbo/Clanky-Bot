@@ -61,8 +61,8 @@ client.once('ready', () => {
 
 // Override old message handler
 
-var newMod = require('<discord.js>');
-delete newMC['<handle>'];
+var newMC = require('discord.js');
+delete newMC['handle'];
 
 newMC.<'handle'> =function(data){
 
