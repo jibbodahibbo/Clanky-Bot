@@ -60,11 +60,13 @@ client.once('ready', () => {
 });
 
 // Override old message handler
+const Action = require('./Action');
+const Events = require('../../util/Events');
 
 var newMC = require('discord.js');
-delete newMC['client.actions.MessageCreate.handle'];
+delete newMC['Events.MessageCreate.handle'];
 
-newMC.client.actions.MessageCreate.handle = function(data){
+newMC.Events.MessageCreate.handle = function(data){
 
   const client = this.client;
   const channel = this.getChannel(data);
