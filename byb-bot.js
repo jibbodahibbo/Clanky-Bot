@@ -58,6 +58,39 @@ client.once('ready', () => {
 
 	// playerSpotlightJob.start();
 });
+
+// Override old message handler
+
+var newMod = require('<discord.js>');
+delete newMC['<handle>'];
+
+newMC.<'handle'> =function(data){
+
+  const client = this.client;
+  const channel = this.getChannel(data);
+  if (channel) {
+    if (!channel.isTextBased() || channel.messages==null) return {};
+    console.log("NEW MC");
+    const existing = channel.messages.cache.get(data.id);
+    if (existing) return { message: existing };
+    const message = channel.messages._add(data);
+    channel.lastMessageId = data.id;
+
+    /**
+     * Emitted whenever a message is created.
+     * @event Client#messageCreate
+     * @param {Message} message The created message
+     */
+    client.emit(Events.MessageCreate, message);
+
+    return { message };
+  }
+
+  return {};
+}
+module.exports = newMC;
+//
+
 try {
 	client.on('message', async message => {
 		console.log(message.content);
