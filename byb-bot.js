@@ -60,8 +60,6 @@ client.once('ready', () => {
 });
 
 // Override old message handler
-const Action = require('./Action');
-const Events = require('../../util/Events');
 
 var newMC = require('discord.js');
 delete newMC['Events.MessageCreate.handle'];
