@@ -31,6 +31,10 @@ module.exports = {
 			        "name": "!buy insult <@username> : 2,000 CC",
 			        "value": "The BYB-Bot will insult somebody for you publicly and in a DM",
 			      },
+						{
+						 "name": "!buy article: 3,500 CC",
+						 "value": "<@355931440061612035> will write a fandom article about a BBL player, event, or legend of your choosing.",
+					 },
 			      {
 			        "name": "!buy pennant : 10,000 CC",
 			        "value": "<@187776456519057409> will make you a Custom Penant and mail it to you (USA ONLY).",

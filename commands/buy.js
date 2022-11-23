@@ -158,6 +158,15 @@ module.exports = {
 				 }
 			}
 
+			if(args[0]=="article"){
+				 if(await purchase(user, 3500)){
+						return message.reply("<@355931440061612035> will now write a BBL fandom article about a player, event or legend of your choosing.");
+				 }else{
+					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
+				 }
+			}
+
+
 			if(args[0]=="pennant"){
 				 if(await purchase(user, 10000)){
 						return message.reply("You have purchased a pennant for 10,000 CC! <@187776456519057409> will contact you shortly!");
