@@ -176,6 +176,7 @@ async function clearResults(args){
 }
 
 //Add Channel ID's here.
+let other_results_id = "755833854568169613" //side seasons and others.
 let results_channel_id = "911813193960149002"; // S8 Results Channel
 let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
@@ -188,7 +189,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9][A-Z0-9])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9"]; //must be lowercase
+		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";
@@ -427,6 +428,8 @@ module.exports = {
         channel = client.channels.cache.get(tournament_channel_id);
       }else if (result_obj.league == "vbfl"){
         channel = client.channels.cache.get(VFBL_channel_id);
+			}else if (result_obj.league="w3"){
+				channel = client.channels.cache.get(other_results_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
       }
@@ -493,7 +496,9 @@ module.exports = {
         channel = client.channels.cache.get(tournament_channel_id);
       }else if (result_obj.league == "vbfl"){
         channel = client.channels.cache.get(VFBL_channel_id);
-      }else{
+      }else if (result_obj.league="w3"){
+				channel = client.channels.cache.get(other_results_id);
+			}else{
         channel = client.channels.cache.get(results_channel_id);
       }
       	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game: ' +result_pair_query.game_num + " has been submitted by " + message.author.username);
