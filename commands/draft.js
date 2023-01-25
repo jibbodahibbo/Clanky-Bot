@@ -1,8 +1,12 @@
 let players = require('../players.js');
 // let playerPool = require('../playerPool.js');
-let playerPool = require('../players_master.js');
+// let playerPool = require('../players_master.js');
 let playerVariants = require('../player_variants.js');
-const {Draft_j} = require('../dbInit');
+let players01 = require('../players_01.js');
+let players03 = require('../players_03.js');
+let coaches01 = require('../coaches_01.js');
+let coaches03 = require('../coaches_03.js');
+const {Draft_j, Draft_03} = require('../dbInit');
 const { Op } = require("sequelize");
 const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
@@ -17,15 +21,50 @@ rawdata = fs.readFileSync("draft_stock.json")
 const draftStockData = JSON.parse(rawdata);
 
 const sheets = require("../byb-bot.js").sheets;
-const discord = require("../byb-bot.js").discord;
+const draft2001Channel = "919379673178337290";
+const draft2003Channel = "1066050560010244317";
+const test_labChannel = "741308777357377617";
+
 
 const allowed_channels = [
 	"741308777357377617",
 	"782331491656138783",
 	"847513377811070997",
 	"918362812223459339",
-	"919379673178337290",
+	draft2001Channel,
+	draft2003Channel,
+	test_labChannel
 ];
+
+const allowed_drafts = [
+	"01",
+	"03"
+];
+
+const draftData = {
+	"01": {
+		channel: draft2001Channel,
+		name: "01",
+		db: Draft_j,
+		sheetName: "2001 DRAFT",
+		draftNum: 1,
+		currentDrafter: "",
+		lock: true,
+		playerPool: players01,
+		coachData: coaches01.data
+	},
+	"03": {
+		channel: draft2003Channel,
+		name: "03",
+		db: Draft_03,
+		sheetName: "2003 DRAFT",
+		draftNum: 1,
+		currentDrafter: "",
+		lock: true,
+		playerPool: players03,
+		coachData: coaches03.data
+	},
+};
 const sheetsAPIKey =process.env.Sheets_APIKey
 const draft_url = process.env.s6_sheet_id;
 const bb_resources_id = "1waTChkjtCecz_3_dtEMTqnf_r8276NjB_zrzK-n7O6g";
@@ -34,230 +73,21 @@ const score_icon = ":green_square:";
 const filler_icon = ":white_large_square:";
 let bot_channel;
 
-const coach_data = {
-	// BB: { id: "187776456519057409", username: "JibboDaHibbo", version: "03" },
-	// BB: {
-	// 	id: "187776456519057409",
-	// 	username: "JibboDaHibbo",
-	// 	version: "03",
-	// 	team_name: "Mighty Tigers",
-	// 	team_color: "yellow",
-	// },
-	// MF: {
-	// 	id: "377672560780902402",
-	// 	username: "test_user",
-	// 	version: "01",
-	// 	team_name: "Boston Red Sox",
-	// 	team_color: 15138865,
-	// },
-	C8: {
-		id: "355931440061612035",
-		username: "crazyei8hts",
-		version: "03",
-		team_name: "Los Angeles Dodgers",
-		team_color: "blue",
-		logo: "https://i.ibb.co/WkppQxT/Dodgers-Full.png",
-	},
-	CW: {
-		id: "430920494351515650",
-		username: "elchrisblanco",
-		version: "03",
-		team_name: "Seattle Fishes",
-		team_color: "blue",
-		logo: "https://i.ibb.co/w7px2W8/Fishes-Full.png",
-	},
-	MM: {
-		id: "698632902778552380",
-		username: "Shrewsbury91",
-		version: "03",
-		team_name: "Blue Marlins",
-		team_color: "aqua",
-		logo: "https://i.ibb.co/4sPwYnm/Marlins-Full.png",
-	},
-	AE: {
-		id: "105512327293448192",
-		username: "Aesnop",
-		version: "01",
-		team_name: "San Diego Devil Rays",
-		team_color: "purple",
-		logo: "https://i.ibb.co/HCJZSbL/Devil-Rays-Full.png",
-	},
-	YY: {
-		id: "74323981670285312",
-		username: "Yurya",
-		version: "03",
-		team_name: "Green Monsters",
-		team_color: "lime",
-		logo: "https://i.ibb.co/dKTCXHy/Monsters-Full.png",
-	},
-	WZ: {
-		id: "273653649522294784",
-		username: "Wizard",
-		version: "03",
-		team_name: "St. Louis Cardinals",
-		team_color: "red",
-		logo: "https://i.ibb.co/fCDp0Kc/Cardinals-Full.png",
-	},
-	JY: {
-		id: "307010267001257996",
-		username: "Jyknight",
-		version: "01",
-		team_name: "Cincinnati Reds",
-		team_color: "red",
-		logo: "https://i.ibb.co/z6B32dw/Reds-Full.png",
-	},
-	MV: {
-		id: "296815103985319936",
-		username: "Mavfatha",
-		version: "01",
-		team_name: "Milwaukee Orioles",
-		team_color: "orange",
-		logo: "https://i.ibb.co/6bYBX1y/Orioles-Full.png",
-	},
-	EX: {
-		id: "252968570382843904",
-		username: "Eauxps I. Fourgott",
-		version: "03",
-		team_name: "Super-Duper Melonheads",
-		team_color: "pink",
-		logo: "https://i.ibb.co/JzRRpZn/Melons-Full.png",
-	},
-	YT: {
-		id: "213203256606851072",
-		username: "Marco",
-		version: "03",
-		team_name: "Mighty Wombats",
-		team_color: "yellow",
-		logo: "https://i.ibb.co/z897hZZ/Wombats-Full.png",
-	},
-	26: {
-		id: "470389312291209246",
-		username: "T-Boz",
-		version: "01",
-		team_name: "New York Rangers",
-		team_color: "blue",
-		logo: "https://i.ibb.co/68brgLn/Rangers-Custom.png",
-	},
-	N8: {
-		id: "87804201056337920",
-		username: "Natetastic28",
-		version: "01",
-		team_name: "Atlanta Braves",
-		team_color: "navy",
-		logo: "https://i.ibb.co/f299X2k/Braves-Full.png",
-	},
-	VS: {
-		id: "135436127862652928",
-		username: "Vissery",
-		version: "01",
-		team_name: "Boston Royals",
-		team_color: "maroon",
-		logo: "https://content.sportslogos.net/logos/53/62/full/kansas_city_royals_logo_primary_20028542.png",
-	},
-	SB: {
-		id: "711388106749902849",
-		username: "SilverBullet",
-		version: "03",
-		team_name: "Chicago Brewers",
-		team_color: "mustard",
-		logo: "https://i.ibb.co/JFkJsRP/brewers-logo.png",
-	},
-	TO: {
-		id: "692170461047554048",
-		username: "Toast",
-		version: "03",
-		team_name: "Minnesota Twins",
-		team_color: "navy",
-		logo: "https://i.ibb.co/VtDw5DX/Twins-Custom.png",
-	},
-	EM: {
-		id: "787658565137596426",
-		username: "Emery92",
-		version: "01",
-		team_name: "White Cubs",
-		team_color: "blue",
-		logo: "https://i.ibb.co/JntdWtz/Cubs-Full.png",
-	},
-	DW: {
-		id: "350069739974033428",
-		username: "DevanWolf",
-		version: "01",
-		team_name: "Milwaukee Hornets",
-		team_color: "orange",
-		logo: "https://i.ibb.co/PCQGm9C/Hornets-Full.png",
-	},
-	MA: {
-		id: "301887858938216449",
-		username: "Martianman",
-		version: "01",
-		team_name: "Colorado Rockies",
-		team_color: "purple",
-		logo: "https://i.ibb.co/0yMJsMF/Rockies-Full.png",
-	},
-	QM: {
-		id: "455213782323560451",
-		username: "QuestionMonkey",
-		version: "01",
-		team_name: "Baltimore Pirates",
-		team_color: "black",
-		logo: "https://i.ibb.co/tYSBWJ7/Pirates-Full.png",
-	},
-	BO: {
-		id: "894684630970671125",
-		username: "bobbyJONES2370",
-		version: "01",
-		team_name: "Blue Angels",
-		team_color: "blue",
-		logo: "https://i.ibb.co/qRHpZVf/Angels-Full.png",
-	},
-	GY: {
-		id: "766110320619159552",
-		username: "GuySmiley",
-		version: "01",
-		team_name: "Blue Bombers",
-		team_color: "blue",
-		logo: "https://i.ibb.co/RNFkzkZ/Bombers-Full-1.png",
-	},
-	IT: {
-		id: "147462189404389376",
-		username: "Itaniium",
-		version: "03",
-		team_name: "Humongous Giants",
-		team_color: "orange",
-		logo: "https://i.ibb.co/SRv59PS/Giants-Full.png",
-	},
-	TV: {
-		id: "616733129155018757",
-		username: "PepsiBoyTTV",
-		version: "03",
-		team_name: "Super-Duper Diamondbacks",
-		team_color: "purple",
-		logo: "https://i.ibb.co/LPkpftm/D-Backs-Full.png",
-	},
-	AT: {
-		id: "390617765003788299",
-		username: "arcothunder",
-		version: "03",
-		team_name: "Mighty Athletics",
-		team_color: "green",
-		logo: "https://i.ibb.co/kyjWVR0/A-s-Full.png",
-	},
-};
-
 
 // const draft_sheet_id = "1vaozO0ZZDEFSop2qEDZfFpTWKylMn8qbw2SrjbEh620";
 // const draft_sheet_id = "10Hq1AT5zzkwdgC2-tJue2BUv06Mmbn1_5tk111tTpAQ"; // <--- THIS IS THE S8 ONE
-const draft_sheet_id = "1idsLvasdDht_y_60tOsIcPJ2ZVVlJT2nXu5aMXLP2Fo";; // <--- THIS IS S9
+// const draft_sheet_id = "1idsLvasdDht_y_60tOsIcPJ2ZVVlJT2nXu5aMXLP2Fo"; // <--- THIS IS S9
+const draft_sheet_id = "14dCK4WagMNWg6tnqcIDxthvT1eGpwG1nxk76yZ_fWbQ"; // S10
 // const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
 
-let draft_num = 1;
+// let draft_num = 1;
 let draft_cell = 'A1';
-let current_drafter = ""; //Should be a 2 char pair.
-let draft_lock = true;
+// let current_drafter = ""; //Should be a 2 char pair.
+// let draft_lock = true;
 
-async function getNextOpenPick() {
-  let sheetName = "DRAFT!";
+async function getNextOpenPick(league) {
+  let sheetName = draftData[league]["sheetName"] + "!";
   let range = "A1:B216";
   let result;
   let auth = await googleAuth.authorize();
@@ -272,7 +102,7 @@ async function getNextOpenPick() {
 		console.log(err);
   }
 
-  let next_pick = draft_num;
+  let next_pick = draftData[league]["draftNum"];
   // console.log(result.data.values[0]);
   if (result.data.hasOwnProperty("values")) {
 		for (let i = 0; i < result.data.values.length; i++) {
@@ -286,8 +116,9 @@ async function getNextOpenPick() {
   return next_pick;
 }
 
-async function getFullDraft() {
-  let sheetName = "DRAFT!";
+async function getFullDraft(league) {
+	// let sheetName = "DRAFT!";
+	let sheetName = draftData[league]["sheetName"] + "!";
   let range = "A1:B216"
   let result;
   let auth = await googleAuth.authorize();
@@ -316,10 +147,11 @@ async function getFullDraft() {
   return draftObj;
 }
 
-async function getAllPicksFromDB() {
-  let drafted_players;
+async function getAllPicksFromDB(league) {
+	let drafted_players;
+	let db = draftData[league]["db"];
   try {
-      drafted_players = await Draft_j.findAll({
+      drafted_players = await db.findAll({
       where: {
         team: { [Op.not]: "undrafted" },
       },
@@ -337,9 +169,9 @@ async function getAllPicksFromDB() {
   return draftObj;
 }
 
-async function getCurrentCoach() {
-  let sheetName = "DRAFT!";
-  let range = "A" + draft_num;
+async function getCurrentCoach(league) {
+  let sheetName = draftData[league]["sheetName"] + "!";
+  let range = "A" + draftData[league]["draftNum"];
   let result;
 
   try {
@@ -365,13 +197,13 @@ async function getCurrentCoach() {
   }
 }
 
-async function writePlayerToDraft(playerName, playerID) {
-  let sheetName = "DRAFT!";
-  let range = `B${draft_num}`;
+async function writePlayerToDraft(league, playerName, playerID) {
+  let sheetName = draftData[league]["sheetName"] + "!";
+  let range = `B${draftData[league]["draftNum"]}:C${draftData[league]["draftNum"]}`;
   // let range = "B" + draft_num;
   let result;
 
-  let new_values = [[playerName]];
+  let new_values = [[playerName, playerID]];
   let resource = { values: new_values };
   try {
     let auth = await googleAuth.authorize();
@@ -476,10 +308,10 @@ const statToAcr = {
 	Intelligence: "INT",
 	Coordination: "GLV",
 	Speed: "SPD",
-	"Arm Strength": "ARM",
+	"Arm (STR)": "ARM",
 	"Throwing": "ACC",
-	"Bat Power": "POW",
-	"Bat Contact": "CON",
+	"Swing (POW)": "POW",
+	"Hitting (CON)": "CON",
 	Eye: "VIS",
 	Attention: "FOC",
 	Aggression: "AGR",
@@ -548,7 +380,7 @@ function buildStatString(stat_name, stat_value) {
 	return text;
 }
 
-const highlight_stats = ["Bat Power", "Bat Contact", "Speed", "Stamina", "Coordination", "Arm Strength", "Height/S-Zone"];
+const highlight_stats = ["Swing (POW)", "Hitting (CON)", "Speed", "Stamina", "Coordination", "Arm (STR)", "Height/S-Zone"];
 
 const offense_stats = ["Bat Power", "Bat Contact", "Speed", "Stamina"];
 
@@ -584,31 +416,39 @@ function buildSectionString(title, stats_list, player) {
 	return text;
 }
 
-function buildPlayerDraftMessage(player) {
+function buildPlayerDraftMessage(league, player) {
   
   // let message = `**Available for**: ${player["01"] ? "01, " : ""}${player["03"] ? "03" : ""}\n`;
-  let is_variant = false;
-  let variant_key = "";
+//   let is_variant = false;
+//   let variant_key = "";
 
-  if (player["Variants"] != null) {
-    let variants = player["Variants"].split(", ");
+//   if (player["Variants"] != null) {
+//     let variants = player["Variants"].split(", ");
 
-    if (player["Name"] === "Maria Luna") {
-      variant_key = `${player["Name"]} (Pink)`;
-      player = playerVariants.data[variant_key];
-      is_variant = true;
-    }
+//     // if (player["Name"] === "Maria Luna") {
+//     //   variant_key = `${player["Name"]} (Pink)`;
+//     //   player = playerVariants.data[variant_key];
+//     //   is_variant = true;
+//     // }
 
-    if (variants.includes("01") && coach_data[current_drafter]["version"] === "01") {
-      variant_key = `${player["Name"]} (01)`;
-      player = playerVariants.data[variant_key];
-      is_variant = true;
-    }
-  }
-
-  let title = `[#${draft_num}] __**${is_variant ? variant_key : player["Name"]}**__ :arrow_right: *${coach_data[current_drafter]["team_name"]} (${current_drafter}, ${coach_data[current_drafter]["version"]})*`;
-  let clone_message = player["Clone"].length > 0 ? `Clone: ${player["Clone"]}` : "";
-  let message = clone_message + buildSectionString("", highlight_stats, player);
+//     if (
+// 		variants.includes("01") &&
+// 		coach_data[draftData[league]["currentDrafter"]]["version"] === "01"
+// 	) {
+// 		variant_key = `${player["Name"]} (01)`;
+// 		player = playerVariants.data[variant_key];
+// 		is_variant = true;
+// 	}
+//   }
+	let coach_data = draftData[league]["coachData"];
+  let title = `[#${draftData[league]["draftNum"]}] __**${player["Name"]
+  }**__ :arrow_right: *${
+		coach_data[draftData[league]["currentDrafter"]]["team_name"]
+  } (${draftData[league]["currentDrafter"]}, ${
+		league
+  })*`;
+//   let clone_message = player["Clone"].length > 0 ? `Clone: ${player["Clone"]}` : "";
+  let message = buildSectionString("", highlight_stats, player);
 	// message += buildSectionString("Defense".toUpperCase(), defense_stats, player);
 	// message += buildSectionString("Pitching".toUpperCase(), pitching_stats, player);
 	// message += buildSectionString("AI Skills".toUpperCase(), ai_stats, player);
@@ -630,7 +470,11 @@ function buildPlayerDraftMessage(player) {
 		.setTitle(title)
 		// .setColor(teams[current_drafter][1])
 		.setDescription(message)
-		.setFooter(`Draft pick #${draft_num} by ${coach_data[current_drafter]["username"]}`)
+		.setFooter(
+			`${league} draft pick #${draftData[league]["draftNum"]} by ${
+				coach_data[draftData[league]["currentDrafter"]]["username"]
+			}`
+		)
 		.setTimestamp();
 
   
@@ -771,9 +615,9 @@ function findPlayer(a){
 }
   
 // takes in unverified text (user input) and returns if it's a recognized player
-function findPlayerName(unverified_text) {
+function findPlayerName(league, unverified_text) {
   verified_name = "";
-
+	let playerPool = draftData[league]["playerPool"];
   // if the name is recognized as a key (spelled correctly)
   if (playerPool.data.hasOwnProperty(unverified_text)) {
     verified_name = unverified_text;
@@ -800,16 +644,18 @@ function findPlayerName(unverified_text) {
 }
 
 async function showTeamPlayers(message, args, client){
-    const team_players = await Draft_j.findAll({
+	let db = draftData[args[0].toLowerCase()]["db"];
+	let coach_data = draftData[args[0].toLowerCase()]["coachData"];
+	const team_players = await db.findAll({
     where: {
-      team: args[2],
+      team: args[3],
     },
     });
   
   if (team_players.length == 0) {
-		team_list = `${args[2]} has not drafted any players yet.`;
+		team_list = `${args[3]} has not drafted any players yet.`;
   } else {
-    let team_list = coach_data[args[2]]["username"] + " has drafted: " + "\n";
+    let team_list = coach_data[args[3]]["username"] + " has drafted: " + "\n";
     
     for (let i = 0; i < team_players.length; i++) {
 		  team_list += team_players[i].player + ", ";
@@ -823,7 +669,8 @@ async function showTeamPlayers(message, args, client){
   }
 
 async function showDraft(message, args, client){
-      let drafted_players = await Draft_j.findAll({
+    let db = draftData[args[0].toLowerCase()]["db"];
+	let drafted_players = await db.findAll({
       where: {
       team: {[Op.not]:'undrafted'},
       },
@@ -850,23 +697,29 @@ async function showDraft(message, args, client){
       .send(drafted_player_list);
 }
 
-async function getDraftStatus() {
-  current_drafter = await getCurrentCoach();
+async function getDraftStatus(league) {
+	// let db = draftData[league]["db"];
+	draftData[league]["currentDrafter"] = await getCurrentCoach(league);
+	let coach_data = draftData[league]["coachData"];
 
-  draft_status = `**Season 9 Draft**\n__Status__: ${
-		draft_lock ? ":lock: Locked" : ":unlock: Unlocked"
-    }\n__Pick #__: ${draft_num}\n__Current Coach__: ${current_drafter} | ${coach_data[current_drafter]["version"]} | ${coach_data[current_drafter]["username"]} | ${coach_data[current_drafter]["team_name"]}`;
+  draft_status = `**Season 10 - ${league} Draft**\n__Status__: ${
+		draftData[league]["lock"] ? ":lock: Locked" : ":unlock: Unlocked"
+  }\n__Pick #__: ${draftData[league]["draftNum"]}\n__Current Coach__: ${
+		draftData[league]["currentDrafter"]
+  } | ${
+		coach_data[draftData[league]["currentDrafter"]]["username"]
+  } | ${coach_data[draftData[league]["currentDrafter"]]["team_name"]}`;
 
   return draft_status;
 }
 
-async function getDraftAudit(message) {
+async function getDraftAudit(message, league) {
   let audit_progress_message = await message.channel.send(
-    "Auditing draft..."
+    `Auditing ${league} draft...`
   );
-  let sheetsDraftObj = await getFullDraft();
+  let sheetsDraftObj = await getFullDraft(league);
   // await audit_progress_message.edit("Syncing draft: Getting database data...");
-  let dbDraftObj = await getAllPicksFromDB();
+  let dbDraftObj = await getAllPicksFromDB(league);
   // await audit_progress_message.edit(
   //   "Syncing draft: Checking and fixing any issues..."
   // );
@@ -894,25 +747,26 @@ async function getDraftAudit(message) {
     }
   }
 
-  let reply_message = "**Draft Audit**\n";
+  let reply_message = `**${league} Draft Audit**\n`;
   reply_message += `DB Picks: ${Object.keys(dbDraftObj).length} | SS Picks: ${Object.keys(sheetsDraftObj).length}`;
   reply_message += `\n${errors["mismatch"].length > 0 ? ":red_square:" : ":green_square:"} ${errors["mismatch"].length} mismatched picks`;
   reply_message += `\n${errors["missing"].length > 0 ? ":red_square:" : ":green_square:"} ${errors["missing"].length} missing picks (in db)`;
   if (errors["mismatch"].length > 0 || errors["missing"].length > 0) {
-    reply_message += "\n*Use `!draft sync` to fix the above issues*";
+    reply_message += `\n*Use \`!draft ${league} sync\` to fix the above issues*`;
   }
 
   await audit_progress_message.edit(reply_message);
   return;
 }
 
-async function syncDraft(message) {
-  let sync_progress_message = await message.channel.send("Syncing draft | Getting spreadsheet data...");
-  let sheetsDraftObj = await getFullDraft();
-  await sync_progress_message.edit("Syncing draft | Getting database data...");
-  let dbDraftObj = await getAllPicksFromDB();
+async function syncDraft(message, league) {
+  let sync_progress_message = await message.channel.send(`Syncing ${league} draft | Getting spreadsheet data...`);
+  let sheetsDraftObj = await getFullDraft(league);
+  await sync_progress_message.edit(`Syncing ${league} draft | Getting database data...`);
+	let dbDraftObj = await getAllPicksFromDB(league);
+	let db = draftData[league]["db"];
   await sync_progress_message.edit(
-    "Syncing draft | Checking for/fixing any issues..."
+    `Syncing ${league} draft | Checking for/fixing any issues...`
   );
   let errors = { mismatch: [], missing: [] };
   for (let [key, sheets_pick] of Object.entries(sheetsDraftObj)) {
@@ -930,7 +784,7 @@ async function syncDraft(message) {
         errors["mismatch"].push({ db: db_pick, ss: sheets_pick });
         console.log(error_string);
         try {
-          const old_player = await Draft_j.update(
+          const old_player = await db.update(
             { team: "undrafted", pick_num: null },
             {
               where: {
@@ -939,8 +793,8 @@ async function syncDraft(message) {
               },
             }
           );
-          let player_name = findPlayerName(sheets_pick["player"]);
-          const change_player = await Draft_j.update(
+          let player_name = findPlayerName(league, sheets_pick["player"]);
+          const change_player = await db.update(
             {
               team: sheets_pick["team"],
               pick_num: sheets_pick["pick_num"],
@@ -965,10 +819,11 @@ async function syncDraft(message) {
       console.log(
         `DB missing pick #${sheets_pick["pick_num"]}: ${sheets_pick["team"]} ${sheets_pick["player"]}`
       );
-      errors["missing"].push({ ss: sheets_pick });
-      let player_name = findPlayerName(sheets_pick["player"]);
+		errors["missing"].push({ ss: sheets_pick });
+		
+      let player_name = findPlayerName(league, sheets_pick["player"]);
       try {
-        const change_player = await Draft_j.update(
+        const change_player = await db.update(
           {
             team: sheets_pick["team"],
             pick_num: sheets_pick["pick_num"],
@@ -990,8 +845,38 @@ async function syncDraft(message) {
   let reply_message = "Draft is synced.";
 
   await sync_progress_message.edit(reply_message);
-  await getDraftAudit(message);
+  await getDraftAudit(message, league);
   return;
+}
+
+async function fixCoach(league, coachCode, pickNum, playerName) {
+	try {
+		console.log(`coachCode`)
+		let table = draftData[league]["db"];
+		const old_player = await table.update(
+			{ team: "undrafted", pick_num: null },
+			{
+				where: {
+					team: coachCode,
+					pick_num: pickNum,
+				},
+			}
+		);
+		player_name = findPlayerName(league, playerName);
+		const change_player = await table.update(
+			{ team: coachCode, pick_num: pickNum },
+			{
+				where: {
+					player: playerName,
+				},
+			}
+		);
+
+		return `Pick #${pickNum} is now ${playerName} (${coachCode})`;
+	} catch (e) {
+		console.log(e);
+		return "Couldn't update that pick.";
+	}
 }
 
 module.exports = {
@@ -1010,63 +895,56 @@ module.exports = {
 		// #test-lab channel: 741308777357377617
 		bot_channel = client.channels.cache.get("919379673178337290");
 
-		if (args[0] == "fix") {
+		if (!allowed_drafts.includes(args[0].toLowerCase())) {
+			return message.reply(
+				"Draft commands have to specify which draft now. Try `!draft 01`..."
+			);
+		} else if (message.channel.id != draftData[args[0].toLowerCase()]["channel"] && message.channel.id != test_labChannel) {
+			return message.reply(
+				`You can't use draft commands for that league here, try <#${
+					draftData[args[0].toLowerCase()]["channel"]
+				}>`
+			);
+		}
+
+		let league = args[0].toLowerCase();
+
+		if (args[1] == "fix") {
 			let player_name = "";
-			if (args.length < 4 || args.length > 6) {
+			if (args.length < 5 || args.length > 7) {
 				return message.reply(
-					"That fix command wasn't formatted correctly. It should be `!draft fix [coach_id] [pick_num] [player_name]`"
+					"That fix command wasn't formatted correctly. It should be `!draft [league] fix [coach_id] [pick_num] [player_name]`"
 				);
-			} else if (args.length == 4) {
-				player_name = args[3];
 			} else if (args.length == 5) {
-				player_name = args[3] + " " + args[4];
+				//Ichiro
+				player_name = args[4];
 			} else if (args.length == 6) {
-				player_name = args[3] + " " + args[4] + " " + args[5];
+				player_name = args[4] + " " + args[5];
+			} else if (args.length == 7) {
+				//Billy Jean Blackwood
+				player_name = args[4] + " " + args[5] + " " + args[6];
 			}
 
-			try {
-				const old_player = await Draft_j.update(
-					{ team: "undrafted", pick_num: null },
-					{
-						where: {
-							team: args[1],
-							pick_num: parseInt(args[2]),
-						},
-					}
-				);
-				player_name = findPlayerName(player_name);
-				const change_player = await Draft_j.update(
-					{ team: args[1], pick_num: parseInt(args[2]) },
-					{
-						where: {
-							player: player_name,
-						},
-					}
-				);
-
-				return message.reply(
-					`Pick #${args[2]} is now ${player_name} (${args[1]})`
-				);
-			} catch (e) {
-				return message.reply("Couldn't find that player.");
-			}
+			const reply = await fixCoach(league, args[2].toUpperCase(), parseInt(args[3]), player_name);
+			
+			return message.reply(reply);
 		}
 
 		// if (args[0])
 
 		//View teams/playersdrafted
-		if (args[0] == "view") {
-			if (args[1] == "team") {
+		if (args[1] == "view") {
+			if (args[2] == "team") {
 				await showTeamPlayers(message, args, client);
 				return;
 			} else {
 				await showDraft(message, args, client);
-				return null;
+				return;
 			}
 		}
 
-		if (args[0] == "status") {
-			return message.channel.send(await getDraftStatus());
+		if (args[1] == "status") {
+			return message.channel.send(await getDraftStatus(league));
 		}
 
 		///Command for resetting the draft. (repopulates db table with players and sets team to 'undrafted' and draft_num to null)
@@ -1076,35 +954,37 @@ module.exports = {
 			) ||
 			message.member.roles.cache.find((role) => role.name === "Codehead")
 		) {
-			if (args[0] == "lock") {
-				draft_lock = true;
+			if (args[1] == "lock") {
+				draftData[league]["lock"] = true;
+				// draft_lock = true;
 				return message.reply(
-					"The draft is now locked. Use `!draft unlock` to unlock it. View commands will still work."
+					"The draft is now locked. Use `!draft [league] unlock` to unlock it. View commands will still work."
 				);
 			}
 
-			if (args[0] == "unlock") {
-				draft_lock = false;
+			if (args[1] == "unlock") {
+				
+				draftData[league]["lock"] = false;
 
-				message.reply("The draft is now unlocked.");
-				return message.channel.send(await getDraftStatus());
+				message.reply(`The ${league} draft is now unlocked.`);
+				return message.channel.send(await getDraftStatus(league));
 			}
 
-			if (args[0] == "audit") {
-				await getDraftAudit(message);
+			if (args[1] == "audit") {
+				await getDraftAudit(message, league);
 				return;
 			}
 
-			if (args[0] == "sync") {
-				await syncDraft(message);
+			if (args[1] == "sync") {
+				await syncDraft(message, league);
 				return;
 			}
 		}
 
 		// ANY COMMANDS BELOW HERE WILL BE BLOCKED IF THE DRAFT IS LOCKED
-		if (draft_lock) {
+		if (draftData[league["lock"]]) {
 			return message.reply(
-				"The draft is locked. Use `!draft unlock` to unlock it and try again. View commands will still work."
+				`The ${league} draft is locked. Use \`!draft ${league} unlock\` to unlock it and try again. View commands will still work.`
 			);
 		}
 
@@ -1114,18 +994,20 @@ module.exports = {
 			) ||
 			message.member.roles.cache.find((role) => role.name === "Codehead")
 		) {
-			if (args[0] == "reset") {
+			if (args[1] == "reset") {
 				let resetting_msg = await message.reply(
-					"The draft is resetting..."
+					`The ${league} draft is resetting...`
 				);
-				const reset = await Draft_j.destroy({
+				let db = draftData[league]["db"];
+				let playerPool = draftData[league]["playerPool"];
+				const reset = await db.destroy({
 					where: {},
 					truncate: true,
 				});
 				let total = Object.keys(playerPool.data).length;
 
 				for (let j = 0; j < Object.keys(playerPool.data).length; j++) {
-					const cc = await Draft_j.create({
+					const cc = await db.create({
 						player: Object.keys(playerPool.data)[j],
 					});
 					// console.log(Object.keys(playerPool.data)[j]);
@@ -1137,41 +1019,61 @@ module.exports = {
 					}
 				}
 				resetting_msg.edit("The draft has been reset.");
-				draft_num = 1;
-				current_drafter = await getCurrentCoach();
+				draftData[league]["draftNum"] = 1;
+				draftData[league]["currentDrafter"] = await getCurrentCoach(
+					league
+				);
 				// message.reply("Draft Has Been Reset.")
-				return message.channel.send(await getDraftStatus());
+				return message.channel.send(await getDraftStatus(league));
 			}
 
-			if (args[0] == "set") {
-				if (args.length > 1 && args[1] == "auto") {
-					draft_num = await getNextOpenPick();
-					current_drafter = await getCurrentCoach();
+			if (args[1] == "set") {
+				let coach_data = draftData[league]["coachData"];
+				if (args.length > 2 && args[2] == "auto") {
+					draftData[league]["draftNum"] = await getNextOpenPick(
+						league
+					);
+					draftData[league]["currentDrafter"] = await getCurrentCoach(
+						league
+					);
 					let result = "";
-					if (current_drafter == "") {
+					if (draftData[league]["currentDrafter"] == "") {
 						return message.reply(
 							"There is no coach specified at pick #" +
-								draft_num +
-								".\nTry setting the draft to a different pick or use `!draft lock` to lock the draft."
+								draftData[league]["draftNum"] +
+								`.\nTry setting the draft to a different pick or use \`!draft ${league} lock\` to lock the draft.`
 						);
 					} else {
 						return message.reply(
-							`Draft set to pick #${draft_num}.\n${current_drafter} <@${coach_data[current_drafter]["id"]}> (${coach_data[current_drafter]["version"]}) is now on the clock.`
+							`Draft set to pick #${
+								draftData[league]["draftNum"]
+							}.\n${draftData[league]["currentDrafter"]} <@${
+								coach_data[draftData[league]["currentDrafter"]][
+									"id"
+								]
+							}> is now on the clock.`
 						);
 					}
-				} else if (Number.isInteger(parseInt(args[1]))) {
-					draft_num = parseInt(args[1]);
-					current_drafter = await getCurrentCoach(); //Replace with sheet cell magic
+				} else if (Number.isInteger(parseInt(args[2]))) {
+					draftData[league]["draftNum"] = parseInt(args[2]);
+					draftData[league]["currentDrafter"] =
+						await getCurrentCoach(league); //Replace with sheet cell magic
 					let result = "";
-					if (current_drafter == "") {
+					if (draftData[league]["currentDrafter"] == "") {
 						return message.reply(
 							"There is no coach specified at pick #" +
-								draft_num +
-								".\nTry setting the draft to a different pick or use `!draft lock` to lock the draft."
+								draftData[league]["draftNum"] +
+								`.\nTry setting the draft to a different pick or use \`!draft ${league} lock\` to lock the draft.`
 						);
 					} else {
 						return message.reply(
-							`Draft set to pick #${draft_num}.\n${current_drafter} <@${coach_data[current_drafter]["id"]}> (${coach_data[current_drafter]["version"]}) is now on the clock.`
+							`Draft set to pick #${
+								draftData[league]["draftNum"]
+							}.\n${draftData[league]["currentDrafter"]} <@${
+								coach_data[draftData[league]["currentDrafter"]][
+									"id"
+								]
+							}> is now on the clock.`
 						);
 					}
 				}
@@ -1185,36 +1087,36 @@ module.exports = {
 			) ||
 			message.member.roles.cache.find((role) => role.name === "Codehead")
 		) {
-			if (args[0] == "undo") {
-				if (draft_num == 1) {
+			if (args[1] == "undo") {
+				if (draftData[league]["draftNum"] == 1) {
 					return message.channel.send(
 						"You cannot undo picks that haven't happened yet."
 					);
 				}
-				draft_num -= 1;
-
-				const undraft_player = await Draft_j.update(
+				draftData[league]["draftNum"] -= 1;
+				let db = draftData[league]["db"];
+				let coach_data = draftData[league]["coachData"];
+				const undraft_player = await db.update(
 					{ team: "undrafted", pick_num: null },
 					{
 						where: {
-							pick_num: draft_num,
+							pick_num: draftData[league]["draftNum"],
 						},
 					}
 				);
-				await writePlayerToDraft("", "");
-				current_drafter = await getCurrentCoach();
+				await writePlayerToDraft(league, "", "");
+				draftData[league]["currentDrafter"] = await getCurrentCoach(league);
 				let result =
-					"Draft Pick #" +
-					draft_num +
+					"Pick #" +
+					draftData[league]["draftNum"] +
 					" has been undone" +
-					"\n " +
-					current_drafter +
+					"\n" +
+					draftData[league]["currentDrafter"] +
 					" <@" +
-					coach_data[current_drafter]["id"] +
-					"> (" +
-					coach_data[current_drafter]["version"] +
-					") is now on the clock with pick #" +
-					draft_num +
+					coach_data[draftData[league]["currentDrafter"]]["id"] +
+					">" +
+					" is now on the clock with pick #" +
+					draftData[league]["draftNum"] +
 					".";
 				return message.channel.send(result);
 			}
@@ -1222,20 +1124,19 @@ module.exports = {
 
 		//// TODO: Change Players team
 
-		if (args[0] == "test") {
-			let title = "**S9 COACH INFO**";
+		if (args[1] == "test") {
+			let title = `**S10 ${league} COACH INFO**`;
 			let message_text = "";
 			let count = 1;
+			let coach_data = draftData[league]["coachData"];
 			for (let [code, coach] of Object.entries(coach_data)) {
 				console.log(coach);
 				let coach_line =
 					count +
 					") `" +
 					code +
-					"` | `" +
-					coach["version"] +
-					"`" +
-					` | <@${coach["id"]}> | ${coach["username"]}\n`;
+				
+					`\` | <@${coach["id"]}> | ${coach["username"]}\n`;
 				message_text += coach_line;
 				count++;
 			}
@@ -1271,11 +1172,11 @@ module.exports = {
 
 		let result = "Unsuccessful Request, try again."; //Default response
 
-		current_drafter = await getCurrentCoach();
-		if (current_drafter == "") {
-			draft_lock = true;
+		draftData[league]["currentDrafter"] = await getCurrentCoach(league);
+		if (draftData[league]["currentDrafter"] == "") {
+			draftData[league]["lock"] = true;
 			return message.reply(
-				"The draft is complete and now locked. Use `!draft unlock` to unlock it."
+				`The draft is complete and now locked. Use \`!draft ${league} unlock\` to unlock it.`
 			);
 		}
 
@@ -1286,36 +1187,39 @@ module.exports = {
       if (args.length==1 && args[0].length==2){
           pair = args[0].toUpperCase();
       }else{ */
-		if (args.length == 3) {
-			drafted_name = args[0] + " " + args[1] + " " + args[2];
-		} else if (args.length == 2) {
-			drafted_name = args[0] + " " + args[1];
+		if (args.length == 4) {
+			drafted_name = args[1] + " " + args[2] + " " + args[3];
+		} else if (args.length == 3) {
+			drafted_name = args[1] + " " + args[2];
 		} else {
-			drafted_name = args[0];
+			drafted_name = args[1];
 		}
+
+		let db = draftData[league]["db"];
+		let playerPool = draftData[league]["playerPool"];
 		/*  } */
 		try {
 			// fix any typos
-			drafted_name = findPlayerName(drafted_name);
+			drafted_name = findPlayerName(league, drafted_name);
 			if (drafted_name === "") {
 				return message.reply(
 					"Could not find that player. Try using their full name."
 				);
 			}
 
-			const pick_to_draft = await Draft_j.findOne({
+			const pick_to_draft = await db.findOne({
 				where: {
-					pick_num: draft_num,
+					pick_num: draftData[league]["draftNum"],
 				},
 			});
 
 			if (pick_to_draft != null) {
 				return message.reply(
-					`This pick (#${draft_num}) has already been made! Make sure the bot is set to the right pick.`
+					`This pick (#${draftData[league]["draftNum"]}) has already been made! Make sure the bot is set to the right pick.`
 				);
 			}
 
-			const player_to_draft = await Draft_j.findOne({
+			const player_to_draft = await db.findOne({
 				where: {
 					player: drafted_name,
 				},
@@ -1326,18 +1230,23 @@ module.exports = {
 				);
 			}
 			// check if player is available for the coach's version
-			else if (
-				!playerPool.data[drafted_name][
-					`${coach_data[current_drafter]["version"]}`
-				]
-			) {
-				return message.reply(
-					`${drafted_name} is not available for ${coach_data[current_drafter]["version"]}, try again.`
-				);
-			}
+			// else if (
+			// 	!playerPool.data[drafted_name][
+			// 		`${coach_data[draftData[league]["currentDrafter"]]["version"]}`
+			// 	]
+			// ) {
+			// 	return message.reply(
+			// 		`${drafted_name} is not available for ${
+			// 			coach_data[draftData[league]["currentDrafter"]]["version"]
+			// 		}, try again.`
+			// 	);
+			// }
 
-			const draft_player = await Draft_j.update(
-				{ team: current_drafter, pick_num: draft_num },
+			const draft_player = await db.update(
+				{
+					team: draftData[league]["currentDrafter"],
+					pick_num: draftData[league]["draftNum"],
+				},
 				{
 					where: {
 						player: drafted_name,
@@ -1384,47 +1293,46 @@ module.exports = {
 			// }
 			result = "";
 			// result = pair+': *'+playerPool.Players[pair].Name + '* has been drafted by '+ coaches[current_drafter][1] + ` (see #bot-chat)` +"\n";
-			stat_report = name + "\n";
-			stat_report +=
-				"Batting  :" +
-				baseballs(parseInt(playerPool.data[name].B)) +
-				"\n";
-			stat_report +=
-				"Running:" +
-				baseballs(parseInt(playerPool.data[name].R)) +
-				"\n";
-			stat_report +=
-				"Pitching:" +
-				baseballs(parseInt(playerPool.data[name].P)) +
-				"\n";
-			stat_report +=
-				"Fielding:" + baseballs(parseInt(playerPool.data[name].F));
+			// stat_report = name + "\n";
+			// stat_report +=
+			// 	"Batting  :" +
+			// 	baseballs(parseInt(playerPool.data[name].B)) +
+			// 	"\n";
+			// stat_report +=
+			// 	"Running:" +
+			// 	baseballs(parseInt(playerPool.data[name].R)) +
+			// 	"\n";
+			// stat_report +=
+			// 	"Pitching:" +
+			// 	baseballs(parseInt(playerPool.data[name].P)) +
+			// 	"\n";
+			// stat_report +=
+			// 	"Fielding:" + baseballs(parseInt(playerPool.data[name].F));
 
-			await writePlayerToDraft(name, playerPool.data[name].ID);
+			await writePlayerToDraft(league, name, playerPool.data[name].ID);
 		}
 
 		//  bot_channel.send(stat_report);
-		bot_channel.send(
-			buildPlayerDraftMessage(playerPool.data[drafted_name])
+		message.channel.send(
+			buildPlayerDraftMessage(league, playerPool.data[drafted_name])
 		);
 
 		// write to spreadsheet
-
-		draft_num += 1;
-		current_drafter = await getCurrentCoach(); //Replace with sheet cell magic
-		if (current_drafter != "") {
+		let coach_data = draftData[league]["coachData"];
+		draftData[league]["draftNum"] += 1;
+		draftData[league]["currentDrafter"] = await getCurrentCoach(league); //Replace with sheet cell magic
+		if (draftData[league]["currentDrafter"] != "") {
 			result +=
-				current_drafter +
+				draftData[league]["currentDrafter"] +
 				" <@" +
-				coach_data[current_drafter]["id"] +
-				"> (" +
-				coach_data[current_drafter]["version"] +
-				") is now on the clock with pick #" +
-				draft_num +
+				coach_data[draftData[league]["currentDrafter"]]["id"] +
+				">" +
+				" is now on the clock with pick #" +
+				draftData[league]["draftNum"] +
 				".";
 		} else {
-			draft_lock = true;
-			result += "🎊 The draft has concluded and is now locked. 🎊";
+			draftData[league]["lock"] = true;
+			result += `🎊 The ${league} draft has concluded and is now locked. 🎊`;
 		}
 
 		message.channel.send(result);

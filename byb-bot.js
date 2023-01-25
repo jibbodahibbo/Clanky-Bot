@@ -15,7 +15,7 @@ const jlundID = "377672560780902402";
 // dotenv.config();
 
 //const Sequelize = require('sequelize');
-const {ClankyCoins, Schedules, Results, Draft_j, sequelize} = require('./dbInit.js');
+const {ClankyCoins, Schedules, Results, Draft_j, Draft_03, sequelize} = require('./dbInit.js');
 //const { prefix, token } = require('./config.json');
 const players = require('./players.js');
 const prefix = process.env.PREFIX;
@@ -47,6 +47,7 @@ client.once('ready', () => {
 	Schedules.sync();
 	Results.sync();
 	Draft_j.sync();
+	Draft_03.sync();
 
 	// fires every day at 10 am
 	let playerSpotlightJob = new cron.CronJob("0 0 10 * * *", () => {
@@ -93,7 +94,7 @@ client.once('ready', () => {
 
 try {
 	client.on('message', async message => {
-		console.log(message.content);
+		// console.log(message.content);
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -112,4 +113,5 @@ try {
 } catch (error) {
 	console.error(error);
 }
+
 client.login(process.env.TOKEN);
