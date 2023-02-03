@@ -58,7 +58,7 @@ module.exports = {
  						console.log(['smokey01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 				const sched03= s1003schedule;
-				let t= s1003teams;
+				t= s1003teams;
 					for (var i = 0; i < sched03.length; i++) {
 						let s=sched03[i];
 						let ss = await createScheduleItem(['smokey03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
