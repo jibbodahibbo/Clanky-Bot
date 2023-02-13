@@ -428,7 +428,7 @@ module.exports = {
         channel = client.channels.cache.get(tournament_channel_id);
       }else if (result_obj.league == "vbfl"){
         channel = client.channels.cache.get(VFBL_channel_id);
-			}else if (result_obj.league="w3"){
+			}else if (result_obj.league=="w3"){
 				channel = client.channels.cache.get(other_results_id);
       }else{
         channel = client.channels.cache.get(results_channel_id);
@@ -481,7 +481,7 @@ module.exports = {
 					channel.send("", { embed: homeObject });
 				});
 
-				twitterCommands.tweetResult(client, game_schedule_data, away_result_obj, home_result_obj);
+				//twitterCommands.tweetResult(client, game_schedule_data, away_result_obj, home_result_obj);
 			} else {
 				throw Error(
 					`Schedule data was null for this query: ${schedule_data_query}`
@@ -496,7 +496,7 @@ module.exports = {
         channel = client.channels.cache.get(tournament_channel_id);
       }else if (result_obj.league == "vbfl"){
         channel = client.channels.cache.get(VFBL_channel_id);
-      }else if (result_obj.league="w3"){
+      }else if (result_obj.league=="w3"){
 				channel = client.channels.cache.get(other_results_id);
 			}else{
         channel = client.channels.cache.get(results_channel_id);
