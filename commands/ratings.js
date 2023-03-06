@@ -1,6 +1,8 @@
 let players = require('../players.js');
 var fs = require("fs");
 let rawdata = fs.readFileSync("players.json");
+rawdata = fs.readFileSync("players_full.json");
+const fullPlayerData = JSON.parse(rawdata);
 
 const playersJson = JSON.parse(rawdata);
 const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
@@ -137,30 +139,48 @@ function buildPlayerInfoMessage(player) {
 	let scoreString = ":green_square:";
 	let fillerString = ":white_large_square:";
 
+	player_data = fullPlayerData[player.name];
+
 	let birthday_string =
 		"birthday_month" in player
 			? `:birthday: ${player.birthday_month}/${player.birthday_day}\n`
 			: "";
 	let nickname_string = ("nickname" in player) ? `${player.nickname}` : "";
 
+
+
+
+
+	const player_stats = [
+		"Stamina",
+		"Intelligence",
+		"Coordination",
+		"Speed",
+		"Arm (STR)",
+		"Throw (AIM)",
+		"Swing (POW)",
+		"Hitting (CON)",
+		"Eye",
+		"Attention",
+		"Aggression",
+		"Heat",
+		"Slowball",
+		"Left Hook",
+		"Right Hook"
+	];
+
+
 	let message = "";
 	message += `__**${player.name}**__ (${player.id})\n`;
 	message += nickname_string + "⠀" + birthday_string + "\n";
-	message += `\`BAT:\`⠀${getScoreString(player.batting)}⠀(${
-		player.batting
-	})\n`;
-	message += `\`RUN:\`⠀${getScoreString(player.running)}⠀(${
-		player.running
-	})\n`;
-	message += `\`PIT:\`⠀${getScoreString(player.pitching)}⠀(${
-		player.pitching
-	})\n`;
-	message += `\`FLD:\`⠀${getScoreString(player.fielding)}⠀(${
-		player.fielding
-	})\n`;
-	message += `\`ARM:\`⠀${getScoreString(player.arm * 2)}⠀(${
-		player.arm * 2
-	})\n\n`;
+	
+	player_stats.forEach(stat => {
+		message += `\`${stat}:\`⠀${getScoreString(player_data[stat])}⠀(${
+			player_data[stat]
+		})\n`;
+	});
+
+	message += `\n`;
 
 	message += `**Hand:** ${player.hand}⠀**Lock:** ${
 		player.lock != "" ? player.lock : "n/a"
@@ -185,7 +205,7 @@ function buildPlayerInfoMessage(player) {
 }
 
 function getScoreString(score) {
-	score_string = score_icon.repeat(score) + filler_icon.repeat(10 - score);
+	score_string = score_icon.repeat(floor(score/10)) + filler_icon.repeat(10 - floor(score/10));
 	return score_string;
 }
 
