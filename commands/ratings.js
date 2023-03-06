@@ -1,8 +1,10 @@
 let players = require('../players.js');
 var fs = require("fs");
 let rawdata = fs.readFileSync("players.json");
+
 const playersJson = JSON.parse(rawdata);
 const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
+const draftratings = require(draft.js);
 
 const canvas = require("../byb-bot.js").canvas;
 const discord = require("../byb-bot.js").discord;
@@ -219,7 +221,6 @@ function drawStat(ctx, stat_name, stat_value, x_start, y_start) {
 }
 
 
-
 module.exports = {
 	name: 'ratings',
 	description: 'Ratings',
@@ -334,7 +335,8 @@ module.exports = {
 						// result += "Fielding:" + baseballs(parseInt(playersJson[pair].fielding));
 					}
 				}
-
-
+				let league ="";
+				message.channel.send(draftratings.buildPlayerDraftMessage(league, playerPool.data[drafted_name]));
 		message.channel.send(result);
+		
 	},};
