@@ -176,7 +176,7 @@ function buildPlayerInfoMessage(player) {
 
 	player_stats.forEach(stat => {
 
-		message += `\`${stat}: \n \`⠀${getScoreString(player_data[0][stat])}⠀(${
+		message += `\`${stat}:\`⠀ \n ${getScoreString(player_data[0][stat])}⠀(${
 			player_data[0][stat]
 		})\n`;
 	});
