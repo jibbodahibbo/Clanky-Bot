@@ -176,21 +176,15 @@ function buildPlayerInfoMessage(player) {
 
 	player_stats.forEach(stat => {
 
-		message += `\`${stat}:\`⠀ \n ${getScoreString(player_data[0][stat])}⠀(${
-			player_data[0][stat]
-		})\n`;
+		message += `\`${stat}:\`⠀${player_data[0][stat]} \n ${getScoreString(player_data[0][stat])}  \n`;
 	});
 
 	message += `\n`;
 
-	message += `**Hand:** ${player.hand}⠀**Lock:** ${
-		player.lock != "" ? player.lock : "n/a"
-	}⠀**P Rank:** ${player.rank_pitcher != "" ? player.rank_pitcher : "n/a"}\n`;
-	message += `**1B Rank:** ${player.rank_1b != "" ? player.rank_1b : "n/a"}⠀`;
-	message += `**SS Rank:** ${player.rank_ss != "" ? player.rank_ss : "n/a"}⠀`;
-	message += `**C Rank:** ${
-		player.rank_catcher != "" ? player.rank_catcher : "n/a"
-	}`;
+	message += `**Hand:** ${player.hand != "" ? player.hand : "n/a"} `;
+	message += `**Height:** ${player_data[0]["Height/S-Zone"] != "" ? player_data[0]["Height/S-Zone"] : "n/a"}⠀`;
+	message += `**Lock** ${player_data[0]["Lock?"] != "" ? player_data[0]["Lock?"] : "n/a"}⠀`;
+
 
 	let playerEmbed = new MessageEmbed()
 		.setDescription(message);
