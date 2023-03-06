@@ -336,7 +336,8 @@ module.exports = {
 					}
 				}
 				let league ="";
-				message.channel.send(draftratings.buildPlayerDraftMessage(league, playerPool.data[drafted_name]));
+				let drafted_name=playersJson[pair].name;
+				message.channel.send(draftratings.buildPlayerDraftMessage(league, drafted_name));
 		message.channel.send(result);
 		
 	},};
