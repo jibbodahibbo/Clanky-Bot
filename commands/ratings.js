@@ -1,9 +1,8 @@
 let players = require('../players.js');
 var fs = require("fs");
-let rawdata = fs.readFileSync("players.json");
 rawdata = fs.readFileSync("players_full.json");
 const fullPlayerData = JSON.parse(rawdata);
-
+let rawdata = fs.readFileSync("players.json");
 const playersJson = JSON.parse(rawdata);
 const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
 
