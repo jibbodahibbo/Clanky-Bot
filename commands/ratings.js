@@ -205,7 +205,7 @@ function buildPlayerInfoMessage(player) {
 }
 
 function getScoreString(score) {
-	score_string = score_icon.repeat(math.floor(score/10)) + filler_icon.repeat(10 - math.floor(score/10));
+	let score_string = score_icon.repeat(Math.floor(score/10)) + filler_icon.repeat(10 - Math.floor(score/10));
 	return score_string;
 }
 
