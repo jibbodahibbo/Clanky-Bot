@@ -175,7 +175,7 @@ function buildPlayerInfoMessage(player) {
 	console.log(player_data);
 
 	player_stats.forEach(stat => {
-		let stat_string = stat+"-".repeat(stat.length-15);
+		stat_string = stat+"-".repeat(15-stat.length);
 		message += `\`${stat_string}:\`⠀${getScoreString(player_data[0][stat])}⠀(${
 			player_data[0][stat]
 		})\n`;
