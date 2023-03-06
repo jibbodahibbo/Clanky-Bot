@@ -138,7 +138,7 @@ function buildPlayerInfoMessage(player) {
 	let scoreString = ":green_square:";
 	let fillerString = ":white_large_square:";
 
-	player_data = fullPlayerData[player.name];
+	let player_data = fullPlayerData[player];
 
 	let birthday_string =
 		"birthday_month" in player
@@ -172,10 +172,10 @@ function buildPlayerInfoMessage(player) {
 	let message = "";
 	message += `__**${player.name}**__ (${player.id})\n`;
 	message += nickname_string + "⠀" + birthday_string + "\n";
-	console.log(player_data, player_data["AB"], player_data["AB"][0], player_data["AB"][0].stat);
+	console.log(player_data);
 	player_stats.forEach(stat => {
-		message += `\`${stat}:\`⠀${getScoreString(player_data[player][0][stat])}⠀(${
-			player_data[stat]
+		message += `\`${stat}:\`⠀${getScoreString(player_data[0][stat])}⠀(${
+			player_data[0][stat]
 		})\n`;
 	});
 
