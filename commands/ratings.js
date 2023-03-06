@@ -4,7 +4,6 @@ let rawdata = fs.readFileSync("players.json");
 
 const playersJson = JSON.parse(rawdata);
 const allowed_channels = ['733773776357163079','741308777357377617','778266821006458950'];
-const draftratings = require(draft.js);
 
 const canvas = require("../byb-bot.js").canvas;
 const discord = require("../byb-bot.js").discord;
@@ -335,9 +334,7 @@ module.exports = {
 						// result += "Fielding:" + baseballs(parseInt(playersJson[pair].fielding));
 					}
 				}
-				let league ="";
-				let drafted_name=playersJson[pair].name;
-				message.channel.send(draftratings.buildPlayerDraftMessage(league, drafted_name));
+			
 		message.channel.send(result);
 		
 	},};
