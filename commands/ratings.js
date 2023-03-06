@@ -174,7 +174,7 @@ function buildPlayerInfoMessage(player) {
 	message += nickname_string + "⠀" + birthday_string + "\n";
 	
 	player_stats.forEach(stat => {
-		message += `\`${stat}:\`⠀${getScoreString(player_data[stat])}⠀(${
+		message += `\`${stat}:\`⠀${getScoreString(player_data[player][stat])}⠀(${
 			player_data[stat]
 		})\n`;
 	});
