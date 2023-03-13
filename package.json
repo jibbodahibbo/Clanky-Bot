@@ -31,7 +31,7 @@
     "request": "2.81.0",
     "sequelize": "^6.3.3",
     "sequelize-cli": "^6.2.0",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.1.5",
     "twitter": "^1.7.1"
   }
 }
