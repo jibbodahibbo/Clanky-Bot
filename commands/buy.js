@@ -136,14 +136,24 @@ function drink(user,other){
 	let nouns=["Water", "Tea", "Coffee", "Juice", "Soda", "Milk", "Beer", "Wine", "Cocktail", "Smoothie", "Lemonade", "tea", "Energy drink", "Sports drink", "Sparkling water", "Cider", "Champagne", "Whiskey", "Rum"];
 
 
-let radj=adjs[Math.floor(Math.random() * adjs.length)];
-let rnoun=nouns[Math.floor(Math.random() * nouns.length)];
-let e={
-			"title": user+', you have purchased a drink for 10 CC!',
-			"color": 10038562,
-			"description": 'You gave <@'+other+'> a '+radj+' '+rnoun+'.',
-		}
-	return e;
+	let radj=adjs[Math.floor(Math.random() * adjs.length)];
+	let rnoun=nouns[Math.floor(Math.random() * nouns.length)];
+
+	if (other=="616733129155018757"){
+			radj="can of";
+			if (Math.random() < 0.5){
+				rnoun="Pepsi";
+			}else{
+				rnoun="Coke";
+			}
+	}
+
+	let e={
+				"title": user+', you have purchased a drink for 10 CC!',
+				"color": 10038562,
+				"description": 'You gave <@'+other+'> a '+radj+' '+rnoun+'.',
+			}
+		return e;
 }
 
 async function getPurchaser(p){
