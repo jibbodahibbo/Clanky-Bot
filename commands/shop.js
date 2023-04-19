@@ -19,6 +19,10 @@ module.exports = {
 			      "url": "https://static.wikia.nocookie.net/backyard_sports_leagues/images/3/38/Clanky.jpg/revision/latest/scale-to-width-down/130?cb=20210127180303"
 			    },
 			    "fields": [
+					{
+						"name": "!buy drink <@username>: 10 CC",
+						"value":"The BYB-Bot will buy someone a drink!",
+					  },
 			      {
 			        "name": "!buy congratsme : 300 CC",
 			        "value":"The BYB-Bot will congratulate you with a gif.",
