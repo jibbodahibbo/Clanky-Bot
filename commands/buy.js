@@ -112,6 +112,40 @@ let e={
 	return e;
 }
 
+function drink(user,other){
+	let adjs=[
+	'Blue',
+	'Crazy',
+	'Green',
+	'Humongous',
+	'Junior',
+	'Little',
+	'Mighty',
+	'Red',
+	'Super-Duper',
+	'White',
+	'Smokey',
+	"palatable", "refreshing", "mysterious", "cloudy", "foul-smelling", "herbal", "potent", "restorative", "canned", 
+	"soft", "fragrant", "hot", "italian", "soft", "creamy", "feminine", "fashionable", "exotic", "less", "sweeter", 
+	"trendy", "iced", "heady", "black", "quiet", "acid", "nice", "companionable", "gassy", "sugared", "nipponese", "soft", 
+	"small", "unfailingly", "regular", "peculiarly", "refreshing", "unfailingly", "regular", "weak", "sweet", "refreshing", 
+	"flavored", "intoxicating", "synthetic", "orange", "alcoholic", "outsized", "pleasing", "refreshing", "bitter", "milky", 
+	"tall", "iced", "tall", "wildest", "fruity", "preferred", "fruit-flavored", "popular", "soft", "warm", "nutritive", "non-alcoholic",
+	 "sufficient", "smooth", "strong", "good-night", "iced", "tall"
+	];
+	let nouns=["Water", "Tea", "Coffee", "Juice", "Soda", "Milk", "Beer", "Wine", "Cocktails", "Smoothies", "Lemonade", "tea", "Energy drink", "Sports drink", "Sparkling water", "Cider", "Champagne", "Whiskey", "Rum"];
+
+
+let radj=adjs[Math.floor(Math.random() * adjs.length)];
+let rnoun=nouns[Math.floor(Math.random() * nouns.length)];
+let e={
+			"title": user+', you have purchased a drink for 10 CC!',
+			"color": 10038562,
+			"description": 'You gave <@'+other+'> a '+radj+' '+rnoun+'.',
+		}
+	return e;
+}
+
 async function getPurchaser(p){
 //Attempt to find the user who is purchasing.
 		try {
@@ -157,6 +191,14 @@ module.exports = {
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
 				 }
 			}
+
+			if(args[0]=="drink"){
+				if(await purchase(user, 10)){
+					   return message.reply({ embed:drink(user.username,message.mentions.users.first())});
+				}else{
+					return message.reply('You only have '+ user.coins + ' Clanky Coins.')
+				}
+		   }
 
 			if(args[0]=="article"){
 				 if(await purchase(user, 3500)){
