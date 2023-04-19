@@ -133,7 +133,7 @@ function drink(user,other){
 	"tall", "iced", "tall", "wildest", "fruity", "preferred", "fruit-flavored", "popular", "soft", "warm", "nutritive", "non-alcoholic",
 	 "sufficient", "smooth", "strong", "good-night", "iced", "tall"
 	];
-	let nouns=["Water", "Tea", "Coffee", "Juice", "Soda", "Milk", "Beer", "Wine", "Cocktails", "Smoothies", "Lemonade", "tea", "Energy drink", "Sports drink", "Sparkling water", "Cider", "Champagne", "Whiskey", "Rum"];
+	let nouns=["Water", "Tea", "Coffee", "Juice", "Soda", "Milk", "Beer", "Wine", "Cocktail", "Smoothie", "Lemonade", "tea", "Energy drink", "Sports drink", "Sparkling water", "Cider", "Champagne", "Whiskey", "Rum"];
 
 
 let radj=adjs[Math.floor(Math.random() * adjs.length)];
