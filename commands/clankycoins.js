@@ -13,7 +13,7 @@ async function addUser(message){
 	}
 	catch (e) {
 		if (e.name === 'SequelizeUniqueConstraintError') {
-			const user = await ClankyCoins.findOne({ where: { username: message.author.username} });
+			const user = await ClankyCoins.findOne({ where: { username: message.author.id} });
 			return message.reply(user.username + " has "+ user.coins + " clanky coins.");
 			}
 		console.log(e);
@@ -27,20 +27,20 @@ async function addUserByMention(message){
 		// Create clankycoin usser in ledger.
 		const cc = await ClankyCoins.create({
 			user_id: message.mentions.users.first().id,
-			username: message.mentions.users.first().username,
+			username: message.mentions.users.first().id,
 			tag:message.mentions.users.first().tag,
 			coins:0
 		});
 	}
 	catch (e) {
 		if (e.name === 'SequelizeUniqueConstraintError') {
-			const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
+			const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().id } });
 			return message.reply(user.username + " has "+ user.coins + " clanky coins.");
 		}
 			console.log(e);
 			return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
 	}
-	const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().username } });
+	const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().id } });
 	if (!user){
 		return message.reply( message.mentions.users.first().tag + ' added to the Clanky Coin Ledger');
 	}else{
@@ -99,17 +99,17 @@ module.exports = {
 			}
 
 			if (args.length>2){
-					const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().username } });
+					const user = await ClankyCoins.findOne({ where: { username:message.mentions.users.first().id } });
 					if(user){
 					if (args[0]=="add"){
 						console.log("add");
-						await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: message.mentions.users.first().username } });
-						return message.reply(user.username + ' now has a coin total of ' + (user.coins + parseInt(args[2])) );
+						await ClankyCoins.increment('coins', { by: parseInt(args[2]), where: { username: message.mentions.users.first().id } });
+						return message.reply(user.id + ' now has a coin total of ' + (user.coins + parseInt(args[2])) );
 					}
 					if (args[0]=="remove"){
 						console.log("remove");
-						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: message.mentions.users.first().username } });
-					  return message.reply(user.username + ' now has a coin total of ' +  (user.coins - parseInt(args[2])));
+						await ClankyCoins.decrement('coins', { by: parseInt(args[2]), where: { username: message.mentions.users.first().id } });
+					  return message.reply(user.id + ' now has a coin total of ' +  (user.coins - parseInt(args[2])));
 					}
 				}
 				else{
@@ -118,7 +118,7 @@ module.exports = {
 								// Create clankycoin usser in ledger.
 								const cc = await ClankyCoins.create({
 									user_id: message.mentions.users.first().id,
-									username: message.mentions.users.first().username,
+									username: message.mentions.users.first().id,
 									tag:message.mentions.users.first().tag,
 									coins:0
 								});
@@ -127,8 +127,8 @@ module.exports = {
 							catch (e) {
 								if (e.name === 'SequelizeUniqueConstraintError') {
 									let usertag=message.mentions.users.first().tag;
-									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().username } });
-									return message.reply(user.username + " has "+ user.coins + " clanky coins.");
+									const user = await ClankyCoins.findOne({ where: { username: message.mentions.users.first().id } });
+									return message.reply(user.id + " has "+ user.coins + " clanky coins.");
 								}
 									console.log(e);
 									return message.reply('Something went wrong with adding a user to the clanky coins ledger.');
