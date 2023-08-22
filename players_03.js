@@ -13158,10 +13158,10 @@ module.exports = {
 			"B-day Month": 0,
 			"B-day Day": 0,
 		},
-		"Willie Mays": {
-			Name: "Willie Mays",
+		"Ricky Henderson": {
+			Name: "Rickey Henderson",
 			"Image URL":
-				"https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/willie-mays-kneeling-on-ground-bettmann.jpg",
+				"https://www.baseball-reference.com/req/202305180/images/headshots/9/957d4da0_davis.jpg",
 			ADP: 32.8,
 			ID: "QI",
 			SLGv: 85,

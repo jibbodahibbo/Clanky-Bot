@@ -10164,10 +10164,10 @@ module.exports = {
 			"B-day Month": 0,
 			"B-day Day": 0,
 		},
-		"Ted Williams": {
-			Name: "Ted Williams",
+		"Vinnie the Gooch": {
+			Name: "Vinnie The Gooch",
 			"Image URL":
-				"https://media.npr.org/assets/img/2013/12/03/ap410523045-1-_vert-6c70e49d91d8299dfd4705c049c1b1b6d1535a42.jpg?s=6",
+				"https://static.wikia.nocookie.net/backyardsports/images/b/b2/Vinnie_the_gooch.jpg/revision/latest?cb=20131217033456",
 			ADP: 32.8,
 			ID: "QI",
 			SLGv: 94.3,

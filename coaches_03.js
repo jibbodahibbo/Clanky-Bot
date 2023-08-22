@@ -1,136 +1,144 @@
 module.exports = {
 	"data": {
-	   "AT": {
-		  "code": "AT",
-		  "id": "390617765003788299",
-		  "username": "arcothunder",
-		  "team_name": "Cincinnati Royals",
+	   "AP": {
+		  "code": "AP",
+		  "id": "1067540852769050744",
+		  "username": "AnjouPays",
+		  "team_name": "Little Angels",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "AX": {
 		  "code": "AX",
-		  "id": "272834771871334400",
+		  "id": "1067544069221392414",
 		  "username": "alex7456",
-		  "team_name": "Los Angeles Angels",
-		  "team_color": "",
-		  "logo": ""
-	   },
-	   "B@": {
-		  "code": "B@",
-		  "id": "525389103206760448",
-		  "username": "benjaminion",
-		  "team_name": "White Cubs",
+		  "team_name": "Kansas City Royals",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "BB": {
 		  "code": "BB",
-		  "id": "187776456519057409",
-		  "username": "Jibbodahibbo",
-		  "team_name": "Mighty Tigers",
+		  "id": "603606321492787210",
+		  "username": "jibbodahibbo",
+		  "team_name": "Mighty Orioles",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "BO": {
 		  "code": "BO",
-		  "id": "894684630970671125",
+		  "id": "1067544975325265960",
 		  "username": "bobbyJONES2370",
 		  "team_name": "Texas Astros",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "C0": {
-		  "code": "C0",
-		  "id": "230414932754038785",
-		  "username": "c0rn",
-		  "team_name": "Cleveland Indians",
+	   "BR": {
+		  "code": "BR",
+		  "id": "1067528046451642418",
+		  "username": "Towers-Of-Obscure",
+		  "team_name": "New York Mets",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "C8": {
 		  "code": "C8",
-		  "id": "355931440061612035",
+		  "id": "448576195190063110",
 		  "username": "crazyei8hts",
-		  "team_name": "Green Giants",
+		  "team_name": "Crazy Indians",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "CW": {
 		  "code": "CW",
-		  "id": "430920494351515650",
+		  "id": "603589333676589066",
 		  "username": "elchrisblanco",
 		  "team_name": "Seattle Fishes",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "EX": {
-		  "code": "EX",
-		  "id": "252968570382843904",
-		  "username": "Eauxps I. Fourgott",
-		  "team_name": "Super-Duper Melonheads",
+	   "IT": {
+		  "code": "IT",
+		  "id": "1071145998656737360",
+		  "username": "Itaniium",
+		  "team_name": "Humongous Giants",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "JY": {
 		  "code": "JY",
-		  "id": "307010267001257996",
-		  "username": "Jyknight",
-		  "team_name": "Montreal Expos",
+		  "id": "496815444116635658",
+		  "username": "jyknight",
+		  "team_name": "Seattle Mariners",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "M@": {
-		  "code": "M@",
-		  "id": "690369864618999849",
-		  "username": "mattitude",
-		  "team_name": "Little Padres",
+	   "LW": {
+		  "code": "LW",
+		  "id": "496713526778265624",
+		  "username": "lillwaws26",
+		  "team_name": "Oakland Expos",
+		  "team_color": "",
+		  "logo": ""
+	   },
+	   "MC": {
+		  "code": "MC",
+		  "id": "1142985787114266624",
+		  "username": "Cherry",
+		  "team_name": "Houston Devil Rays",
+		  "team_color": "",
+		  "logo": ""
+	   },
+	   "MK": {
+		  "code": "MK",
+		  "id": "603589804868763648",
+		  "username": "MikeMadness",
+		  "team_name": "Toronto Blue Jays",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "MM": {
 		  "code": "MM",
-		  "id": "698632902778552380",
+		  "id": "1071145701725184070",
 		  "username": "shrewsbury91",
-		  "team_name": "Tampa Bay Pirates",
-		  "team_color": "",
-		  "logo": ""
-	   },
-	   "MT": {
-		  "code": "MT",
-		  "id": "335400047070019585",
-		  "username": "MelloMathTeacher",
-		  "team_name": "Red White Sox",
+		  "team_name": "Crazy Padres",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "N8": {
 		  "code": "N8",
-		  "id": "87804201056337920",
+		  "id": "496530637596000287",
 		  "username": "Natetastic28",
-		  "team_name": "Atlanta Braves",
+		  "team_name": "Milwaukee Brewers",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "PZ": {
-		  "code": "PZ",
-		  "id": "394922258533187584",
-		  "username": "personizzle",
-		  "team_name": "Humongous Marlins",
+	   "PS": {
+		  "code": "PS",
+		  "id": "1069707239478272131",
+		  "username": "psanchez55",
+		  "team_name": "Little Hornets",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "SB": {
 		  "code": "SB",
-		  "id": "711388106749902849",
+		  "id": "603589134744944670",
 		  "username": "SilverBullet102",
-		  "team_name": "Baltimore Orioles",
+		  "team_name": "Crazy Melonheads",
+		  "team_color": "",
+		  "logo": ""
+	   },
+	   "TC": {
+		  "code": "TC",
+		  "id": "603291831744200737",
+		  "username": "The CRK",
+		  "team_name": "Junior Bombers",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "TO": {
 		  "code": "TO",
-		  "id": "692170461047554048",
+		  "id": "1071145277362274434",
 		  "username": "Toast",
 		  "team_name": "Minnesota Twins",
 		  "team_color": "",
@@ -138,7 +146,7 @@ module.exports = {
 	   },
 	   "TV": {
 		  "code": "TV",
-		  "id": "616733129155018757",
+		  "id": "783577309000368189",
 		  "username": "KingPepsi",
 		  "team_name": "Super-Duper Diamondbacks",
 		  "team_color": "",
@@ -146,15 +154,15 @@ module.exports = {
 	   },
 	   "VS": {
 		  "code": "VS",
-		  "id": "135436127862652928",
+		  "id": "847666595748249640",
 		  "username": "Vissery",
-		  "team_name": "Philadelphia Mets",
+		  "team_name": "Green Phillies",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "WZ": {
 		  "code": "WZ",
-		  "id": "273653649522294784",
+		  "id": "1067528806765699162",
 		  "username": "Wizard",
 		  "team_name": "Mighty Rangers",
 		  "team_color": "",
@@ -162,7 +170,7 @@ module.exports = {
 	   },
 	   "YT": {
 		  "code": "YT",
-		  "id": "213203256606851072",
+		  "id": "900907535983329291",
 		  "username": "Marco",
 		  "team_name": "Mighty Wombats",
 		  "team_color": "",
@@ -170,9 +178,17 @@ module.exports = {
 	   },
 	   "YY": {
 		  "code": "YY",
-		  "id": "74323981670285312",
-		  "username": "CoachTBD",
-		  "team_name": "Red Hornets",
+		  "id": "496817066201055232",
+		  "username": "Yurya",
+		  "team_name": "Green Monsters",
+		  "team_color": "",
+		  "logo": ""
+	   },
+	   "ZB": {
+		  "code": "ZB",
+		  "id": "668468071861583891",
+		  "username": "ZiorBox",
+		  "team_name": "Houston Yankees",
 		  "team_color": "",
 		  "logo": ""
 	   }

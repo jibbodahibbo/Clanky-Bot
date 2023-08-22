@@ -2,6 +2,7 @@ let players = require('../players.js');
 // let playerPool = require('../playerPool.js');
 // let playerPool = require('../players_master.js');
 let playerVariants = require('../player_variants.js');
+//NEW SEASON UPDATE, UPDATE THE PLAYERS AND COACHES .js FILES
 let players01 = require('../players_01.js');
 let players03 = require('../players_03.js');
 let coaches01 = require('../coaches_01.js');
@@ -21,8 +22,9 @@ rawdata = fs.readFileSync("draft_stock.json")
 const draftStockData = JSON.parse(rawdata);
 
 const sheets = require("../byb-bot.js").sheets;
-const draft2001Channel = "919379673178337290";
-const draft2003Channel = "1066050560010244317";
+//NEW SEASON UPDATE, CHANGE CHANNEL ID's
+const draft2001Channel = "1142973944580808824";
+const draft2003Channel = "1142973975983570974";
 const test_labChannel = "741308777357377617";
 
 
@@ -74,10 +76,12 @@ const filler_icon = ":white_large_square:";
 let bot_channel;
 
 
+//NEW SEASON UPDATE: UPDATE THE DRAFT GOOGLE SHEET ID.
 // const draft_sheet_id = "1vaozO0ZZDEFSop2qEDZfFpTWKylMn8qbw2SrjbEh620";
 // const draft_sheet_id = "10Hq1AT5zzkwdgC2-tJue2BUv06Mmbn1_5tk111tTpAQ"; // <--- THIS IS THE S8 ONE
 // const draft_sheet_id = "1idsLvasdDht_y_60tOsIcPJ2ZVVlJT2nXu5aMXLP2Fo"; // <--- THIS IS S9
-const draft_sheet_id = "14dCK4WagMNWg6tnqcIDxthvT1eGpwG1nxk76yZ_fWbQ"; // S10
+// const draft_sheet_id = "14dCK4WagMNWg6tnqcIDxthvT1eGpwG1nxk76yZ_fWbQ"; // S10
+const draft_sheet_id = "1igAymtHEKHOVvWBsuIA4fSuriv8EgPl1Esth8HcslM0" //S11
 // const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
 
@@ -891,8 +895,8 @@ module.exports = {
 			return null;
 		}
 		//TODO Update to S9 RBBL Draft Channel
-		// #rbbldraft channel: 919379673178337290
-		// #test-lab channel: 741308777357377617
+		// #rbbldraft channel: 919379673178337290 
+		// #test-lab channel: 741308777357377617 
 		bot_channel = client.channels.cache.get("919379673178337290");
 
 		if (!allowed_drafts.includes(args[0].toLowerCase())) {
