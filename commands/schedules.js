@@ -11,8 +11,8 @@ const {s8schedule, s8teams} = require("../s8_schedule");
 const {s9schedule, s9teams} = require("../s9_schedule");
 const {s1001schedule, s1001teams} = require("../s1001_schedule");
 const {s1003schedule, s1003teams} = require("../s1003_schedule");
-const {s1101schedule, s1101teams} = require("../s1101_schedule");
-const {s1103schedule, s1103teams} = require("../s1103_schedule");
+const {s1101schedule, s1101teams} = require("../s1001_schedule");
+const {s1103schedule, s1103teams} = require("../s1003_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
