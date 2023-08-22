@@ -2,7 +2,7 @@ module.exports = {
 	"data": {
 	   "AP": {
 		  "code": "AP",
-		  "id": "1067540852769050744",
+		  "id": "268060176320299019",
 		  "username": "AnjouPays",
 		  "team_name": "Little Angels",
 		  "team_color": "",
@@ -10,7 +10,7 @@ module.exports = {
 	   },
 	   "AX": {
 		  "code": "AX",
-		  "id": "1067544069221392414",
+		  "id": "272834771871334400",
 		  "username": "alex7456",
 		  "team_name": "Kansas City Royals",
 		  "team_color": "",
@@ -18,7 +18,7 @@ module.exports = {
 	   },
 	   "BB": {
 		  "code": "BB",
-		  "id": "603606321492787210",
+		  "id": "187776456519057409",
 		  "username": "jibbodahibbo",
 		  "team_name": "Mighty Orioles",
 		  "team_color": "",
@@ -26,7 +26,7 @@ module.exports = {
 	   },
 	   "BO": {
 		  "code": "BO",
-		  "id": "1067544975325265960",
+		  "id": "894684630970671125",
 		  "username": "bobbyJONES2370",
 		  "team_name": "Texas Astros",
 		  "team_color": "",
@@ -34,7 +34,7 @@ module.exports = {
 	   },
 	   "BR": {
 		  "code": "BR",
-		  "id": "1067528046451642418",
+		  "id": "1133748916114952273",
 		  "username": "Towers-Of-Obscure",
 		  "team_name": "New York Mets",
 		  "team_color": "",
@@ -42,7 +42,7 @@ module.exports = {
 	   },
 	   "C8": {
 		  "code": "C8",
-		  "id": "448576195190063110",
+		  "id": "355931440061612035",
 		  "username": "crazyei8hts",
 		  "team_name": "Crazy Indians",
 		  "team_color": "",
@@ -50,7 +50,7 @@ module.exports = {
 	   },
 	   "CW": {
 		  "code": "CW",
-		  "id": "603589333676589066",
+		  "id": "430920494351515650",
 		  "username": "elchrisblanco",
 		  "team_name": "Seattle Fishes",
 		  "team_color": "",
@@ -58,7 +58,7 @@ module.exports = {
 	   },
 	   "IT": {
 		  "code": "IT",
-		  "id": "1071145998656737360",
+		  "id": "147462189404389376",
 		  "username": "Itaniium",
 		  "team_name": "Humongous Giants",
 		  "team_color": "",
@@ -66,7 +66,7 @@ module.exports = {
 	   },
 	   "JY": {
 		  "code": "JY",
-		  "id": "496815444116635658",
+		  "id": "307010267001257996",
 		  "username": "jyknight",
 		  "team_name": "Seattle Mariners",
 		  "team_color": "",
@@ -74,7 +74,7 @@ module.exports = {
 	   },
 	   "LW": {
 		  "code": "LW",
-		  "id": "496713526778265624",
+		  "id": "803449974800384040",
 		  "username": "lillwaws26",
 		  "team_name": "Oakland Expos",
 		  "team_color": "",
@@ -82,7 +82,7 @@ module.exports = {
 	   },
 	   "MC": {
 		  "code": "MC",
-		  "id": "1142985787114266624",
+		  "id": "847837436767240242",
 		  "username": "Cherry",
 		  "team_name": "Houston Devil Rays",
 		  "team_color": "",
@@ -90,7 +90,7 @@ module.exports = {
 	   },
 	   "MK": {
 		  "code": "MK",
-		  "id": "603589804868763648",
+		  "id": "109102728336142336",
 		  "username": "MikeMadness",
 		  "team_name": "Toronto Blue Jays",
 		  "team_color": "",
@@ -98,7 +98,7 @@ module.exports = {
 	   },
 	   "MM": {
 		  "code": "MM",
-		  "id": "1071145701725184070",
+		  "id": "698632902778552380",
 		  "username": "shrewsbury91",
 		  "team_name": "Crazy Padres",
 		  "team_color": "",
@@ -106,7 +106,7 @@ module.exports = {
 	   },
 	   "N8": {
 		  "code": "N8",
-		  "id": "496530637596000287",
+		  "id": "87804201056337920",
 		  "username": "Natetastic28",
 		  "team_name": "Milwaukee Brewers",
 		  "team_color": "",
@@ -114,7 +114,7 @@ module.exports = {
 	   },
 	   "PS": {
 		  "code": "PS",
-		  "id": "1069707239478272131",
+		  "id": "463930040036491264",
 		  "username": "psanchez55",
 		  "team_name": "Little Hornets",
 		  "team_color": "",
@@ -122,7 +122,7 @@ module.exports = {
 	   },
 	   "SB": {
 		  "code": "SB",
-		  "id": "603589134744944670",
+		  "id": "711388106749902849",
 		  "username": "SilverBullet102",
 		  "team_name": "Crazy Melonheads",
 		  "team_color": "",
@@ -130,7 +130,7 @@ module.exports = {
 	   },
 	   "TC": {
 		  "code": "TC",
-		  "id": "603291831744200737",
+		  "id": "736617636829331550",
 		  "username": "The CRK",
 		  "team_name": "Junior Bombers",
 		  "team_color": "",
@@ -138,7 +138,7 @@ module.exports = {
 	   },
 	   "TO": {
 		  "code": "TO",
-		  "id": "1071145277362274434",
+		  "id": "692170461047554048",
 		  "username": "Toast",
 		  "team_name": "Minnesota Twins",
 		  "team_color": "",
@@ -146,7 +146,7 @@ module.exports = {
 	   },
 	   "TV": {
 		  "code": "TV",
-		  "id": "783577309000368189",
+		  "id": "616733129155018757",
 		  "username": "KingPepsi",
 		  "team_name": "Super-Duper Diamondbacks",
 		  "team_color": "",
@@ -154,7 +154,7 @@ module.exports = {
 	   },
 	   "VS": {
 		  "code": "VS",
-		  "id": "847666595748249640",
+		  "id": "135436127862652928",
 		  "username": "Vissery",
 		  "team_name": "Green Phillies",
 		  "team_color": "",
@@ -162,7 +162,7 @@ module.exports = {
 	   },
 	   "WZ": {
 		  "code": "WZ",
-		  "id": "1067528806765699162",
+		  "id": "273653649522294784",
 		  "username": "Wizard",
 		  "team_name": "Mighty Rangers",
 		  "team_color": "",
@@ -170,7 +170,7 @@ module.exports = {
 	   },
 	   "YT": {
 		  "code": "YT",
-		  "id": "900907535983329291",
+		  "id": "213203256606851072",
 		  "username": "Marco",
 		  "team_name": "Mighty Wombats",
 		  "team_color": "",
@@ -178,7 +178,7 @@ module.exports = {
 	   },
 	   "YY": {
 		  "code": "YY",
-		  "id": "496817066201055232",
+		  "id": "74323981670285312",
 		  "username": "Yurya",
 		  "team_name": "Green Monsters",
 		  "team_color": "",
@@ -186,7 +186,7 @@ module.exports = {
 	   },
 	   "ZB": {
 		  "code": "ZB",
-		  "id": "668468071861583891",
+		  "id": "1025855971391705150",
 		  "username": "ZiorBox",
 		  "team_name": "Houston Yankees",
 		  "team_color": "",

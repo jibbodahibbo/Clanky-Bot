@@ -13158,7 +13158,7 @@ module.exports = {
 			"B-day Month": 0,
 			"B-day Day": 0,
 		},
-		"Ricky Henderson": {
+		"Rickey Henderson": {
 			Name: "Rickey Henderson",
 			"Image URL":
 				"https://www.baseball-reference.com/req/202305180/images/headshots/9/957d4da0_davis.jpg",
