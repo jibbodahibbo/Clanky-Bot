@@ -32,10 +32,10 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "BR": {
-		  "code": "BR",
+	   "SE": {
+		  "code": "SE",
 		  "id": "1133748916114952273",
-		  "username": "Towers-Of-Obscure",
+		  "username": "Scott",
 		  "team_name": "New York Mets",
 		  "team_color": "",
 		  "logo": ""
