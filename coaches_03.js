@@ -35,8 +35,8 @@ module.exports = {
 	   "SE": {
 		  "code": "SE",
 		  "id": "470004514460794890",
-		  "username": "Scott",
-		  "team_name": "New York Mets",
+		  "username": "Scott Egbert",
+		  "team_name": "St. Louis Cardinals",
 		  "team_color": "",
 		  "logo": ""
 	   },
