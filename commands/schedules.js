@@ -56,15 +56,15 @@ module.exports = {
 				if (args[0] == "inject" && args[1]=="s11"){
 					for (var i = 0; i < sched01.length; i++) {
 						let s=sched01[i];
-						let ss = await createScheduleItem(['theboss01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['theboss01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						let ss = await createScheduleItem(['boss01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['boss01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 				const sched03= s1103schedule;
 				t= s1103teams;
 					for (var i = 0; i < sched03.length; i++) {
 						let s=sched03[i];
-						let ss = await createScheduleItem(['theboss03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['theboss03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						let ss = await createScheduleItem(['boss03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['boss03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 					return message.reply("Injected")
 				}

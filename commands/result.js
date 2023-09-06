@@ -189,7 +189,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9!-~][A-Z0-9!-~])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01","smokey03"]; //must be lowercase
+		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01","smokey03","boss03","boss01"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";

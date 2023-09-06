@@ -1,29 +1,31 @@
 // http://www.convertcsv.com/csv-to-json.htm
 
-const s1003teams={
-  "Diamondbacks":"<@&783577309000368189>",
-  "Twins":"<@&1071145277362274434>",
-  "Red Sox":"<@&670773176984403982>",
-  "Angels":"<@&1067540852769050744>",
-  "Marlins":"<@&1069707239478272131>",
-  "White Sox":"<@&703669468768895206>",
-  "Braves":"<@&603768704295108628>",
-  "Astros":"<@&1067544975325265960>",
-  "Pirates":"<@&1067903483027673211>",
-  "Padres":"<@&1071145701725184070>",
-  "Orioles":"<@&496817420753960961>",
-  "Rangers":"<@&1067528806765699162>",
-  "Cubs":"<@&1071145998656737360>",
-  "Expos":"<@&1071144968435028049>",
-  "Wombats":"<@&603589502891458574>",
-  "Royals":"<@&1067544069221392414>",
-  "Tigers":"<@&603606321492787210>",
-  "Mets":"<@&847666608852041778>",
-  "Indians":"<@&448576195190063110>",
-  "Melonheads":"<@&448576610489335809>",
-  "Fishes":"<@&603589333676589066>",
-  "Giants":"<@&1067545232243183737>"
-}
+const s1003teams = {
+  "Houston Yankees": "<@&668468071861583891>",
+  "Mighty Orioles": "<@&603606321492787210>",
+  "Humongous Giants": "<@&1071145998656737360>",
+  "Crazy Padres": "<@&1071145701725184070>",
+  "Crazy Indians": "<@&448576195190063110>",
+  "Green Phillies": "<@&847666595748249640>",
+  "Toronto Blue Jays": "<@&603589804868763648>",
+  "Mighty Rangers": "<@&1067528806765699162>",
+  "Milwaukee Brewers": "<@&496530637596000287>",
+  "Kansas City Royals": "<@&1067544069221392414>",
+  "Little Hornets": "<@&1069707239478272131>",
+  "Super-Duper Diamondbacks": "<@&783577309000368189>",
+  "Mighty Wombats": "<@&900907535983329291>",
+  "Seattle Mariners": "<@&496815444116635658>",
+  "St. Louis Cardinals": "<@&1067528046451642418>",
+  "Oakland Expos": "<@496713526778265624>",
+  "Texas Astros": "<@&1067544975325265960>",
+  "Little Angels": "<@&1067540852769050744>",
+  "Green Monsters": "<@&496817066201055232>",
+  "Houston Devil Rays": "<@&1142985787114266624>",
+  "Crazy Melonheads": "<@&603589134744944670>",
+  "Seattle Fishes": "<@&603589333676589066>",
+  "Minnesota Twins": "<@&1071145277362274434>",
+  "Junior Bombers": "<@&603291831744200737>",
+};
 
 //"game": "1",
 //"away_team": "As",
@@ -34,925 +36,1037 @@ const s1003teams={
 const s1003schedule =[
   {
     "game": 1,
-    "away_team": "Astros",
-    "away_code": "BO",
-    "home_team": "Royals",
-    "home_code": "AT"
-  },
-  {
-    "game": 1,
-    "away_team": "Rangers",
-    "away_code": "WZ",
-    "home_team": "Mets",
-    "home_code": "VS"
-  },
-  {
-    "game": 1,
-    "away_team": "Indians",
-    "away_code": "C0",
-    "home_team": "Cubs",
-    "home_code": "B@"
-  },
-  {
-    "game": 1,
-    "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Melonheads",
-    "home_code": "EX"
-  },
-  {
-    "game": 1,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
-    "home_team": "Orioles",
-    "home_code": "SB"
-  },
-  {
-    "game": 1,
-    "away_team": "Wombats",
-    "away_code": "YT",
-    "home_team": "Giants",
-    "home_code": "C8"
-  },
-  {
-    "game": 1,
-    "away_team": "Twins",
-    "away_code": "TO",
-    "home_team": "Marlins",
-    "home_code": "PZ"
-  },
-  {
-    "game": 1,
-    "away_team": "Fishes",
-    "away_code": "CW",
-    "home_team": "Angels",
-    "home_code": "AX"
-  },
-  {
-    "game": 1,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "White Sox",
-    "home_code": "MT"
-  },
-  {
-    "game": 1,
-    "away_team": "Braves",
-    "away_code": "N8",
-    "home_team": "Tigers",
-    "home_code": "BB"
-  },
-  {
-    "game": 1,
-    "away_team": "Red Sox",
-    "away_code": "LW",
-    "home_team": "Pirates",
-    "home_code": "MM"
-  },
-  {
-    "game": 2,
-    "away_team": "Orioles",
-    "away_code": "SB",
-    "home_team": "Astros",
-    "home_code": "BO"
-  },
-  {
-    "game": 2,
-    "away_team": "Mets",
-    "away_code": "VS",
-    "home_team": "Giants",
-    "home_code": "C8"
-  },
-  {
-    "game": 2,
-    "away_team": "Royals",
-    "away_code": "AT",
-    "home_team": "Indians",
-    "home_code": "C0"
-  },
-  {
-    "game": 2,
-    "away_team": "Melonheads",
-    "away_code": "EX",
-    "home_team": "Rangers",
-    "home_code": "WZ"
-  },
-  {
-    "game": 2,
-    "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Cubs",
-    "home_code": "B@"
-  },
-  {
-    "game": 2,
-    "away_team": "Fishes",
-    "away_code": "CW",
-    "home_team": "Diamondbacks",
-    "home_code": "TV"
-  },
-  {
-    "game": 2,
-    "away_team": "Twins",
-    "away_code": "TO",
-    "home_team": "Red Sox",
-    "home_code": "LW"
-  },
-  {
-    "game": 2,
-    "away_team": "White Sox",
-    "away_code": "MT",
-    "home_team": "Marlins",
-    "home_code": "PZ"
-  },
-  {
-    "game": 2,
-    "away_team": "Braves",
-    "away_code": "N8",
-    "home_team": "Expos",
-    "home_code": "JY"
-  },
-  {
-    "game": 2,
-    "away_team": "Tigers",
-    "away_code": "BB",
-    "home_team": "Wombats",
-    "home_code": "YT"
-  },
-  {
-    "game": 2,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "Angels",
-    "home_code": "AX"
-  },
-  {
-    "game": 3,
-    "away_team": "Astros",
-    "away_code": "BO",
-    "home_team": "Indians",
-    "home_code": "C0"
-  },
-  {
-    "game": 3,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Mets",
-    "home_code": "VS"
-  },
-  {
-    "game": 3,
-    "away_team": "Rangers",
-    "away_code": "WZ",
-    "home_team": "Orioles",
-    "home_code": "SB"
-  },
-  {
-    "game": 3,
-    "away_team": "Melonheads",
-    "away_code": "EX",
-    "home_team": "Giants",
-    "home_code": "C8"
-  },
-  {
-    "game": 3,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
-    "home_team": "Padres",
-    "home_code": "M@"
-  },
-  {
-    "game": 3,
-    "away_team": "Royals",
-    "away_code": "AT",
-    "home_team": "Braves",
-    "home_code": "N8"
-  },
-  {
-    "game": 3,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "Twins",
-    "home_code": "TO"
-  },
-  {
-    "game": 3,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "Pirates",
-    "home_code": "MM"
-  },
-  {
-    "game": 3,
-    "away_team": "Red Sox",
-    "away_code": "LW",
-    "home_team": "Wombats",
-    "home_code": "YT"
-  },
-  {
-    "game": 3,
-    "away_team": "White Sox",
-    "away_code": "MT",
-    "home_team": "Tigers",
-    "home_code": "BB"
-  },
-  {
-    "game": 3,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Fishes",
-    "home_code": "CW"
-  },
-  {
-    "game": 4,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
-    "home_team": "Astros",
-    "home_code": "BO"
-  },
-  {
-    "game": 4,
-    "away_team": "Orioles",
-    "away_code": "SB",
-    "home_team": "Melonheads",
-    "home_code": "EX"
-  },
-  {
-    "game": 4,
-    "away_team": "Indians",
-    "away_code": "C0",
-    "home_team": "Padres",
-    "home_code": "M@"
-  },
-  {
-    "game": 4,
-    "away_team": "Giants",
-    "away_code": "C8",
-    "home_team": "Rangers",
-    "home_code": "WZ"
-  },
-  {
-    "game": 4,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Royals",
-    "home_code": "AT"
-  },
-  {
-    "game": 4,
-    "away_team": "Mets",
-    "away_code": "VS",
-    "home_team": "Red Sox",
-    "home_code": "LW"
-  },
-  {
-    "game": 4,
-    "away_team": "Fishes",
-    "away_code": "CW",
-    "home_team": "Braves",
-    "home_code": "N8"
-  },
-  {
-    "game": 4,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "Wombats",
-    "home_code": "YT"
-  },
-  {
-    "game": 4,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "Expos",
-    "home_code": "JY"
-  },
-  {
-    "game": 4,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Twins",
-    "home_code": "TO"
-  },
-  {
-    "game": 4,
-    "away_team": "Tigers",
-    "away_code": "BB",
-    "home_team": "White Sox",
-    "home_code": "MT"
-  },
-  {
-    "game": 5,
-    "away_team": "Astros",
-    "away_code": "BO",
-    "home_team": "Cubs",
-    "home_code": "B@"
-  },
-  {
-    "game": 5,
-    "away_team": "Royals",
-    "away_code": "AT",
-    "home_team": "Padres",
-    "home_code": "M@"
-  },
-  {
-    "game": 5,
-    "away_team": "Indians",
-    "away_code": "C0",
-    "home_team": "Diamondbacks",
-    "home_code": "TV"
-  },
-  {
-    "game": 5,
-    "away_team": "Rangers",
-    "away_code": "WZ",
-    "home_team": "Melonheads",
-    "home_code": "EX"
-  },
-  {
-    "game": 5,
-    "away_team": "Orioles",
-    "away_code": "SB",
-    "home_team": "Giants",
-    "home_code": "C8"
-  },
-  {
-    "game": 5,
-    "away_team": "Mets",
-    "away_code": "VS",
-    "home_team": "Marlins",
-    "home_code": "PZ"
-  },
-  {
-    "game": 5,
-    "away_team": "Twins",
-    "away_code": "TO",
-    "home_team": "Fishes",
-    "home_code": "CW"
-  },
-  {
-    "game": 5,
-    "away_team": "Tigers",
-    "away_code": "BB",
-    "home_team": "Red Sox",
-    "home_code": "LW"
-  },
-  {
-    "game": 5,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Expos",
-    "home_code": "JY"
-  },
-  {
-    "game": 5,
-    "away_team": "Wombats",
-    "away_code": "YT",
-    "home_team": "White Sox",
-    "home_code": "MT"
-  },
-  {
-    "game": 5,
-    "away_team": "Braves",
-    "away_code": "N8",
-    "home_team": "Pirates",
-    "home_code": "MM"
-  },
-  {
-    "game": 6,
-    "away_team": "Mets",
+    "away_team": "Phillies",
     "away_code": "VS",
     "home_team": "Astros",
     "home_code": "BO"
   },
   {
-    "game": 6,
+    "game": 1,
+    "away_team": "Hornets",
+    "away_code": "PS",
+    "home_team": "Royals",
+    "home_code": "AX"
+  },
+  {
+    "game": 1,
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Fishes",
+    "home_code": "CW"
+  },
+  {
+    "game": 1,
     "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Diamondbacks",
+    "away_code": "MM",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 1,
+    "away_team": "Twins",
+    "away_code": "TO",
+    "home_team": "Melonheads",
+    "home_code": "SB"
+  },
+  {
+    "game": 1,
+    "away_team": "Expos",
+    "away_code": "LW",
+    "home_team": "Cardinals",
+    "home_code": "SE"
+  },
+  {
+    "game": 1,
+    "away_team": "Giants",
+    "away_code": "IT",
+    "home_team": "Angels",
+    "home_code": "AP"
+  },
+  {
+    "game": 1,
+    "away_team": "Brewers",
+    "away_code": "N8",
+    "home_team": "Wombats",
+    "home_code": "YT"
+  },
+  {
+    "game": 1,
+    "away_team": "Rangers",
+    "away_code": "WZ",
+    "home_team": "Orioles",
+    "home_code": "BB"
+  },
+  {
+    "game": 1,
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
+  },
+  {
+    "game": 1,
+    "away_team": "Indians",
+    "away_code": "C8",
+    "home_team": "Yankees",
+    "home_code": "ZB"
+  },
+  {
+    "game": 1,
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
+  },
+  {
+    "game": 2,
+    "away_team": "Melonheads",
+    "away_code": "SB",
+    "home_team": "Padres",
+    "home_code": "MM"
+  },
+  {
+    "game": 2,
+    "away_team": "Fishes",
+    "away_code": "CW",
+    "home_team": "Hornets",
+    "home_code": "PS"
+  },
+  {
+    "game": 2,
+    "away_team": "Cardinals",
+    "away_code": "SE",
+    "home_team": "Twins",
+    "home_code": "TO"
+  },
+  {
+    "game": 2,
+    "away_team": "Astros",
+    "away_code": "BO",
+    "home_team": "Monsters",
+    "home_code": "YY"
+  },
+  {
+    "game": 2,
+    "away_team": "Bombers",
+    "away_code": "TC",
+    "home_team": "Expos",
+    "home_code": "LW"
+  },
+  {
+    "game": 2,
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Phillies",
+    "home_code": "VS"
+  },
+  {
+    "game": 2,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "D'Backs",
     "home_code": "TV"
   },
   {
-    "game": 6,
-    "away_team": "Giants",
-    "away_code": "C8",
+    "game": 2,
+    "away_team": "Orioles",
+    "away_code": "BB",
+    "home_team": "Brewers",
+    "home_code": "N8"
+  },
+  {
+    "game": 2,
+    "away_team": "Devil Rays",
+    "away_code": "MC",
     "home_team": "Indians",
-    "home_code": "C0"
+    "home_code": "C8"
   },
   {
-    "game": 6,
+    "game": 2,
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Rangers",
+    "home_code": "WZ"
+  },
+  {
+    "game": 2,
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Mariners",
+    "home_code": "JY"
+  },
+  {
+    "game": 2,
+    "away_team": "Wombats",
+    "away_code": "YT",
+    "home_team": "Giants",
+    "home_code": "IT"
+  },
+  {
+    "game": 3,
+    "away_team": "Expos",
+    "away_code": "LW",
+    "home_team": "Twins",
+    "home_code": "TO"
+  },
+  {
+    "game": 3,
+    "away_team": "Astros",
+    "away_code": "BO",
+    "home_team": "Fishes",
+    "home_code": "CW"
+  },
+  {
+    "game": 3,
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Cardinals",
+    "home_code": "SE"
+  },
+  {
+    "game": 3,
     "away_team": "Melonheads",
-    "away_code": "EX",
+    "away_code": "SB",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 3,
+    "away_team": "Hornets",
+    "away_code": "PS",
+    "home_team": "Phillies",
+    "home_code": "VS"
+  },
+  {
+    "game": 3,
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Padres",
+    "home_code": "MM"
+  },
+  {
+    "game": 3,
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Indians",
+    "home_code": "C8"
+  },
+  {
+    "game": 3,
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Orioles",
+    "home_code": "BB"
+  },
+  {
+    "game": 3,
+    "away_team": "Wombats",
+    "away_code": "YT",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
+  },
+  {
+    "game": 3,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
+  },
+  {
+    "game": 3,
+    "away_team": "Brewers",
+    "away_code": "N8",
+    "home_team": "Giants",
+    "home_code": "IT"
+  },
+  {
+    "game": 3,
+    "away_team": "Rangers",
+    "away_code": "WZ",
+    "home_team": "D'Backs",
+    "home_code": "TV"
+  },
+  {
+    "game": 4,
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Melonheads",
+    "home_code": "SB"
+  },
+  {
+    "game": 4,
+    "away_team": "Expos",
+    "away_code": "LW",
     "home_team": "Royals",
-    "home_code": "AT"
+    "home_code": "AX"
+  },
+  {
+    "game": 4,
+    "away_team": "Hornets",
+    "away_code": "PS",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 4,
+    "away_team": "Twins",
+    "away_code": "TO",
+    "home_team": "Astros",
+    "home_code": "BO"
+  },
+  {
+    "game": 4,
+    "away_team": "Phillies",
+    "away_code": "VS",
+    "home_team": "Cardinals",
+    "home_code": "SE"
+  },
+  {
+    "game": 4,
+    "away_team": "Padres",
+    "away_code": "MM",
+    "home_team": "Fishes",
+    "home_code": "CW"
+  },
+  {
+    "game": 4,
+    "away_team": "Rangers",
+    "away_code": "WZ",
+    "home_team": "Yankees",
+    "home_code": "ZB"
+  },
+  {
+    "game": 4,
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Wombats",
+    "home_code": "YT"
+  },
+  {
+    "game": 4,
+    "away_team": "Brewers",
+    "away_code": "N8",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
+  },
+  {
+    "game": 4,
+    "away_team": "Indians",
+    "away_code": "C8",
+    "home_team": "Angels",
+    "home_code": "AP"
+  },
+  {
+    "game": 4,
+    "away_team": "Giants",
+    "away_code": "IT",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
+  },
+  {
+    "game": 4,
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Orioles",
+    "home_code": "BB"
+  },
+  {
+    "game": 5,
+    "away_team": "Fishes",
+    "away_code": "CW",
+    "home_team": "Phillies",
+    "home_code": "VS"
+  },
+  {
+    "game": 5,
+    "away_team": "Cardinals",
+    "away_code": "SE",
+    "home_team": "Padres",
+    "home_code": "MM"
+  },
+  {
+    "game": 5,
+    "away_team": "Astros",
+    "away_code": "BO",
+    "home_team": "Hornets",
+    "home_code": "PS"
+  },
+  {
+    "game": 5,
+    "away_team": "Bombers",
+    "away_code": "TC",
+    "home_team": "Twins",
+    "home_code": "TO"
+  },
+  {
+    "game": 5,
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Monsters",
+    "home_code": "YY"
+  },
+  {
+    "game": 5,
+    "away_team": "Melonheads",
+    "away_code": "SB",
+    "home_team": "Expos",
+    "home_code": "LW"
+  },
+  {
+    "game": 5,
+    "away_team": "Orioles",
+    "away_code": "BB",
+    "home_team": "Giants",
+    "home_code": "IT"
+  },
+  {
+    "game": 5,
+    "away_team": "Devil Rays",
+    "away_code": "MC",
+    "home_team": "D'Backs",
+    "home_code": "TV"
+  },
+  {
+    "game": 5,
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Brewers",
+    "home_code": "N8"
+  },
+  {
+    "game": 5,
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Indians",
+    "home_code": "C8"
+  },
+  {
+    "game": 5,
+    "away_team": "Wombats",
+    "away_code": "YT",
+    "home_team": "Rangers",
+    "home_code": "WZ"
+  },
+  {
+    "game": 5,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "Mariners",
+    "home_code": "JY"
   },
   {
     "game": 6,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Orioles",
+    "away_team": "Phillies",
+    "away_code": "VS",
+    "home_team": "Expos",
+    "home_code": "LW"
+  },
+  {
+    "game": 6,
+    "away_team": "Padres",
+    "away_code": "MM",
+    "home_team": "Hornets",
+    "home_code": "PS"
+  },
+  {
+    "game": 6,
+    "away_team": "Twins",
+    "away_code": "TO",
+    "home_team": "Monsters",
+    "home_code": "YY"
+  },
+  {
+    "game": 6,
+    "away_team": "Fishes",
+    "away_code": "CW",
+    "home_team": "Melonheads",
     "home_code": "SB"
   },
   {
     "game": 6,
-    "away_team": "White Sox",
-    "away_code": "MT",
+    "away_team": "Cardinals",
+    "away_code": "SE",
+    "home_team": "Astros",
+    "home_code": "BO"
+  },
+  {
+    "game": 6,
+    "away_team": "Bombers",
+    "away_code": "TC",
+    "home_team": "Royals",
+    "home_code": "AX"
+  },
+  {
+    "game": 6,
+    "away_team": "Giants",
+    "away_code": "IT",
+    "home_team": "Mariners",
+    "home_code": "JY"
+  },
+  {
+    "game": 6,
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Brewers",
+    "home_code": "N8"
+  },
+  {
+    "game": 6,
+    "away_team": "Indians",
+    "away_code": "C8",
     "home_team": "Rangers",
     "home_code": "WZ"
   },
   {
     "game": 6,
-    "away_team": "Braves",
-    "away_code": "N8",
-    "home_team": "Twins",
-    "home_code": "TO"
-  },
-  {
-    "game": 6,
-    "away_team": "Wombats",
-    "away_code": "YT",
-    "home_team": "Marlins",
-    "home_code": "PZ"
-  },
-  {
-    "game": 6,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "Pirates",
-    "home_code": "MM"
-  },
-  {
-    "game": 6,
-    "away_team": "Tigers",
+    "away_team": "Orioles",
     "away_code": "BB",
-    "home_team": "Angels",
-    "home_code": "AX"
+    "home_team": "Yankees",
+    "home_code": "ZB"
   },
   {
     "game": 6,
-    "away_team": "Red Sox",
+    "away_team": "Devil Rays",
+    "away_code": "MC",
+    "home_team": "Angels",
+    "home_code": "AP"
+  },
+  {
+    "game": 6,
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Wombats",
+    "home_code": "YT"
+  },
+  {
+    "game": 7,
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Melonheads",
+    "home_code": "SB"
+  },
+  {
+    "game": 7,
+    "away_team": "Expos",
     "away_code": "LW",
-    "home_team": "Fishes",
-    "home_code": "CW"
+    "home_team": "Monsters",
+    "home_code": "YY"
   },
   {
     "game": 7,
     "away_team": "Astros",
     "away_code": "BO",
-    "home_team": "Giants",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 7,
+    "away_team": "Hornets",
+    "away_code": "PS",
+    "home_team": "Twins",
+    "home_code": "TO"
+  },
+  {
+    "game": 7,
+    "away_team": "Cardinals",
+    "away_code": "SE",
+    "home_team": "Fishes",
+    "home_code": "CW"
+  },
+  {
+    "game": 7,
+    "away_team": "Phillies",
+    "away_code": "VS",
+    "home_team": "Padres",
+    "home_code": "MM"
+  },
+  {
+    "game": 7,
+    "away_team": "Wombats",
+    "away_code": "YT",
+    "home_team": "Yankees",
+    "home_code": "ZB"
+  },
+  {
+    "game": 7,
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Rangers",
+    "home_code": "WZ"
+  },
+  {
+    "game": 7,
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
+  },
+  {
+    "game": 7,
+    "away_team": "Brewers",
+    "away_code": "N8",
+    "home_team": "Indians",
     "home_code": "C8"
   },
   {
     "game": 7,
-    "away_team": "Indians",
-    "away_code": "C0",
-    "home_team": "Mets",
-    "home_code": "VS"
-  },
-  {
-    "game": 7,
-    "away_team": "Rangers",
-    "away_code": "WZ",
-    "home_team": "Royals",
-    "home_code": "AT"
-  },
-  {
-    "game": 7,
-    "away_team": "Melonheads",
-    "away_code": "EX",
+    "away_team": "Devil Rays",
+    "away_code": "MC",
     "home_team": "Orioles",
-    "home_code": "SB"
-  },
-  {
-    "game": 7,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
-    "home_team": "Cubs",
-    "home_code": "B@"
-  },
-  {
-    "game": 7,
-    "away_team": "White Sox",
-    "away_code": "MT",
-    "home_team": "Padres",
-    "home_code": "M@"
-  },
-  {
-    "game": 7,
-    "away_team": "Fishes",
-    "away_code": "CW",
-    "home_team": "Twins",
-    "home_code": "TO"
-  },
-  {
-    "game": 7,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Braves",
-    "home_code": "N8"
-  },
-  {
-    "game": 7,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "Wombats",
-    "home_code": "YT"
-  },
-  {
-    "game": 7,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "Red Sox",
-    "home_code": "LW"
-  },
-  {
-    "game": 7,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "Tigers",
     "home_code": "BB"
   },
   {
+    "game": 7,
+    "away_team": "Giants",
+    "away_code": "IT",
+    "home_team": "D'Backs",
+    "home_code": "TV"
+  },
+  {
     "game": 8,
-    "away_team": "Royals",
-    "away_code": "AT",
+    "away_team": "Padres",
+    "away_code": "MM",
     "home_team": "Astros",
     "home_code": "BO"
   },
   {
     "game": 8,
-    "away_team": "Rangers",
-    "away_code": "WZ",
-    "home_team": "Diamondbacks",
-    "home_code": "TV"
-  },
-  {
-    "game": 8,
-    "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Indians",
-    "home_code": "C0"
-  },
-  {
-    "game": 8,
-    "away_team": "Mets",
-    "away_code": "VS",
-    "home_team": "Melonheads",
-    "home_code": "EX"
-  },
-  {
-    "game": 8,
-    "away_team": "Giants",
-    "away_code": "C8",
-    "home_team": "Cubs",
-    "home_code": "B@"
-  },
-  {
-    "game": 8,
-    "away_team": "Orioles",
-    "away_code": "SB",
-    "home_team": "Red Sox",
+    "away_team": "Fishes",
+    "away_code": "CW",
+    "home_team": "Expos",
     "home_code": "LW"
   },
   {
     "game": 8,
-    "away_team": "Twins",
-    "away_code": "TO",
-    "home_team": "Braves",
-    "home_code": "N8"
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Cardinals",
+    "home_code": "SE"
   },
   {
     "game": 8,
-    "away_team": "Fishes",
-    "away_code": "CW",
-    "home_team": "Wombats",
-    "home_code": "YT"
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Twins",
+    "home_code": "TO"
   },
   {
     "game": 8,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "Angels",
-    "home_code": "AX"
-  },
-  {
-    "game": 8,
-    "away_team": "Tigers",
-    "away_code": "BB",
-    "home_team": "Marlins",
-    "home_code": "PZ"
-  },
-  {
-    "game": 8,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "White Sox",
-    "home_code": "MT"
-  },
-  {
-    "game": 9,
-    "away_team": "Astros",
-    "away_code": "BO",
-    "home_team": "Diamondbacks",
-    "home_code": "TV"
-  },
-  {
-    "game": 9,
-    "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Royals",
-    "home_code": "AT"
-  },
-  {
-    "game": 9,
-    "away_team": "Rangers",
-    "away_code": "WZ",
-    "home_team": "Cubs",
-    "home_code": "B@"
-  },
-  {
-    "game": 9,
-    "away_team": "Orioles",
-    "away_code": "SB",
-    "home_team": "Mets",
+    "away_team": "Bombers",
+    "away_code": "TC",
+    "home_team": "Phillies",
     "home_code": "VS"
   },
   {
-    "game": 9,
+    "game": 8,
     "away_team": "Melonheads",
-    "away_code": "EX",
-    "home_team": "Indians",
-    "home_code": "C0"
+    "away_code": "SB",
+    "home_team": "Hornets",
+    "home_code": "PS"
   },
   {
-    "game": 9,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Giants",
+    "game": 8,
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Angels",
+    "home_code": "AP"
+  },
+  {
+    "game": 8,
+    "away_team": "Orioles",
+    "away_code": "BB",
+    "home_team": "Mariners",
+    "home_code": "JY"
+  },
+  {
+    "game": 8,
+    "away_team": "Rangers",
+    "away_code": "WZ",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
+  },
+  {
+    "game": 8,
+    "away_team": "Wombats",
+    "away_code": "YT",
+    "home_team": "Indians",
     "home_code": "C8"
   },
   {
-    "game": 9,
-    "away_team": "White Sox",
-    "away_code": "MT",
-    "home_team": "Twins",
-    "home_code": "TO"
+    "game": 8,
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Giants",
+    "home_code": "IT"
+  },
+  {
+    "game": 8,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "Brewers",
+    "home_code": "N8"
   },
   {
     "game": 9,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "Expos",
-    "home_code": "JY"
+    "away_team": "Phillies",
+    "away_code": "VS",
+    "home_team": "Monsters",
+    "home_code": "YY"
   },
   {
     "game": 9,
-    "away_team": "Braves",
-    "away_code": "N8",
+    "away_team": "Twins",
+    "away_code": "TO",
+    "home_team": "Padres",
+    "home_code": "MM"
+  },
+  {
+    "game": 9,
+    "away_team": "Expos",
+    "away_code": "LW",
+    "home_team": "Hornets",
+    "home_code": "PS"
+  },
+  {
+    "game": 9,
+    "away_team": "Fishes",
+    "away_code": "CW",
+    "home_team": "Royals",
+    "home_code": "AX"
+  },
+  {
+    "game": 9,
+    "away_team": "Cardinals",
+    "away_code": "SE",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 9,
+    "away_team": "Astros",
+    "away_code": "BO",
+    "home_team": "Melonheads",
+    "home_code": "SB"
+  },
+  {
+    "game": 9,
+    "away_team": "Giants",
+    "away_code": "IT",
+    "home_team": "Rangers",
+    "home_code": "WZ"
+  },
+  {
+    "game": 9,
+    "away_team": "Indians",
+    "away_code": "C8",
+    "home_team": "D'Backs",
+    "home_code": "TV"
+  },
+  {
+    "game": 9,
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Brewers",
+    "home_code": "N8"
+  },
+  {
+    "game": 9,
+    "away_team": "Orioles",
+    "away_code": "BB",
     "home_team": "Wombats",
     "home_code": "YT"
   },
   {
     "game": 9,
-    "away_team": "Red Sox",
-    "away_code": "LW",
-    "home_team": "Tigers",
-    "home_code": "BB"
+    "away_team": "Devil Rays",
+    "away_code": "MC",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
   },
   {
     "game": 9,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "Fishes",
-    "home_code": "CW"
-  },
-  {
-    "game": 10,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
-    "home_team": "Royals",
-    "home_code": "AT"
-  },
-  {
-    "game": 10,
-    "away_team": "Mets",
-    "away_code": "VS",
-    "home_team": "Rangers",
-    "home_code": "WZ"
-  },
-  {
-    "game": 10,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Indians",
-    "home_code": "C0"
-  },
-  {
-    "game": 10,
-    "away_team": "Astros",
-    "away_code": "BO",
-    "home_team": "Padres",
-    "home_code": "M@"
-  },
-  {
-    "game": 10,
-    "away_team": "Giants",
-    "away_code": "C8",
-    "home_team": "Melonheads",
-    "home_code": "EX"
-  },
-  {
-    "game": 10,
-    "away_team": "Orioles",
-    "away_code": "SB",
-    "home_team": "Marlins",
-    "home_code": "PZ"
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Yankees",
+    "home_code": "ZB"
   },
   {
     "game": 10,
     "away_team": "Twins",
     "away_code": "TO",
-    "home_team": "Pirates",
+    "home_team": "Fishes",
+    "home_code": "CW"
+  },
+  {
+    "game": 10,
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 10,
+    "away_team": "Expos",
+    "away_code": "LW",
+    "home_team": "Astros",
+    "home_code": "BO"
+  },
+  {
+    "game": 10,
+    "away_team": "Melonheads",
+    "away_code": "SB",
+    "home_team": "Phillies",
+    "home_code": "VS"
+  },
+  {
+    "game": 10,
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Padres",
     "home_code": "MM"
   },
   {
     "game": 10,
-    "away_team": "Braves",
-    "away_code": "N8",
-    "home_team": "Angels",
-    "home_code": "AX"
+    "away_team": "Hornets",
+    "away_code": "PS",
+    "home_team": "Cardinals",
+    "home_code": "SE"
   },
   {
     "game": 10,
-    "away_team": "Fishes",
-    "away_code": "CW",
-    "home_team": "Expos",
-    "home_code": "JY"
+    "away_team": "Indians",
+    "away_code": "C8",
+    "home_team": "Orioles",
+    "home_code": "BB"
+  },
+  {
+    "game": 10,
+    "away_team": "Rangers",
+    "away_code": "WZ",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
+  },
+  {
+    "game": 10,
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Angels",
+    "home_code": "AP"
+  },
+  {
+    "game": 10,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "Giants",
+    "home_code": "IT"
   },
   {
     "game": 10,
     "away_team": "Wombats",
     "away_code": "YT",
-    "home_team": "Tigers",
-    "home_code": "BB"
+    "home_team": "D'Backs",
+    "home_code": "TV"
   },
   {
     "game": 10,
-    "away_team": "White Sox",
-    "away_code": "MT",
-    "home_team": "Red Sox",
-    "home_code": "LW"
+    "away_team": "Brewers",
+    "away_code": "N8",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
   },
   {
     "game": 11,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Astros",
-    "home_code": "BO"
+    "away_team": "Bombers",
+    "away_code": "TC",
+    "home_team": "Hornets",
+    "home_code": "PS"
   },
   {
     "game": 11,
-    "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Mets",
-    "home_code": "VS"
-  },
-  {
-    "game": 11,
-    "away_team": "Indians",
-    "away_code": "C0",
-    "home_team": "Royals",
-    "home_code": "AT"
-  },
-  {
-    "game": 11,
-    "away_team": "Giants",
-    "away_code": "C8",
-    "home_team": "Orioles",
-    "home_code": "SB"
-  },
-  {
-    "game": 11,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
-    "home_team": "Melonheads",
-    "home_code": "EX"
-  },
-  {
-    "game": 11,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Rangers",
-    "home_code": "WZ"
-  },
-  {
-    "game": 11,
-    "away_team": "Tigers",
-    "away_code": "BB",
+    "away_team": "Astros",
+    "away_code": "BO",
     "home_team": "Twins",
     "home_code": "TO"
   },
   {
     "game": 11,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "White Sox",
-    "home_code": "MT"
+    "away_team": "Cardinals",
+    "away_code": "SE",
+    "home_team": "Phillies",
+    "home_code": "VS"
   },
   {
     "game": 11,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "Fishes",
-    "home_code": "CW"
+    "away_team": "Fishes",
+    "away_code": "CW",
+    "home_team": "Padres",
+    "home_code": "MM"
+  },
+  {
+    "game": 11,
+    "away_team": "Melonheads",
+    "away_code": "SB",
+    "home_team": "Monsters",
+    "home_code": "YY"
+  },
+  {
+    "game": 11,
+    "away_team": "Royals",
+    "away_code": "AX",
+    "home_team": "Expos",
+    "home_code": "LW"
+  },
+  {
+    "game": 11,
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Brewers",
+    "home_code": "N8"
+  },
+  {
+    "game": 11,
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Indians",
+    "home_code": "C8"
+  },
+  {
+    "game": 11,
+    "away_team": "Devil Rays",
+    "away_code": "MC",
+    "home_team": "Giants",
+    "home_code": "IT"
+  },
+  {
+    "game": 11,
+    "away_team": "Orioles",
+    "away_code": "BB",
+    "home_team": "D'Backs",
+    "home_code": "TV"
+  },
+  {
+    "game": 11,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "Rangers",
+    "home_code": "WZ"
   },
   {
     "game": 11,
     "away_team": "Wombats",
     "away_code": "YT",
-    "home_team": "Red Sox",
-    "home_code": "LW"
-  },
-  {
-    "game": 11,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "Braves",
-    "home_code": "N8"
+    "home_team": "Mariners",
+    "home_code": "JY"
   },
   {
     "game": 12,
-    "away_team": "Indians",
-    "away_code": "C0",
+    "away_team": "Phillies",
+    "away_code": "VS",
+    "home_team": "Fishes",
+    "home_code": "CW"
+  },
+  {
+    "game": 12,
+    "away_team": "Padres",
+    "away_code": "MM",
+    "home_team": "Cardinals",
+    "home_code": "SE"
+  },
+  {
+    "game": 12,
+    "away_team": "Hornets",
+    "away_code": "PS",
     "home_team": "Astros",
     "home_code": "BO"
   },
   {
     "game": 12,
-    "away_team": "Mets",
-    "away_code": "VS",
-    "home_team": "Orioles",
+    "away_team": "Twins",
+    "away_code": "TO",
+    "home_team": "Bombers",
+    "home_code": "TC"
+  },
+  {
+    "game": 12,
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Royals",
+    "home_code": "AX"
+  },
+  {
+    "game": 12,
+    "away_team": "Expos",
+    "away_code": "LW",
+    "home_team": "Melonheads",
     "home_code": "SB"
   },
   {
     "game": 12,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Padres",
-    "home_code": "M@"
+    "away_team": "Giants",
+    "away_code": "IT",
+    "home_team": "Orioles",
+    "home_code": "BB"
+  },
+  {
+    "game": 12,
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
+  },
+  {
+    "game": 12,
+    "away_team": "Brewers",
+    "away_code": "N8",
+    "home_team": "Angels",
+    "home_code": "AP"
+  },
+  {
+    "game": 12,
+    "away_team": "Indians",
+    "away_code": "C8",
+    "home_team": "Blue Jays",
+    "home_code": "MK"
   },
   {
     "game": 12,
     "away_team": "Rangers",
     "away_code": "WZ",
-    "home_team": "Giants",
-    "home_code": "C8"
-  },
-  {
-    "game": 12,
-    "away_team": "Royals",
-    "away_code": "AT",
-    "home_team": "Diamondbacks",
-    "home_code": "TV"
-  },
-  {
-    "game": 12,
-    "away_team": "Melonheads",
-    "away_code": "EX",
-    "home_team": "Tigers",
-    "home_code": "BB"
-  },
-  {
-    "game": 12,
-    "away_team": "Twins",
-    "away_code": "TO",
-    "home_team": "Expos",
-    "home_code": "JY"
-  },
-  {
-    "game": 12,
-    "away_team": "Red Sox",
-    "away_code": "LW",
-    "home_team": "Marlins",
-    "home_code": "PZ"
-  },
-  {
-    "game": 12,
-    "away_team": "Angels",
-    "away_code": "AX",
-    "home_team": "Pirates",
-    "home_code": "MM"
-  },
-  {
-    "game": 12,
-    "away_team": "White Sox",
-    "away_code": "MT",
     "home_team": "Wombats",
     "home_code": "YT"
   },
   {
     "game": 12,
-    "away_team": "Braves",
-    "away_code": "N8",
+    "away_team": "Mariners",
+    "away_code": "JY",
+    "home_team": "Yankees",
+    "home_code": "ZB"
+  },
+  {
+    "game": 13,
+    "away_team": "Phillies",
+    "away_code": "VS",
+    "home_team": "Twins",
+    "home_code": "TO"
+  },
+  {
+    "game": 13,
+    "away_team": "Padres",
+    "away_code": "MM",
+    "home_team": "Expos",
+    "home_code": "LW"
+  },
+  {
+    "game": 13,
+    "away_team": "Hornets",
+    "away_code": "PS",
+    "home_team": "Monsters",
+    "home_code": "YY"
+  },
+  {
+    "game": 13,
+    "away_team": "Bombers",
+    "away_code": "TC",
     "home_team": "Fishes",
     "home_code": "CW"
   },
@@ -960,155 +1074,141 @@ const s1003schedule =[
     "game": 13,
     "away_team": "Astros",
     "away_code": "BO",
+    "home_team": "Royals",
+    "home_code": "AX"
+  },
+  {
+    "game": 13,
+    "away_team": "Cardinals",
+    "away_code": "SE",
     "home_team": "Melonheads",
-    "home_code": "EX"
+    "home_code": "SB"
   },
   {
     "game": 13,
     "away_team": "Giants",
-    "away_code": "C8",
-    "home_team": "Mets",
-    "home_code": "VS"
-  },
-  {
-    "game": 13,
-    "away_team": "Diamondbacks",
-    "away_code": "TV",
+    "away_code": "IT",
     "home_team": "Indians",
-    "home_code": "C0"
+    "home_code": "C8"
   },
   {
     "game": 13,
-    "away_team": "Orioles",
-    "away_code": "SB",
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Mariners",
+    "home_code": "JY"
+  },
+  {
+    "game": 13,
+    "away_team": "Brewers",
+    "away_code": "N8",
     "home_team": "Rangers",
     "home_code": "WZ"
   },
   {
     "game": 13,
-    "away_team": "Royals",
-    "away_code": "AT",
-    "home_team": "Cubs",
-    "home_code": "B@"
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Orioles",
+    "home_code": "BB"
   },
   {
     "game": 13,
-    "away_team": "Wombats",
-    "away_code": "YT",
-    "home_team": "Padres",
-    "home_code": "M@"
+    "away_team": "Angels",
+    "away_code": "AP",
+    "home_team": "Wombats",
+    "home_code": "YT"
   },
   {
     "game": 13,
-    "away_team": "Pirates",
-    "away_code": "MM",
-    "home_team": "Twins",
-    "home_code": "TO"
-  },
-  {
-    "game": 13,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "Angels",
-    "home_code": "AX"
-  },
-  {
-    "game": 13,
-    "away_team": "Expos",
-    "away_code": "JY",
-    "home_team": "Braves",
-    "home_code": "N8"
-  },
-  {
-    "game": 13,
-    "away_team": "Red Sox",
-    "away_code": "LW",
-    "home_team": "White Sox",
-    "home_code": "MT"
-  },
-  {
-    "game": 13,
-    "away_team": "Tigers",
-    "away_code": "BB",
-    "home_team": "Fishes",
-    "home_code": "CW"
+    "away_team": "Devil Rays",
+    "away_code": "MC",
+    "home_team": "Yankees",
+    "home_code": "ZB"
   },
   {
     "game": 14,
     "away_team": "Padres",
-    "away_code": "M@",
-    "home_team": "Astros",
-    "home_code": "BO"
-  },
-  {
-    "game": 14,
-    "away_team": "Royals",
-    "away_code": "AT",
-    "home_team": "Orioles",
-    "home_code": "SB"
-  },
-  {
-    "game": 14,
-    "away_team": "Indians",
-    "away_code": "C0",
-    "home_team": "Rangers",
-    "home_code": "WZ"
-  },
-  {
-    "game": 14,
-    "away_team": "Melonheads",
-    "away_code": "EX",
-    "home_team": "Mets",
+    "away_code": "MM",
+    "home_team": "Phillies",
     "home_code": "VS"
-  },
-  {
-    "game": 14,
-    "away_team": "Cubs",
-    "away_code": "B@",
-    "home_team": "Diamondbacks",
-    "home_code": "TV"
-  },
-  {
-    "game": 14,
-    "away_team": "Giants",
-    "away_code": "C8",
-    "home_team": "White Sox",
-    "home_code": "MT"
-  },
-  {
-    "game": 14,
-    "away_team": "Twins",
-    "away_code": "TO",
-    "home_team": "Angels",
-    "home_code": "AX"
-  },
-  {
-    "game": 14,
-    "away_team": "Red Sox",
-    "away_code": "LW",
-    "home_team": "Braves",
-    "home_code": "N8"
-  },
-  {
-    "game": 14,
-    "away_team": "Wombats",
-    "away_code": "YT",
-    "home_team": "Expos",
-    "home_code": "JY"
-  },
-  {
-    "game": 14,
-    "away_team": "Marlins",
-    "away_code": "PZ",
-    "home_team": "Tigers",
-    "home_code": "BB"
   },
   {
     "game": 14,
     "away_team": "Fishes",
     "away_code": "CW",
-    "home_team": "Pirates",
-    "home_code": "MM"
+    "home_team": "Cardinals",
+    "home_code": "SE"
+  },
+  {
+    "game": 14,
+    "away_team": "Monsters",
+    "away_code": "YY",
+    "home_team": "Expos",
+    "home_code": "LW"
+  },
+  {
+    "game": 14,
+    "away_team": "Melonheads",
+    "away_code": "SB",
+    "home_team": "Royals",
+    "home_code": "AX"
+  },
+  {
+    "game": 14,
+    "away_team": "Twins",
+    "away_code": "TO",
+    "home_team": "Hornets",
+    "home_code": "PS"
+  },
+  {
+    "game": 14,
+    "away_team": "Bombers",
+    "away_code": "TC",
+    "home_team": "Astros",
+    "home_code": "BO"
+  },
+  {
+    "game": 14,
+    "away_team": "D'Backs",
+    "away_code": "TV",
+    "home_team": "Giants",
+    "home_code": "IT"
+  },
+  {
+    "game": 14,
+    "away_team": "Orioles",
+    "away_code": "BB",
+    "home_team": "Devil Rays",
+    "home_code": "MC"
+  },
+  {
+    "game": 14,
+    "away_team": "Rangers",
+    "away_code": "WZ",
+    "home_team": "Mariners",
+    "home_code": "JY"
+  },
+  {
+    "game": 14,
+    "away_team": "Yankees",
+    "away_code": "ZB",
+    "home_team": "Wombats",
+    "home_code": "YT"
+  },
+  {
+    "game": 14,
+    "away_team": "Indians",
+    "away_code": "C8",
+    "home_team": "Brewers",
+    "home_code": "N8"
+  },
+  {
+    "game": 14,
+    "away_team": "Blue Jays",
+    "away_code": "MK",
+    "home_team": "Angels",
+    "home_code": "AP"
   }
  ]
 module.exports = { s1003teams, s1003schedule};
