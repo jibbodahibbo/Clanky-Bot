@@ -1,6 +1,6 @@
 // http://www.convertcsv.com/csv-to-json.htm
 
-const s1003teams = {
+const s1103teams = {
   "Houston Yankees": "<@&668468071861583891>",
   "Mighty Orioles": "<@&603606321492787210>",
   "Humongous Giants": "<@&1071145998656737360>",
@@ -33,7 +33,7 @@ const s1003teams = {
 //"home_team": "Red Sox",
 //"home_code": "XD"
 
-const s1003schedule =[
+const s1103schedule =[
   {
     "game": 1,
     "away_team": "Phillies",
