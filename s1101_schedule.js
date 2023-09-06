@@ -1211,4 +1211,4 @@ const s1101schedule =[
     "home_code": "BO"
   }
  ]
-module.exports = { s1001teams, s1001schedule};
+module.exports = { s1101teams, s1101schedule};

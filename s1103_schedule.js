@@ -1211,4 +1211,4 @@ const s1103schedule =[
     "home_code": "AP"
   }
  ]
-module.exports = { s1003teams, s1003schedule};
+module.exports = { s1103teams, s1103schedule};
