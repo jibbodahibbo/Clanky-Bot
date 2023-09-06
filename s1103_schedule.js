@@ -1,30 +1,30 @@
 // http://www.convertcsv.com/csv-to-json.htm
 
 const s1103teams = {
-  "Houston Yankees": "<@&668468071861583891>",
-  "Mighty Orioles": "<@&603606321492787210>",
-  "Humongous Giants": "<@&1071145998656737360>",
-  "Crazy Padres": "<@&1071145701725184070>",
-  "Crazy Indians": "<@&448576195190063110>",
-  "Green Phillies": "<@&847666595748249640>",
-  "Toronto Blue Jays": "<@&603589804868763648>",
-  "Mighty Rangers": "<@&1067528806765699162>",
-  "Milwaukee Brewers": "<@&496530637596000287>",
-  "Kansas City Royals": "<@&1067544069221392414>",
-  "Little Hornets": "<@&1069707239478272131>",
-  "Super-Duper Diamondbacks": "<@&783577309000368189>",
-  "Mighty Wombats": "<@&900907535983329291>",
-  "Seattle Mariners": "<@&496815444116635658>",
-  "St. Louis Cardinals": "<@&1067528046451642418>",
-  "Oakland Expos": "<@496713526778265624>",
-  "Texas Astros": "<@&1067544975325265960>",
-  "Little Angels": "<@&1067540852769050744>",
-  "Green Monsters": "<@&496817066201055232>",
-  "Houston Devil Rays": "<@&1142985787114266624>",
-  "Crazy Melonheads": "<@&603589134744944670>",
-  "Seattle Fishes": "<@&603589333676589066>",
-  "Minnesota Twins": "<@&1071145277362274434>",
-  "Junior Bombers": "<@&603291831744200737>",
+  "Yankees": "<@&668468071861583891>",
+  "Orioles": "<@&603606321492787210>",
+  "Giants": "<@&1071145998656737360>",
+  "Padres": "<@&1071145701725184070>",
+  "Indians": "<@&448576195190063110>",
+  "Phillies": "<@&847666595748249640>",
+  "Blue Jays": "<@&603589804868763648>",
+  "Rangers": "<@&1067528806765699162>",
+  "Brewers": "<@&496530637596000287>",
+  "Royals": "<@&1067544069221392414>",
+  "Hornets": "<@&1069707239478272131>",
+  "Diamondbacks": "<@&783577309000368189>",
+  "Wombats": "<@&900907535983329291>",
+  "Mariners": "<@&496815444116635658>",
+  "Cardinals": "<@&1067528046451642418>",
+  "Expos": "<@496713526778265624>",
+  "Astros": "<@&1067544975325265960>",
+  "Angels": "<@&1067540852769050744>",
+  "Monsters": "<@&496817066201055232>",
+  "Devil Rays": "<@&1142985787114266624>",
+  "Melonheads": "<@&603589134744944670>",
+  "Fishes": "<@&603589333676589066>",
+  "Twins": "<@&1071145277362274434>",
+  "Bombers": "<@&603291831744200737>",
 };
 
 //"game": "1",
@@ -99,7 +99,7 @@ const s1103schedule =[
   },
   {
     "game": 1,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Blue Jays",
     "home_code": "MK"
@@ -164,7 +164,7 @@ const s1103schedule =[
     "game": 2,
     "away_team": "Yankees",
     "away_code": "ZB",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -283,7 +283,7 @@ const s1103schedule =[
     "game": 3,
     "away_team": "Rangers",
     "away_code": "WZ",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -365,7 +365,7 @@ const s1103schedule =[
   },
   {
     "game": 4,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Orioles",
     "home_code": "BB"
@@ -423,7 +423,7 @@ const s1103schedule =[
     "game": 5,
     "away_team": "Devil Rays",
     "away_code": "MC",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -505,7 +505,7 @@ const s1103schedule =[
   },
   {
     "game": 6,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Brewers",
     "home_code": "N8"
@@ -619,7 +619,7 @@ const s1103schedule =[
     "game": 7,
     "away_team": "Giants",
     "away_code": "IT",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -666,7 +666,7 @@ const s1103schedule =[
   },
   {
     "game": 8,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Angels",
     "home_code": "AP"
@@ -759,7 +759,7 @@ const s1103schedule =[
     "game": 9,
     "away_team": "Indians",
     "away_code": "C8",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -864,7 +864,7 @@ const s1103schedule =[
     "game": 10,
     "away_team": "Wombats",
     "away_code": "YT",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -941,7 +941,7 @@ const s1103schedule =[
     "game": 11,
     "away_team": "Orioles",
     "away_code": "BB",
-    "home_team": "D'Backs",
+    "home_team": "Diamondbacks",
     "home_code": "TV"
   },
   {
@@ -1009,7 +1009,7 @@ const s1103schedule =[
   },
   {
     "game": 12,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Devil Rays",
     "home_code": "MC"
@@ -1093,7 +1093,7 @@ const s1103schedule =[
   },
   {
     "game": 13,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Mariners",
     "home_code": "JY"
@@ -1170,7 +1170,7 @@ const s1103schedule =[
   },
   {
     "game": 14,
-    "away_team": "D'Backs",
+    "away_team": "Diamondbacks",
     "away_code": "TV",
     "home_team": "Giants",
     "home_code": "IT"
