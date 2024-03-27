@@ -3317,7 +3317,7 @@ module.exports = {
 		},
 		"Earl Abbot": {
 			Name: "Earl Abbot",
-			"Image URL": "https://i.ibb.co/z7NpFJj/generic-5.png",
+			"Image URL": "https://i.ibb.co/sgkL7tx/generic-6.png",
 			ADP: 64.8,
 			ID: "HL",
 			SLGv: 28,

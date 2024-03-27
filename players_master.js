@@ -5615,7 +5615,7 @@ module.exports = {
 		"Earl Abbot": {
 			Name: "Earl Abbot",
 			ID: "HL",
-			"Image URL": "https://i.ibb.co/z7NpFJj/generic-5.png",
+			"Image URL": "https://i.ibb.co/sgkL7tx/generic-6.png",
 			"03": true,
 			"01": true,
 			Variants: "",
