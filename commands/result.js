@@ -177,7 +177,7 @@ async function clearResults(args){
 
 //Add Channel ID's here.
 let other_results_id = "755833854568169613" //side seasons and others.
-let results_channel_id = "911813193960149002"; // S10 Results Channel
+let results_channel_id = "911813193960149002"; // S10 Results Channel (All season results)
 let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
 let VFBL_channel_id ="841418728394457098";//Visserys Football League
@@ -189,7 +189,7 @@ module.exports = {
 	async execute(message, args, client) {
 		let coach_regex = RegExp("([A-Z0-9!-~][A-Z0-9!-~])");  //allow numbers 0-9
 		let coach = "";
-		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01","smokey03","boss03","boss01"]; //must be lowercase
+		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01","smokey03","boss03","boss01","funnybones01","funnybones03"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`(${league_list_string})`, "i");
 		let league = "";

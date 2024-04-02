@@ -23,8 +23,8 @@ const draftStockData = JSON.parse(rawdata);
 
 const sheets = require("../byb-bot.js").sheets;
 //NEW SEASON UPDATE, CHANGE CHANNEL ID's
-const draft2001Channel = "1142973944580808824";
-const draft2003Channel = "1142973975983570974";
+const draft2001Channel = "1223302657884553318"; //S12
+const draft2003Channel = "1223302700846944378"; //S12
 const test_labChannel = "741308777357377617";
 
 
@@ -81,7 +81,8 @@ let bot_channel;
 // const draft_sheet_id = "10Hq1AT5zzkwdgC2-tJue2BUv06Mmbn1_5tk111tTpAQ"; // <--- THIS IS THE S8 ONE
 // const draft_sheet_id = "1idsLvasdDht_y_60tOsIcPJ2ZVVlJT2nXu5aMXLP2Fo"; // <--- THIS IS S9
 // const draft_sheet_id = "14dCK4WagMNWg6tnqcIDxthvT1eGpwG1nxk76yZ_fWbQ"; // S10
-const draft_sheet_id = "1igAymtHEKHOVvWBsuIA4fSuriv8EgPl1Esth8HcslM0" //S11
+// const draft_sheet_id = "1igAymtHEKHOVvWBsuIA4fSuriv8EgPl1Esth8HcslM0" //S11 
+const draft_sheet_id = "1aCFL3KU4yE6ybZndLj24IiWa2jpyBmPRhdLiM83MgEc" //S12
 // const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
 

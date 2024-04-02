@@ -20,31 +20,31 @@ module.exports = {
 		  "code": "BB",
 		  "id": "187776456519057409",
 		  "username": "jibbodahibbo",
-		  "team_name": "Mighty Orioles",
+		  "team_name": "Chicago Wombats",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "BO": {
-		  "code": "BO",
-		  "id": "894684630970671125",
-		  "username": "bobbyJONES2370",
-		  "team_name": "Texas Astros",
+	   "JR": {
+		  "code": "JR",
+		  "id": "749714292626161787",
+		  "username": "JR0426",
+		  "team_name": "Red Rockies",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "SE": {
-		  "code": "SE",
-		  "id": "470004514460794890",
-		  "username": "Scott Egbert",
-		  "team_name": "St. Louis Cardinals",
+	   "MD": {
+		  "code": "MD",
+		  "id": "201786628358799360",
+		  "username": "Madoc",
+		  "team_name": "New York Red Sox",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "C8": {
-		  "code": "C8",
-		  "id": "355931440061612035",
-		  "username": "crazyei8hts",
-		  "team_name": "Crazy Indians",
+	   "M@": {
+		  "code": "M@",
+		  "id": "690369864618999849",
+		  "username": "mattitude",
+		  "team_name": "Humongous Melonheads",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -56,11 +56,11 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "IT": {
-		  "code": "IT",
-		  "id": "147462189404389376",
-		  "username": "Itaniium",
-		  "team_name": "Humongous Giants",
+	   "MT": {
+		  "code": "MT",
+		  "id": "335400047070019585",
+		  "username": "MelloMathTeacher",
+		  "team_name": "New York White Sox",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -68,15 +68,15 @@ module.exports = {
 		  "code": "JY",
 		  "id": "307010267001257996",
 		  "username": "jyknight",
-		  "team_name": "Seattle Mariners",
+		  "team_name": "Texas Tigers",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "LW": {
-		  "code": "LW",
-		  "id": "803449974800384040",
-		  "username": "lillwaws26",
-		  "team_name": "Oakland Expos",
+	   "X5": {
+		  "code": "X5",
+		  "id": "770765914718076978",
+		  "username": "Pentuple",
+		  "team_name": "Cleveland Indians",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -100,7 +100,7 @@ module.exports = {
 		  "code": "MM",
 		  "id": "698632902778552380",
 		  "username": "shrewsbury91",
-		  "team_name": "Crazy Padres",
+		  "team_name": "Boston Braves",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -116,7 +116,7 @@ module.exports = {
 		  "code": "PS",
 		  "id": "463930040036491264",
 		  "username": "psanchez55",
-		  "team_name": "Little Hornets",
+		  "team_name": "Houston Astros",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -124,7 +124,7 @@ module.exports = {
 		  "code": "SB",
 		  "id": "711388106749902849",
 		  "username": "SilverBullet102",
-		  "team_name": "Crazy Melonheads",
+		  "team_name": "Crazy Hornets",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -152,11 +152,11 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "VS": {
-		  "code": "VS",
-		  "id": "135436127862652928",
-		  "username": "Vissery",
-		  "team_name": "Green Phillies",
+	   "PZ": {
+		  "code": "PZ",
+		  "id": "394922258533187584",
+		  "username": "Personizzle",
+		  "team_name": "White Dodgers",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -164,15 +164,15 @@ module.exports = {
 		  "code": "WZ",
 		  "id": "273653649522294784",
 		  "username": "Wizard",
-		  "team_name": "Mighty Rangers",
+		  "team_name": "Texas Expos",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "YT": {
-		  "code": "YT",
-		  "id": "213203256606851072",
-		  "username": "Marco",
-		  "team_name": "Mighty Wombats",
+	   "QM": {
+		  "code": "QM",
+		  "id": "455213782323560451",
+		  "username": "QuestionMonkey",
+		  "team_name": "Baltimore Pirates",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -184,11 +184,11 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "ZB": {
-		  "code": "ZB",
-		  "id": "1025855971391705150",
-		  "username": "ZiorBox",
-		  "team_name": "Houston Yankees",
+	   "ST": {
+		  "code": "ST",
+		  "id": "326225250113159171",
+		  "username": "strsd",
+		  "team_name": "Boston Marlins",
 		  "team_color": "",
 		  "logo": ""
 	   }
