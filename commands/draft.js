@@ -48,7 +48,7 @@ const draftData = {
 		channel: draft2001Channel,
 		name: "01",
 		db: Draft_j,
-		sheetName: "2001 DRAFT",
+		sheetName: "01 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
 		lock: true,
@@ -59,7 +59,7 @@ const draftData = {
 		channel: draft2003Channel,
 		name: "03",
 		db: Draft_03,
-		sheetName: "2003 DRAFT",
+		sheetName: "03 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
 		lock: true,
@@ -82,7 +82,7 @@ let bot_channel;
 // const draft_sheet_id = "1idsLvasdDht_y_60tOsIcPJ2ZVVlJT2nXu5aMXLP2Fo"; // <--- THIS IS S9
 // const draft_sheet_id = "14dCK4WagMNWg6tnqcIDxthvT1eGpwG1nxk76yZ_fWbQ"; // S10
 // const draft_sheet_id = "1igAymtHEKHOVvWBsuIA4fSuriv8EgPl1Esth8HcslM0" //S11 
-const draft_sheet_id = "1aCFL3KU4yE6ybZndLj24IiWa2jpyBmPRhdLiM83MgEc" //S12
+const draft_sheet_id =    "1aCFL3KU4yE6ybZndLj24IiWa2jpyBmPRhdLiM83MgEc" //S12
 // const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
 
