@@ -82,7 +82,7 @@ module.exports = {
 	   },
 	   "MC": {
 		  "code": "MC",
-		  "id": "847837436767240242",
+		  "id": "1196580591995453500",
 		  "username": "Cherry",
 		  "team_name": "Houston Devil Rays",
 		  "team_color": "",
