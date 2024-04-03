@@ -122,7 +122,7 @@ module.exports = {
 		},
 		"PZ": {
 			"code": "PZ",
-			"id": "995878927753019412",
+			"id": "394922258533187584",
 			"username": "personizzle",
 			"team_name": "Green Reds",
 			"team_color": "",
