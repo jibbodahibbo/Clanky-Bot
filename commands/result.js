@@ -180,7 +180,7 @@ let other_results_id = "755833854568169613" //side seasons and others.
 let results_channel_id = "911813193960149002"; // S10 Results Channel (All season results)
 let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
-let VFBL_channel_id ="841418728394457098";//Visserys Football League
+let VFBL_channel_id ="755833854568169613";//Visserys Football League
 
 module.exports = {
 
