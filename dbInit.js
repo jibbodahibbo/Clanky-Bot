@@ -97,6 +97,32 @@ const Draft_j = sequelize.define("draft_j", {
 		type: DataTypes.INTEGER,
 	},
 });
+
+const Draft_01 = sequelize.define("draft_01", {
+	player: {
+		type: DataTypes.STRING,
+	},
+	team: {
+		type: DataTypes.STRING,
+		defaultValue: "undrafted",
+	},
+	pick_num: {
+		type: DataTypes.INTEGER,
+	},
+});
+
+const Draft_02 = sequelize.define("draft_02", {
+	player: {
+		type: DataTypes.STRING,
+	},
+	team: {
+		type: DataTypes.STRING,
+		defaultValue: "undrafted",
+	},
+	pick_num: {
+		type: DataTypes.INTEGER,
+	},
+});
 			  
 const Draft_03 = sequelize.define("draft_03", {
 	player: {

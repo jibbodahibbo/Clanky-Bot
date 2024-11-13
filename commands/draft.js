@@ -4,10 +4,12 @@ let players = require('../players.js');
 let playerVariants = require('../player_variants.js');
 //NEW SEASON UPDATE, UPDATE THE PLAYERS AND COACHES .js FILES
 let players01 = require('../players_01.js');
+let players02 = require('../players_02.js'); //c8
 let players03 = require('../players_03.js');
 let coaches01 = require('../coaches_01.js');
+let coaches02 = require('../coaches_02.js'); //c8
 let coaches03 = require('../coaches_03.js');
-const {Draft_j, Draft_03} = require('../dbInit');
+const {Draft_j, Draft_03, Draft_01, Draft_02} = require('../dbInit');
 const { Op } = require("sequelize");
 const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
@@ -23,8 +25,9 @@ const draftStockData = JSON.parse(rawdata);
 
 const sheets = require("../byb-bot.js").sheets;
 //NEW SEASON UPDATE, CHANGE CHANNEL ID's
-const draft2001Channel = "1223302657884553318"; //S12
-const draft2003Channel = "1223302700846944378"; //S12
+const draft2001Channel = "1305799066919112704"; //S13 c8
+const draft2002Channel = "1305799099949256728"; //S13 c8
+const draft2003Channel = "1305799124377141261"; //S13 c8
 const test_labChannel = "741308777357377617";
 
 
@@ -34,12 +37,14 @@ const allowed_channels = [
 	"847513377811070997",
 	"918362812223459339",
 	draft2001Channel,
+	draft2002Channel, //c8
 	draft2003Channel,
 	test_labChannel
 ];
 
 const allowed_drafts = [
 	"01",
+	"02", //c8
 	"03"
 ];
 
@@ -47,7 +52,7 @@ const draftData = {
 	"01": {
 		channel: draft2001Channel,
 		name: "01",
-		db: Draft_j,
+		db: Draft_01,
 		sheetName: "01 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
@@ -55,6 +60,17 @@ const draftData = {
 		playerPool: players01,
 		coachData: coaches01.data
 	},
+	"02": {
+		channel: draft2002Channel,
+		name: "02",
+		db: Draft_02,
+		sheetName: "02 DRAFT",
+		draftNum: 1,
+		currentDrafter: "",
+		lock: true,
+		playerPool: players02,
+		coachData: coaches02.data
+	}, //c8
 	"03": {
 		channel: draft2003Channel,
 		name: "03",
@@ -82,7 +98,8 @@ let bot_channel;
 // const draft_sheet_id = "1idsLvasdDht_y_60tOsIcPJ2ZVVlJT2nXu5aMXLP2Fo"; // <--- THIS IS S9
 // const draft_sheet_id = "14dCK4WagMNWg6tnqcIDxthvT1eGpwG1nxk76yZ_fWbQ"; // S10
 // const draft_sheet_id = "1igAymtHEKHOVvWBsuIA4fSuriv8EgPl1Esth8HcslM0" //S11 
-const draft_sheet_id =    "1aCFL3KU4yE6ybZndLj24IiWa2jpyBmPRhdLiM83MgEc" //S12
+// const draft_sheet_id =    "1aCFL3KU4yE6ybZndLj24IiWa2jpyBmPRhdLiM83MgEc" //S12
+const draft_sheet_id = "1H_4_OgkTj1yKVtdhzm6Ih3VYJZy9ZRhxyEE6uzxImz4"; //S13 c8
 // const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
 
