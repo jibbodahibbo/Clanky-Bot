@@ -140,4 +140,4 @@ const Draft_03 = sequelize.define("draft_03", {
 
 
 
-module.exports={ClankyCoins, Schedules, Results, Draft_j, Draft_03, sequelize};
+module.exports={ClankyCoins, Schedules, Results, Draft_j, Draft_03, Draft_02, Draft_01, sequelize};
