@@ -172,7 +172,7 @@ module.exports = {
 			"code": "VS",
 			"id": "135436127862652928",
 			"username": "Vissery",
-			"team_name": "Freemly Qrxlzubs",
+			"team_name": "Bad Bunnies",
 			"team_color": "",
 			"logo": ""
 		},

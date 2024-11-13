@@ -112,8 +112,8 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "DP": {
-		  "code": "DP",
+	   "DA": {
+		  "code": "DA",
 		  "id": "525722122027401226",
 		  "username": "DEPaf679",
 		  "team_name": "Little Wombats",
@@ -148,7 +148,7 @@ module.exports = {
 		  "code": "CU",
 		  "id": "316630794493755402",
 		  "username": "tculler",
-		  "team_name": "tbd",
+		  "team_name": "Milwaukee Brewers",
 		  "team_color": "",
 		  "logo": ""
 	   },
