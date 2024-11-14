@@ -2,7 +2,7 @@ module.exports = {
 	"data": {
 		"NV": {
 			"code": "NV",
-			"id": "1020141753858269336",
+			"id": "812641726014685204",
 			"username": "navycap115",
 			"team_name": "Baltimore Ostriches",
 			"team_color": "",
