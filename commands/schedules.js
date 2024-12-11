@@ -5,8 +5,9 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
-const {s1201schedule, s1201teams} = require("../s1201_schedule");
-const {s1203schedule, s1203teams} = require("../s1203_schedule");
+const {s1301schedule, s1301teams} = require("../s1301_schedule");
+const {s1302schedule, s1302teams} = require("../s1302_schedule");
+const {s1303schedule, s1303teams} = require("../s1303_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -45,20 +46,29 @@ module.exports = {
 			try {
 
 				//Inject a schedule from json.
-				const sched01= s1201schedule;
-				let t= s1201teams;
-				if (args[0] == "inject" && args[1]=="s12"){
+				let ss="";
+				const sched01= s1301schedule;
+				let t= s1301teams;
+				if (args[0] == "inject" && args[1]=="s13"){
 					for (var i = 0; i < sched01.length; i++) {
 						let s=sched01[i];
-						let ss = await createScheduleItem(['funnybones01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['funnybones01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						ss = await createScheduleItem(['maddog01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['maddog01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
-				const sched03= s1203schedule;
-				t= s1203teams;
+				const sched02= s1302schedule;
+				t= s1302teams;
+					for (var i = 0; i < sched02.length; i++) {
+						let s=sched02[i];
+						ss = await createScheduleItem(['maddog02',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+ 						console.log(['maddog02',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+					}
+
+				const sched03= s1303schedule;
+				t= s1303teams;
 					for (var i = 0; i < sched03.length; i++) {
 						let s=sched03[i];
-						let ss = await createScheduleItem(['funnybones03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
- 						console.log(['funnybones03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+						ss = await createScheduleItem(['maddog03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
+							console.log(['maddog03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 					return message.reply("Injected")
 				}
