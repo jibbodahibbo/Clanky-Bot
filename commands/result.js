@@ -192,11 +192,11 @@ module.exports = {
 		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01",
 			"smokey03","boss03","boss01","funnybones01","funnybones03","maddog01","maddog02","maddog03"]; //must be lowercase
 		let league_list_string = league_list.join("|");
-		let league_regex = RegExp(`(${league_list_string})`, "i");
+		let league_regex = RegExp(`\\b(${league_list_string})\\b`, "i"); // Word boundary to avoid partial matches
+		let game_num_regex = RegExp("\\bG([0-9]+)\\b", "i"); // Word boundary for exact match
+		let game_score_regex = RegExp("([0-9]+)-([0-9]+)");		
 		let league = "";
-		let game_num_regex = RegExp("G([0-9]+)", "i");
 		let game_num = "";
-		let game_score_regex = RegExp("([0-9]+)-([0-9]+)");
 		let player_score = "";
 		let computer_score = "";
 		let images = [];
