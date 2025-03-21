@@ -179,7 +179,7 @@ module.exports = {
 
 
 			if(args[0]=="congratsme"){
-				 if(await purchase(user, 300)){
+				 if(await purchase(user, 50)){
 					 	return message.reply({ embed:congratsMe(user.username)});
 				 }else{
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
@@ -187,7 +187,7 @@ module.exports = {
 			}
 
 			if(args[0]=="joke"){
-				 if(await purchase(user, 1000)){
+				 if(await purchase(user, 100)){
 						return message.reply({ embed:getJoke(user.username)});
 				 }else{
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
@@ -195,7 +195,7 @@ module.exports = {
 			}
 
 			if(args[0]=="insult"){
-				 if(await purchase(user, 2000)){
+				 if(await purchase(user, 200)){
 						return message.reply({ embed:insult(user.username,message.mentions.users.first())});
 				 }else{
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
@@ -212,16 +212,16 @@ module.exports = {
 
 			if(args[0]=="article"){
 				 if(await purchase(user, 3500)){
-						return message.reply("<@355931440061612035> will now write a BBL fandom article about a player, event or legend of your choosing.");
+						return message.reply("<@355931440061612035> will now write a BBL wiki article about a player, event or legend of your choosing.");
 				 }else{
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
 				 }
 			}
 
 
-			if(args[0]=="pennant"){
+			if(args[0]=="cards"){
 				 if(await purchase(user, 10000)){
-						return message.reply("You have purchased a pennant for 10,000 CC! <@187776456519057409> will contact you shortly!");
+						return message.reply("You have purchased assorted cards for 10,000 CC! <@187776456519057409> will contact you shortly!");
 				 }else{
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
 				 }

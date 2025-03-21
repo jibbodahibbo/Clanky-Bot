@@ -24,15 +24,15 @@ module.exports = {
 						"value":"The BYB-Bot will buy someone a drink!",
 					  },
 			      {
-			        "name": "!buy congratsme : 300 CC",
+			        "name": "!buy congratsme : 50 CC",
 			        "value":"The BYB-Bot will congratulate you with a gif.",
 			      },
 			            {
-			        "name": "!buy joke : 1,000 CC",
+			        "name": "!buy joke : 100 CC",
 			        "value": "The BYB-Bot will tell you a very rare backyard baseball themed joke.",
 			      },
 			       {
-			        "name": "!buy insult <@username> : 2,000 CC",
+			        "name": "!buy insult <@username> : 200 CC",
 			        "value": "The BYB-Bot will insult somebody for you publicly and in a DM",
 			      },
 						{
@@ -40,8 +40,8 @@ module.exports = {
 						 "value": "<@355931440061612035> will write a fandom article about a BBL player, event, or legend of your choosing.",
 					 },
 			      {
-			        "name": "!buy pennant : 10,000 CC",
-			        "value": "<@187776456519057409> will make you a Custom Penant and mail it to you (USA ONLY).",
+			        "name": "!buy cards : 10,000 CC",
+			        "value": "<@187776456519057409> will send you some assorted baseball cards (USA AND CANADA ONLY).",
 			      }
 			    ]
 					}
