@@ -63,20 +63,20 @@ try{
 
 
   if (other_result){
-    const complete_game = await Schedules.update({ game_complete: true },
-      { where:{
-        league: args.league ,
-        game_num:args.game_num,
-        [Op.or]: [{ away_coach_id: other_result.coach }, { home_coach_id: other_result.coach }],
-        [Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
-        }
-      });
-      return other_result;
+	const complete_game = await Schedules.update({ game_complete: true },
+	  { where:{
+		league: args.league ,
+		game_num:args.game_num,
+		[Op.or]: [{ away_coach_id: other_result.coach }, { home_coach_id: other_result.coach }],
+		[Op.or]: [{ away_coach_id: args.coach }, { home_coach_id: args.coach }]
+		}
+	  });
+	  return other_result;
   }else{
-    return null;
+	return null;
   }
 }catch (e){
-    return null;
+	return null;
   }
 
 }
@@ -97,11 +97,11 @@ try{
  */
 
 async function saveResult(result, testing=false) {
-    if (testing) {
-        return;
-    }
-    else {
-        const r = await Results.create({
+	if (testing) {
+		return;
+	}
+	else {
+		const r = await Results.create({
 
 			league: result.league,
 			coach: result.coach,
@@ -161,17 +161,17 @@ try{
 		home_role_id: sched.home_role_id,
 	};
 }catch (e){
-    return null;
+	return null;
   }
 
 }
 
 async function clearResults(args){
   const deletion = await Results.destroy({
-    where: {league: args[1],
-            coach: args[3],
-            game_num: args[2],
-            },
+	where: {league: args[1],
+			coach: args[3],
+			game_num: args[2],
+			},
   });
 }
 
@@ -181,6 +181,7 @@ let results_channel_id = "911813193960149002"; // S10 Results Channel (All seaso
 let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
 let VFBL_channel_id ="755833854568169613";//Visserys Football League
+let dbsl_channel_id = "755833854568169613"; // discord backyard soccer league
 
 module.exports = {
 
@@ -190,7 +191,7 @@ module.exports = {
 		let coach_regex = RegExp("([A-Z0-9!-~][A-Z0-9!-~])");  //allow numbers 0-9
 		let coach = "";
 		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01",
-			"smokey03","boss03","boss01","funnybones01","funnybones03","maddog01","maddog02","maddog03"]; //must be lowercase
+			"smokey03","boss03","boss01","funnybones01","funnybones03","maddog01","maddog02","maddog03","dbsl"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`\\b(${league_list_string})\\b`, "i"); // Word boundary to avoid partial matches
 		let game_num_regex = RegExp("\\bG([0-9]+)\\b", "i"); // Word boundary for exact match
@@ -208,38 +209,38 @@ module.exports = {
 		const color_pending = 16312092;
 
 ///Clearing a result
-    if (args[0] == "clear"){
-	     if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
-      await clearResults(args);
-        return message.reply("cleared");
-      }
-    }
+	if (args[0] == "clear"){
+		 if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
+	  await clearResults(args);
+		return message.reply("cleared");
+	  }
+	}
   //Commisioner spying on a result. notifies test-lab channel
-    if (args[0]=="spy"){
-       if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')){
-            console.log("spy attempt made");
-            let spy_item;
-            try{
-            	spy_item = await Results.findOne({
-            		where: {
-            			league: args[1],
-            			coach: args[2],
-            	    game_num: args[3]
-            		}
-            	})
-              client.users.cache
-                .get(message.author.id)
-                .send(spy_item.images[0]);
-              ;
+	if (args[0]=="spy"){
+	   if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')){
+			console.log("spy attempt made");
+			let spy_item;
+			try{
+				spy_item = await Results.findOne({
+					where: {
+						league: args[1],
+						coach: args[2],
+					game_num: args[3]
+					}
+				})
+			  client.users.cache
+				.get(message.author.id)
+				.send(spy_item.images[0]);
+			  ;
 
-            }catch (e){
-              console.log("none found");
-                return null;
-              }
-            client.channels.cache.get("741308777357377617").send(message.author +" has spied on " + args[1] + " " + args[2] +" "+ args[3]);
-              return;
-        }
-    }
+			}catch (e){
+			  console.log("none found");
+				return null;
+			  }
+			client.channels.cache.get("741308777357377617").send(message.author +" has spied on " + args[1] + " " + args[2] +" "+ args[3]);
+			  return;
+		}
+	}
 
 		// make sure this is a dm. If not, let the user know they need to send a dm
 		if (message.guild !== null) {
@@ -422,18 +423,20 @@ module.exports = {
 		if (result_pair_obj != null) {
 
 
-      // TODO: Replace with league registration obj.
-      // add other league channels here.
-      let channel;
-      if (result_obj.league == "rp" ||result_obj.league == "5050" ){
-        channel = client.channels.cache.get(tournament_channel_id);
-      }else if (result_obj.league == "vbfl"){
-        channel = client.channels.cache.get(VFBL_channel_id);
-			}else if (result_obj.league=="w3"){
+	  // TODO: Replace with league registration obj.
+	  // add other league channels here.
+	  let channel;
+	  if (result_obj.league == "rp" ||result_obj.league == "5050" ){
+		channel = client.channels.cache.get(tournament_channel_id);
+	  }else if (result_obj.league == "vbfl"){
+		channel = client.channels.cache.get(VFBL_channel_id);
+	  }else if (result_obj.league == "dbsl"){
+		channel = client.channels.cache.get(dbsl_channel_id);	
+	  }else if (result_obj.league=="w3"){
 				channel = client.channels.cache.get(other_results_id);
-      }else{
-        channel = client.channels.cache.get(results_channel_id);
-      }
+	  }else{
+		channel = client.channels.cache.get(results_channel_id);
+	  }
 
 			// get additional game data from schedule
 			let schedule_data_query = {
@@ -490,19 +493,21 @@ module.exports = {
 			}
 		}
 		// if it's not, do nothing
-    // add other league channels here.
+	// add other league channels here.
 		else {
-      let channel;
-      if (result_obj.league == "rp" || result_obj.league == "5050"){
-        channel = client.channels.cache.get(tournament_channel_id);
-      }else if (result_obj.league == "vbfl"){
-        channel = client.channels.cache.get(VFBL_channel_id);
-      }else if (result_obj.league=="w3"){
-				channel = client.channels.cache.get(other_results_id);
-			}else{
-        channel = client.channels.cache.get(results_channel_id);
-      }
-      	channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game: ' +result_pair_query.game_num + " has been submitted by " + message.author.username);
+	  let channel;
+	  if (result_obj.league == "rp" || result_obj.league == "5050"){
+		channel = client.channels.cache.get(tournament_channel_id);
+	  }else if (result_obj.league == "vbfl"){
+		channel = client.channels.cache.get(VFBL_channel_id);
+	  }else if (result_obj.league == "dbsl"){
+		channel = client.channels.cache.get(dbsl_channel_id);
+	  }else if (result_obj.league=="w3"){
+		channel = client.channels.cache.get(other_results_id);
+	  }else{
+		channel = client.channels.cache.get(results_channel_id);
+	  }
+		channel.send( result_pair_query.league +' '+ result_pair_query.coach + ' Game: ' +result_pair_query.game_num + " has been submitted by " + message.author.username);
 
 		}
 	},
