@@ -56,6 +56,7 @@ const draftData = {
 		sheetName: "01 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
+		nextDrafter: "",
 		lock: true,
 		playerPool: players01,
 		coachData: coaches01.data
@@ -67,6 +68,7 @@ const draftData = {
 		sheetName: "02 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
+		nextDrafter: "",
 		lock: true,
 		playerPool: players02,
 		coachData: coaches02.data
@@ -78,6 +80,7 @@ const draftData = {
 		sheetName: "03 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
+		nextDrafter: "",
 		lock: true,
 		playerPool: players03,
 		coachData: coaches03.data
@@ -194,6 +197,34 @@ async function getAllPicksFromDB(league) {
 async function getCurrentCoach(league) {
   let sheetName = draftData[league]["sheetName"] + "!";
   let range = "A" + draftData[league]["draftNum"];
+  let result;
+
+  try {
+    let auth = await googleAuth.authorize();
+    result = await sheets.spreadsheets.values.get({
+      // auth: sheetsAPIKey,
+      auth: auth,
+			spreadsheetId: draft_sheet_id,
+			range: sheetName + range,
+		});
+  } catch (err) {
+		console.log(err);
+  }
+  if (!result.hasOwnProperty("data")) {
+    return "";
+  }
+
+  if ('values' in result.data) {
+    return result.data.values[0][0];
+  }
+  else {
+    return "";
+  }
+}
+async function getNextCoach(league) {
+  let sheetName = draftData[league]["sheetName"] + "!";
+  let nextDraftNum = draftData[league]["draftNum"] + 1;
+  let range = "A" + nextDraftNum;
   let result;
 
   try {
@@ -1343,6 +1374,7 @@ module.exports = {
 		let coach_data = draftData[league]["coachData"];
 		draftData[league]["draftNum"] += 1;
 		draftData[league]["currentDrafter"] = await getCurrentCoach(league); //Replace with sheet cell magic
+		draftData[league]["nextDrafter"] = await getNextCoach(league);
 		if (draftData[league]["currentDrafter"] != "") {
 			result +=
 				draftData[league]["currentDrafter"] +
@@ -1352,6 +1384,19 @@ module.exports = {
 				" is now on the clock with pick #" +
 				draftData[league]["draftNum"] +
 				".";
+
+			// DM next drafter
+		const nextCoachId = coach_data[draftData[league]["nextDrafter"]]?.id;
+		const draftChannel = draftData[league].channel;
+		if (nextCoachId) {
+			try {
+				const user = await message.client.users.fetch(nextCoachId);
+				await user.send(`You are On Deck to Draft in <#${draftChannel.id}>! Get your pick ready.`);
+			} catch (err) {
+				console.error("Failed to DM next drafter: draft has completed as intended, or another issue.", err);
+			}
+		}
+
 		} else {
 			draftData[league]["lock"] = true;
 			result += `🎊 The ${league} draft has concluded and is now locked. 🎊`;
