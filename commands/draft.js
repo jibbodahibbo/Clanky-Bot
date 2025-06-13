@@ -56,7 +56,6 @@ const draftData = {
 		sheetName: "01 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
-		nextDrafter: "",
 		lock: true,
 		playerPool: players01,
 		coachData: coaches01.data
@@ -68,7 +67,6 @@ const draftData = {
 		sheetName: "02 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
-		nextDrafter: "",
 		lock: true,
 		playerPool: players02,
 		coachData: coaches02.data
@@ -80,7 +78,6 @@ const draftData = {
 		sheetName: "03 DRAFT",
 		draftNum: 1,
 		currentDrafter: "",
-		nextDrafter: "",
 		lock: true,
 		playerPool: players03,
 		coachData: coaches03.data
@@ -223,32 +220,33 @@ async function getCurrentCoach(league) {
 }
 async function getNextCoach(league) {
   let sheetName = draftData[league]["sheetName"] + "!";
-  let nextDraftNum = draftData[league]["draftNum"] + 1;
+  let nextDraftNum = draftData[league]["draftNum"]; // no +1
   let range = "A" + nextDraftNum;
   let result;
 
   try {
     let auth = await googleAuth.authorize();
     result = await sheets.spreadsheets.values.get({
-      // auth: sheetsAPIKey,
       auth: auth,
-			spreadsheetId: draft_sheet_id,
-			range: sheetName + range,
-		});
+      spreadsheetId: draft_sheet_id,
+      range: sheetName + range,
+    });
   } catch (err) {
-		console.log(err);
+    console.error("Failed to fetch next coach from sheet:", err);
+    return "";
   }
+
   if (!result.hasOwnProperty("data")) {
     return "";
   }
 
-  if ('values' in result.data) {
+  if ('values' in result.data && result.data.values.length && result.data.values[0].length) {
     return result.data.values[0][0];
-  }
-  else {
+  } else {
     return "";
   }
 }
+
 
 async function writePlayerToDraft(league, playerName, playerID) {
   let sheetName = draftData[league]["sheetName"] + "!";
@@ -1374,7 +1372,7 @@ module.exports = {
 		let coach_data = draftData[league]["coachData"];
 		draftData[league]["draftNum"] += 1;
 		draftData[league]["currentDrafter"] = await getCurrentCoach(league); //Replace with sheet cell magic
-		draftData[league]["nextDrafter"] = await getNextCoach(league);
+		nextDrafter = await getNextCoach(league);
 		if (draftData[league]["currentDrafter"] != "") {
 			result +=
 				draftData[league]["currentDrafter"] +
@@ -1386,11 +1384,10 @@ module.exports = {
 				".";
 
 			// DM next drafter
-		const nextCoachId = coach_data[draftData[league]["nextDrafter"]]?.id;
-		const draftChannel = draftData[league].channel;
-		if (nextCoachId) {
+		draftChannel = draftData[league].channel;
+		if (nextDrafter) {
 			try {
-				const user = await message.client.users.fetch(nextCoachId);
+				const user = await message.client.users.fetch(nextDrafter);
 				await user.send(`You are On Deck to Draft in <#${draftChannel.id}>! Get your pick ready.`);
 			} catch (err) {
 				console.error("Failed to DM next drafter: draft has completed as intended, or another issue.", err);
