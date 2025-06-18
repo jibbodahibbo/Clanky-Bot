@@ -34,13 +34,16 @@ module.exports = {
 			       {
 			        "name": "!buy insult <@username> : 200 CC",
 			        "value": "The BYB-Bot will insult somebody for you publicly and in a DM",
+			      },			       {
+			        "name": "!buy card : 500 CC",
+			        "value": "<@1076857450399014932> will make you a Digital Backyard Kid Card!",
 			      },
 						{
 						 "name": "!buy article: 3,500 CC",
 						 "value": "<@355931440061612035> will write a fandom article about a BBL player, event, or legend of your choosing.",
 					 },
 			      {
-			        "name": "!buy cards : 10,000 CC",
+			        "name": "!buy mysterycards : 10,000 CC",
 			        "value": "<@187776456519057409> will send you some assorted baseball cards (USA AND CANADA ONLY).",
 			      }
 			    ]

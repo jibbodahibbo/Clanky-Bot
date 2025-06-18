@@ -218,10 +218,17 @@ module.exports = {
 				 }
 			}
 
+			if(args[0]=="card"){
+				 if(await purchase(user, 500)){
+						return message.reply("You have purchased a digital cards for 500 CC! <@1076857450399014932> will contact you shortly!");
+				 }else{
+					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
+				 }
+			}
 
-			if(args[0]=="cards"){
+			if(args[0]=="mysterycards"){
 				 if(await purchase(user, 10000)){
-						return message.reply("You have purchased assorted cards for 10,000 CC! <@187776456519057409> will contact you shortly!");
+						return message.reply("You have purchased a mystery card pack for 10000 CC! <@1076857450399014932> will contact you shortly!");
 				 }else{
 					 return message.reply('You only have '+ user.coins + ' Clanky Coins.')
 				 }
