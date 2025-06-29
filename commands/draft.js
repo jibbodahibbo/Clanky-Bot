@@ -1387,7 +1387,7 @@ module.exports = {
 		draftChannel = draftData[league].channel;
 		if (nextDrafter) {
 			try {
-				const user = await message.client.users.fetch(nextDrafter);
+				const user = await message.client.users.fetch(coach_data[draftData[league][nextDrafter]]["id"]);
 				await user.send(`You are On Deck to Draft in <#${draftChannel.id}>! Get your pick ready.`);
 			} catch (err) {
 				console.error("Failed to DM next drafter: draft has completed as intended, or another issue.", err);
