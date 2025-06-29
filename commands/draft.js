@@ -220,7 +220,7 @@ async function getCurrentCoach(league) {
 }
 async function getNextCoach(league) {
   let sheetName = draftData[league]["sheetName"] + "!";
-  let nextDraftNum = draftData[league]["draftNum"]; // no +1
+  let nextDraftNum = draftData[league]["draftNum"]+1; 
   let range = "A" + nextDraftNum;
   let result;
 
