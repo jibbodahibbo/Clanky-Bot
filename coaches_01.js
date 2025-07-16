@@ -4,7 +4,7 @@ module.exports = {
 			"code": "AX",
 			"id": "272834771871334400",
 			"username": "alex7456",
-			"team_name": "Kansas Jayhawks",
+			"team_name": "Indiana Pacers",
 			"team_color": "",
 			"logo": ""
 		},
@@ -12,7 +12,7 @@ module.exports = {
 			"code": "AP",
 			"id": "268060176320299019",
 			"username": "AnjouPays",
-			"team_name": "Evil Rays",
+			"team_name": "Mortal Wombats",
 			"team_color": "",
 			"logo": ""
 		},
@@ -28,7 +28,7 @@ module.exports = {
 			"code": "C8",
 			"id": "355931440061612035",
 			"username": "crazyei8hts",
-			"team_name": "Frequent Blimps",
+			"team_name": "Round Trippers",
 			"team_color": "",
 			"logo": ""
 		},
@@ -36,23 +36,23 @@ module.exports = {
 			"code": "CH",
 			"id": "336232350088429589",
 			"username": "Chellow",
-			"team_name": "Rolling Cheesewheels",
+			"team_name": "Wordly Warmups",
 			"team_color": "",
 			"logo": ""
 		},
-		"PS": {
-			"code": "PS",
-			"id": "463930040036491264",
-			"username": "psanchez55",
-			"team_name": "Unintentional Cheese",
+		"BF": {
+			"code": "BF",
+			"id": "428685276936667147",
+			"username": "BogFrungus",
+			"team_name": "Area 51 Greasels",
 			"team_color": "",
 			"logo": ""
 		},
-		"CW": {
-			"code": "CW",
-			"id": "430920494351515650",
-			"username": "MunchSmith",
-			"team_name": "Seattle Fishes",
+		"MC": {
+			"code": "MC",
+			"id": "1196580591995453500",
+			"username": "Cherry",
+			"team_name": "Sugar Land Skeeters",
 			"team_color": "",
 			"logo": ""
 		},
@@ -60,7 +60,7 @@ module.exports = {
 			"code": "HZ",
 			"id": "297541358502150144",
 			"username": "Heinz",
-			"team_name": "Dark Knights",
+			"team_name": "Mystery Machines",
 			"team_color": "",
 			"logo": ""
 		},
@@ -84,15 +84,15 @@ module.exports = {
 			"code": "M@",
 			"id": "690369864618999849",
 			"username": "mattitude",
-			"team_name": "Jibbo's Ghosts",
+			"team_name": "Myrtle Beach Mermen",
 			"team_color": "",
 			"logo": ""
 		},
-		"WZ": {
-			"code": "WZ",
-			"id": "273653649522294784",
-			"username": "Wizard",
-			"team_name": "New York Slices",
+		"FF": {
+			"code": "FF",
+			"id": "607425396765622275",
+			"username": "Ferb Fletcher",
+			"team_name": "Elwood City Grebes",
 			"team_color": "",
 			"logo": ""
 		},
@@ -100,7 +100,7 @@ module.exports = {
 			"code": "YY",
 			"id": "74323981670285312",
 			"username": "yuryavic",
-			"team_name": "Inky Squids",
+			"team_name": "Green Monsters",
 			"team_color": "",
 			"logo": ""
 		},
@@ -108,15 +108,15 @@ module.exports = {
 			"code": "IT",
 			"id": "147462189404389376",
 			"username": "Itaniium",
-			"team_name": "Final Boss",
+			"team_name": "Str8 Rippin",
 			"team_color": "",
 			"logo": ""
 		},
-		"JY": {
-			"code": "JY",
-			"id": "307010267001257996",
-			"username": "jyknight",
-			"team_name": "West Michigan Whitecaps",
+		"JR": {
+			"code": "JR",
+			"id": "749714292626161787",
+			"username": "JR2604",
+			"team_name": "Atomic Oysters",
 			"team_color": "",
 			"logo": ""
 		},
@@ -136,27 +136,27 @@ module.exports = {
 			"team_color": "",
 			"logo": ""
 		},
-		"2F": {
-			"code": "2F",
-			"id": "318576630819717120",
-			"username": "cantwait2fly",
-			"team_name": "San Francisco Giants",
+		"NV": {
+			"code": "NV",
+			"id": "812641726014685204",
+			"username": "navycap115",
+			"team_name": "San Diego Ostriches",
 			"team_color": "",
 			"logo": ""
 		},
-		"N8": {
-			"code": "N8",
-			"id": "87804201056337920",
-			"username": "Natetastic28",
-			"team_name": "Harlem Shaking Grimaces",
+		"GB": {
+			"code": "GB",
+			"id": "288809869522501643",
+			"username": "George Bonouki",
+			"team_name": "Spiffy Penguins",
 			"team_color": "",
 			"logo": ""
 		},
-		"BB": {
-			"code": "BB",
-			"id": "282618582574170114",
-			"username": "BBALL",
-			"team_name": "San Diego Padres",
+		"WS": {
+			"code": "WS",
+			"id": "854145470737416214",
+			"username": "whiffspree01",
+			"team_name": "Sin City Dice",
 			"team_color": "",
 			"logo": ""
 		},
@@ -172,23 +172,23 @@ module.exports = {
 			"code": "VS",
 			"id": "135436127862652928",
 			"username": "Vissery",
-			"team_name": "Bad Bunnies",
+			"team_name": "Sleazy Raccoons",
 			"team_color": "",
 			"logo": ""
 		},
-		"MF": {
-			"code": "MF",
-			"id": "424104533673902090",
-			"username": "scatty13",
-			"team_name": "Vaudeville Villains",
+		"MM": {
+			"code": "MM",
+			"id": "698632902778552380",
+			"username": "shrewsbury91",
+			"team_name": "Guy Smileys",
 			"team_color": "",
 			"logo": ""
 		},
-		"TO": {
-			"code": "TO",
-			"id": "692170461047554048",
-			"username": "Toast",
-			"team_name": "Minnesota Twins",
+		"GS": {
+			"code": "GS",
+			"id": "355934424061181972",
+			"username": "GSchlim",
+			"team_name": "Grand Salamis",
 			"team_color": "",
 			"logo": ""
 		}

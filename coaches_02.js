@@ -1,74 +1,74 @@
 module.exports = {
 	"data": {
-		"NV": {
-			"code": "NV",
-			"id": "812641726014685204",
-			"username": "navycap115",
-			"team_name": "Baltimore Ostriches",
+		"AD": {
+			"code": "AD",
+			"id": "863169392953917482",
+			"username": "asd4051",
+			"team_name": "Rochester Racers",
 			"team_color": "",
 			"logo": ""
 		},
-		"TT": {
-			"code": "TT",
-			"id": "888845805576912916",
-			"username": "todles_toadster",
-			"team_name": "Toronto Blue Jays",
+		"BC": {
+			"code": "BC",
+			"id": "1391133281638158357",
+			"username": "backwardscap2",
+			"team_name": "Mighty Wombats",
 			"team_color": "",
 			"logo": ""
 		},
-		"CS": {
-			"code": "CS",
-			"id": "163495940315938816",
-			"username": "Casana",
-			"team_name": "Buenos Aires Gauchos",
+		"FN": {
+			"code": "FN",
+			"id": "1392986349811929181",
+			"username": "Baseball_Fanatic-03",
+			"team_name": "Detroit Tigers",
 			"team_color": "",
 			"logo": ""
 		},
-		"DG": {
-			"code": "DG",
-			"id": "710710938310934598",
-			"username": "rcsan",
-			"team_name": "Grim Reapers",
+		"GY": {
+			"code": "GY",
+			"id": "135939759632678912",
+			"username": "Charguyder",
+			"team_name": "Johto Golds",
 			"team_color": "",
 			"logo": ""
 		},
-		"GB": {
-			"code": "GB",
-			"id": "288809869522501643",
-			"username": "GeorgeBonouki",
-			"team_name": "Spiffy Penguins",
+		"CD": {
+			"code": "CD",
+			"id": "1162243298711318639",
+			"username": "chuck.downfield",
+			"team_name": "Auburn Dubbleplays",
 			"team_color": "",
 			"logo": ""
 		},
-		"JK": {
-			"code": "JK",
-			"id": "272900382475157504",
-			"username": "jakerthesnak",
-			"team_name": "Naptown Nine",
+		"FD": {
+			"code": "FD",
+			"id": "1025895292010254450",
+			"username": "frosteDonut",
+			"team_name": "Frosty Donuts",
 			"team_color": "",
 			"logo": ""
 		},
-		"MC": {
-			"code": "MC",
-			"id": "1196580591995453500",
-			"username": "Cherry",
-			"team_name": "Sugar Land Skeeters",
+		"HM": {
+			"code": "HM",
+			"id": "715672611643850773",
+			"username": "Honorable Mention",
+			"team_name": "Riverdale Bullpups",
 			"team_color": "",
 			"logo": ""
 		},
-		"SB": {
-			"code": "SB",
-			"id": "711388106749902849",
-			"username": "SilverBullet102",
-			"team_name": "Taco Bells",
+		"IS": {
+			"code": "IS",
+			"id": "343519555987046400",
+			"username": "iamslm22",
+			"team_name": "Nittany Lions",
 			"team_color": "",
 			"logo": ""
 		},
-		"05": {
-			"code": "05",
-			"id": "531613096930967563",
-			"username": "trainboy_2005",
-			"team_name": "Oxford Oxs",
+		"JB": {
+			"code": "JB",
+			"id": "766703003205238794",
+			"username": "jermbret",
+			"team_name": "Houston Astros",
 			"team_color": "",
 			"logo": ""
 		},
@@ -84,47 +84,47 @@ module.exports = {
 			"code": "DK",
 			"id": "896802616439341137",
 			"username": "diskyboi2100",
-			"team_name": "Troy Trojans",
+			"team_name": "Conway Chanticleers",
 			"team_color": "",
 			"logo": ""
 		},
-		"LA": {
-			"code": "LA",
-			"id": "693658714984546314",
-			"username": "theltrain24",
-			"team_name": "Cleveland Rockers",
+		"MD": {
+			"code": "MD",
+			"id": "201786628358799360",
+			"username": "madoclarkin",
+			"team_name": "Blue Badgers",
 			"team_color": "",
 			"logo": ""
 		},
-		"FF": {
-			"code": "FF",
-			"id": "607425396765622275",
-			"username": "ferbfletcher313",
-			"team_name": "Elwood City Grebes",
+		"95": {
+			"code": "95",
+			"id": "1082438706977325096",
+			"username": "matt95",
+			"team_name": "Montreal Expos",
 			"team_color": "",
 			"logo": ""
 		},
-		"JR": {
-			"code": "JR",
-			"id": "749714292626161787",
-			"username": "jr2604",
-			"team_name": "Atomic Oysters",
+		"MU": {
+			"code": "MU",
+			"id": "1291844783240773725",
+			"username": "mulltrik",
+			"team_name": "Snoopingas Usuals",
 			"team_color": "",
 			"logo": ""
 		},
-		"CU": {
-			"code": "CU",
+		"TC": {
+			"code": "TC",
 			"id": "316630794493755402",
 			"username": "tculler",
-			"team_name": "San Francisco Giants",
+			"team_name": "Sliding Snow Cones",
 			"team_color": "",
 			"logo": ""
 		},
-		"YZ": {
-			"code": "YZ",
-			"id": "1219739738043318412",
-			"username": "yrakazl982",
-			"team_name": "Seattle Mariners",
+		"PB": {
+			"code": "PB",
+			"id": "755436706160705627",
+			"username": "Pickleboom",
+			"team_name": "Hoenn Sapphire",
 			"team_color": "",
 			"logo": ""
 		},
@@ -148,15 +148,15 @@ module.exports = {
 			"code": "JL",
 			"id": "181458443708792832",
 			"username": "JRJuggerLaw",
-			"team_name": "New York Athletics",
+			"team_name": "New York Diamondbacks",
 			"team_color": "",
 			"logo": ""
 		},
-		"OB": {
-			"code": "OB",
-			"id": "1133748916114952273",
-			"username": "Towers-of-Obscure",
-			"team_name": "Orange Iguanas",
+		"R6": {
+			"code": "R6",
+			"id": "201746529944338432",
+			"username": "ROUTE66",
+			"team_name": "San Francisco Giants",
 			"team_color": "",
 			"logo": ""
 		},
@@ -168,27 +168,27 @@ module.exports = {
 			"team_color": "",
 			"logo": ""
 		},
-		"DA": {
-			"code": "DA",
-			"id": "525722122027401226",
-			"username": "DEPaf679",
-			"team_name": "Aqua Teens",
+		"RR": {
+			"code": "RR",
+			"id": "751522480367075360",
+			"username": "russell_the_regarded",
+			"team_name": "Boston Bombers",
 			"team_color": "",
 			"logo": ""
 		},
-		"WS": {
-			"code": "WS",
-			"id": "854145470737416214",
-			"username": "whiffspree01",
-			"team_name": "Sin City Dice",
+		"WC": {
+			"code": "WC",
+			"id": "663557079885152266",
+			"username": "williscool990",
+			"team_name": "Flipping Frogs",
 			"team_color": "",
 			"logo": ""
 		},
-		"CC": {
-			"code": "CC",
+		"W1": {
+			"code": "W1",
 			"id": "297131395179085824",
-			"username": "alexan.der",
-			"team_name": "Los Vaqueros",
+			"username": "Willthegod1",
+			"team_name": "Major Monopolies",
 			"team_color": "",
 			"logo": ""
 		}

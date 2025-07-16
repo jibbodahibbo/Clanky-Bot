@@ -1,42 +1,42 @@
 module.exports = {
 	"data": {
-	   "AP": {
-		  "code": "AP",
-		  "id": "268060176320299019",
-		  "username": "AnjouPays",
-		  "team_name": "Little Angels",
+	   "CW": {
+		  "code": "CW",
+		  "id": "430920494351515650",
+		  "username": "MunchSmith",
+		  "team_name": "Seattle Fishes",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "AX": {
-		  "code": "AX",
-		  "id": "272834771871334400",
-		  "username": "alex7456",
-		  "team_name": "Kansas City Royals",
+	   "EF": {
+		  "code": "EF",
+		  "id": "239071491281387521",
+		  "username": "ExtraFun",
+		  "team_name": "Colorado Angels",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "M@": {
-		  "code": "M@",
-		  "id": "690369864618999849",
-		  "username": "mattitude",
-		  "team_name": "Humongous Monsters",
+	   "FJ": {
+		  "code": "FJ",
+		  "id": "151494033896767488",
+		  "username": "flyingj138",
+		  "team_name": "Blue Reds",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "MC": {
-		  "code": "MC",
-		  "id": "1196580591995453500",
-		  "username": "Cherry",
-		  "team_name": "Houston Devil Rays",
+	   "HZ": {
+		  "code": "HZ",
+		  "id": "297541358502150144",
+		  "username": "Heinz",
+		  "team_name": "Little Rockies",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "MK": {
-		  "code": "MK",
-		  "id": "109102728336142336",
-		  "username": "MikeMadness",
-		  "team_name": "Toronto Blue Jays",
+	   "JY": {
+		  "code": "JY",
+		  "id": "307010267001257996",
+		  "username": "jyknight",
+		  "team_name": "Detroit Melonheads",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -48,27 +48,27 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "TC": {
-		  "code": "TC",
+	   "CK": {
+		  "code": "CK",
 		  "id": "736617636829331550",
-		  "username": "The CRK",
+		  "username": "CRK",
 		  "team_name": "Junior Bombers",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "PZ": {
-		  "code": "PZ",
-		  "id": "394922258533187584",
-		  "username": "Personizzle",
-		  "team_name": "Texas Twins",
+	   "LS": {
+		  "code": "LS",
+		  "id": "491378076748349452",
+		  "username": "Lukeseth1",
+		  "team_name": "Mighty Monsters",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "MM": {
-		  "code": "MM",
-		  "id": "698632902778552380",
-		  "username": "shrewsbury91",
-		  "team_name": "Boston Mariners",
+	   "MS": {
+		  "code": "MS",
+		  "id": "1262653930429747254",
+		  "username": "MattySamms",
+		  "team_name": "Little Devil Rays",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -76,30 +76,30 @@ module.exports = {
 		  "code": "VS",
 		  "id": "135436127862652928",
 		  "username": "Vissery",
-		  "team_name": "Humongous Tigers",
+		  "team_name": "White Tigers",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "2F": {
-		  "code": "2F",
-		  "id": "318576630819717120",
-		  "username": "cantwait2fly",
-		  "team_name": "San Francisco Giants",
+	   "N8": {
+		  "code": "N8",
+		  "id": "87804201056337920",
+		  "username": "Natetastic28",
+		  "team_name": "Milwaukee Brewers",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "JL": {
-	  	  "code": "JL",
-		  "id": "181458443708792832",
-		  "username": "JRJuggerLaw",
-		  "team_name": "New York Rockies",
+	   "NV": {
+	  	  "code": "NV",
+		  "id": "812641726014685204",
+		  "username": "navycap115",
+		  "team_name": "San Diego Orioles",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "DG": {
-		  "code": "DG",
-		  "id": "710710938310934598",
-		  "username": "rcsan",
+	   "SB": {
+		  "code": "SB",
+		  "id": "711388106749902849",
+		  "username": "SilverBullet102",
 		  "team_name": "Arizona Diamondbacks",
 		  "team_color": "",
 		  "logo": ""
@@ -108,7 +108,7 @@ module.exports = {
 		  "code": "GB",
 		  "id": "288809869522501643",
 		  "username": "GeorgeBonouki",
-		  "team_name": "Mighty Marlins",
+		  "team_name": "Crazy Pirates",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -116,7 +116,7 @@ module.exports = {
 		  "code": "DA",
 		  "id": "525722122027401226",
 		  "username": "DEPaf679",
-		  "team_name": "Little Wombats",
+		  "team_name": "Little Blue Jays",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -124,23 +124,23 @@ module.exports = {
 		  "code": "BO",
 		  "id": "894684630970671125",
 		  "username": "bobbyJONES2370",
-		  "team_name": "Chicago Cubs",
+		  "team_name": "Humongous Red Sox",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "C8": {
-		  "code": "C8",
-		  "id": "355931440061612035",
-		  "username": "crazyei8hts",
-		  "team_name": "White Athletics",
+	   "SD": {
+		  "code": "SD",
+		  "id": "873632513396994048",
+		  "username": "simpsons41",
+		  "team_name": "Cleveland Indians",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "CS": {
-		  "code": "CS",
-		  "id": "163495940315938816",
-		  "username": "Casana",
-		  "team_name": "Mighty Rangers",
+	   "SW": {
+		  "code": "SW",
+		  "id": "617490550832103434",
+		  "username": "sternwizardd",
+		  "team_name": "Philadelphia Phillies",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -156,39 +156,39 @@ module.exports = {
 		  "code": "LW",
 		  "id": "803449974800384040",
 		  "username": "lillwaws26",
-		  "team_name": "Tampa Bay Expos",
+		  "team_name": "Chicago Cardinals",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "SK": {
 		  "code": "SK",
 		  "id": "161979355671560193",
-		  "username": "sky.lol",
-		  "team_name": "Montreal Indians",
+		  "username": "sky",
+		  "team_name": "Red Hornets",
 		  "team_color": "",
 		  "logo": ""
 	   },
 	   "MP": {
 		  "code": "MP",
 		  "id": "280562143068291073",
-		  "username": "cedarteal",
-		  "team_name": "Milwaukee Melonheads",
+		  "username": "mapleteal",
+		  "team_name": "Toronto Braves",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "WF": {
-		  "code": "WF",
-		  "id": "1020141753858269336",
-		  "username": "randompersonrealone",
-		  "team_name": "Boston Yankees",
+	   "YT": {
+		  "code": "YT",
+		  "id": "213203256606851072",
+		  "username": "marco",
+		  "team_name": "Mighty Wombats",
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "IS": {
-		  "code": "IS",
-		  "id": "343519555987046400",
-		  "username": "iamslm22",
-		  "team_name": "Mighty Hornets",
+	   "UM": {
+		  "code": "UM",
+		  "id": "498562928019111953",
+		  "username": "Umbreon88",
+		  "team_name": "Team name TBD",
 		  "team_color": "",
 		  "logo": ""
 	   },
