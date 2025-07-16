@@ -186,7 +186,7 @@ module.exports = {
 		},
 		"W1": {
 			"code": "W1",
-			"id": "297131395179085824",
+			"id": "1079237614298726620",
 			"username": "Willthegod1",
 			"team_name": "Major Monopolies",
 			"team_color": "",
