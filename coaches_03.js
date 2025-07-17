@@ -128,11 +128,11 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "SD": {
-		  "code": "SD",
-		  "id": "355931440061612035",
-		  "username": "simpsons41",
-		  "team_name": "Team name TBD",
+	   "JO": {
+		  "code": "JO",
+		  "id": "1239355738745212988",
+		  "username": "Joey",
+		  "team_name": "Little Giants",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -144,11 +144,11 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "CU": {
-		  "code": "CU",
-		  "id": "316630794493755402",
-		  "username": "tculler",
-		  "team_name": "Milwaukee Brewers",
+	   "WS": {
+		  "code": "WS",
+		  "id": "854145470737416214",
+		  "username": "whiffspree01",
+		  "team_name": "Junior Athletics",
 		  "team_color": "",
 		  "logo": ""
 	   },
