@@ -130,9 +130,9 @@ module.exports = {
 	   },
 	   "SD": {
 		  "code": "SD",
-		  "id": "873632513396994048",
+		  "id": "355931440061612035",
 		  "username": "simpsons41",
-		  "team_name": "Cleveland Indians",
+		  "team_name": "Team name TBD",
 		  "team_color": "",
 		  "logo": ""
 	   },
@@ -184,10 +184,10 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "UM": {
-		  "code": "UM",
-		  "id": "498562928019111953",
-		  "username": "Umbreon88",
+	   "AT": {
+		  "code": "AT",
+		  "id": "390617765003788299",
+		  "username": "arcothunder",
 		  "team_name": "Team name TBD",
 		  "team_color": "",
 		  "logo": ""

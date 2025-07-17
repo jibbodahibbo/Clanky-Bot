@@ -20,7 +20,7 @@ module.exports = {
 			"code": "FN",
 			"id": "1392986349811929181",
 			"username": "Baseball_Fanatic-03",
-			"team_name": "Detroit Tigers",
+			"team_name": "Savannah Bananas",
 			"team_color": "",
 			"logo": ""
 		},
