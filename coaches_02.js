@@ -40,11 +40,11 @@ module.exports = {
 			"team_color": "",
 			"logo": ""
 		},
-		"FD": {
-			"code": "FD",
-			"id": "1025895292010254450",
-			"username": "frosteDonut",
-			"team_name": "Frosty Donuts",
+		"AA": {
+			"code": "AA",
+			"id": "1076857450399014932",
+			"username": "adamfrombuffalo",
+			"team_name": "Adam's Atoms",
 			"team_color": "",
 			"logo": ""
 		},

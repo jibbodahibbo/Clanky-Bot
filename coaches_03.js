@@ -184,11 +184,11 @@ module.exports = {
 		  "team_color": "",
 		  "logo": ""
 	   },
-	   "AT": {
-		  "code": "AT",
-		  "id": "390617765003788299",
-		  "username": "arcothunder",
-		  "team_name": "Team name TBD",
+	   "JJ": {
+		  "code": "JJ",
+		  "id": "571222309956747274",
+		  "username": "juicyjews",
+		  "team_name": "Cleveland Indianss",
 		  "team_color": "",
 		  "logo": ""
 	   },
