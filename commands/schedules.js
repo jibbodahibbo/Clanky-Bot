@@ -5,9 +5,9 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
-const {s1301schedule, s1301teams} = require("../s1401_schedule");
-const {s1302schedule, s1302teams} = require("../s1402_schedule");
-const {s1303schedule, s1303teams} = require("../s1403_schedule");
+const {s1401schedule, s1401teams} = require("../s1401_schedule");
+const {s1402schedule, s1402teams} = require("../s1402_schedule");
+const {s1403schedule, s1403teams} = require("../s1403_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -47,24 +47,24 @@ module.exports = {
 
 				//Inject a schedule from json.
 				let ss="";
-				const sched01= s1301schedule;
-				let t= s1301teams;
+				const sched01= s1401schedule;
+				let t= s1401teams;
 				if (args[0] == "inject" && args[1]=="s14"){
 					for (var i = 0; i < sched01.length; i++) {
 						let s=sched01[i];
 						ss = await createScheduleItem(['maddog01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
  						console.log(['maddog01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
-				const sched02= s1302schedule;
-				t= s1302teams;
+				const sched02= s1402schedule;
+				t= s1402teams;
 					for (var i = 0; i < sched02.length; i++) {
 						let s=sched02[i];
 						ss = await createScheduleItem(['maddog02',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
  						console.log(['maddog02',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
 					}
 
-				const sched03= s1303schedule;
-				t= s1303teams;
+				const sched03= s1403schedule;
+				t= s1403teams;
 					for (var i = 0; i < sched03.length; i++) {
 						let s=sched03[i];
 						ss = await createScheduleItem(['maddog03',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
