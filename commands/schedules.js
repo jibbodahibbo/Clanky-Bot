@@ -5,9 +5,9 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
-const {s1301schedule, s1301teams} = require("../s1301_schedule");
-const {s1302schedule, s1302teams} = require("../s1302_schedule");
-const {s1303schedule, s1303teams} = require("../s1303_schedule");
+const {s1301schedule, s1301teams} = require("../s1401_schedule");
+const {s1302schedule, s1302teams} = require("../s1402_schedule");
+const {s1303schedule, s1303teams} = require("../s1403_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
@@ -49,7 +49,7 @@ module.exports = {
 				let ss="";
 				const sched01= s1301schedule;
 				let t= s1301teams;
-				if (args[0] == "inject" && args[1]=="s13"){
+				if (args[0] == "inject" && args[1]=="s14"){
 					for (var i = 0; i < sched01.length; i++) {
 						let s=sched01[i];
 						ss = await createScheduleItem(['maddog01',s.game,t[s.away_team],s.away_code,t[s.home_team],s.home_code]);
