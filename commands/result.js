@@ -500,7 +500,7 @@ module.exports = {
 		channel = client.channels.cache.get(tournament_channel_id);
 	  }else if (result_obj.league == "vbfl"){
 		channel = client.channels.cache.get(VFBL_channel_id);
-	  }else if (result_obj.league == "dbsl"){
+	  }else if (result_obj.league == "dbsl"|| result_obj.league == "dbsla"|| result_obj.league == "dbslp"){
 		channel = client.channels.cache.get(dbsl_channel_id);
 	  }else if (result_obj.league=="w3"){
 		channel = client.channels.cache.get(other_results_id);
