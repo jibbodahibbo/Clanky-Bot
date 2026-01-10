@@ -181,7 +181,7 @@ let results_channel_id = "911813193960149002"; // S10 Results Channel (All seaso
 let tournament_channel_id = "562721686164733979"; // Tournament Channel
 let test_channel_id = "733773776357163079"; // id in test server
 let VFBL_channel_id ="755833854568169613";//Visserys Football League
-let dbsl_channel_id = "755833854568169613"; // discord backyard soccer league
+let dbsl_channel_id = "1392669498078920824"; // discord backyard soccer league
 
 module.exports = {
 
