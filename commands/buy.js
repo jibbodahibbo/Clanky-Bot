@@ -105,7 +105,7 @@ function insult(user,other){
 let radj=adjs[Math.floor(Math.random() * adjs.length)];
 let rnoun=nouns[Math.floor(Math.random() * nouns.length)];
 let e={
-			"title": user+', you have redeemed an insult for 2,000 CC!',
+			"title": user+', you have redeemed an insult for 200 CC!',
 			"color": 10038562,
 			"description": '<@'+other+'> is a '+radj+' '+rnoun+'.',
 		}
