@@ -755,7 +755,7 @@ async function getDraftStatus(league) {
 	draftData[league]["currentDrafter"] = await getCurrentCoach(league);
 	let coach_data = draftData[league]["coachData"];
 
-  draft_status = `**Season 10 - ${league} Draft**\n__Status__: ${
+  draft_status = `**Season 15 - ${league} Draft**\n__Status__: ${
 		draftData[league]["lock"] ? ":lock: Locked" : ":unlock: Unlocked"
   }\n__Pick #__: ${draftData[league]["draftNum"]}\n__Current Coach__: ${
 		draftData[league]["currentDrafter"]
