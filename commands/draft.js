@@ -100,7 +100,8 @@ let bot_channel;
 // const draft_sheet_id = "1igAymtHEKHOVvWBsuIA4fSuriv8EgPl1Esth8HcslM0" //S11 
 // const draft_sheet_id =    "1aCFL3KU4yE6ybZndLj24IiWa2jpyBmPRhdLiM83MgEc" //S12
 // const draft_sheet_id = "1H_4_OgkTj1yKVtdhzm6Ih3VYJZy9ZRhxyEE6uzxImz4"; //S13 c8
-const draft_sheet_id = "1gru5SrTFOPcJmwMIZhsZiSNdCok_g6dkzl6LK-b5mBM"; //S14 
+// const draft_sheet_id = "1gru5SrTFOPcJmwMIZhsZiSNdCok_g6dkzl6LK-b5mBM"; //S14 
+const draft_sheet_id = "11Ww_dEnFgXr5YmWG3VObkTluxd10xTcU4oesEvyLnnY"; //S15
 
 // const draft_sheet_id = "17--pYnuHJz9kGT9B1oNTuSx_-pUzQ9XDtpVJTpE8HuU"; // <--- This is jlund's copy
 const draft_cell_start = '';
