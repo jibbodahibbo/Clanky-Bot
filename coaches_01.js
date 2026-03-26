@@ -1,18 +1,18 @@
 module.exports = {
 	"data": {
-		"AX": {
-			"code": "AX",
-			"id": "272834771871334400",
-			"username": "alex7456",
-			"team_name": "Indiana Pacers",
-			"team_color": "",
-			"logo": ""
-		},
+	  	 "PS": {
+		 	 "code": "PS",
+		 	 "id": "463930040036491264",
+		 	 "username": "psanchez55",
+		 	 "team_name": "Houston Astros",
+		 	 "team_color": "",
+		 	 "logo": ""
+	  	 },
 		"AP": {
 			"code": "AP",
 			"id": "268060176320299019",
 			"username": "AnjouPays",
-			"team_name": "Mortal Wombats",
+			"team_name": "Evil Rays",
 			"team_color": "",
 			"logo": ""
 		},
@@ -20,7 +20,7 @@ module.exports = {
 			"code": "BO",
 			"id": "894684630970671125",
 			"username": "bobbyJONES2370",
-			"team_name": "Texas Patriots",
+			"team_name": "Texas Koalas",
 			"team_color": "",
 			"logo": ""
 		},
@@ -28,31 +28,31 @@ module.exports = {
 			"code": "C8",
 			"id": "355931440061612035",
 			"username": "crazyei8hts",
-			"team_name": "Round Trippers",
+			"team_name": "Baja Blasters",
 			"team_color": "",
 			"logo": ""
 		},
-		"CH": {
-			"code": "CH",
-			"id": "336232350088429589",
-			"username": "Chellow",
-			"team_name": "Wordly Warmups",
+	 	  "CK": {
+			  "code": "CK",
+			  "id": "736617636829331550",
+			  "username": "CRK",
+			  "team_name": "Stubborn Royals",
+			  "team_color": "",
+			  "logo": ""
+	  	 },
+		"95": {
+			"code": "95",
+			"id": "1082438706977325096",
+			"username": "matt95",
+			"team_name": "Chuck E. Cheesers",
 			"team_color": "",
 			"logo": ""
 		},
-		"BF": {
-			"code": "BF",
-			"id": "428685276936667147",
-			"username": "BogFrungus",
-			"team_name": "Area 51 Greasels",
-			"team_color": "",
-			"logo": ""
-		},
-		"MC": {
-			"code": "MC",
-			"id": "1196580591995453500",
-			"username": "Cherry",
-			"team_name": "Sugar Land Skeeters",
+		"GY": {
+			"code": "GY",
+			"id": "135939759632678912",
+			"username": "Charguyder",
+			"team_name": "Grand Tree Gnomes",
 			"team_color": "",
 			"logo": ""
 		},
@@ -60,7 +60,7 @@ module.exports = {
 			"code": "HZ",
 			"id": "297541358502150144",
 			"username": "Heinz",
-			"team_name": "Mystery Machines",
+			"team_name": "Condiment Crew",
 			"team_color": "",
 			"logo": ""
 		},
@@ -76,7 +76,7 @@ module.exports = {
 			"code": "LW",
 			"id": "803449974800384040",
 			"username": "lillwaws26",
-			"team_name": "Los Angeles Brats",
+			"team_name": "Stoop Kids",
 			"team_color": "",
 			"logo": ""
 		},
@@ -84,17 +84,17 @@ module.exports = {
 			"code": "M@",
 			"id": "690369864618999849",
 			"username": "mattitude",
-			"team_name": "Myrtle Beach Mermen",
+			"team_name": "Mattitude's Special Team",
 			"team_color": "",
 			"logo": ""
 		},
-		"FF": {
-			"code": "FF",
-			"id": "607425396765622275",
-			"username": "Ferb Fletcher",
-			"team_name": "Elwood City Grebes",
-			"team_color": "",
-			"logo": ""
+		"CW": {
+			  "code": "CW",
+			  "id": "430920494351515650",
+			  "username": "MunchSmith",
+			  "team_name": "Seattle Fishes",
+			  "team_color": "",
+			  "logo": ""
 		},
 		"YY": {
 			"code": "YY",
@@ -108,18 +108,18 @@ module.exports = {
 			"code": "IT",
 			"id": "147462189404389376",
 			"username": "Itaniium",
-			"team_name": "Str8 Rippin",
+			"team_name": "Sneaky Beavers",
 			"team_color": "",
 			"logo": ""
 		},
-		"JR": {
-			"code": "JR",
-			"id": "749714292626161787",
-			"username": "JR2604",
-			"team_name": "Atomic Oysters",
-			"team_color": "",
-			"logo": ""
-		},
+		"N8": {
+			  "code": "N8",
+			  "id": "87804201056337920",
+			  "username": "Natetastic28",
+			  "team_name": "Wild Cat Ray DJs",
+			  "team_color": "",
+			  "logo": ""
+	 	  },
 		"PZ": {
 			"code": "PZ",
 			"id": "394922258533187584",
@@ -132,7 +132,7 @@ module.exports = {
 			"code": "HC",
 			"id": "738170256874405980",
 			"username": "hciii",
-			"team_name": "Crazy Beers",
+			"team_name": "Fine Wines",
 			"team_color": "",
 			"logo": ""
 		},
@@ -140,7 +140,7 @@ module.exports = {
 			"code": "NV",
 			"id": "812641726014685204",
 			"username": "navycap115",
-			"team_name": "San Diego Ostriches",
+			"team_name": "Aurora Borioles",
 			"team_color": "",
 			"logo": ""
 		},
@@ -148,7 +148,7 @@ module.exports = {
 			"code": "GB",
 			"id": "288809869522501643",
 			"username": "George Bonouki",
-			"team_name": "Spiffy Penguins",
+			"team_name": "Goofy Goobers",
 			"team_color": "",
 			"logo": ""
 		},
@@ -160,19 +160,19 @@ module.exports = {
 			"team_color": "",
 			"logo": ""
 		},
-		"TW": {
-			"code": "TW",
-			"id": "149700004208967681",
-			"username": "HaloTW",
-			"team_name": "Mightiest Melonheads",
+		"HM": {
+			"code": "HM",
+			"id": "715672611643850773",
+			"username": "Honorable Mention",
+			"team_name": "Riverdale Bullpups",
 			"team_color": "",
 			"logo": ""
 		},
-		"VS": {
-			"code": "VS",
-			"id": "135436127862652928",
-			"username": "Vissery",
-			"team_name": "Sleazy Raccoons",
+		"TC": {
+			"code": "TC",
+			"id": "316630794493755402",
+			"username": "tculler",
+			"team_name": "Sliding Snow Cones",
 			"team_color": "",
 			"logo": ""
 		},
@@ -180,15 +180,47 @@ module.exports = {
 			"code": "MM",
 			"id": "698632902778552380",
 			"username": "shrewsbury91",
-			"team_name": "Guy Smileys",
+			"team_name": "Dank Memes",
 			"team_color": "",
 			"logo": ""
 		},
-		"GS": {
-			"code": "GS",
-			"id": "355934424061181972",
-			"username": "GSchlim",
-			"team_name": "Grand Salamis",
+		"DA": {
+			  "code": "DA",
+			  "id": "525722122027401226",
+			  "username": "DEPaf679",
+			  "team_name": "Aqua Teens",
+			  "team_color": "",
+			  "logo": ""
+		},
+		"R6": {
+			"code": "R6",
+			"id": "201746529944338432",
+			"username": "ROUTE66",
+			"team_name": "San Francisco Giants",
+			"team_color": "",
+			"logo": ""
+		},
+		"VS": {
+			"code": "VS",
+			"id": "135436127862652928",
+			"username": "Vissery",
+			"team_name": "Golden Glove Retrievers",
+			"team_color": "",
+			"logo": ""
+		},
+		"PB": {
+			"code": "PB",
+			"id": "755436706160705627",
+			"username": "Pickleboom",
+			"team_name": "Bradford City Bantams",
+			"team_color": "",
+			"logo": ""
+		},
+		"AT": {
+			"code": "AT",
+			"id": "390617765003788299",
+			"username": "arcothunder",
+			"team_name": "Scranton Stranglers",
 			"team_color": "",
 			"logo": ""
 		}
