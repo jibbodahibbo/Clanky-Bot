@@ -11574,7 +11574,7 @@ module.exports = {
 		},		
 		"Anakin Skywalker": {
 			Name: "Anakin Skywalker",
-			"Image URL":"https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Fiejqdjmdq3u91.jpg",
+			"Image URL":"https://i.imgur.com/XPimKiJ.png",
 			ADP: 32.8,
 			ID: "QI",
 			SLGv: 85,

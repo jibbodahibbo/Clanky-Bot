@@ -4,7 +4,7 @@ module.exports = {
 			"code": "AP",
 			"id": "268060176320299019",
 			"username": "AnjouPays",
-			"team_name": "Little Angels",
+			"team_name": "The I.J.L.S.A.",
 			"team_color": "",
 			"logo": ""
 		},
@@ -108,7 +108,7 @@ module.exports = {
 			"code": "JB",
 			"id": "766703003205238794",
 			"username": "jermbret",
-			"team_name": "Sumo Storm",
+			"team_name": "Miami Mimes",
 			"team_color": "",
 			"logo": ""
 		},
@@ -220,7 +220,7 @@ module.exports = {
 		  "code": "JJ",
 		  "id": "571222309956747274",
 		  "username": "juicyjews",
-		  "team_name": "Cleveland Indianss",
+		  "team_name": "Cleveland Indians",
 		  "team_color": "",
 		  "logo": ""
 	   },

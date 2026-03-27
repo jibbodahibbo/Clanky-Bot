@@ -4,7 +4,7 @@ module.exports = {
 		 	 "code": "PS",
 		 	 "id": "463930040036491264",
 		 	 "username": "psanchez55",
-		 	 "team_name": "Houston Astros",
+		 	 "team_name": "Mid-County Moose",
 		 	 "team_color": "",
 		 	 "logo": ""
 	  	 },
