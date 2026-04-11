@@ -5,9 +5,9 @@ const { googleAuth } = require('../byb-bot.js');
 const auth = require('../auth.js');
 const { google } = require('googleapis');
 const { discord } = require("../byb-bot");
-const {s1401schedule, s1401teams} = require("../s1401_schedule");
-const {s1402schedule, s1402teams} = require("../s1402_schedule");
-const {s1403schedule, s1403teams} = require("../s1403_schedule");
+const {s1401schedule, s1401teams} = require("../s1501_schedule");
+const {s1402schedule, s1402teams} = require("../s1502_schedule");
+const {s1403schedule, s1403teams} = require("../s1503_schedule");
 const sheets = require("../byb-bot.js").sheets;
 
 const sheetsAPIKey =process.env.Sheets_APIKey;
