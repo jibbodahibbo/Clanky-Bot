@@ -508,10 +508,10 @@ module.exports = {
 				// AWAY log
 					if (away_result_obj.logs) {
 						tempLogChannel.send({
-							content: `Log from ${game_schedule_data.away_coach_id}`,
+							content: `Log from ${game_schedule_data.away_coach_id} for ${result_obj.league} Game ${result_obj.game_num}`,
 							files: [{
 								attachment: Buffer.from(away_result_obj.logs, "utf-8"),
-								name: `${game_schedule_data.away_coach_id}_log.txt`,
+								name: `${result_obj.league}_${result_obj.game_num}_${game_schedule_data.away_coach_id}_log.txt`,
 							}],
 						});
 					}
@@ -519,10 +519,10 @@ module.exports = {
 					// HOME log
 					if (home_result_obj.logs) {
 						tempLogChannel.send({
-							content: `Log from ${game_schedule_data.home_coach_id}`,
+							content: `Log from ${game_schedule_data.home_coach_id} for ${result_obj.league} Game ${result_obj.game_num}`,
 							files: [{
 								attachment: Buffer.from(home_result_obj.logs, "utf-8"),
-								name: `${game_schedule_data.home_coach_id}_log.txt`,
+								name: `${result_obj.league}_${result_obj.game_num}_${game_schedule_data.home_coach_id}_log.txt`,
 							}],
 						});
 					}
