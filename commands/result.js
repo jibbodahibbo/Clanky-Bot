@@ -454,21 +454,7 @@ module.exports = {
 		channel = client.channels.cache.get(results_channel_id);
 	  }
 
-		// SEND TXT FILES TO TEMP LOG CHANNEL
-		let temp_log_channel_id = "741308777357377617";
-		const tempLogChannel = client.channels.cache.get(temp_log_channel_id);
 
-		if (tempLogChannel && message.attachments.size > 0) {
-			for (const attachment of message.attachments.values()) {
-				const name = attachment.name.toLowerCase();
-
-				if (name.endsWith(".txt") || name.endsWith(".log")) {
-					tempLogChannel.send(`Log from ${coach} (Game ${game_num})`, {
-						files: [attachment.url],
-					});
-				}
-			}
-		}
 
 			// get additional game data from schedule
 			let schedule_data_query = {
@@ -516,6 +502,30 @@ module.exports = {
 				channel.send(awayMessage, { embed: awayObject }).then(() => {
 					channel.send("", { embed: homeObject });
 				});
+
+
+					let tempLogChannel = client.channels.cache.get("741308777357377617");
+				// AWAY log
+					if (away_result_obj.logs) {
+						tempLogChannel.send({
+							content: `Log from ${game_schedule_data.away_coach_id}`,
+							files: [{
+								attachment: Buffer.from(away_result_obj.logs, "utf-8"),
+								name: `${game_schedule_data.away_coach_id}_log.txt`,
+							}],
+						});
+					}
+
+					// HOME log
+					if (home_result_obj.logs) {
+						tempLogChannel.send({
+							content: `Log from ${game_schedule_data.home_coach_id}`,
+							files: [{
+								attachment: Buffer.from(home_result_obj.logs, "utf-8"),
+								name: `${game_schedule_data.home_coach_id}_log.txt`,
+							}],
+						});
+					}
 
 				//twitterCommands.tweetResult(client, game_schedule_data, away_result_obj, home_result_obj);
 			} else {
