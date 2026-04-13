@@ -2,6 +2,7 @@ const { Op } = require("sequelize");
 const { Schedules, Results } = require("../dbInit");
 const discord = require("../byb-bot.js").discord;
 const twitterCommands = require("../twitterCommands.js");
+const fetch = require("node-fetch");
 /**
  *
  * @param {*} args
@@ -107,6 +108,7 @@ async function saveResult(result, testing=false) {
 			coach: result.coach,
 			game_num: result.game_num,
 			images: result.images,
+			logs: result.logs,
 		});
 
 	}
@@ -302,12 +304,26 @@ module.exports = {
 			}
 		}
 
-		// extract images
+		// extract images and log
+		let logs = "";
 		if (message.attachments.size > 0) {
 			for (attachment of message.attachments.values()) {
-				images.push(attachment.attachment);
+				const name = attachment.name.toLowerCase();
+
+				if (name.endsWith(".txt") || name.endsWith(".log")) {
+					const response = await fetch(attachment.url);
+					const text = await response.text();
+					logs += `\n\n--- ${name} ---\n\n${text}`;
+				} else if(
+					attachment.contentType?.startsWith("image/") ||
+					name.endsWith(".png") ||
+					name.endsWith(".jpg") ||
+					name.endsWith(".jpeg")
+				){
+					images.push(attachment.attachment);
+				}
 			}
-		} else {
+		} else if (images.length == 0) {
 			await message.reply(
 				"Your result still needs a screenshot! Reply with one to add it."
 			);
@@ -340,6 +356,7 @@ module.exports = {
 			coach: coach,
 			game_num: game_num,
 			images: images,
+			logs: logs || null,
 		};
 
 		// send result summary reply
@@ -437,6 +454,22 @@ module.exports = {
 	  }else{
 		channel = client.channels.cache.get(results_channel_id);
 	  }
+
+		// SEND TXT FILES TO TEMP LOG CHANNEL
+		let temp_log_channel_id = "741308777357377617";
+		const tempLogChannel = client.channels.cache.get(temp_log_channel_id);
+
+		if (tempLogChannel && message.attachments.size > 0) {
+			for (const attachment of message.attachments.values()) {
+				const name = attachment.name.toLowerCase();
+
+				if (name.endsWith(".txt") || name.endsWith(".log")) {
+					tempLogChannel.send(`Log from ${coach} (Game ${game_num})`, {
+						files: [attachment.url],
+					});
+				}
+			}
+		}
 
 			// get additional game data from schedule
 			let schedule_data_query = {

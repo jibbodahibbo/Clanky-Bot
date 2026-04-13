@@ -83,6 +83,10 @@ const Results = sequelize.define("results", {
 	images: {
 		type: DataTypes.ARRAY(Sequelize.STRING),
 	},
+	logs: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+	},
 });
 
 const Draft_j = sequelize.define("draft_j", {
