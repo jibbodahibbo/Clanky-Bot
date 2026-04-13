@@ -315,7 +315,6 @@ module.exports = {
 					const text = await response.text();
 					logs += `\n\n--- ${name} ---\n\n${text}`;
 				} else if(
-					attachment.contentType?.startsWith("image/") ||
 					name.endsWith(".png") ||
 					name.endsWith(".jpg") ||
 					name.endsWith(".jpeg")
