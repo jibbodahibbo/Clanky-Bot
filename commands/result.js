@@ -306,6 +306,7 @@ module.exports = {
 
 		// extract images and log
 		let logs = "";
+		let logEntries = [];
 		if (message.attachments.size > 0) {
 			for (attachment of message.attachments.values()) {
 				const name = attachment.name.toLowerCase();
@@ -313,13 +314,35 @@ module.exports = {
 				if (name.endsWith(".txt") || name.endsWith(".log")) {
 					const response = await fetch(attachment.url);
 					const text = await response.text();
-					logs += `\n\n--- ${name} ---\n\n${text}`;
-				} else if(
+					logEntries.push({
+						type: "text",
+						name,
+						content: text,
+					});
+				} else if (name.endsWith(".zip")) {
+					const response = await fetch(attachment.url);
+					const arrayBuffer = await response.arrayBuffer();
+					logEntries.push({
+						type: "zip",
+						name,
+						content: Buffer.from(arrayBuffer).toString("base64"),
+					});
+				} else if (
 					name.endsWith(".png") ||
 					name.endsWith(".jpg") ||
 					name.endsWith(".jpeg")
-				){
+				) {
 					images.push(attachment.attachment);
+				}
+			}
+			if (logEntries.length > 0) {
+				const hasZip = logEntries.some((entry) => entry.type === "zip");
+				if (hasZip) {
+					logs = JSON.stringify({ entries: logEntries });
+				} else {
+					for (const entry of logEntries) {
+						logs += `\n\n--- ${entry.name} ---\n\n${entry.content}`;
+					}
 				}
 			}
 		} else if (images.length == 0) {
@@ -505,27 +528,53 @@ module.exports = {
 
 
 					let tempLogChannel = client.channels.cache.get("741308777357377617");
-				// AWAY log
-					if (away_result_obj.logs) {
-						tempLogChannel.send({
-							content: `Log from ${game_schedule_data.away_coach_id} for ${result_obj.league} Game ${result_obj.game_num}`,
-							files: [{
-								attachment: Buffer.from(away_result_obj.logs, "utf-8"),
-								name: `${result_obj.league}_${result_obj.game_num}_${game_schedule_data.away_coach_id}_log.txt`,
-							}],
+				const sendLogFiles = (resultData, coachId) => {
+					const logsField = resultData.logs;
+					if (!logsField) {
+						return;
+					}
+					let files = [];
+					let parsedLogs = null;
+					try {
+						parsedLogs = JSON.parse(logsField);
+					} catch (err) {
+						parsedLogs = null;
+					}
+					if (parsedLogs && Array.isArray(parsedLogs.entries)) {
+						for (const entry of parsedLogs.entries) {
+							if (entry.type === "zip") {
+								files.push({
+									attachment: Buffer.from(entry.content, "base64"),
+									name: entry.name,
+								});
+							} else {
+								files.push({
+									attachment: Buffer.from(entry.content, "utf-8"),
+									name: entry.name,
+								});
+							}
+						}
+					} else {
+						files.push({
+							attachment: Buffer.from(logsField, "utf-8"),
+							name: `${result_obj.league}_${result_obj.game_num}_${coachId}_log.txt`,
 						});
 					}
+					tempLogChannel.send({
+						content: `Log from ${coachId} for ${result_obj.league} Game ${result_obj.game_num}`,
+						files,
+					});
+				};
 
-					// HOME log
-					if (home_result_obj.logs) {
-						tempLogChannel.send({
-							content: `Log from ${game_schedule_data.home_coach_id} for ${result_obj.league} Game ${result_obj.game_num}`,
-							files: [{
-								attachment: Buffer.from(home_result_obj.logs, "utf-8"),
-								name: `${result_obj.league}_${result_obj.game_num}_${game_schedule_data.home_coach_id}_log.txt`,
-							}],
-						});
-					}
+				// AWAY log
+				if (away_result_obj.logs) {
+					sendLogFiles(away_result_obj, game_schedule_data.away_coach_id);
+				}
+
+				// HOME log
+				if (home_result_obj.logs) {
+					sendLogFiles(home_result_obj, game_schedule_data.home_coach_id);
+				}
 
 				//twitterCommands.tweetResult(client, game_schedule_data, away_result_obj, home_result_obj);
 			} else {
