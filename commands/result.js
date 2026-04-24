@@ -330,7 +330,11 @@ module.exports = {
 				} else if (
 					name.endsWith(".png") ||
 					name.endsWith(".jpg") ||
-					name.endsWith(".jpeg")
+					name.endsWith(".jpeg") ||
+					name.endsWith(".gif") ||
+					name.endsWith(".webp") || 
+					name.endsWith(".bmp") || 
+					name.endsWith(".tiff")
 				) {
 					images.push(attachment.attachment);
 				}
