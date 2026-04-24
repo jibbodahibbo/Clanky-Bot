@@ -21,7 +21,14 @@ const players = require('./players.js');
 const prefix = process.env.PREFIX;
 
 
-const client = new Discord.Client();
+const client = new Discord.Client({
+	intents: [
+		Discord.Intents.FLAGS.GUILDS,
+		Discord.Intents.FLAGS.GUILD_MESSAGES,
+		Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+		Discord.Intents.FLAGS.GUILD_MESSAGE_TYPING
+	]
+});
 
 module.exports = {
 	client: client,
@@ -96,8 +103,8 @@ client.once('ready', () => {
 
 try {
 	client.on('message', async message => {
-		// console.log(message.content);
-		if (!message.content.startsWith(prefix) || message.author.bot) return;
+		// Ignore messages without content, from bots, or not in text-based channels
+		if (!message.content || !message.content.startsWith(prefix) || message.author.bot || (message.channel.type !== 'text' && message.channel.type !== 'dm')) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
