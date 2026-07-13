@@ -211,10 +211,10 @@ module.exports = {
 		const color_pending = 16312092;
 
 ///Clearing a result
-	if (args[0] == "clear"){
+	if (args[0] == "delete"){
 		 if (message.member.roles.cache.find(role => role.name == 'Commissioner') || message.member.roles.cache.find(role => role.name == 'Codehead')) {
 	  await clearResults(args);
-		return message.reply("cleared");
+		return message.reply("deleted");
 	  }
 	}
   //Commisioner spying on a result. notifies test-lab channel
