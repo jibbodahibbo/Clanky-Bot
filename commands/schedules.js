@@ -74,12 +74,30 @@ module.exports = {
 				}
 
 
-				//Clear the schedule, Only uncomment this if we need to clear a schedule due to a mistake.
-			/*	if (args[0] == "clear") {
-					const clear = await Schedules.destroy({ where: {league:args[1]}, truncate: true });
-					return message.reply("Schedule for ${args[1]} Has Been Cleared.");
+				//Clear the schedule, only use this when we intentionally want to remove all items for a league.
+				if (args[0] == "clear") {
+					const league = args[1];
+					if (!league) {
+						return message.reply("Please specify a league to clear.");
+					}
+
+					await message.reply(`Are you sure you want to delete every schedule item for ${league.toUpperCase()}? Reply with yes to confirm.`);
+
+					try {
+						const collected = await message.channel.awaitMessages(
+							(m) => m.author.id === message.author.id && (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "y"),
+							{ max: 1, time: 30000, errors: ["time"] }
+						);
+
+						if (collected.first()) {
+							await Schedules.destroy({ where: { league } });
+							return message.reply(`Schedule for ${league.toUpperCase()} has been cleared.`);
+						}
+					} catch (e) {
+						return message.reply("Schedule clear cancelled.");
+					}
 				}
-			*/
+			
 
 				if (args[0] == "fixcoach") {
 					const fixcoach = await Schedules.update({ home_coach_id: args[3]},
