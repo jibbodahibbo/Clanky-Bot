@@ -193,7 +193,7 @@ module.exports = {
 		let coach_regex = RegExp("([A-Z0-9!-~][A-Z0-9!-~])");  //allow numbers 0-9
 		let coach = "";
 		let league_list = ["lulu", "paste","rp","5050","jorge","hrd","s7","vbfl","s8","s9","w3","smokey01",
-			"smokey03","boss03","boss01","funnybones01","funnybones03","maddog01","maddog02","maddog03","dbsl","axeman01","axeman02","axeman03","dbsla","dbslp","dbslwc","stretch01","stretch02","stretch03"]; //must be lowercase
+			"smokey03","boss03","boss01","funnybones01","funnybones03","maddog01","maddog02","maddog03","dbsl","axeman01","axeman02","axeman03","dbsla","dbslp","dbslwc","dbslko","stretch01","stretch02","stretch03"]; //must be lowercase
 		let league_list_string = league_list.join("|");
 		let league_regex = RegExp(`\\b(${league_list_string})\\b`, "i"); // Word boundary to avoid partial matches
 		let game_num_regex = RegExp("\\bG([0-9]+)\\b", "i"); // Word boundary for exact match
@@ -473,7 +473,7 @@ module.exports = {
 		channel = client.channels.cache.get(tournament_channel_id);
 	  }else if (result_obj.league == "vbfl"){
 		channel = client.channels.cache.get(VFBL_channel_id);
-	  }else if (result_obj.league == "dbsl"|| result_obj.league == "dbsla"|| result_obj.league == "dbslp"|| result_obj.league == "dbslwc"){
+	  }else if (result_obj.league == "dbsl"|| result_obj.league == "dbsla"|| result_obj.league == "dbslp"|| result_obj.league == "dbslwc"|| result_obj.league == "dbslko"){
 		channel = client.channels.cache.get(dbsl_channel_id);	
 	  }else if (result_obj.league=="w3"){
 				channel = client.channels.cache.get(other_results_id);
@@ -595,7 +595,7 @@ module.exports = {
 		channel = client.channels.cache.get(tournament_channel_id);
 	  }else if (result_obj.league == "vbfl"){
 		channel = client.channels.cache.get(VFBL_channel_id);
-	  }else if (result_obj.league == "dbsl"|| result_obj.league == "dbsla"|| result_obj.league == "dbslp"|| result_obj.league == "dbslwc"){
+	  }else if (result_obj.league == "dbsl"|| result_obj.league == "dbsla"|| result_obj.league == "dbslp"|| result_obj.league == "dbslwc"|| result_obj.league == "dbslko"){
 		channel = client.channels.cache.get(dbsl_channel_id);
 	  }else if (result_obj.league=="w3"){
 		channel = client.channels.cache.get(other_results_id);
